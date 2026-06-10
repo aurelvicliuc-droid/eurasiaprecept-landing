@@ -301,21 +301,37 @@ export default function ProgramPageClient({ program }: Props) {
       </div>
 
       {/* Bottom CTA banner */}
-      <div className="bg-green-dark py-16">
-        <div className="max-w-[1200px] mx-auto px-6 lg:px-12 text-center">
-          <h2 className="font-['var(--font-display)'] text-white text-[clamp(24px,3vw,38px)] font-normal mb-4">
+      <div className="relative bg-beige py-20 overflow-hidden border-t border-beige-dark">
+        {/* Subtle decorative circle */}
+        <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-teal/5 pointer-events-none" />
+        <div className="absolute -bottom-16 -left-16 w-64 h-64 rounded-full bg-gold/6 pointer-events-none" />
+
+        <div className="relative max-w-[1200px] mx-auto px-6 lg:px-12 text-center">
+          <span className="inline-block text-[11px] font-bold tracking-[0.18em] uppercase text-teal mb-4">
+            Aplică acum
+          </span>
+          <h2 className="font-['var(--font-display)'] text-green-dark text-[clamp(24px,3vw,40px)] font-normal mb-4 leading-tight">
             Pregătit să faci pasul următor?
           </h2>
-          <p className="text-white/70 text-[15px] mb-8 max-w-[480px] mx-auto leading-[1.65]">
-            Alătură-te programului {program.name} și investește în formarea ta spirituală și pentru slujire.
+          <p className="text-text-muted text-[15px] mb-10 max-w-[460px] mx-auto leading-[1.7]">
+            Alătură-te programului <strong className="text-green-dark font-semibold">{program.name}</strong> și investește în formarea ta spirituală și pentru slujire.
           </p>
-          <a
-            href={program.ctaPrimary.href}
-            className="inline-block bg-gold text-green-dark font-semibold px-8 py-4 rounded-xl text-[15px]
-              hover:bg-[#b89040] transition-colors duration-200 shadow-md"
-          >
-            {program.ctaPrimary.label}
-          </a>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <a
+              href={program.ctaPrimary.href}
+              className="inline-block bg-green-dark text-white font-semibold px-8 py-4 rounded-xl text-[15px]
+                hover:bg-teal transition-colors duration-200 shadow-sm"
+            >
+              {program.ctaPrimary.label}
+            </a>
+            <a
+              href="/#contact"
+              className="inline-block border-[1.5px] border-green-dark/30 text-green-dark font-medium
+                px-8 py-4 rounded-xl text-[15px] hover:border-teal hover:text-teal transition-all duration-200"
+            >
+              Contactează-ne
+            </a>
+          </div>
         </div>
       </div>
 

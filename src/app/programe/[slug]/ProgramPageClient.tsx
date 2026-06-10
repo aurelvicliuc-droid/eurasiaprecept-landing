@@ -9,6 +9,7 @@ import Nav from '@/components/layout/Nav'
 import Footer from '@/components/layout/Footer'
 import AboutModal from '@/components/modals/AboutModal'
 import { useLanguage } from '@/lib/i18n/context'
+import { localizeProgram } from '@/lib/i18n/programs-localized'
 
 const badgeColors: Record<string, string> = {
   teal: 'bg-teal/10 text-teal border-teal/30',
@@ -23,13 +24,15 @@ interface Props {
 
 export default function ProgramPageClient({ program }: Props) {
   const [aboutOpen, setAboutOpen] = useState(false)
-  const { t } = useLanguage()
+  const { lang, t } = useLanguage()
   const pp = t.programPage
 
-  const hasCurriculum = program.curriculum.length > 0
-  const hasDocuments = program.documents.length > 0
-  const hasStructure = program.structure.length > 0
-  const hasOutcomes = program.outcomes && program.outcomes.length > 0
+  const p = localizeProgram(program, lang)
+
+  const hasCurriculum = p.curriculum.length > 0
+  const hasDocuments = p.documents.length > 0
+  const hasStructure = p.structure.length > 0
+  const hasOutcomes = p.outcomes && p.outcomes.length > 0
 
   return (
     <div className="min-h-screen bg-[#fafaf8]">
@@ -44,7 +47,7 @@ export default function ProgramPageClient({ program }: Props) {
             {pp.backLabel}
           </Link>
           <span className="text-beige-dark">/</span>
-          <span className="text-text-dark font-medium truncate">{program.name}</span>
+          <span className="text-text-dark font-medium truncate">{p.name}</span>
         </div>
       </div>
 
@@ -76,10 +79,10 @@ export default function ProgramPageClient({ program }: Props) {
               </span>
               <h1 className="font-['var(--font-display)'] text-white font-normal leading-tight mb-3
                 text-[clamp(28px,4vw,52px)]">
-                {program.name}
+                {p.name}
               </h1>
               <p className="text-white/80 text-[clamp(15px,1.6vw,18px)] max-w-[560px] leading-[1.55]">
-                {program.tagline}
+                {p.tagline}
               </p>
             </motion.div>
           </div>
@@ -101,7 +104,7 @@ export default function ProgramPageClient({ program }: Props) {
             >
               <SectionLabel icon={<BookOpen size={15} />}>{pp.aboutSection}</SectionLabel>
               <p className="text-[16.5px] text-text-dark leading-[1.75] mt-4">
-                {program.overview}
+                {p.overview}
               </p>
             </motion.section>
 
@@ -114,7 +117,7 @@ export default function ProgramPageClient({ program }: Props) {
               >
                 <SectionLabel icon={<BookOpen size={15} />}>{pp.curriculum}</SectionLabel>
                 <div className="flex flex-col gap-4 mt-5">
-                  {program.curriculum.map((course, i) => (
+                  {p.curriculum.map((course, i) => (
                     <motion.div
                       key={i}
                       className="border border-beige-dark rounded-xl p-5 bg-cream hover:border-teal/40 hover:shadow-sm transition-all duration-200"
@@ -158,7 +161,7 @@ export default function ProgramPageClient({ program }: Props) {
               >
                 <SectionLabel icon={<CheckCircle size={15} />}>{pp.outcomes}</SectionLabel>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
-                  {program.outcomes!.map((outcome, i) => (
+                  {p.outcomes!.map((outcome, i) => (
                     <motion.div
                       key={i}
                       className="bg-cream border border-beige-dark rounded-xl p-5"
@@ -183,7 +186,7 @@ export default function ProgramPageClient({ program }: Props) {
           <div className="lg:sticky lg:top-[84px] flex flex-col gap-5">
 
             {/* Who can apply */}
-            {program.whoCanApply.length > 0 && (
+            {p.whoCanApply.length > 0 && (
               <motion.div
                 className="bg-white border border-beige-dark rounded-2xl p-6 shadow-sm"
                 initial={{ opacity: 0, x: 20 }}
@@ -194,7 +197,7 @@ export default function ProgramPageClient({ program }: Props) {
                   {pp.whoCanApply}
                 </h3>
                 <ul className="flex flex-col gap-3">
-                  {program.whoCanApply.map((item, i) => (
+                  {p.whoCanApply.map((item, i) => (
                     <li key={i} className="flex items-start gap-2.5">
                       <CheckCircle size={15} className="text-teal flex-shrink-0 mt-0.5" />
                       <span className="text-[14px] text-text-dark leading-[1.5]">{item}</span>
@@ -216,7 +219,7 @@ export default function ProgramPageClient({ program }: Props) {
                   {pp.structure}
                 </h3>
                 <ul className="flex flex-col gap-3">
-                  {program.structure.map((item, i) => (
+                  {p.structure.map((item, i) => (
                     <li key={i} className="flex items-start gap-2.5">
                       <Clock size={15} className="text-gold flex-shrink-0 mt-0.5" />
                       <span className="text-[14px] text-text-dark leading-[1.5]">{item}</span>
@@ -238,7 +241,7 @@ export default function ProgramPageClient({ program }: Props) {
                   {pp.documents}
                 </h3>
                 <ul className="flex flex-col gap-2.5">
-                  {program.documents.map((doc, i) => (
+                  {p.documents.map((doc, i) => (
                     <li key={i} className="flex items-center gap-2.5">
                       <div className="w-1.5 h-1.5 rounded-full bg-teal flex-shrink-0" />
                       <span className="text-[14px] text-text-dark">{doc}</span>
@@ -260,27 +263,27 @@ export default function ProgramPageClient({ program }: Props) {
                 className="w-full bg-teal text-white text-center py-4 px-6 rounded-xl text-[15px] font-semibold
                   hover:bg-green-dark transition-colors duration-200 shadow-sm"
               >
-                {program.ctaPrimary.label}
+                {p.ctaPrimary.label}
               </a>
-              {program.ctaSecondary && (
+              {p.ctaSecondary && (
                 <a
-                  href={program.ctaSecondary.href}
+                  href={program.ctaSecondary?.href}
                   className="w-full border-[1.5px] border-teal text-teal text-center py-3.5 px-6 rounded-xl
                     text-[14px] font-medium hover:bg-teal/5 transition-colors duration-200 flex items-center justify-center gap-2"
                 >
-                  {program.downloadLabel && <Download size={14} aria-hidden />}
-                  {program.ctaSecondary.label}
+                  {p.downloadLabel && <Download size={14} aria-hidden />}
+                  {p.ctaSecondary.label}
                 </a>
               )}
-              {program.ctaTertiary && (
+              {p.ctaTertiary && (
                 <a
-                  href={program.ctaTertiary.href}
+                  href={program.ctaTertiary?.href}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full border border-beige-dark text-text-muted text-center py-3 px-6 rounded-xl
                     text-[13px] font-medium hover:border-teal hover:text-teal transition-all duration-200"
                 >
-                  {program.ctaTertiary.label}
+                  {p.ctaTertiary.label}
                 </a>
               )}
             </motion.div>
@@ -317,7 +320,7 @@ export default function ProgramPageClient({ program }: Props) {
             {pp.ctaBannerTitle}
           </h2>
           <p className="text-text-muted text-[15px] mb-10 max-w-[460px] mx-auto leading-[1.7]">
-            {pp.ctaBannerDesc(program.name)}
+            {pp.ctaBannerDesc(p.name)}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
@@ -325,7 +328,7 @@ export default function ProgramPageClient({ program }: Props) {
               className="inline-block bg-green-dark text-white font-semibold px-8 py-4 rounded-xl text-[15px]
                 hover:bg-teal transition-colors duration-200 shadow-sm"
             >
-              {program.ctaPrimary.label}
+              {p.ctaPrimary.label}
             </a>
             <a
               href="/#contact"

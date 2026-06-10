@@ -12,6 +12,46 @@ interface Props {
 
 type Tab = 'viziunea' | 'echipa' | 'filiale'
 
+const VISION_CARD_STYLES = [
+  { bg: 'bg-[#1a3a2a]',   label: 'text-[#7ec8b8]',  text: 'text-white/90' },
+  { bg: 'bg-[#3d7a72]',   label: 'text-white/60',   text: 'text-white/90' },
+  { bg: 'bg-[#c9a84c]',   label: 'text-[#3a2800]',  text: 'text-[#1a1200]' },
+  { bg: 'bg-[#f0ebe0] border border-[#d4c9b0]', label: 'text-[#3d7a72]', text: 'text-[#1a3a2a]' },
+]
+
+const VISION_CARD_SYMBOLS = [
+  /* Cross — Misiunea */
+  <svg key="cross" viewBox="0 0 80 80" width={72} height={72} fill="currentColor" className="text-white">
+    <rect x="36" y="8" width="8" height="64" rx="2"/>
+    <rect x="12" y="28" width="56" height="8" rx="2"/>
+  </svg>,
+  /* Open book — Metoda */
+  <svg key="book" viewBox="0 0 80 80" width={72} height={72} fill="none" stroke="currentColor" strokeWidth="3" className="text-white">
+    <path d="M40 18 C30 14 14 14 8 18 L8 62 C14 58 30 58 40 62 C50 58 66 58 72 62 L72 18 C66 14 50 14 40 18Z"/>
+    <line x1="40" y1="18" x2="40" y2="62"/>
+    <line x1="16" y1="28" x2="36" y2="28"/>
+    <line x1="16" y1="36" x2="36" y2="36"/>
+    <line x1="16" y1="44" x2="36" y2="44"/>
+    <line x1="44" y1="28" x2="64" y2="28"/>
+    <line x1="44" y1="36" x2="64" y2="36"/>
+    <line x1="44" y1="44" x2="64" y2="44"/>
+  </svg>,
+  /* Globe — Impactul */
+  <svg key="globe" viewBox="0 0 80 80" width={72} height={72} fill="none" stroke="currentColor" strokeWidth="2.5" className="text-[#3a2800]">
+    <circle cx="40" cy="40" r="28"/>
+    <ellipse cx="40" cy="40" rx="12" ry="28"/>
+    <line x1="12" y1="40" x2="68" y2="40"/>
+    <path d="M15 26 Q40 32 65 26"/>
+    <path d="M15 54 Q40 48 65 54"/>
+  </svg>,
+  /* Community circles — Valorile */
+  <svg key="community" viewBox="0 0 80 80" width={72} height={72} fill="currentColor" className="text-[#3d7a72]">
+    <circle cx="24" cy="32" r="13"/>
+    <circle cx="56" cy="32" r="13"/>
+    <circle cx="40" cy="54" r="13"/>
+  </svg>,
+]
+
 export default function AboutModal({ open, onClose }: Props) {
   const { t } = useLanguage()
   const a = t.about
@@ -113,17 +153,28 @@ export default function AboutModal({ open, onClose }: Props) {
                 >
                   {activeTab === 'viziunea' && (
                     <div>
-                      <p className="font-['var(--font-display)'] text-[22px] italic text-green-dark leading-[1.6]
-                        border-l-[3px] border-teal pl-5 mb-6">
+                      <p className="font-['var(--font-display)'] text-[20px] italic text-green-dark leading-[1.6]
+                        border-l-[3px] border-teal pl-5 mb-5">
                         {t.vision.quote}
                       </p>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        {a.vision.blocks.map((b) => (
-                          <div key={b.label} className="bg-beige-light rounded-[10px] p-5">
-                            <span className="text-[10px] font-semibold tracking-[0.12em] uppercase text-teal mb-1.5 block">
+                      <div className="grid grid-cols-2 gap-3">
+                        {a.vision.blocks.map((b, i) => (
+                          <div
+                            key={b.label}
+                            className={`relative overflow-hidden rounded-[14px] p-5 ${
+                              i === 0 || i === 3 ? 'col-span-2' : 'col-span-1'
+                            } ${VISION_CARD_STYLES[i].bg}`}
+                          >
+                            {/* Symbolic SVG decoration */}
+                            <div className="absolute bottom-2 right-3 opacity-[0.13] pointer-events-none" aria-hidden>
+                              {VISION_CARD_SYMBOLS[i]}
+                            </div>
+                            <span className={`text-[10px] font-bold tracking-[0.15em] uppercase mb-2 block relative z-10 ${VISION_CARD_STYLES[i].label}`}>
                               {b.label}
                             </span>
-                            <p className="text-[14px] text-text-dark leading-[1.65]">{b.text}</p>
+                            <p className={`leading-[1.65] relative z-10 ${VISION_CARD_STYLES[i].text} ${i === 0 || i === 3 ? 'text-[14.5px]' : 'text-[13px]'}`}>
+                              {b.text}
+                            </p>
                           </div>
                         ))}
                       </div>

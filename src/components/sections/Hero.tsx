@@ -37,10 +37,10 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
             >
-              Institutul<br />
-              Biblic<br />
-              Precept{' '}
-              <em className="not-italic text-teal">Eurasia</em>
+              {h.title1}<br />
+              {h.title2}<br />
+              {h.title3}{' '}
+              <em className="not-italic text-teal">{h.titleAccent}</em>
             </motion.h1>
           </div>
 

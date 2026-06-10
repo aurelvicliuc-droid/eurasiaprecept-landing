@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 interface NavProps {
   onAboutOpen: () => void
@@ -42,7 +43,7 @@ export default function Nav({ onAboutOpen }: NavProps) {
       >
         <div className="max-w-[1200px] mx-auto px-6 lg:px-12 h-[68px] flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center" aria-label="Precept Eurasia">
+          <Link href="/" className="flex items-center" aria-label="Precept Eurasia — Acasă">
             <Image
               src="/Precept_LogomarkSmal.png"
               alt="Precept Eurasia"
@@ -51,7 +52,7 @@ export default function Nav({ onAboutOpen }: NavProps) {
               className="h-[32px] w-auto object-contain"
               priority
             />
-          </a>
+          </Link>
 
           {/* Desktop links */}
           <ul className="hidden md:flex items-center gap-8" role="list">

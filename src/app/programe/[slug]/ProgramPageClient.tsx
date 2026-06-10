@@ -103,7 +103,7 @@ export default function ProgramPageClient({ program }: Props) {
               transition={{ duration: 0.55, delay: 0.1 }}
             >
               <SectionLabel icon={<BookOpen size={15} />}>{pp.aboutSection}</SectionLabel>
-              <p className="text-[16.5px] text-text-dark leading-[1.75] mt-4">
+              <p className="text-[17px] text-text-dark leading-[1.8] mt-4">
                 {p.overview}
               </p>
             </motion.section>
@@ -140,7 +140,7 @@ export default function ProgramPageClient({ program }: Props) {
                             </p>
                           )}
                           {course.desc && (
-                            <p className="text-[14px] text-text-muted leading-[1.6] mt-2">
+                            <p className="text-[15px] text-text-muted leading-[1.65] mt-2">
                               {course.desc}
                             </p>
                           )}
@@ -173,7 +173,7 @@ export default function ProgramPageClient({ program }: Props) {
                         <ChevronRight size={16} className="text-teal" />
                       </div>
                       <h4 className="text-[15px] font-semibold text-green-dark mb-1">{outcome.title}</h4>
-                      <p className="text-[13px] text-text-muted leading-[1.6]">{outcome.desc}</p>
+                      <p className="text-[14.5px] text-text-muted leading-[1.65]">{outcome.desc}</p>
                     </motion.div>
                   ))}
                 </div>
@@ -200,7 +200,7 @@ export default function ProgramPageClient({ program }: Props) {
                   {p.whoCanApply.map((item, i) => (
                     <li key={i} className="flex items-start gap-2.5">
                       <CheckCircle size={15} className="text-teal flex-shrink-0 mt-0.5" />
-                      <span className="text-[14px] text-text-dark leading-[1.5]">{item}</span>
+                      <span className="text-[15px] text-text-dark leading-[1.6]">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -222,7 +222,7 @@ export default function ProgramPageClient({ program }: Props) {
                   {p.structure.map((item, i) => (
                     <li key={i} className="flex items-start gap-2.5">
                       <Clock size={15} className="text-gold flex-shrink-0 mt-0.5" />
-                      <span className="text-[14px] text-text-dark leading-[1.5]">{item}</span>
+                      <span className="text-[15px] text-text-dark leading-[1.6]">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -244,7 +244,7 @@ export default function ProgramPageClient({ program }: Props) {
                   {p.documents.map((doc, i) => (
                     <li key={i} className="flex items-center gap-2.5">
                       <div className="w-1.5 h-1.5 rounded-full bg-teal flex-shrink-0" />
-                      <span className="text-[14px] text-text-dark">{doc}</span>
+                      <span className="text-[15px] text-text-dark">{doc}</span>
                     </li>
                   ))}
                 </ul>
@@ -290,7 +290,7 @@ export default function ProgramPageClient({ program }: Props) {
 
             {/* Contact nudge */}
             <motion.p
-              className="text-[13px] text-text-muted text-center leading-[1.6]"
+              className="text-[14px] text-text-muted text-center leading-[1.65]"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4, delay: 0.5 }}
@@ -319,7 +319,7 @@ export default function ProgramPageClient({ program }: Props) {
           <h2 className="font-['var(--font-display)'] text-green-dark text-[clamp(24px,3vw,40px)] font-normal mb-4 leading-tight">
             {pp.ctaBannerTitle}
           </h2>
-          <p className="text-text-muted text-[15px] mb-10 max-w-[460px] mx-auto leading-[1.7]">
+          <p className="text-text-muted text-[16.5px] mb-10 max-w-[460px] mx-auto leading-[1.7]">
             {pp.ctaBannerDesc(p.name)}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">

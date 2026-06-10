@@ -53,7 +53,7 @@ export default function Contact() {
             >
               <em className="italic text-teal">{t.contact.headingEm}</em> {t.contact.heading}
             </h2>
-            <p className="text-[14px] text-teal leading-[1.7] mb-8">
+            <p className="text-[16px] text-teal leading-[1.7] mb-8">
               {t.contact.subtext}
             </p>
 
@@ -71,7 +71,7 @@ export default function Contact() {
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[13.5px] text-text-dark hover:text-teal transition-colors duration-200"
+                      className="text-[15px] text-text-dark hover:text-teal transition-colors duration-200"
                     >
                       {item.value}
                     </a>
@@ -121,7 +121,7 @@ export default function Contact() {
                     type="text"
                     placeholder={f.namePlaceholder}
                     required
-                    className="bg-cream border border-beige-dark rounded-[6px] px-3.5 py-[11px] text-[13.5px]
+                    className="bg-cream border border-beige-dark rounded-[6px] px-3.5 py-[11px] text-[15px]
                       text-text-dark font-light placeholder:text-text-muted outline-none
                       focus:border-teal transition-colors duration-200"
                   />
@@ -135,7 +135,7 @@ export default function Contact() {
                     type="email"
                     placeholder={f.emailPlaceholder}
                     required
-                    className="bg-cream border border-beige-dark rounded-[6px] px-3.5 py-[11px] text-[13.5px]
+                    className="bg-cream border border-beige-dark rounded-[6px] px-3.5 py-[11px] text-[15px]
                       text-text-dark font-light placeholder:text-text-muted outline-none
                       focus:border-teal transition-colors duration-200"
                   />
@@ -149,7 +149,7 @@ export default function Contact() {
                   id="contact-subject"
                   type="text"
                   placeholder={f.subjectPlaceholder}
-                  className="bg-cream border border-beige-dark rounded-[6px] px-3.5 py-[11px] text-[13.5px]
+                  className="bg-cream border border-beige-dark rounded-[6px] px-3.5 py-[11px] text-[15px]
                     text-text-dark font-light placeholder:text-text-muted outline-none
                     focus:border-teal transition-colors duration-200"
                 />
@@ -163,7 +163,7 @@ export default function Contact() {
                   placeholder={f.messagePlaceholder}
                   required
                   rows={5}
-                  className="bg-cream border border-beige-dark rounded-[6px] px-3.5 py-[11px] text-[13.5px]
+                  className="bg-cream border border-beige-dark rounded-[6px] px-3.5 py-[11px] text-[15px]
                     text-text-dark font-light placeholder:text-text-muted outline-none resize-y min-h-[110px]
                     focus:border-teal transition-colors duration-200"
                 />

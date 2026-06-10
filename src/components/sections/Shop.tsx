@@ -15,7 +15,7 @@ const products = [
     descs: {
       ro: 'Studiu biblic inductiv aprofundat — metoda Precept Upon Precept.',
       en: 'In-depth inductive Bible study — the Precept Upon Precept method.',
-      ru: 'Углублённое индуктивное изучение Библии — метод Прецепт.',
+      ru: 'Углублённое индуктивное изучение Библии — метод Precept Upon Precept.',
     },
     badge: { ro: 'Seria', en: 'Series', ru: 'Серия' },
     badgeGold: false,
@@ -80,7 +80,7 @@ export default function Shop() {
             >
               {t.shop.heading} <em className="italic text-teal">{t.shop.headingEm}</em>
             </h2>
-            <p className="text-[15px] text-text-muted max-w-[400px]">
+            <p className="text-[16.5px] text-text-muted max-w-[400px] leading-[1.7]">
               {t.shop.subtext}
             </p>
           </AnimatedSection>
@@ -141,7 +141,7 @@ export default function Shop() {
                 <h3 className="font-['var(--font-display)'] text-[17px] font-medium text-green-dark leading-[1.3]">
                   {p.names[lang]}
                 </h3>
-                <p className="text-[13px] text-text-muted leading-[1.55] flex-1">{p.descs[lang]}</p>
+                <p className="text-[14.5px] text-text-muted leading-[1.65] flex-1">{p.descs[lang]}</p>
                 <span className="inline-flex items-center gap-1 mt-2 text-[11px] font-semibold
                   tracking-[0.08em] uppercase text-teal group-hover:text-green-dark transition-colors duration-200">
                   {t.shop.buy}

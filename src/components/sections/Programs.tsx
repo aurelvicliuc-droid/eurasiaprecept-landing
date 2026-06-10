@@ -39,7 +39,7 @@ const programs: Program[] = [
   {
     id: 'baza',
     slug: 'institutul-biblic',
-    names: { ro: 'Institutul Biblic Precept', en: 'Precept Bible Institute', ru: 'Библейский институт Прецепт' },
+    names: { ro: 'Institutul Biblic Precept', en: 'Precept Bible Institute', ru: 'Библейский институт Precept' },
     descs: {
       ro: 'Formarea liderilor care cunosc Biblia și transmit credibil Cuvântul lui Dumnezeu în viața de zi cu zi a bisericii.',
       en: 'Training leaders who know the Bible and credibly communicate the Word of God in the daily life of the church.',
@@ -171,7 +171,7 @@ export default function Programs() {
             {p.heading.split(' ').slice(0, -2).join(' ')}{' '}
             <em className="italic text-teal">{p.heading.split(' ').slice(-2).join(' ')}</em>
           </h2>
-          <p className="text-[15px] text-text-muted max-w-[520px]">{p.subtext}</p>
+          <p className="text-[16.5px] text-text-muted max-w-[520px] leading-[1.7]">{p.subtext}</p>
         </AnimatedSection>
 
         <AnimatedSection delay={0.1} className="flex flex-wrap gap-2 mb-10">
@@ -235,7 +235,7 @@ export default function Programs() {
                         <h3 className="font-['var(--font-display)'] text-[22px] font-medium text-green-dark mb-2.5 leading-[1.25]">
                           {prog.names[lang]}
                         </h3>
-                        <p className="text-[13.5px] text-text-muted leading-[1.65] flex-1 mb-5">
+                        <p className="text-[15px] text-text-muted leading-[1.7] flex-1 mb-5">
                           {prog.descs[lang]}
                         </p>
                         <span className="inline-flex items-center gap-1.5 text-[12px] font-semibold tracking-[0.08em] uppercase

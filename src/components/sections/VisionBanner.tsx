@@ -19,7 +19,7 @@ export default function VisionBanner() {
             text-[clamp(20px,2.8vw,30px)]">
             {t.vision.quote}
           </p>
-          <footer className="text-[14px] text-text-muted tracking-[0.04em]">
+          <footer className="text-[15px] text-text-muted tracking-[0.04em]">
             {t.vision.author}
           </footer>
         </blockquote>

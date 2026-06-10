@@ -54,7 +54,7 @@ export default function Hero() {
             />
 
             <motion.p
-              className="text-[16px] text-[#555] leading-[1.75] mb-8 max-w-[440px]"
+              className="text-[17px] text-[#555] leading-[1.75] mb-8 max-w-[440px]"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4 }}

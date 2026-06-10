@@ -1,9 +1,13 @@
 'use client'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, CheckCircle, BookOpen, Clock, Download, ChevronRight } from 'lucide-react'
 import type { ProgramData } from '@/lib/programs-data'
+import Nav from '@/components/layout/Nav'
+import Footer from '@/components/layout/Footer'
+import AboutModal from '@/components/modals/AboutModal'
 
 const badgeColors: Record<string, string> = {
   teal: 'bg-teal/10 text-teal border-teal/30',
@@ -17,6 +21,8 @@ interface Props {
 }
 
 export default function ProgramPageClient({ program }: Props) {
+  const [aboutOpen, setAboutOpen] = useState(false)
+
   const hasCurriculum = program.curriculum.length > 0
   const hasDocuments = program.documents.length > 0
   const hasStructure = program.structure.length > 0
@@ -24,25 +30,23 @@ export default function ProgramPageClient({ program }: Props) {
 
   return (
     <div className="min-h-screen bg-[#fafaf8]">
-      {/* Back nav bar */}
-      <div className="fixed top-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md border-b border-beige-dark/60 shadow-sm">
-        <div className="max-w-[1200px] mx-auto px-6 lg:px-12 h-[64px] flex items-center gap-4">
-          <Link
-            href="/#programe"
-            className="inline-flex items-center gap-2 text-[13px] font-medium text-text-muted hover:text-teal transition-colors duration-200 group"
-          >
-            <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform duration-200" aria-hidden />
-            Înapoi la programe
+      <Nav onAboutOpen={() => setAboutOpen(true)} />
+      <AboutModal open={aboutOpen} onClose={() => setAboutOpen(false)} />
+
+      {/* Breadcrumb below nav */}
+      <div className="pt-[68px] bg-white border-b border-beige-dark/60">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-12 h-11 flex items-center gap-2 text-[13px]">
+          <Link href="/#programe" className="inline-flex items-center gap-1.5 text-text-muted hover:text-teal transition-colors duration-200 group">
+            <ArrowLeft size={14} className="group-hover:-translate-x-0.5 transition-transform duration-200" aria-hidden />
+            Programe
           </Link>
-          <div className="h-5 w-px bg-beige-dark ml-2 mr-2 hidden sm:block" />
-          <span className="hidden sm:inline text-[13px] text-text-muted font-normal truncate">
-            {program.name}
-          </span>
+          <span className="text-beige-dark">/</span>
+          <span className="text-text-dark font-medium truncate">{program.name}</span>
         </div>
       </div>
 
       {/* Hero */}
-      <div className="pt-[64px] relative">
+      <div className="relative">
         <div className="relative w-full overflow-hidden" style={{ height: 'clamp(300px, 42vw, 560px)' }}>
           <Image
             src={program.heroImage}
@@ -314,6 +318,8 @@ export default function ProgramPageClient({ program }: Props) {
           </a>
         </div>
       </div>
+
+      <Footer />
     </div>
   )
 }

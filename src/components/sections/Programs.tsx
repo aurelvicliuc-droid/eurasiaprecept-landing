@@ -82,7 +82,7 @@ const programs: Program[] = [
   {
     id: 'misiune',
     slug: 'misiune-sport',
-    names: { ro: 'Escola Internațională de Misiune', en: 'International School of Mission', ru: 'Международная школа миссии' },
+    names: { ro: 'Școala Internațională de Misiune prin Sport', en: 'International School of Mission through Sport', ru: 'Международная школа миссии через спорт' },
     descs: {
       ro: 'Misionari care îndeplinesc marea poruncă a lui Hristos prin sport, ajungând la generații diferite cu Evanghelia.',
       en: 'Missionaries fulfilling the Great Commission of Christ through sport, reaching different generations with the Gospel.',

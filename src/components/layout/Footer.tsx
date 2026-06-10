@@ -11,7 +11,7 @@ const programLinks = [
   { slug: 'nivelul-2', names: { ro: 'Nivelul II', en: 'Level II', ru: 'Уровень II' } },
   { slug: 'nivelul-3-4', names: { ro: 'Nivelurile III–IV', en: 'Levels III–IV', ru: 'Уровни III–IV' } },
   { slug: 'efnl-a1', names: { ro: 'English for a New Life', en: 'English for a New Life', ru: 'Английский для новой жизни' } },
-  { slug: 'misiune-sport', names: { ro: 'Misiune prin Sport', en: 'Mission through Sport', ru: 'Миссия через спорт' } },
+  { slug: 'misiune-sport', names: { ro: 'Școala de Misiune prin Sport', en: 'Mission through Sport School', ru: 'Школа миссии через спорт' } },
   { slug: 'lucrare-copii', names: { ro: 'Lucrare cu Copii', en: 'Ministry with Children', ru: 'Служение детям' } },
 ]
 

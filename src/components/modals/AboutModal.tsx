@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
+import Image from 'next/image'
 import { useLanguage } from '@/lib/i18n/context'
 
 interface Props {
@@ -137,10 +138,14 @@ export default function AboutModal({ open, onClose }: Props) {
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {a.team.members.map((m) => (
                           <div key={m.initials} className="bg-beige-light rounded-[10px] p-5 flex gap-3 items-start">
-                            <div className="w-[46px] h-[46px] rounded-full bg-teal/15 flex items-center justify-center
-                              font-['var(--font-display)'] italic text-[16px] text-teal font-medium flex-shrink-0"
-                              aria-hidden="true">
-                              {m.initials}
+                            <div className="w-[46px] h-[46px] rounded-full overflow-hidden flex-shrink-0 bg-teal/15">
+                              <Image
+                                src={m.photo}
+                                alt={m.name}
+                                width={46}
+                                height={46}
+                                className="w-full h-full object-cover object-top"
+                              />
                             </div>
                             <div>
                               <p className="text-[14px] font-medium text-text-dark mb-0.5">{m.name}</p>

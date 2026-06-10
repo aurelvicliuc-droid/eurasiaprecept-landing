@@ -130,10 +130,10 @@ export const translations = {
       team: {
         heading: 'Echipa de conducere',
         members: [
-          { initials: 'DA', name: 'David Arthur', role: 'Președinte Precept International' },
-          { initials: 'KA', name: 'Kay Arthur', role: 'Fondator Precept Ministries International' },
-          { initials: 'MO', name: 'Mia și Costel Oglice', role: 'Vicepreședinți Precept Global' },
-          { initials: 'VF', name: 'Vasile Filat', role: 'Director Precept Eurasia' },
+          { initials: 'DA', name: 'David Arthur', role: 'Președinte Precept International', photo: 'https://static.tildacdn.com/tild6538-6135-4266-a635-336339653632/david_arthur.jpg' },
+          { initials: 'KA', name: 'Kay Arthur', role: 'Fondator Precept Ministries International', photo: 'https://static.tildacdn.com/tild6564-6637-4932-b933-626564656237/53216907_10156286404.jpg' },
+          { initials: 'MO', name: 'Mia și Costel Oglice', role: 'Vicepreședinți Precept Global', photo: 'https://static.tildacdn.com/tild3933-6537-4337-a536-643037376537/noroot.png' },
+          { initials: 'VF', name: 'Vasile Filat', role: 'Director Precept Eurasia', photo: 'https://static.tildacdn.com/tild6538-3834-4561-b536-326637653535/21430309_91101508904.jpg' },
         ],
       },
       branches: {
@@ -294,10 +294,10 @@ export const translations = {
       team: {
         heading: 'Leadership team',
         members: [
-          { initials: 'DA', name: 'David Arthur', role: 'President, Precept International' },
-          { initials: 'KA', name: 'Kay Arthur', role: 'Founder, Precept Ministries International' },
-          { initials: 'MO', name: 'Mia & Costel Oglice', role: 'Vice Presidents, Precept Global' },
-          { initials: 'VF', name: 'Vasile Filat', role: 'Director, Precept Eurasia' },
+          { initials: 'DA', name: 'David Arthur', role: 'President, Precept International', photo: 'https://static.tildacdn.com/tild6538-6135-4266-a635-336339653632/david_arthur.jpg' },
+          { initials: 'KA', name: 'Kay Arthur', role: 'Founder, Precept Ministries International', photo: 'https://static.tildacdn.com/tild6564-6637-4932-b933-626564656237/53216907_10156286404.jpg' },
+          { initials: 'MO', name: 'Mia & Costel Oglice', role: 'Vice Presidents, Precept Global', photo: 'https://static.tildacdn.com/tild3933-6537-4337-a536-643037376537/noroot.png' },
+          { initials: 'VF', name: 'Vasile Filat', role: 'Director, Precept Eurasia', photo: 'https://static.tildacdn.com/tild6538-3834-4561-b536-326637653535/21430309_91101508904.jpg' },
         ],
       },
       branches: {
@@ -458,10 +458,10 @@ export const translations = {
       team: {
         heading: 'Руководящая команда',
         members: [
-          { initials: 'DA', name: 'Дэвид Артур', role: 'Президент Precept International' },
-          { initials: 'KA', name: 'Кей Артур', role: 'Основатель Precept Ministries International' },
-          { initials: 'MO', name: 'Миа и Костел Огличе', role: 'Вице-президенты Precept Global' },
-          { initials: 'VF', name: 'Василий Филат', role: 'Директор Precept Eurasia' },
+          { initials: 'DA', name: 'Дэвид Артур', role: 'Президент Precept International', photo: 'https://static.tildacdn.com/tild6538-6135-4266-a635-336339653632/david_arthur.jpg' },
+          { initials: 'KA', name: 'Кей Артур', role: 'Основатель Precept Ministries International', photo: 'https://static.tildacdn.com/tild6564-6637-4932-b933-626564656237/53216907_10156286404.jpg' },
+          { initials: 'MO', name: 'Миа и Костел Огличе', role: 'Вице-президенты Precept Global', photo: 'https://static.tildacdn.com/tild3933-6537-4337-a536-643037376537/noroot.png' },
+          { initials: 'VF', name: 'Василий Филат', role: 'Директор Precept Eurasia', photo: 'https://static.tildacdn.com/tild6538-3834-4561-b536-326637653535/21430309_91101508904.jpg' },
         ],
       },
       branches: {

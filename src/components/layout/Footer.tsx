@@ -49,11 +49,43 @@ export default function Footer() {
 
   return (
     <footer className="bg-green-dark text-white" role="contentinfo">
-      <div className="max-w-[1200px] mx-auto px-6 lg:px-12 pt-16 pb-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+      <div className="max-w-[1200px] mx-auto px-6 lg:px-12 pt-12 lg:pt-16 pb-10 lg:pb-12">
 
-          {/* Brand */}
-          <div className="sm:col-span-2 lg:col-span-1">
+        {/* ── Mobile: logo + socials in one row ── */}
+        <div className="flex items-center justify-between mb-8 lg:hidden">
+          <Link href="/" aria-label="Precept Eurasia">
+            <Image
+              src="/Precept_LogomarkSmal.png"
+              alt="Precept Eurasia"
+              width={140}
+              height={36}
+              className="h-[24px] w-auto object-contain brightness-0 invert opacity-90"
+            />
+          </Link>
+          <div className="flex gap-2">
+            {socials.map((s) => (
+              <motion.a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.label}
+                className="w-8 h-8 rounded-lg bg-white/8 hover:bg-gold/20 hover:text-gold
+                  flex items-center justify-center text-white/50 transition-all duration-200"
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.96 }}
+              >
+                {s.icon}
+              </motion.a>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Main grid ── */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8 lg:gap-8">
+
+          {/* Brand — hidden on mobile (logo shown above), visible on desktop */}
+          <div className="hidden lg:block">
             <Link href="/" aria-label="Precept Eurasia">
               <Image
                 src="/Precept_LogomarkSmal.png"
@@ -87,17 +119,17 @@ export default function Footer() {
 
           {/* Navigation */}
           <div>
-            <h3 className="text-[11px] font-bold tracking-[0.16em] uppercase text-white/35 mb-5">
+            <h3 className="text-[10px] font-bold tracking-[0.16em] uppercase text-white/35 mb-4">
               {f.colNav}
             </h3>
-            <ul className="flex flex-col gap-3" role="list">
+            <ul className="flex flex-col gap-2.5" role="list">
               {navLinks.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
                     target={link.external ? '_blank' : undefined}
                     rel={link.external ? 'noopener noreferrer' : undefined}
-                    className="text-[13.5px] text-white/55 hover:text-gold transition-colors duration-200
+                    className="text-[13px] text-white/55 hover:text-gold transition-colors duration-200
                       inline-flex items-center gap-1 group"
                   >
                     {link.label}
@@ -110,17 +142,55 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Programs */}
+          {/* Contact */}
           <div>
-            <h3 className="text-[11px] font-bold tracking-[0.16em] uppercase text-white/35 mb-5">
-              {f.colPrograms}
+            <h3 className="text-[10px] font-bold tracking-[0.16em] uppercase text-white/35 mb-4">
+              {f.colContact}
             </h3>
             <ul className="flex flex-col gap-3" role="list">
+              <li>
+                <a href="mailto:contact@eurasiaprecept.org"
+                  className="flex items-start gap-2 text-white/55 hover:text-gold transition-colors duration-200 group">
+                  <Mail size={13} className="mt-0.5 flex-shrink-0 text-teal-light group-hover:text-gold transition-colors" aria-hidden />
+                  <span className="text-[12.5px] leading-[1.45] break-all">contact@eurasiaprecept.org</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://shop.eurasiaprecept.org" target="_blank" rel="noopener noreferrer"
+                  className="flex items-start gap-2 text-white/55 hover:text-gold transition-colors duration-200 group">
+                  <ShoppingBag size={13} className="mt-0.5 flex-shrink-0 text-teal-light group-hover:text-gold transition-colors" aria-hidden />
+                  <span className="text-[12.5px] leading-[1.45]">shop.eurasiaprecept.org</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://eurasiaprecept.org" target="_blank" rel="noopener noreferrer"
+                  className="flex items-start gap-2 text-white/55 hover:text-gold transition-colors duration-200 group">
+                  <Globe size={13} className="mt-0.5 flex-shrink-0 text-teal-light group-hover:text-gold transition-colors" aria-hidden />
+                  <span className="text-[12.5px] leading-[1.45]">eurasiaprecept.org</span>
+                </a>
+              </li>
+            </ul>
+            <a
+              href="/#contact"
+              className="hidden lg:inline-block mt-6 bg-gold/15 hover:bg-gold text-gold hover:text-green-dark
+                border border-gold/30 hover:border-gold px-5 py-2.5 rounded-lg text-[12.5px] font-semibold
+                transition-all duration-200"
+            >
+              {f.sendMessage}
+            </a>
+          </div>
+
+          {/* Programs — spans full width on mobile (2 cols), single col on desktop */}
+          <div className="col-span-2 lg:col-span-1 lg:order-3">
+            <h3 className="text-[10px] font-bold tracking-[0.16em] uppercase text-white/35 mb-4">
+              {f.colPrograms}
+            </h3>
+            <ul className="grid grid-cols-2 lg:flex lg:flex-col gap-x-4 gap-y-2 lg:gap-3" role="list">
               {programLinks.map((p) => (
                 <li key={p.slug}>
                   <Link
                     href={`/programe/${p.slug}`}
-                    className="text-[13px] text-white/55 hover:text-gold transition-colors duration-200"
+                    className="text-[12.5px] lg:text-[13px] text-white/55 hover:text-gold transition-colors duration-200 leading-[1.4] block"
                   >
                     {p.names[lang]}
                   </Link>
@@ -129,62 +199,37 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
-          <div>
-            <h3 className="text-[11px] font-bold tracking-[0.16em] uppercase text-white/35 mb-5">
-              {f.colContact}
-            </h3>
-            <ul className="flex flex-col gap-4" role="list">
-              <li>
-                <a href="mailto:contact@eurasiaprecept.org"
-                  className="flex items-start gap-2.5 text-white/55 hover:text-gold transition-colors duration-200 group">
-                  <Mail size={14} className="mt-0.5 flex-shrink-0 text-teal-light group-hover:text-gold transition-colors" aria-hidden />
-                  <span className="text-[13px] leading-[1.5]">contact@eurasiaprecept.org</span>
-                </a>
-              </li>
-              <li>
-                <a href="https://shop.eurasiaprecept.org" target="_blank" rel="noopener noreferrer"
-                  className="flex items-start gap-2.5 text-white/55 hover:text-gold transition-colors duration-200 group">
-                  <ShoppingBag size={14} className="mt-0.5 flex-shrink-0 text-teal-light group-hover:text-gold transition-colors" aria-hidden />
-                  <span className="text-[13px] leading-[1.5]">shop.eurasiaprecept.org</span>
-                </a>
-              </li>
-              <li>
-                <a href="https://eurasiaprecept.org" target="_blank" rel="noopener noreferrer"
-                  className="flex items-start gap-2.5 text-white/55 hover:text-gold transition-colors duration-200 group">
-                  <Globe size={14} className="mt-0.5 flex-shrink-0 text-teal-light group-hover:text-gold transition-colors" aria-hidden />
-                  <span className="text-[13px] leading-[1.5]">eurasiaprecept.org</span>
-                </a>
-              </li>
-            </ul>
-            <a
-              href="/#contact"
-              className="inline-block mt-6 bg-gold/15 hover:bg-gold text-gold hover:text-green-dark
-                border border-gold/30 hover:border-gold px-5 py-2.5 rounded-lg text-[12.5px] font-semibold
-                transition-all duration-200"
-            >
-              {f.sendMessage}
-            </a>
-          </div>
-
         </div>
+
+        {/* Mobile: send message button */}
+        <div className="mt-6 lg:hidden">
+          <a
+            href="/#contact"
+            className="inline-block bg-gold/15 hover:bg-gold text-gold hover:text-green-dark
+              border border-gold/30 hover:border-gold px-5 py-2.5 rounded-lg text-[13px] font-semibold
+              transition-all duration-200"
+          >
+            {f.sendMessage}
+          </a>
+        </div>
+
       </div>
 
       <div className="border-t border-white/8" />
 
-      <div className="max-w-[1200px] mx-auto px-6 lg:px-12 py-5 flex flex-col sm:flex-row
-        items-center justify-between gap-3">
-        <p className="text-[11.5px] text-white/30 text-center sm:text-left">
+      <div className="max-w-[1200px] mx-auto px-6 lg:px-12 py-4 lg:py-5 flex flex-col sm:flex-row
+        items-center justify-between gap-2">
+        <p className="text-[11px] text-white/30 text-center sm:text-left">
           © {new Date().getFullYear()} Precept Eurasia. {f.copyright}
         </p>
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-4">
           <a href="https://precept.org" target="_blank" rel="noopener noreferrer"
-            className="text-[11.5px] text-white/30 hover:text-white/60 transition-colors duration-200">
+            className="text-[11px] text-white/30 hover:text-white/60 transition-colors duration-200">
             Precept International
           </a>
           <span className="text-white/15">·</span>
           <a href="https://web.eurasiaprecept.org/public/sign-in"
-            className="text-[11.5px] text-white/30 hover:text-white/60 transition-colors duration-200">
+            className="text-[11px] text-white/30 hover:text-white/60 transition-colors duration-200">
             {f.platform}
           </a>
         </div>

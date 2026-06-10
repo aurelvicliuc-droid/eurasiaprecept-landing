@@ -4,30 +4,32 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useLanguage } from '@/lib/i18n/context'
+import type { Lang } from '@/lib/i18n/translations'
+
+const langs: Lang[] = ['ro', 'en', 'ru']
 
 interface NavProps {
   onAboutOpen: () => void
 }
 
-const links = [
-  { label: 'Programe', href: '#programe' },
-  { label: 'Despre noi', href: '#', isAbout: true },
-  { label: 'Contacte', href: '#contact' },
-  { label: 'Magazin', href: 'https://shop.eurasiaprecept.org', external: true },
-]
-
-const langs = ['ro', 'ru', 'en']
-
 export default function Nav({ onAboutOpen }: NavProps) {
+  const { lang, setLang, t } = useLanguage()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [activeLang, setActiveLang] = useState('ro')
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 12)
     window.addEventListener('scroll', handler, { passive: true })
     return () => window.removeEventListener('scroll', handler)
   }, [])
+
+  const links = [
+    { label: t.nav.programs, href: '/#programe' },
+    { label: t.nav.about, href: '#', isAbout: true },
+    { label: t.nav.contact, href: '/#contact' },
+    { label: t.nav.shop, href: 'https://shop.eurasiaprecept.org', external: true },
+  ]
 
   return (
     <>
@@ -73,16 +75,16 @@ export default function Nav({ onAboutOpen }: NavProps) {
 
           {/* Right side */}
           <div className="hidden md:flex items-center gap-4">
-            <div className="flex gap-2" role="group" aria-label="Selectează limba">
-              {langs.map((lang) => (
+            <div className="flex gap-2" role="group" aria-label="Select language">
+              {langs.map((l) => (
                 <button
-                  key={lang}
-                  onClick={() => setActiveLang(lang)}
-                  className={`text-[13px] transition-colors duration-200 cursor-pointer
-                    ${activeLang === lang ? 'text-[#111] font-medium' : 'text-[#888] hover:text-[#333]'}`}
-                  aria-pressed={activeLang === lang}
+                  key={l}
+                  onClick={() => setLang(l)}
+                  className={`text-[13px] transition-colors duration-200 cursor-pointer uppercase
+                    ${lang === l ? 'text-[#111] font-medium' : 'text-[#888] hover:text-[#333]'}`}
+                  aria-pressed={lang === l}
                 >
-                  {lang}
+                  {l}
                 </button>
               ))}
             </div>
@@ -91,7 +93,7 @@ export default function Nav({ onAboutOpen }: NavProps) {
               className="bg-teal text-white px-[22px] py-[9px] rounded-[6px] text-[14px] font-medium
                 hover:bg-green-dark transition-colors duration-200"
             >
-              Intră
+              {t.nav.signIn}
             </a>
           </div>
 
@@ -99,7 +101,7 @@ export default function Nav({ onAboutOpen }: NavProps) {
           <button
             className="md:hidden p-2 rounded-lg hover:bg-beige transition-colors cursor-pointer"
             onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label={mobileOpen ? 'Închide meniu' : 'Deschide meniu'}
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileOpen}
           >
             {mobileOpen ? <X size={22} className="text-text-dark" /> : <Menu size={22} className="text-text-dark" />}
@@ -137,16 +139,16 @@ export default function Nav({ onAboutOpen }: NavProps) {
                 href="https://web.eurasiaprecept.org/public/sign-in"
                 className="mt-4 bg-teal text-white text-center py-4 rounded-lg text-[16px] font-medium"
               >
-                Intră
+                {t.nav.signIn}
               </a>
               <div className="flex gap-4 mt-2">
-                {langs.map((lang) => (
+                {langs.map((l) => (
                   <button
-                    key={lang}
-                    onClick={() => setActiveLang(lang)}
-                    className={`text-[14px] cursor-pointer ${activeLang === lang ? 'text-[#111] font-medium' : 'text-[#888]'}`}
+                    key={l}
+                    onClick={() => setLang(l)}
+                    className={`text-[14px] cursor-pointer uppercase ${lang === l ? 'text-[#111] font-medium' : 'text-[#888]'}`}
                   >
-                    {lang}
+                    {l}
                   </button>
                 ))}
               </div>

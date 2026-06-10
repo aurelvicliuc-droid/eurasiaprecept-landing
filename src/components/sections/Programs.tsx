@@ -5,16 +5,17 @@ import { BookOpen, Users, Globe, Plus, Trophy, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import AnimatedSection from '@/components/ui/AnimatedSection'
 import SectionEyebrow from '@/components/ui/SectionEyebrow'
+import { useLanguage } from '@/lib/i18n/context'
 
 type Category = 'all' | 'adolescenti' | 'tineri' | 'specializat'
 
 interface Program {
   id: string
   slug: string
-  name: string
-  desc: string
+  names: { ro: string; en: string; ru: string }
+  descs: { ro: string; en: string; ru: string }
+  badges: { ro: string; en: string; ru: string }
   category: Exclude<Category, 'all'>
-  badge: string
   badgeVariant: 'teal' | 'gold' | 'purple'
   featured?: boolean
   icon: React.ReactNode
@@ -24,20 +25,28 @@ const programs: Program[] = [
   {
     id: 'timotei',
     slug: 'scoala-timotei',
-    name: 'Școala Timotei',
-    desc: 'Tineri care au o relație personală cu Dumnezeu, sunt un exemplu pentru colegii lor și transmit Cuvântul altora.',
+    names: { ro: 'Școala Timotei', en: 'Timothy School', ru: 'Школа Тимофея' },
+    descs: {
+      ro: 'Tineri care au o relație personală cu Dumnezeu, sunt un exemplu pentru colegii lor și transmit Cuvântul altora.',
+      en: 'Young people who have a personal relationship with God, are an example to their peers, and pass on the Word to others.',
+      ru: 'Молодые люди, имеющие личные отношения с Богом, являющиеся примером для сверстников и передающие Слово другим.',
+    },
+    badges: { ro: 'Adolescenți', en: 'Teens', ru: 'Подростки' },
     category: 'adolescenti',
-    badge: 'Adolescenți',
     badgeVariant: 'gold',
     icon: <BookOpen size={18} strokeWidth={1.5} />,
   },
   {
     id: 'baza',
     slug: 'institutul-biblic',
-    name: 'Institutul Biblic Precept',
-    desc: 'Formarea liderilor care cunosc Biblia și transmit credibil Cuvântul lui Dumnezeu în viața de zi cu zi a bisericii, înțelegând procesul uceniciei.',
+    names: { ro: 'Institutul Biblic Precept', en: 'Precept Bible Institute', ru: 'Библейский институт Прецепт' },
+    descs: {
+      ro: 'Formarea liderilor care cunosc Biblia și transmit credibil Cuvântul lui Dumnezeu în viața de zi cu zi a bisericii.',
+      en: 'Training leaders who know the Bible and credibly communicate the Word of God in the daily life of the church.',
+      ru: 'Подготовка лидеров, знающих Библию и достоверно передающих Слово Божье в повседневной жизни церкви.',
+    },
+    badges: { ro: 'Nivel de bază', en: 'Foundational level', ru: 'Базовый уровень' },
     category: 'tineri',
-    badge: 'Nivel de bază',
     badgeVariant: 'teal',
     featured: true,
     icon: <BookOpen size={18} strokeWidth={1.5} />,
@@ -45,60 +54,73 @@ const programs: Program[] = [
   {
     id: 'copii',
     slug: 'lucrare-copii',
-    name: 'Lucrare cu Copii',
-    desc: 'Slujitori care înțeleg specificul lucrului cu copiii și le predau Cuvântul lui Dumnezeu, formând o fundație biblică solidă în viața lor.',
+    names: { ro: 'Lucrare cu Copii', en: 'Ministry with Children', ru: 'Служение детям' },
+    descs: {
+      ro: 'Slujitori care înțeleg specificul lucrului cu copiii și le predau Cuvântul lui Dumnezeu, formând o fundație biblică solidă.',
+      en: 'Servants who understand the specifics of working with children and teach them the Word of God, building a solid biblical foundation.',
+      ru: 'Служители, понимающие специфику работы с детьми и обучающие их Слову Божьему, закладывающие твёрдый библейский фундамент.',
+    },
+    badges: { ro: 'Lucrare cu copii', en: 'Children\'s ministry', ru: 'Детское служение' },
     category: 'tineri',
-    badge: 'Lucrare cu copii',
     badgeVariant: 'teal',
     icon: <Users size={18} strokeWidth={1.5} />,
   },
   {
     id: 'english',
     slug: 'efnl-a1',
-    name: 'English for a New Life',
-    desc: 'Profesori de limbă engleză care sunt implicați în evanghelism și ucenicie, utilizând engleza ca instrument de misiune.',
+    names: { ro: 'English for a New Life', en: 'English for a New Life', ru: 'Английский для новой жизни' },
+    descs: {
+      ro: 'Profesori de limbă engleză implicați în evanghelism și ucenicie, utilizând engleza ca instrument de misiune.',
+      en: 'English language teachers engaged in evangelism and discipleship, using English as a mission tool.',
+      ru: 'Преподаватели английского языка, участвующие в евангелизации и ученичестве, используя английский как инструмент миссии.',
+    },
+    badges: { ro: 'Specializat', en: 'Specialized', ru: 'Специализированный' },
     category: 'specializat',
-    badge: 'Specializat',
     badgeVariant: 'purple',
     icon: <Globe size={18} strokeWidth={1.5} />,
   },
   {
     id: 'misiune',
     slug: 'misiune-sport',
-    name: 'Școala Internațională de Misiune',
-    desc: 'Misionari care îndeplinesc marea poruncă a lui Hristos prin sport și slujire media, ajungând la generații diferite cu Evanghelia.',
+    names: { ro: 'Escola Internațională de Misiune', en: 'International School of Mission', ru: 'Международная школа миссии' },
+    descs: {
+      ro: 'Misionari care îndeplinesc marea poruncă a lui Hristos prin sport, ajungând la generații diferite cu Evanghelia.',
+      en: 'Missionaries fulfilling the Great Commission of Christ through sport, reaching different generations with the Gospel.',
+      ru: 'Миссионеры, исполняющие великое поручение Христа через спорт, достигая разные поколения с Евангелием.',
+    },
+    badges: { ro: 'Misionar', en: 'Missionary', ru: 'Миссионерский' },
     category: 'specializat',
-    badge: 'Misionar',
     badgeVariant: 'purple',
     icon: <Globe size={18} strokeWidth={1.5} />,
   },
   {
     id: 'nivel2',
     slug: 'nivelul-2',
-    name: 'Nivelul 2',
-    desc: 'Pentru absolvenții nivelului de bază care doresc aprofundare și îndrumare continuă în studiul biblic inductiv.',
+    names: { ro: 'Nivelul 2', en: 'Level 2', ru: 'Уровень 2' },
+    descs: {
+      ro: 'Pentru absolvenții nivelului de bază care doresc aprofundare și îndrumare continuă în studiul biblic inductiv.',
+      en: 'For graduates of the foundational level who desire deeper training and continued guidance in inductive Bible study.',
+      ru: 'Для выпускников базового уровня, желающих углублённой подготовки в индуктивном изучении Библии.',
+    },
+    badges: { ro: 'Nivel avansat', en: 'Advanced level', ru: 'Продвинутый уровень' },
     category: 'specializat',
-    badge: 'Nivel avansat',
     badgeVariant: 'teal',
     icon: <Plus size={18} strokeWidth={1.5} />,
   },
   {
     id: 'nivel34',
     slug: 'nivelul-3-4',
-    name: 'Nivelul 3–4',
-    desc: 'Lideri maturi care au convingeri biblice solide și predică eficient Cuvântul lui Dumnezeu, formând ucenici în jurul lor.',
+    names: { ro: 'Nivelul 3–4', en: 'Levels 3–4', ru: 'Уровни 3–4' },
+    descs: {
+      ro: 'Lideri maturi care au convingeri biblice solide și predică eficient Cuvântul lui Dumnezeu, formând ucenici.',
+      en: 'Mature leaders with solid biblical convictions who preach the Word of God effectively, making disciples.',
+      ru: 'Зрелые лидеры с твёрдыми библейскими убеждениями, эффективно проповедующие Слово Божье и воспитывающие учеников.',
+    },
+    badges: { ro: 'Nivel avansat', en: 'Advanced level', ru: 'Продвинутый уровень' },
     category: 'specializat',
-    badge: 'Nivel avansat',
     badgeVariant: 'teal',
     icon: <Trophy size={18} strokeWidth={1.5} />,
   },
-]
-
-const filters: { label: string; value: Category }[] = [
-  { label: 'Toate', value: 'all' },
-  { label: 'Adolescenți', value: 'adolescenti' },
-  { label: 'Tineri și adulți', value: 'tineri' },
-  { label: 'Specializat', value: 'specializat' },
 ]
 
 const badgeStyles = {
@@ -107,46 +129,51 @@ const badgeStyles = {
   purple: 'text-[#6b4f9e] bg-[rgba(107,79,158,0.1)]',
 }
 
-const catLabels: Record<Exclude<Category, 'all'>, string> = {
-  adolescenti: 'Adolescenți',
-  tineri: 'Tineri și adulți',
-  specializat: 'Specializat',
-}
-
 export default function Programs() {
+  const { lang, t } = useLanguage()
   const [active, setActive] = useState<Category>('all')
 
-  const filtered = active === 'all' ? programs : programs.filter((p) => p.category === active)
+  const p = t.programs
 
+  const filters = [
+    { label: p.filters.all, value: 'all' as Category },
+    { label: p.filters.adolescenti, value: 'adolescenti' as Category },
+    { label: p.filters.tineri, value: 'tineri' as Category },
+    { label: p.filters.specializat, value: 'specializat' as Category },
+  ]
+
+  const catLabels: Record<Exclude<Category, 'all'>, string> = {
+    adolescenti: p.groupLabels.adolescenti,
+    tineri: p.groupLabels.tineri,
+    specializat: p.groupLabels.specializat,
+  }
+
+  const filtered = active === 'all' ? programs : programs.filter((prog) => prog.category === active)
   const groups =
     active === 'all'
       ? (['adolescenti', 'tineri', 'specializat'] as const).map((cat) => ({
           cat,
           label: catLabels[cat],
-          items: programs.filter((p) => p.category === cat),
+          items: programs.filter((prog) => prog.category === cat),
         }))
       : [{ cat: active as Exclude<Category, 'all'>, label: catLabels[active as Exclude<Category, 'all'>], items: filtered }]
 
   return (
     <section className="bg-beige-light py-24" id="programe" aria-labelledby="programs-heading">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-12">
-        {/* Header */}
         <AnimatedSection className="mb-10">
-          <SectionEyebrow>Facultăți</SectionEyebrow>
+          <SectionEyebrow>{p.eyebrow}</SectionEyebrow>
           <h2
             id="programs-heading"
             className="font-['var(--font-display)'] text-green-dark font-normal leading-tight mb-3
               text-[clamp(28px,3.5vw,42px)]"
           >
-            Alege <em className="italic text-teal">direcția ta</em>
+            {p.heading.split(' ').slice(0, -2).join(' ')}{' '}
+            <em className="italic text-teal">{p.heading.split(' ').slice(-2).join(' ')}</em>
           </h2>
-          <p className="text-[15px] text-text-muted max-w-[520px]">
-            Programe pentru toate vârstele — de la adolescenți până la misionari,
-            de la baza biblică la leadership avansat.
-          </p>
+          <p className="text-[15px] text-text-muted max-w-[520px]">{p.subtext}</p>
         </AnimatedSection>
 
-        {/* Filter pills */}
         <AnimatedSection delay={0.1} className="flex flex-wrap gap-2 mb-10">
           {filters.map((f) => (
             <motion.button
@@ -166,7 +193,6 @@ export default function Programs() {
           ))}
         </AnimatedSection>
 
-        {/* Groups */}
         <AnimatePresence mode="wait">
           <motion.div
             key={active}
@@ -203,25 +229,19 @@ export default function Programs() {
                             {prog.icon}
                           </div>
                           <span className={`text-[10px] font-semibold tracking-[0.1em] uppercase px-2.5 py-1 rounded-full ${badgeStyles[prog.badgeVariant]}`}>
-                            {prog.badge}
+                            {prog.badges[lang]}
                           </span>
                         </div>
                         <h3 className="font-['var(--font-display)'] text-[22px] font-medium text-green-dark mb-2.5 leading-[1.25]">
-                          {prog.name}
+                          {prog.names[lang]}
                         </h3>
                         <p className="text-[13.5px] text-text-muted leading-[1.65] flex-1 mb-5">
-                          {prog.desc}
+                          {prog.descs[lang]}
                         </p>
-                        <span
-                          className="inline-flex items-center gap-1.5 text-[12px] font-semibold tracking-[0.08em] uppercase
-                            text-teal group-hover:text-green-dark transition-colors duration-200"
-                        >
-                          Detalii complete
-                          <ArrowRight
-                            size={13}
-                            className="transition-transform duration-200 group-hover:translate-x-1.5"
-                            aria-hidden="true"
-                          />
+                        <span className="inline-flex items-center gap-1.5 text-[12px] font-semibold tracking-[0.08em] uppercase
+                          text-teal group-hover:text-green-dark transition-colors duration-200">
+                          {p.cta}
+                          <ArrowRight size={13} className="transition-transform duration-200 group-hover:translate-x-1.5" aria-hidden="true" />
                         </span>
                       </Link>
                     </motion.div>

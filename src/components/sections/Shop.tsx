@@ -4,70 +4,84 @@ import { motion } from 'framer-motion'
 import { ExternalLink, ArrowRight } from 'lucide-react'
 import SectionEyebrow from '@/components/ui/SectionEyebrow'
 import AnimatedSection from '@/components/ui/AnimatedSection'
+import { useLanguage } from '@/lib/i18n/context'
 
 const SHOP_URL = 'https://shop.eurasiaprecept.org/ro/'
 
 const products = [
   {
     id: 1,
-    name: 'Învățătură peste Învățătură',
-    desc: 'Studiu biblic inductiv aprofundat — metoda Precept Upon Precept.',
-    badge: 'Seria',
+    names: { ro: 'Învățătură peste Învățătură', en: 'Precept Upon Precept', ru: 'Устав за уставом' },
+    descs: {
+      ro: 'Studiu biblic inductiv aprofundat — metoda Precept Upon Precept.',
+      en: 'In-depth inductive Bible study — the Precept Upon Precept method.',
+      ru: 'Углублённое индуктивное изучение Библии — метод Прецепт.',
+    },
+    badge: { ro: 'Seria', en: 'Series', ru: 'Серия' },
     badgeGold: false,
-    featured: false,
     imgBg: '#1e3a6e',
     img: 'https://admin.shop.eurasiaprecept.org/wp-content/uploads/2023/06/invatsstura-romana.jpeg',
   },
   {
     id: 2,
-    name: 'Seria „Doamne"',
-    desc: 'Studii profunde despre caracterul și atributele lui Dumnezeu.',
-    badge: 'Seria',
+    names: { ro: 'Seria „Doamne"', en: '"Lord" Series', ru: 'Серия «Господи»' },
+    descs: {
+      ro: 'Studii profunde despre caracterul și atributele lui Dumnezeu.',
+      en: 'In-depth studies on the character and attributes of God.',
+      ru: 'Глубокие исследования характера и атрибутов Бога.',
+    },
+    badge: { ro: 'Seria', en: 'Series', ru: 'Серия' },
     badgeGold: false,
-    featured: false,
     imgBg: '#c9a8c8',
     img: 'https://admin.shop.eurasiaprecept.org/wp-content/uploads/2023/06/seria-doamne-romana.jpeg',
   },
   {
     id: 3,
-    name: 'Descoperă Tu Însuți',
-    desc: 'Studii accesibile pentru cei care încep studiul biblic inductiv.',
-    badge: 'Seria',
+    names: { ro: 'Descoperă Tu Însuți', en: 'Discover for Yourself', ru: 'Открой сам' },
+    descs: {
+      ro: 'Studii accesibile pentru cei care încep studiul biblic inductiv.',
+      en: 'Accessible studies for those beginning inductive Bible study.',
+      ru: 'Доступные исследования для начинающих индуктивное изучение Библии.',
+    },
+    badge: { ro: 'Seria', en: 'Series', ru: 'Серия' },
     badgeGold: false,
-    featured: false,
     imgBg: '#a8b8d8',
     img: 'https://admin.shop.eurasiaprecept.org/wp-content/uploads/2023/06/descopera-tu-romana.jpeg',
   },
   {
     id: 4,
-    name: 'Cursuri de 40 de Minute',
-    desc: 'Studii scurte, ideale pentru grupuri mici sau studiu rapid.',
-    badge: 'Cursuri',
+    names: { ro: 'Cursuri de 40 de Minute', en: '40-Minute Bible Studies', ru: '40-минутные исследования' },
+    descs: {
+      ro: 'Studii scurte, ideale pentru grupuri mici sau studiu rapid.',
+      en: 'Short studies, ideal for small groups or quick study.',
+      ru: 'Краткие исследования, идеальные для малых групп или быстрого изучения.',
+    },
+    badge: { ro: 'Cursuri', en: 'Studies', ru: 'Курсы' },
     badgeGold: true,
-    featured: true,
     imgBg: '#dce8f0',
     img: 'https://admin.shop.eurasiaprecept.org/wp-content/uploads/2023/06/40_min_logo_english-1.jpg',
   },
 ]
 
 export default function Shop() {
+  const { lang, t } = useLanguage()
+
   return (
     <section className="bg-beige-light py-24" aria-labelledby="shop-heading">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-12">
 
-        {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
           <AnimatedSection direction="left">
-            <SectionEyebrow>Materiale de studiu</SectionEyebrow>
+            <SectionEyebrow>{t.shop.eyebrow}</SectionEyebrow>
             <h2
               id="shop-heading"
               className="font-['var(--font-display)'] text-green-dark font-normal leading-tight mb-2
                 text-[clamp(28px,3.5vw,42px)]"
             >
-              Resurse <em className="italic text-teal">biblice</em>
+              {t.shop.heading} <em className="italic text-teal">{t.shop.headingEm}</em>
             </h2>
             <p className="text-[15px] text-text-muted max-w-[400px]">
-              Materiale bazate direct pe textul Bibliei — pentru studiu individual, grup sau tabere.
+              {t.shop.subtext}
             </p>
           </AnimatedSection>
           <AnimatedSection direction="right" delay={0.1}>
@@ -79,13 +93,12 @@ export default function Shop() {
                 px-6 py-3 rounded-[6px] text-[13px] font-medium tracking-[0.06em] uppercase
                 hover:bg-text-dark hover:text-cream transition-all duration-200 whitespace-nowrap"
             >
-              Vezi tot magazinul
+              {t.shop.viewAll}
               <ExternalLink size={14} aria-hidden="true" />
             </a>
           </AnimatedSection>
         </div>
 
-        {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
           {products.map((p, i) => (
             <motion.a
@@ -95,7 +108,7 @@ export default function Shop() {
               rel="noopener noreferrer"
               className={`group flex flex-col rounded-2xl overflow-hidden border transition-all duration-250
                 cursor-pointer bg-cream
-                ${p.featured
+                ${p.badgeGold
                   ? 'border-gold/70 border-[1.5px] shadow-[0_2px_12px_rgba(201,168,76,0.12)]'
                   : 'border-beige-dark'
                 }
@@ -104,40 +117,34 @@ export default function Shop() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: i * 0.09 }}
-              aria-label={`${p.name} — deschide magazinul`}
+              aria-label={`${p.names[lang]} — ${t.shop.buy}`}
             >
-              {/* Image area — colored bg matches cover, image centered */}
               <div
                 className="relative w-full overflow-hidden"
                 style={{ backgroundColor: p.imgBg, aspectRatio: '1 / 1' }}
               >
                 <Image
                   src={p.img}
-                  alt={p.name}
+                  alt={p.names[lang]}
                   fill
                   sizes="(max-width: 640px) 90vw, (max-width: 1280px) 45vw, 22vw"
                   className="object-contain p-6 transition-transform duration-350 group-hover:scale-[1.06]"
                 />
-                {/* Badge — top-left overlay */}
                 <span className={`absolute top-3 left-3 text-[10px] font-bold tracking-[0.12em] uppercase
                   px-2.5 py-1 rounded-[5px] backdrop-blur-sm
-                  ${p.badgeGold
-                    ? 'bg-gold text-green-dark'
-                    : 'bg-black/20 text-white'
-                  }`}>
-                  {p.badge}
+                  ${p.badgeGold ? 'bg-gold text-green-dark' : 'bg-black/20 text-white'}`}>
+                  {p.badge[lang]}
                 </span>
               </div>
 
-              {/* Text */}
               <div className="flex flex-col flex-1 px-5 py-4 gap-1.5">
                 <h3 className="font-['var(--font-display)'] text-[17px] font-medium text-green-dark leading-[1.3]">
-                  {p.name}
+                  {p.names[lang]}
                 </h3>
-                <p className="text-[13px] text-text-muted leading-[1.55] flex-1">{p.desc}</p>
+                <p className="text-[13px] text-text-muted leading-[1.55] flex-1">{p.descs[lang]}</p>
                 <span className="inline-flex items-center gap-1 mt-2 text-[11px] font-semibold
                   tracking-[0.08em] uppercase text-teal group-hover:text-green-dark transition-colors duration-200">
-                  Cumpără
+                  {t.shop.buy}
                   <ArrowRight size={11} className="transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
                 </span>
               </div>

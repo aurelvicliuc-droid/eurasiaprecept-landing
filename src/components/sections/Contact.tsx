@@ -4,30 +4,33 @@ import { motion } from 'framer-motion'
 import { Mail, Globe, ShoppingBag } from 'lucide-react'
 import SectionEyebrow from '@/components/ui/SectionEyebrow'
 import AnimatedSection from '@/components/ui/AnimatedSection'
-
-const contactInfo = [
-  {
-    icon: <Mail size={16} strokeWidth={2} className="text-teal" aria-hidden="true" />,
-    label: 'Email',
-    value: 'contact@eurasiaprecept.org',
-    href: 'mailto:contact@eurasiaprecept.org',
-  },
-  {
-    icon: <Globe size={16} strokeWidth={2} className="text-teal" aria-hidden="true" />,
-    label: 'Site',
-    value: 'eurasiaprecept.org',
-    href: 'https://eurasiaprecept.org',
-  },
-  {
-    icon: <ShoppingBag size={16} strokeWidth={2} className="text-teal" aria-hidden="true" />,
-    label: 'Magazin',
-    value: 'shop.eurasiaprecept.org',
-    href: 'https://shop.eurasiaprecept.org',
-  },
-]
+import { useLanguage } from '@/lib/i18n/context'
 
 export default function Contact() {
+  const { t } = useLanguage()
+  const f = t.contact.form
   const [sent, setSent] = useState(false)
+
+  const contactInfo = [
+    {
+      icon: <Mail size={16} strokeWidth={2} className="text-teal" aria-hidden="true" />,
+      label: 'Email',
+      value: 'contact@eurasiaprecept.org',
+      href: 'mailto:contact@eurasiaprecept.org',
+    },
+    {
+      icon: <Globe size={16} strokeWidth={2} className="text-teal" aria-hidden="true" />,
+      label: 'Site',
+      value: 'eurasiaprecept.org',
+      href: 'https://eurasiaprecept.org',
+    },
+    {
+      icon: <ShoppingBag size={16} strokeWidth={2} className="text-teal" aria-hidden="true" />,
+      label: t.contact.shopLabel,
+      value: 'shop.eurasiaprecept.org',
+      href: 'https://shop.eurasiaprecept.org',
+    },
+  ]
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -41,18 +44,17 @@ export default function Contact() {
       <div className="max-w-[1200px] mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-16 lg:gap-20 items-start">
 
-          {/* Left */}
           <AnimatedSection direction="left">
-            <SectionEyebrow>Contact</SectionEyebrow>
+            <SectionEyebrow>{t.contact.eyebrow}</SectionEyebrow>
             <h2
               id="contact-heading"
               className="font-['var(--font-display)'] text-green-dark font-normal leading-tight mb-4
                 text-[clamp(28px,3.5vw,42px)]"
             >
-              <em className="italic text-teal">Scrie-ne</em> oricând
+              <em className="italic text-teal">{t.contact.headingEm}</em> {t.contact.heading}
             </h2>
             <p className="text-[14px] text-teal leading-[1.7] mb-8">
-              Ai întrebări despre programe sau vrei să te înscrii? Suntem bucuroși să te ajutăm.
+              {t.contact.subtext}
             </p>
 
             <ul className="flex flex-col gap-4 mb-8" role="list">
@@ -78,8 +80,7 @@ export default function Contact() {
               ))}
             </ul>
 
-            {/* Social */}
-            <div className="flex gap-2.5" role="list" aria-label="Rețele sociale">
+            <div className="flex gap-2.5" role="list" aria-label={t.contact.social}>
               <a
                 href="https://facebook.com/eurasiaprecept"
                 target="_blank"
@@ -108,18 +109,17 @@ export default function Contact() {
             </div>
           </AnimatedSection>
 
-          {/* Right: Form */}
           <AnimatedSection direction="right" delay={0.15}>
             <form onSubmit={handleSubmit} className="flex flex-col gap-3.5" noValidate>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div className="flex flex-col gap-1.5">
                   <label htmlFor="contact-name" className="text-[10px] font-semibold tracking-[0.12em] uppercase text-text-mid">
-                    Nume
+                    {f.name}
                   </label>
                   <input
                     id="contact-name"
                     type="text"
-                    placeholder="Numele tău"
+                    placeholder={f.namePlaceholder}
                     required
                     className="bg-cream border border-beige-dark rounded-[6px] px-3.5 py-[11px] text-[13.5px]
                       text-text-dark font-light placeholder:text-text-muted outline-none
@@ -128,12 +128,12 @@ export default function Contact() {
                 </div>
                 <div className="flex flex-col gap-1.5">
                   <label htmlFor="contact-email" className="text-[10px] font-semibold tracking-[0.12em] uppercase text-text-mid">
-                    Email
+                    {f.email}
                   </label>
                   <input
                     id="contact-email"
                     type="email"
-                    placeholder="email@exemplu.com"
+                    placeholder={f.emailPlaceholder}
                     required
                     className="bg-cream border border-beige-dark rounded-[6px] px-3.5 py-[11px] text-[13.5px]
                       text-text-dark font-light placeholder:text-text-muted outline-none
@@ -143,12 +143,12 @@ export default function Contact() {
               </div>
               <div className="flex flex-col gap-1.5">
                 <label htmlFor="contact-subject" className="text-[10px] font-semibold tracking-[0.12em] uppercase text-text-mid">
-                  Subiect
+                  {f.subject}
                 </label>
                 <input
                   id="contact-subject"
                   type="text"
-                  placeholder="Despre ce dorești să ne scrii?"
+                  placeholder={f.subjectPlaceholder}
                   className="bg-cream border border-beige-dark rounded-[6px] px-3.5 py-[11px] text-[13.5px]
                     text-text-dark font-light placeholder:text-text-muted outline-none
                     focus:border-teal transition-colors duration-200"
@@ -156,11 +156,11 @@ export default function Contact() {
               </div>
               <div className="flex flex-col gap-1.5">
                 <label htmlFor="contact-message" className="text-[10px] font-semibold tracking-[0.12em] uppercase text-text-mid">
-                  Mesaj
+                  {f.message}
                 </label>
                 <textarea
                   id="contact-message"
-                  placeholder="Scrie mesajul tău aici..."
+                  placeholder={f.messagePlaceholder}
                   required
                   rows={5}
                   className="bg-cream border border-beige-dark rounded-[6px] px-3.5 py-[11px] text-[13.5px]
@@ -176,7 +176,7 @@ export default function Contact() {
                     font-semibold tracking-[0.08em] uppercase cursor-pointer
                     hover:bg-green-mid transition-colors duration-200"
                 >
-                  Trimite mesajul →
+                  {f.submit}
                 </button>
 
                 {sent && (
@@ -188,7 +188,7 @@ export default function Contact() {
                     role="status"
                     aria-live="polite"
                   >
-                    ✓ Mulțumim! Vei primi răspunsul nostru pe email.
+                    {f.success}
                   </motion.p>
                 )}
               </div>

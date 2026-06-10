@@ -8,6 +8,7 @@ import type { ProgramData } from '@/lib/programs-data'
 import Nav from '@/components/layout/Nav'
 import Footer from '@/components/layout/Footer'
 import AboutModal from '@/components/modals/AboutModal'
+import { useLanguage } from '@/lib/i18n/context'
 
 const badgeColors: Record<string, string> = {
   teal: 'bg-teal/10 text-teal border-teal/30',
@@ -22,6 +23,8 @@ interface Props {
 
 export default function ProgramPageClient({ program }: Props) {
   const [aboutOpen, setAboutOpen] = useState(false)
+  const { t } = useLanguage()
+  const pp = t.programPage
 
   const hasCurriculum = program.curriculum.length > 0
   const hasDocuments = program.documents.length > 0
@@ -38,7 +41,7 @@ export default function ProgramPageClient({ program }: Props) {
         <div className="max-w-[1200px] mx-auto px-6 lg:px-12 h-11 flex items-center gap-2 text-[13px]">
           <Link href="/#programe" className="inline-flex items-center gap-1.5 text-text-muted hover:text-teal transition-colors duration-200 group">
             <ArrowLeft size={14} className="group-hover:-translate-x-0.5 transition-transform duration-200" aria-hidden />
-            Programe
+            {pp.backLabel}
           </Link>
           <span className="text-beige-dark">/</span>
           <span className="text-text-dark font-medium truncate">{program.name}</span>
@@ -96,7 +99,7 @@ export default function ProgramPageClient({ program }: Props) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.1 }}
             >
-              <SectionLabel icon={<BookOpen size={15} />}>Despre program</SectionLabel>
+              <SectionLabel icon={<BookOpen size={15} />}>{pp.aboutSection}</SectionLabel>
               <p className="text-[16.5px] text-text-dark leading-[1.75] mt-4">
                 {program.overview}
               </p>
@@ -109,7 +112,7 @@ export default function ProgramPageClient({ program }: Props) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.55, delay: 0.15 }}
               >
-                <SectionLabel icon={<BookOpen size={15} />}>Curriculum</SectionLabel>
+                <SectionLabel icon={<BookOpen size={15} />}>{pp.curriculum}</SectionLabel>
                 <div className="flex flex-col gap-4 mt-5">
                   {program.curriculum.map((course, i) => (
                     <motion.div
@@ -130,7 +133,7 @@ export default function ProgramPageClient({ program }: Props) {
                           </h3>
                           {course.manual && (
                             <p className="text-[12px] text-teal font-medium tracking-[0.04em] mt-0.5">
-                              Manual: {course.manual}
+                              {pp.manualLabel}: {course.manual}
                             </p>
                           )}
                           {course.desc && (
@@ -153,7 +156,7 @@ export default function ProgramPageClient({ program }: Props) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.55, delay: 0.2 }}
               >
-                <SectionLabel icon={<CheckCircle size={15} />}>Ce vei dobândi</SectionLabel>
+                <SectionLabel icon={<CheckCircle size={15} />}>{pp.outcomes}</SectionLabel>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
                   {program.outcomes!.map((outcome, i) => (
                     <motion.div
@@ -188,7 +191,7 @@ export default function ProgramPageClient({ program }: Props) {
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
                 <h3 className="text-[13px] font-bold tracking-[0.12em] uppercase text-teal mb-4">
-                  Cine poate aplica
+                  {pp.whoCanApply}
                 </h3>
                 <ul className="flex flex-col gap-3">
                   {program.whoCanApply.map((item, i) => (
@@ -210,7 +213,7 @@ export default function ProgramPageClient({ program }: Props) {
                 transition={{ duration: 0.5, delay: 0.28 }}
               >
                 <h3 className="text-[13px] font-bold tracking-[0.12em] uppercase text-teal mb-4">
-                  Structura programului
+                  {pp.structure}
                 </h3>
                 <ul className="flex flex-col gap-3">
                   {program.structure.map((item, i) => (
@@ -232,7 +235,7 @@ export default function ProgramPageClient({ program }: Props) {
                 transition={{ duration: 0.5, delay: 0.34 }}
               >
                 <h3 className="text-[13px] font-bold tracking-[0.12em] uppercase text-teal mb-4">
-                  Documente necesare
+                  {pp.documents}
                 </h3>
                 <ul className="flex flex-col gap-2.5">
                   {program.documents.map((doc, i) => (
@@ -289,11 +292,11 @@ export default function ProgramPageClient({ program }: Props) {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4, delay: 0.5 }}
             >
-              Ai întrebări?{' '}
+              {pp.questions}{' '}
               <a href="/#contact" className="text-teal underline underline-offset-2 hover:no-underline">
-                Contactează-ne
+                {pp.contactUs}
               </a>
-              {' '}și îți răspundem cu drag.
+              {' '}{pp.contactNudge}
             </motion.p>
 
           </div>
@@ -308,13 +311,13 @@ export default function ProgramPageClient({ program }: Props) {
 
         <div className="relative max-w-[1200px] mx-auto px-6 lg:px-12 text-center">
           <span className="inline-block text-[11px] font-bold tracking-[0.18em] uppercase text-teal mb-4">
-            Aplică acum
+            {pp.applyBadge}
           </span>
           <h2 className="font-['var(--font-display)'] text-green-dark text-[clamp(24px,3vw,40px)] font-normal mb-4 leading-tight">
-            Pregătit să faci pasul următor?
+            {pp.ctaBannerTitle}
           </h2>
           <p className="text-text-muted text-[15px] mb-10 max-w-[460px] mx-auto leading-[1.7]">
-            Alătură-te programului <strong className="text-green-dark font-semibold">{program.name}</strong> și investește în formarea ta spirituală și pentru slujire.
+            {pp.ctaBannerDesc(program.name)}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
@@ -329,7 +332,7 @@ export default function ProgramPageClient({ program }: Props) {
               className="inline-block border-[1.5px] border-green-dark/30 text-green-dark font-medium
                 px-8 py-4 rounded-xl text-[15px] hover:border-teal hover:text-teal transition-all duration-200"
             >
-              Contactează-ne
+              {pp.contactUs}
             </a>
           </div>
         </div>

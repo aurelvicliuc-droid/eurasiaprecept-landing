@@ -3,22 +3,16 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Mail, Globe, ShoppingBag, ArrowUpRight } from 'lucide-react'
+import { useLanguage } from '@/lib/i18n/context'
 
-const programs = [
-  { label: 'Institutul Biblic Precept', href: '/programe/institutul-biblic' },
-  { label: 'Școala TIMOTEI', href: '/programe/scoala-timotei' },
-  { label: 'Nivelul II', href: '/programe/nivelul-2' },
-  { label: 'Nivelurile III–IV', href: '/programe/nivelul-3-4' },
-  { label: 'English for a New Life', href: '/programe/efnl-a1' },
-  { label: 'Misiune prin Sport', href: '/programe/misiune-sport' },
-  { label: 'Lucrare cu Copii', href: '/programe/lucrare-copii' },
-]
-
-const navLinks = [
-  { label: 'Programe', href: '/#programe' },
-  { label: 'Despre noi', href: '/#' },
-  { label: 'Magazin', href: 'https://shop.eurasiaprecept.org', external: true },
-  { label: 'Contact', href: '/#contact' },
+const programLinks = [
+  { slug: 'institutul-biblic', names: { ro: 'Institutul Biblic Precept', en: 'Precept Bible Institute', ru: 'Библейский институт' } },
+  { slug: 'scoala-timotei', names: { ro: 'Școala TIMOTEI', en: 'TIMOTHY School', ru: 'Школа ТИМОФЕЙ' } },
+  { slug: 'nivelul-2', names: { ro: 'Nivelul II', en: 'Level II', ru: 'Уровень II' } },
+  { slug: 'nivelul-3-4', names: { ro: 'Nivelurile III–IV', en: 'Levels III–IV', ru: 'Уровни III–IV' } },
+  { slug: 'efnl-a1', names: { ro: 'English for a New Life', en: 'English for a New Life', ru: 'Английский для новой жизни' } },
+  { slug: 'misiune-sport', names: { ro: 'Misiune prin Sport', en: 'Mission through Sport', ru: 'Миссия через спорт' } },
+  { slug: 'lucrare-copii', names: { ro: 'Lucrare cu Copii', en: 'Ministry with Children', ru: 'Служение детям' } },
 ]
 
 const socials = [
@@ -43,16 +37,24 @@ const socials = [
 ]
 
 export default function Footer() {
+  const { lang, t } = useLanguage()
+  const f = t.footer
+
+  const navLinks = [
+    { label: t.nav.programs, href: '/#programe' },
+    { label: t.nav.about, href: '/#' },
+    { label: t.nav.shop, href: 'https://shop.eurasiaprecept.org', external: true },
+    { label: t.nav.contact, href: '/#contact' },
+  ]
+
   return (
     <footer className="bg-green-dark text-white" role="contentinfo">
-
-      {/* Main footer grid */}
       <div className="max-w-[1200px] mx-auto px-6 lg:px-12 pt-16 pb-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
 
-          {/* Brand column */}
+          {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <Link href="/" aria-label="Precept Eurasia — Acasă">
+            <Link href="/" aria-label="Precept Eurasia">
               <Image
                 src="/Precept_LogomarkSmal.png"
                 alt="Precept Eurasia"
@@ -62,9 +64,8 @@ export default function Footer() {
               />
             </Link>
             <p className="text-[13.5px] text-white/55 leading-[1.7] mb-6 max-w-[260px]">
-              Atragem oameni într-o relație cu Dumnezeu prin cunoașterea profundă a Cuvântului Său. Prezent în 195 de țări, 111 limbi.
+              {f.desc}
             </p>
-            {/* Socials */}
             <div className="flex gap-3">
               {socials.map((s) => (
                 <motion.a
@@ -84,10 +85,10 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Navigation column */}
+          {/* Navigation */}
           <div>
             <h3 className="text-[11px] font-bold tracking-[0.16em] uppercase text-white/35 mb-5">
-              Navigare
+              {f.colNav}
             </h3>
             <ul className="flex flex-col gap-3" role="list">
               {navLinks.map((link) => (
@@ -109,106 +110,85 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Programs column */}
+          {/* Programs */}
           <div>
             <h3 className="text-[11px] font-bold tracking-[0.16em] uppercase text-white/35 mb-5">
-              Programe
+              {f.colPrograms}
             </h3>
             <ul className="flex flex-col gap-3" role="list">
-              {programs.map((p) => (
-                <li key={p.label}>
+              {programLinks.map((p) => (
+                <li key={p.slug}>
                   <Link
-                    href={p.href}
+                    href={`/programe/${p.slug}`}
                     className="text-[13px] text-white/55 hover:text-gold transition-colors duration-200"
                   >
-                    {p.label}
+                    {p.names[lang]}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact column */}
+          {/* Contact */}
           <div>
             <h3 className="text-[11px] font-bold tracking-[0.16em] uppercase text-white/35 mb-5">
-              Contact
+              {f.colContact}
             </h3>
             <ul className="flex flex-col gap-4" role="list">
               <li>
-                <a
-                  href="mailto:contact@eurasiaprecept.org"
-                  className="flex items-start gap-2.5 text-white/55 hover:text-gold transition-colors duration-200 group"
-                >
+                <a href="mailto:contact@eurasiaprecept.org"
+                  className="flex items-start gap-2.5 text-white/55 hover:text-gold transition-colors duration-200 group">
                   <Mail size={14} className="mt-0.5 flex-shrink-0 text-teal-light group-hover:text-gold transition-colors" aria-hidden />
                   <span className="text-[13px] leading-[1.5]">contact@eurasiaprecept.org</span>
                 </a>
               </li>
               <li>
-                <a
-                  href="https://shop.eurasiaprecept.org"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-start gap-2.5 text-white/55 hover:text-gold transition-colors duration-200 group"
-                >
+                <a href="https://shop.eurasiaprecept.org" target="_blank" rel="noopener noreferrer"
+                  className="flex items-start gap-2.5 text-white/55 hover:text-gold transition-colors duration-200 group">
                   <ShoppingBag size={14} className="mt-0.5 flex-shrink-0 text-teal-light group-hover:text-gold transition-colors" aria-hidden />
                   <span className="text-[13px] leading-[1.5]">shop.eurasiaprecept.org</span>
                 </a>
               </li>
               <li>
-                <a
-                  href="https://eurasiaprecept.org"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-start gap-2.5 text-white/55 hover:text-gold transition-colors duration-200 group"
-                >
+                <a href="https://eurasiaprecept.org" target="_blank" rel="noopener noreferrer"
+                  className="flex items-start gap-2.5 text-white/55 hover:text-gold transition-colors duration-200 group">
                   <Globe size={14} className="mt-0.5 flex-shrink-0 text-teal-light group-hover:text-gold transition-colors" aria-hidden />
                   <span className="text-[13px] leading-[1.5]">eurasiaprecept.org</span>
                 </a>
               </li>
             </ul>
-
-            {/* CTA */}
             <a
               href="/#contact"
               className="inline-block mt-6 bg-gold/15 hover:bg-gold text-gold hover:text-green-dark
                 border border-gold/30 hover:border-gold px-5 py-2.5 rounded-lg text-[12.5px] font-semibold
                 transition-all duration-200"
             >
-              Trimite un mesaj
+              {f.sendMessage}
             </a>
           </div>
 
         </div>
       </div>
 
-      {/* Divider */}
       <div className="border-t border-white/8" />
 
-      {/* Bottom bar */}
       <div className="max-w-[1200px] mx-auto px-6 lg:px-12 py-5 flex flex-col sm:flex-row
         items-center justify-between gap-3">
         <p className="text-[11.5px] text-white/30 text-center sm:text-left">
-          © {new Date().getFullYear()} Precept Eurasia. Toate drepturile rezervate.
+          © {new Date().getFullYear()} Precept Eurasia. {f.copyright}
         </p>
         <div className="flex items-center gap-5">
-          <a
-            href="https://precept.org"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[11.5px] text-white/30 hover:text-white/60 transition-colors duration-200"
-          >
+          <a href="https://precept.org" target="_blank" rel="noopener noreferrer"
+            className="text-[11.5px] text-white/30 hover:text-white/60 transition-colors duration-200">
             Precept International
           </a>
           <span className="text-white/15">·</span>
-          <a
-            href="https://web.eurasiaprecept.org/public/sign-in"
-            className="text-[11.5px] text-white/30 hover:text-white/60 transition-colors duration-200"
-          >
-            Platformă online
+          <a href="https://web.eurasiaprecept.org/public/sign-in"
+            className="text-[11.5px] text-white/30 hover:text-white/60 transition-colors duration-200">
+            {f.platform}
           </a>
         </div>
       </div>
-
     </footer>
   )
 }

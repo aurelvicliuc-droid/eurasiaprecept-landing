@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import Script from 'next/script'
+import Providers from './Providers'
 import './globals.css'
 
 const BASE_URL = 'https://eurasiaprecept.org'
@@ -111,7 +112,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col antialiased">{children}</body>
+      <body className="min-h-full flex flex-col antialiased">
+          <Providers>{children}</Providers>
+        </body>
     </html>
   )
 }

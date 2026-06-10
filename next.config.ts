@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
         hostname: 'admin.shop.eurasiaprecept.org',
         pathname: '/wp-content/uploads/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
     ],
   },
 }

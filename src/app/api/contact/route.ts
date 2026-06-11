@@ -4,7 +4,7 @@ import { Resend } from 'resend'
 const resend = new Resend(process.env.RESEND_API_KEY)
 
 const TO = 'contact@eurasiaprecept.org'
-const FROM = 'Precept Eurasia <onboarding@resend.dev>'
+const FROM = 'Precept Eurasia <noreply@eurasiaprecept.org>'
 
 export async function POST(req: NextRequest) {
   try {

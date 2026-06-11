@@ -10,6 +10,8 @@ export default function Contact() {
   const { t } = useLanguage()
   const f = t.contact.form
   const [sent, setSent] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
 
   const contactInfo = [
     {
@@ -32,11 +34,33 @@ export default function Contact() {
     },
   ]
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setSent(true)
-    ;(e.target as HTMLFormElement).reset()
-    setTimeout(() => setSent(false), 5000)
+    setLoading(true)
+    setError(false)
+    const form = e.currentTarget
+    const data = {
+      name: (form.elements.namedItem('contact-name') as HTMLInputElement).value,
+      email: (form.elements.namedItem('contact-email') as HTMLInputElement).value,
+      subject: (form.elements.namedItem('contact-subject') as HTMLInputElement).value,
+      message: (form.elements.namedItem('contact-message') as HTMLTextAreaElement).value,
+    }
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+      if (!res.ok) throw new Error()
+      setSent(true)
+      form.reset()
+      setTimeout(() => setSent(false), 6000)
+    } catch {
+      setError(true)
+      setTimeout(() => setError(false), 5000)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -172,11 +196,13 @@ export default function Contact() {
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-1">
                 <button
                   type="submit"
+                  disabled={loading}
                   className="bg-green-dark text-white border-none px-7 py-3.5 rounded-[6px] text-[13px]
                     font-semibold tracking-[0.08em] uppercase cursor-pointer
-                    hover:bg-green-mid transition-colors duration-200"
+                    hover:bg-green-mid transition-colors duration-200
+                    disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  {f.submit}
+                  {loading ? '...' : f.submit}
                 </button>
 
                 {sent && (
@@ -189,6 +215,17 @@ export default function Contact() {
                     aria-live="polite"
                   >
                     {f.success}
+                  </motion.p>
+                )}
+                {error && (
+                  <motion.p
+                    className="text-[13px] text-red-500"
+                    initial={{ opacity: 0, x: 10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    role="alert"
+                    aria-live="polite"
+                  >
+                    A apărut o eroare. Încearcă din nou.
                   </motion.p>
                 )}
               </div>

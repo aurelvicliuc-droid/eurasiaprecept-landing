@@ -85,7 +85,7 @@ export default function StickyGallery() {
     <ReactLenis root>
       <section
         ref={container}
-        className="relative bg-beige-light pb-[100vh] pt-[15vh]"
+        className="relative bg-beige-light pt-[15vh]"
         aria-label="Photo gallery"
       >
         {FRAMES.map((srcs, i) => {

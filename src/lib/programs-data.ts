@@ -18,6 +18,7 @@ export interface ProgramData {
   category: 'adolescenti' | 'tineri' | 'specializat'
   heroImage: string
   heroImageAlt: string
+  heroImagePosition?: string
   overview: string
   whoCanApply: string[]
   documents: string[]
@@ -160,6 +161,7 @@ export const programs: ProgramData[] = [
     category: 'specializat',
     heroImage: '/programs/nivelul-3-4.jpg',
     heroImageAlt: 'Nivelul 3–4 — lideri maturi și predicatori',
+    heroImagePosition: 'object-bottom',
     overview:
       'Nivelurile III–IV sunt destinate celor care doresc să aprofundeze înțelegerea întregii Scripturi și să fie echipați pentru responsabilități mai mari în biserică, mentorare, predare și dezvoltarea altor lideri.',
     whoCanApply: [

@@ -60,7 +60,7 @@ export default function ProgramPageClient({ program }: Props) {
             fill
             priority
             sizes="100vw"
-            className="object-cover"
+            className={`object-cover ${program.heroImagePosition ?? 'object-center'}`}
           />
           {/* Gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-green-dark/90 via-green-dark/40 to-transparent" />

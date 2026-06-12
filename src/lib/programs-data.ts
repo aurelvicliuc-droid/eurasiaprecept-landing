@@ -38,8 +38,8 @@ export const programs: ProgramData[] = [
     badge: 'Nivelul I',
     badgeColor: 'teal',
     category: 'tineri',
-    heroImage: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=1400&q=80',
-    heroImageAlt: 'Studiu biblic — cărți deschise pe masă',
+    heroImage: '/programs/institutul-biblic.jpg',
+    heroImageAlt: 'Institutul Biblic Precept — studiu și formare',
     overview:
       'Institutul Biblic Precept este un program de pregătire spirituală și practică destinat credincioșilor care doresc să aprofundeze Cuvântul lui Dumnezeu, să crească în caracter și să fie echipați pentru slujire și formarea de ucenici.',
     whoCanApply: [
@@ -78,8 +78,8 @@ export const programs: ProgramData[] = [
     badge: 'Adolescenți',
     badgeColor: 'gold',
     category: 'adolescenti',
-    heroImage: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1400&q=80',
-    heroImageAlt: 'Tineri împreună — formare spirituală',
+    heroImage: '/programs/scoala-timotei.jpg',
+    heroImageAlt: 'Școala Timotei — tineri în formare',
     overview:
       'Școala TIMOTEI este un program de pregătire spirituală pentru adolescenți și tineri care doresc să-L cunoască pe Dumnezeu mai profund, să studieze Scriptura și să devină lideri ai generației lor.',
     whoCanApply: [
@@ -121,8 +121,8 @@ export const programs: ProgramData[] = [
     badge: 'Nivel avansat',
     badgeColor: 'teal',
     category: 'specializat',
-    heroImage: 'https://images.unsplash.com/photo-1434030216411-0b793f4b6f92?auto=format&fit=crop&w=1400&q=80',
-    heroImageAlt: 'Grup de lideri în studiu și discuție',
+    heroImage: '/programs/nivelul-2.jpg',
+    heroImageAlt: 'Nivelul 2 — aprofundare în studiul biblic inductiv',
     overview:
       'Nivelul II este destinat absolvenților Institutului Biblic Precept care doresc să își aprofundeze pregătirea în conducere spirituală, mentorare, consiliere și dezvoltarea lucrării în bisericile locale. Acest program oferă o pregătire aprofundată pentru cei care au demonstrat credincioșie în slujire și doresc să crească în responsabilitate, maturitate spirituală și capacitatea de a forma alți lideri.',
     whoCanApply: [
@@ -158,8 +158,8 @@ export const programs: ProgramData[] = [
     badge: 'Nivel avansat',
     badgeColor: 'teal',
     category: 'specializat',
-    heroImage: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1400&q=80',
-    heroImageAlt: 'Predare și formare avansată',
+    heroImage: '/programs/nivelul-3-4.jpg',
+    heroImageAlt: 'Nivelul 3–4 — lideri maturi și predicatori',
     overview:
       'Nivelurile III–IV sunt destinate celor care doresc să aprofundeze înțelegerea întregii Scripturi și să fie echipați pentru responsabilități mai mari în biserică, mentorare, predare și dezvoltarea altor lideri.',
     whoCanApply: [
@@ -191,8 +191,8 @@ export const programs: ProgramData[] = [
     badge: 'English',
     badgeColor: 'purple',
     category: 'specializat',
-    heroImage: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80',
-    heroImageAlt: 'Predare limbă engleză — grup de studenți',
+    heroImage: '/programs/efnl-a1.jpg',
+    heroImageAlt: 'English for a New Life — predare și evanghelism',
     overview:
       'Acest program pregătește profesori și lideri care doresc să folosească limba engleză pentru evanghelizare și ucenicie prin grupe de studiu, cluburi și proiecte misionare. Programul folosește materiale dezvoltate special pentru învățarea limbii engleze pe baza adevărurilor biblice.',
     whoCanApply: [
@@ -291,8 +291,8 @@ export const programs: ProgramData[] = [
     badge: 'Misiune · Sport',
     badgeColor: 'purple',
     category: 'specializat',
-    heroImage: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1400&q=80',
-    heroImageAlt: 'Misiune prin sport — activități cu tinerii',
+    heroImage: '/programs/misiune-sport.jpg',
+    heroImageAlt: 'Școala Internațională de Misiune prin Sport',
     overview:
       'Școala Internațională de Misiune prin Sport pregătește lideri și misionari care doresc să folosească sportul pentru evanghelizare, ucenicizare și dezvoltarea noii generații. Programul combină studiul biblic inductiv, mentorarea și pregătirea practică pentru a ajuta bisericile să ajungă la copii, adolescenți și tineri prin activități sportive relevante și eficiente.',
     whoCanApply: [
@@ -329,8 +329,8 @@ export const programs: ProgramData[] = [
     badge: 'Lucrare cu copii',
     badgeColor: 'teal',
     category: 'tineri',
-    heroImage: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1400&q=80',
-    heroImageAlt: 'Copii la studiu biblic',
+    heroImage: '/programs/lucrare-copii.jpg',
+    heroImageAlt: 'Lucrare cu Copii — formare și slujire',
     overview:
       'Programul Lucrare cu Copii formează slujitori care înțeleg specificul lucrului cu copiii și le predau Cuvântul lui Dumnezeu, formând o fundație biblică solidă în viața lor.',
     whoCanApply: [

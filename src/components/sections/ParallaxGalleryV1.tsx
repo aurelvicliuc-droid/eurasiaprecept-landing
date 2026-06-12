@@ -44,6 +44,7 @@ function Column({ srcs, y }: { srcs: string[]; y: MotionValue<string> }) {
             src={src}
             alt=""
             fill
+            quality={65}
             sizes="(max-width: 768px) 50vw, 25vw"
             className="object-cover object-top"
             draggable={false}

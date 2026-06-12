@@ -65,6 +65,7 @@ function Frame({
               src={img.src}
               alt=""
               fill
+              quality={65}
               sizes="(max-width: 768px) 34vw, 33vw"
               className={`object-cover ${img.pos ?? 'object-top'}`}
               draggable={false}

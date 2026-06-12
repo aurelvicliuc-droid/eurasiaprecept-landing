@@ -6,42 +6,46 @@ import Lenis from 'lenis'
 
 const C = '/carousel'
 
-const COLS: { src: string }[][] = [
-  [
-    { src: `${C}/494171405_1480638549863862_5462489402041087813_n.jpg` },
-    { src: `${C}/521351848_1553622505898799_8295139459140997601_n.jpg` },
-    { src: `${C}/611201911_1700360654558316_5841111323271327889_n.jpg` },
-    { src: `${C}/681427564_1797164938211220_8001753608821104095_n.jpg` },
-  ],
-  [
-    { src: `${C}/494268125_1481448343116216_2381626411841703366_n.jpg` },
-    { src: `${C}/557459801_1611306076797108_8909020549474646805_n.jpg` },
-    { src: `${C}/612344014_1702760957651619_7003369236896174919_n.jpg` },
-    { src: `${C}/716483179_1834463507814696_3851515672094198277_n.jpg` },
-  ],
-  [
-    { src: `${C}/514282940_1550182159576167_1673999915183179243_n.jpg` },
-    { src: `${C}/584449220_1659615898632792_2399585120794362465_n.jpg` },
-    { src: `${C}/613528992_1703109514283430_5914454420380100403_n.jpg` },
-  ],
-  [
-    { src: `${C}/515068658_1549295166331533_8873942781353550651_n.jpg` },
-    { src: `${C}/611136814_1700361247891590_3210011831627886562_n.jpg` },
-    { src: `${C}/619967878_1716424482951933_6586524880751662244_n.jpg` },
-  ],
-]
+// 20 images, 5 per column — sorted alphabetically
+const ALL = [
+  '489114146_1457118022215915_2888482248647560853_n.jpg',
+  '490807858_1466338161293901_1959630751560638820_n.jpg',
+  '491714033_1473748913886159_5515412886118993350_n.jpg',
+  '491839674_1473685407225843_2576459391495508359_n.jpg',
+  '492032397_1473761967218187_161237512797718303_n.jpg',
+  '493981149_1476424373618613_3307745394851809147_n.jpg',
+  '494171405_1480638549863862_5462489402041087813_n.jpg',
+  '494268125_1481448343116216_2381626411841703366_n.jpg',
+  '514282940_1550182159576167_1673999915183179243_n.jpg',
+  '515068658_1549295166331533_8873942781353550651_n.jpg',
+  '521351848_1553622505898799_8295139459140997601_n.jpg',
+  '557459801_1611306076797108_8909020549474646805_n.jpg',
+  '584449220_1659615898632792_2399585120794362465_n.jpg',
+  '611136814_1700361247891590_3210011831627886562_n.jpg',
+  '611201911_1700360654558316_5841111323271327889_n.jpg',
+  '612344014_1702760957651619_7003369236896174919_n.jpg',
+  '613528992_1703109514283430_5914454420380100403_n.jpg',
+  '619967878_1716424482951933_6586524880751662244_n.jpg',
+  '681427564_1797164938211220_8001753608821104095_n.jpg',
+  '716483179_1834463507814696_3851515672094198277_n.jpg',
+].map((f) => `${C}/${f}`)
 
-function Column({ images, y }: { images: { src: string }[]; y: MotionValue<string> }) {
+// Interleave images across 4 columns: 0,4,8,12,16 / 1,5,9,13,17 / etc.
+const COLS = [0, 1, 2, 3].map((col) =>
+  [0, 1, 2, 3, 4].map((row) => ALL[col + row * 4])
+)
+
+function Column({ srcs, y }: { srcs: string[]; y: MotionValue<string> }) {
   return (
     <motion.div style={{ y }} className="flex flex-col gap-3 will-change-transform">
-      {images.map(({ src }, i) => (
+      {srcs.map((src, i) => (
         <div key={i} className="relative w-full aspect-[4/3] overflow-hidden rounded-lg flex-shrink-0">
           <Image
             src={src}
             alt=""
             fill
             sizes="(max-width: 768px) 50vw, 25vw"
-            className="object-cover"
+            className="object-cover object-top"
             draggable={false}
           />
         </div>
@@ -65,10 +69,9 @@ export default function ParallaxGallery() {
     offset: ['start end', 'end start'],
   })
 
-  // Columns start below viewport center and scroll up at different speeds
-  const y1 = useTransform(scrollYProgress, [0, 1], ['15%', '-30%'])
-  const y2 = useTransform(scrollYProgress, [0, 1], ['0%',  '-55%'])
-  const y3 = useTransform(scrollYProgress, [0, 1], ['25%', '-20%'])
+  const y1 = useTransform(scrollYProgress, [0, 1], ['10%', '-30%'])
+  const y2 = useTransform(scrollYProgress, [0, 1], ['0%',  '-50%'])
+  const y3 = useTransform(scrollYProgress, [0, 1], ['20%', '-20%'])
   const y4 = useTransform(scrollYProgress, [0, 1], ['5%',  '-45%'])
 
   return (
@@ -78,10 +81,10 @@ export default function ParallaxGallery() {
       aria-label="Photo gallery"
     >
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 px-3 py-3">
-        <Column images={COLS[0]} y={y1} />
-        <Column images={COLS[1]} y={y2} />
-        <Column images={COLS[2]} y={y3} />
-        <Column images={COLS[3]} y={y4} />
+        <Column srcs={COLS[0]} y={y1} />
+        <Column srcs={COLS[1]} y={y2} />
+        <Column srcs={COLS[2]} y={y3} />
+        <Column srcs={COLS[3]} y={y4} />
       </div>
     </section>
   )

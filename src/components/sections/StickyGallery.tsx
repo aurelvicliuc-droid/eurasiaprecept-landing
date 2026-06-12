@@ -51,7 +51,7 @@ function Frame({
     <div className="sticky top-0 h-screen flex items-center justify-center">
       <motion.div
         style={{ scale, top: `calc(-5vh + ${i * 15}px)` }}
-        className="relative w-full max-w-[1100px] px-4 grid grid-cols-3 gap-3 origin-top"
+        className="relative w-full px-2 grid grid-cols-3 gap-6 origin-top"
       >
         {srcs.map((src, j) => (
           <div
@@ -85,7 +85,7 @@ export default function StickyGallery() {
     <ReactLenis root>
       <section
         ref={container}
-        className="relative bg-[#0e1f17] pb-[100vh] pt-[15vh]"
+        className="relative bg-beige-light pb-[100vh] pt-[15vh]"
         aria-label="Photo gallery"
       >
         {FRAMES.map((srcs, i) => {

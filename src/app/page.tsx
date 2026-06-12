@@ -10,7 +10,7 @@ import Testimonials from '@/components/sections/Testimonials'
 import Shop from '@/components/sections/Shop'
 import Contact from '@/components/sections/Contact'
 import AboutModal from '@/components/modals/AboutModal'
-import ParallaxGallery from '@/components/sections/ParallaxGallery'
+import StickyGallery from '@/components/sections/StickyGallery'
 
 export default function Home() {
   const [aboutOpen, setAboutOpen] = useState(false)
@@ -23,7 +23,7 @@ export default function Home() {
         <Hero />
         <Stats />
         <Programs />
-        <ParallaxGallery />
+        <StickyGallery />
 
         <VisionBanner />
 

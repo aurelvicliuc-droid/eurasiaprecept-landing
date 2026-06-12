@@ -64,7 +64,7 @@ function Frame({
               alt=""
               fill
               sizes="(max-width: 768px) 34vw, 33vw"
-              className="object-cover object-top"
+              className="object-cover object-center"
               draggable={false}
             />
           </div>

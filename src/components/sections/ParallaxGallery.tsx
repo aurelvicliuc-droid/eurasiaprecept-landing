@@ -69,16 +69,14 @@ export default function ParallaxGallery() {
   return (
     <section
       ref={container}
-      className="bg-[#0e1f17] py-24 overflow-hidden"
+      className="bg-[#0e1f17] py-16 overflow-hidden"
       aria-label="Photo gallery"
     >
-      <div className="max-w-[1200px] mx-auto px-6 lg:px-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <Column images={IMAGES.col1} y={y1} />
-          <Column images={IMAGES.col2} y={y2} />
-          <Column images={IMAGES.col3} y={y3} />
-          <Column images={IMAGES.col4} y={y4} />
-        </div>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 px-3">
+        <Column images={IMAGES.col1} y={y1} />
+        <Column images={IMAGES.col2} y={y2} />
+        <Column images={IMAGES.col3} y={y3} />
+        <Column images={IMAGES.col4} y={y4} />
       </div>
     </section>
   )

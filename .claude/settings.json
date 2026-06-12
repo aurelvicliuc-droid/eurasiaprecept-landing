@@ -3,9 +3,7 @@
     "allow": [
       "Bash(npm list *)",
       "Bash(vercel env *)",
-      "Bash(curl -s https://api.resend.com/domains -H 'Authorization: Bearer re_AEUT8Lkg_CkWbWXNJyd6zFc7PCqB6zGkN')",
       "Bash(python3 -m json.tool)",
-      "Bash(curl -s https://api.resend.com/domains -H \"Authorization: Bearer re_AEUT8Lkg_CkWbWXNJyd6zFc7PCqB6zGkN\")",
       "Bash(magick --version)",
       "Bash(convert --version)",
       "Bash(python3 -c \"from PIL import Image; print\\('pillow ok'\\)\")",

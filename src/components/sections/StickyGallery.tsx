@@ -31,7 +31,7 @@ const FRAMES: Img[][] = [
   [{ src: ALL[3] }, { src: ALL[4] },  { src: ALL[5] }],
   [{ src: ALL[6] }, { src: ALL[7] },  { src: ALL[8] }],
   [{ src: ALL[9] }, { src: ALL[10] }, { src: ALL[11] }],
-  [{ src: ALL[12] },{ src: ALL[13] }, { src: ALL[14], pos: 'object-center' }],
+  [{ src: ALL[12] },{ src: ALL[13], pos: 'object-center' }, { src: ALL[14], pos: 'object-center' }],
 ]
 
 function Frame({

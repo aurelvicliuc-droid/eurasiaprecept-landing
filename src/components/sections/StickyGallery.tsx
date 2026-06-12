@@ -1,8 +1,8 @@
 'use client'
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion'
 import Image from 'next/image'
-import ReactLenis from 'lenis/react'
+import Lenis from 'lenis'
 
 const C = '/carousel'
 const ALL = [
@@ -48,10 +48,11 @@ function Frame({
   const scale = useTransform(progress, range, [1, targetScale])
 
   return (
-    <div className="sticky top-0 h-screen flex items-center justify-center">
+    // Each frame is 70vh tall, sticky at 15vh from viewport top → centered in view
+    <div className="sticky top-[15vh] h-[70vh] w-full flex items-center">
       <motion.div
-        style={{ scale, top: `calc(-5vh + ${i * 15}px)` }}
-        className="relative w-full px-2 grid grid-cols-3 gap-6 origin-top"
+        style={{ scale, transformOrigin: 'top center' }}
+        className="w-full px-4 md:px-8 grid grid-cols-3 gap-4 md:gap-6"
       >
         {srcs.map((src, j) => (
           <div
@@ -62,7 +63,7 @@ function Frame({
               src={src}
               alt=""
               fill
-              sizes="(max-width: 768px) 100vw, 33vw"
+              sizes="(max-width: 768px) 34vw, 33vw"
               className="object-cover object-top"
               draggable={false}
             />
@@ -76,32 +77,39 @@ function Frame({
 export default function StickyGallery() {
   const container = useRef<HTMLDivElement>(null)
 
+  useEffect(() => {
+    const lenis = new Lenis()
+    const raf = (time: number) => { lenis.raf(time); requestAnimationFrame(raf) }
+    const id = requestAnimationFrame(raf)
+    return () => { cancelAnimationFrame(id); lenis.destroy() }
+  }, [])
+
   const { scrollYProgress } = useScroll({
     target: container,
     offset: ['start start', 'end end'],
   })
 
   return (
-    <ReactLenis root>
-      <section
-        ref={container}
-        className="relative bg-beige-light pt-[15vh]"
-        aria-label="Photo gallery"
-      >
-        {FRAMES.map((srcs, i) => {
-          const targetScale = Math.max(0.75, 1 - (FRAMES.length - i - 1) * 0.05)
-          return (
-            <Frame
-              key={i}
-              i={i}
-              srcs={srcs}
-              progress={scrollYProgress}
-              range={[i * (1 / FRAMES.length), 1]}
-              targetScale={targetScale}
-            />
-          )
-        })}
-      </section>
-    </ReactLenis>
+    // 5 frames × 70vh + 15vh top + 25vh bottom ≈ 390vh — manageable scroll
+    <section
+      ref={container}
+      className="relative bg-beige-light pt-[15vh] pb-[25vh]"
+      aria-label="Photo gallery"
+    >
+      {FRAMES.map((srcs, i) => {
+        const n = FRAMES.length
+        const targetScale = 1 - (n - i - 1) * 0.06
+        return (
+          <Frame
+            key={i}
+            i={i}
+            srcs={srcs}
+            progress={scrollYProgress}
+            range={[i / n, 1]}
+            targetScale={targetScale}
+          />
+        )
+      })}
+    </section>
   )
 }

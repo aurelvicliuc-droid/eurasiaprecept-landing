@@ -23,13 +23,15 @@ const ALL = [
   '611201911_1700360654558316_5841111323271327889_n.jpg',
 ].map((f) => `${C}/${f}`)
 
-// 5 frames × 3 images
-const FRAMES = [
-  [ALL[0],  ALL[1],  ALL[2]],
-  [ALL[3],  ALL[4],  ALL[5]],
-  [ALL[6],  ALL[7],  ALL[8]],
-  [ALL[9],  ALL[10], ALL[11]],
-  [ALL[12], ALL[13], ALL[14]],
+type Img = { src: string; pos?: string }
+
+// 5 frames × 3 images — pos overrides object-top per image if needed
+const FRAMES: Img[][] = [
+  [{ src: ALL[0] }, { src: ALL[1], pos: 'object-center' }, { src: ALL[2] }],
+  [{ src: ALL[3] }, { src: ALL[4] },  { src: ALL[5] }],
+  [{ src: ALL[6] }, { src: ALL[7] },  { src: ALL[8] }],
+  [{ src: ALL[9] }, { src: ALL[10] }, { src: ALL[11] }],
+  [{ src: ALL[12] },{ src: ALL[13] }, { src: ALL[14] }],
 ]
 
 function Frame({
@@ -39,7 +41,7 @@ function Frame({
   range,
   targetScale,
 }: {
-  srcs: string[]
+  srcs: Img[]
   i: number
   progress: MotionValue<number>
   range: [number, number]
@@ -54,17 +56,17 @@ function Frame({
         style={{ scale, transformOrigin: 'top center' }}
         className="w-full px-4 md:px-8 grid grid-cols-3 gap-4 md:gap-6"
       >
-        {srcs.map((src, j) => (
+        {srcs.map((img, j) => (
           <div
             key={j}
             className="relative aspect-[4/3] overflow-hidden rounded-2xl"
           >
             <Image
-              src={src}
+              src={img.src}
               alt=""
               fill
               sizes="(max-width: 768px) 34vw, 33vw"
-              className="object-cover object-center"
+              className={`object-cover ${img.pos ?? 'object-top'}`}
               draggable={false}
             />
           </div>

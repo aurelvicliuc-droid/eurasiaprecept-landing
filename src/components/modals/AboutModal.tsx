@@ -162,7 +162,7 @@ export default function AboutModal({ open, onClose }: Props) {
                           <div
                             key={b.label}
                             className={`relative overflow-hidden rounded-[14px] p-5 ${
-                              i === 0 || i === 3 ? 'col-span-2' : 'col-span-1'
+                              i === 0 || i === 3 ? 'col-span-2' : 'col-span-2 sm:col-span-1'
                             } ${VISION_CARD_STYLES[i].bg}`}
                           >
                             {/* Symbolic SVG decoration */}

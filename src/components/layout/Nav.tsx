@@ -127,7 +127,7 @@ export default function Nav({ onAboutOpen }: NavProps) {
                   target={link.external ? '_blank' : undefined}
                   rel={link.external ? 'noopener noreferrer' : undefined}
                   onClick={link.isAbout ? (e) => { e.preventDefault(); onAboutOpen(); setMobileOpen(false) } : () => setMobileOpen(false)}
-                  className="text-[22px] font-light text-text-dark hover:text-teal transition-colors cursor-pointer border-b border-beige-dark pb-4"
+                  className="text-[22px] font-normal text-text-dark hover:text-teal transition-colors cursor-pointer border-b border-beige-dark pb-4"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05 + 0.1 }}

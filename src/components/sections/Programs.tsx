@@ -207,7 +207,7 @@ export default function Programs() {
                   mb-4 pb-3 border-b border-beige-dark">
                   {group.label}
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
                   {group.items.map((prog, i) => (
                     <motion.div
                       key={prog.id}

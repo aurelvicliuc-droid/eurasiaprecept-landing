@@ -6,7 +6,6 @@ import Hero from '@/components/sections/Hero'
 import Stats from '@/components/sections/Stats'
 import Programs from '@/components/sections/Programs'
 import VisionBanner from '@/components/sections/VisionBanner'
-import PhotoSlider from '@/components/sections/PhotoSlider'
 import Testimonials from '@/components/sections/Testimonials'
 import Shop from '@/components/sections/Shop'
 import Contact from '@/components/sections/Contact'
@@ -24,10 +23,7 @@ export default function Home() {
         <Stats />
         <Programs />
 
-        <section aria-label="Galerie și viziune">
-          <VisionBanner />
-          <PhotoSlider />
-        </section>
+        <VisionBanner />
 
         <Testimonials />
         <Shop />

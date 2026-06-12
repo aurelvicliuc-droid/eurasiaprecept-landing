@@ -142,11 +142,12 @@ export default function Contact() {
                   </label>
                   <input
                     id="contact-name"
+                    name="contact-name"
                     type="text"
                     placeholder={f.namePlaceholder}
                     required
                     className="bg-cream border border-beige-dark rounded-[6px] px-3.5 py-[11px] text-[15px]
-                      text-text-dark font-light placeholder:text-text-muted outline-none
+                      text-text-dark placeholder:text-text-muted outline-none
                       focus:border-teal transition-colors duration-200"
                   />
                 </div>
@@ -156,11 +157,12 @@ export default function Contact() {
                   </label>
                   <input
                     id="contact-email"
+                    name="contact-email"
                     type="email"
                     placeholder={f.emailPlaceholder}
                     required
                     className="bg-cream border border-beige-dark rounded-[6px] px-3.5 py-[11px] text-[15px]
-                      text-text-dark font-light placeholder:text-text-muted outline-none
+                      text-text-dark placeholder:text-text-muted outline-none
                       focus:border-teal transition-colors duration-200"
                   />
                 </div>
@@ -171,10 +173,11 @@ export default function Contact() {
                 </label>
                 <input
                   id="contact-subject"
+                  name="contact-subject"
                   type="text"
                   placeholder={f.subjectPlaceholder}
                   className="bg-cream border border-beige-dark rounded-[6px] px-3.5 py-[11px] text-[15px]
-                    text-text-dark font-light placeholder:text-text-muted outline-none
+                    text-text-dark placeholder:text-text-muted outline-none
                     focus:border-teal transition-colors duration-200"
                 />
               </div>
@@ -184,11 +187,12 @@ export default function Contact() {
                 </label>
                 <textarea
                   id="contact-message"
+                  name="contact-message"
                   placeholder={f.messagePlaceholder}
                   required
                   rows={5}
                   className="bg-cream border border-beige-dark rounded-[6px] px-3.5 py-[11px] text-[15px]
-                    text-text-dark font-light placeholder:text-text-muted outline-none resize-y min-h-[110px]
+                    text-text-dark placeholder:text-text-muted outline-none resize-y min-h-[110px]
                     focus:border-teal transition-colors duration-200"
                 />
               </div>
@@ -225,7 +229,7 @@ export default function Contact() {
                     role="alert"
                     aria-live="polite"
                   >
-                    A apărut o eroare. Încearcă din nou.
+                    {f.error}
                   </motion.p>
                 )}
               </div>

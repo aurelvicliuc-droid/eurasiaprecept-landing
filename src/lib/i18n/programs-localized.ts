@@ -12,10 +12,13 @@ export function localizeProgram(program: ProgramData, lang: Lang): LocalizedProg
     // Manual shop links live only in the base (Romanian) data — single source of truth.
     // Merge them into the localized curriculum by position so every language uses the same links.
     const curriculum = t.curriculum.map((course, ci) => {
-      const baseManuals = program.curriculum[ci]?.manuals
-      if (!course.manuals || !baseManuals) return course
+      const baseCourse = program.curriculum[ci]
+      // Single-manual link (e.g. Institutul Biblic) — inherited from the base data by position.
+      const merged = { ...course, manualHref: course.manualHref ?? baseCourse?.manualHref }
+      const baseManuals = baseCourse?.manuals
+      if (!course.manuals || !baseManuals) return merged
       return {
-        ...course,
+        ...merged,
         manuals: course.manuals.map((m, mi) => {
           const base = baseManuals[mi]
           return {

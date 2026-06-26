@@ -166,7 +166,20 @@ export default function ProgramPageClient({ program }: Props) {
                             </div>
                           ) : course.manual ? (
                             <p className="text-[12px] text-teal font-medium tracking-[0.04em] mt-0.5">
-                              {pp.manualLabel}: {course.manual}
+                              {pp.manualLabel}:{' '}
+                              {course.manualHref ? (
+                                <a
+                                  href={course.manualHref}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="underline decoration-teal/30 underline-offset-2 hover:text-green-dark
+                                    hover:decoration-green-dark/60 transition-colors duration-200"
+                                >
+                                  {course.manual}
+                                </a>
+                              ) : (
+                                course.manual
+                              )}
                             </p>
                           ) : null}
                           {course.desc && (

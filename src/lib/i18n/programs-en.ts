@@ -4,7 +4,7 @@ export interface ProgramTranslation {
   overview: string
   whoCanApply: string[]
   documents: string[]
-  curriculum: Array<{ title: string; manual?: string; manuals?: Array<{ title: string; href?: string; alternatives?: Array<{ title: string; href?: string }> }>; desc: string }>
+  curriculum: Array<{ title: string; manual?: string; manualHref?: string; manuals?: Array<{ title: string; href?: string; alternatives?: Array<{ title: string; href?: string }> }>; desc: string }>
   structure: string[]
   outcomes?: Array<{ title: string; desc: string }>
   ctaPrimary: { label: string; href?: string }

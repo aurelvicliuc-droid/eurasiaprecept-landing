@@ -10,6 +10,8 @@ export interface CourseItem {
   title: string
   /** Legacy single-manual label (used by most programs). */
   manual?: string
+  /** Optional shop link for the single `manual` above. Inherited into EN/RU by index. */
+  manualHref?: string
   /** Multiple manuals taught in a session, each linkable to the shop. */
   manuals?: ManualRef[]
   desc: string
@@ -64,15 +66,15 @@ export const programs: ProgramData[] = [
     ],
     documents: ['Cerere de înscriere', 'Recomandare pastorală'],
     curriculum: [
-      { title: 'Evanghelizare și Ucenicie', manual: '„Dumnezeule, exiști?"', desc: 'Învață cum să prezinți Evanghelia clar, biblic și relevant și cum să formezi ucenici care să-L urmeze pe Hristos.' },
-      { title: 'Plantarea de Biserici', manual: '„Doamne, vreau să Te cunosc"', desc: 'Descoperă principiile biblice ale dezvoltării și multiplicării bisericilor.' },
-      { title: 'Consiliere Spirituală', manual: '„Căsătorie fără regrete"', desc: 'Învață cum să oferi îndrumare biblică în diferite situații de viață.' },
-      { title: 'Homiletică', manual: 'Iacov', desc: 'Dezvoltă abilitatea de a pregăti și transmite mesaje biblice clare și relevante.' },
-      { title: 'Istoria Poporului Israel', manual: 'Daniel', desc: 'Înțelege planul lui Dumnezeu în istorie și relevanța lui pentru prezent.' },
-      { title: 'Creșterea Bisericii', manual: 'Filipeni', desc: 'Studiază principiile biblice care contribuie la sănătatea și dezvoltarea bisericii.' },
-      { title: 'Planificarea Timpului', manual: '2 Tesaloniceni', desc: 'Învață administrarea eficientă a timpului și priorităților în slujire și viața personală.' },
-      { title: 'Doctrinele Bibliei', manual: 'Legământul', desc: 'Aprofundează doctrinele fundamentale ale credinței creștine.' },
-      { title: 'Cum se studiază un subiect dificil în Biblie?', manual: 'Evanghelia după Ioan (Partea II)', desc: 'Dobândește instrumente practice pentru cercetarea și interpretarea pasajelor complexe din Scriptură.' },
+      { title: 'Evanghelizare și Ucenicie', manual: '„Dumnezeule, exiști?"', manualHref: 'https://shop.eurasiaprecept.org/catalog/dumnezeule-existi', desc: 'Învață cum să prezinți Evanghelia clar, biblic și relevant și cum să formezi ucenici care să-L urmeze pe Hristos.' },
+      { title: 'Plantarea de Biserici', manual: '„Doamne, vreau să Te cunosc"', manualHref: 'https://shop.eurasiaprecept.org/catalog/doamne-vreau-sa-te-cunosc', desc: 'Descoperă principiile biblice ale dezvoltării și multiplicării bisericilor.' },
+      { title: 'Consiliere Spirituală', manual: '„Căsătorie fără regrete"', manualHref: 'https://shop.eurasiaprecept.org/catalog/casatorie-fara-regrete', desc: 'Învață cum să oferi îndrumare biblică în diferite situații de viață.' },
+      { title: 'Homiletică', manual: 'Iacov', manualHref: 'https://shop.eurasiaprecept.org/catalog/iacov-3', desc: 'Dezvoltă abilitatea de a pregăti și transmite mesaje biblice clare și relevante.' },
+      { title: 'Istoria Poporului Israel', manual: 'Daniel', manualHref: 'https://shop.eurasiaprecept.org/catalog/daniel-pdf', desc: 'Înțelege planul lui Dumnezeu în istorie și relevanța lui pentru prezent.' },
+      { title: 'Creșterea Bisericii', manual: 'Filipeni', manualHref: 'https://shop.eurasiaprecept.org/catalog/filipeni', desc: 'Studiază principiile biblice care contribuie la sănătatea și dezvoltarea bisericii.' },
+      { title: 'Planificarea Timpului', manual: '2 Tesaloniceni', manualHref: 'https://shop.eurasiaprecept.org/catalog/2-tesaloniceni', desc: 'Învață administrarea eficientă a timpului și priorităților în slujire și viața personală.' },
+      { title: 'Doctrinele Bibliei', manual: 'Legământul', manualHref: 'https://shop.eurasiaprecept.org/catalog/legamantul', desc: 'Aprofundează doctrinele fundamentale ale credinței creștine.' },
+      { title: 'Cum se studiază un subiect dificil în Biblie?', manual: 'Evanghelia după Ioan (Partea II)', manualHref: 'https://shop.eurasiaprecept.org/catalog/evanghelia-dupa-ioan-partea-2', desc: 'Dobândește instrumente practice pentru cercetarea și interpretarea pasajelor complexe din Scriptură.' },
     ],
     structure: [
       '3 ani de studiu',

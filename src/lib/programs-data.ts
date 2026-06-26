@@ -1,6 +1,17 @@
+export interface ManualRef {
+  title: string
+  /** Link to the manual on shop.eurasiaprecept.org. Optional: falls back to the shop homepage. */
+  href?: string
+  /** Interchangeable alternatives shown on the same line, separated by " / " (each links on its own). */
+  alternatives?: ManualRef[]
+}
+
 export interface CourseItem {
   title: string
-  manual: string
+  /** Legacy single-manual label (used by most programs). */
+  manual?: string
+  /** Multiple manuals taught in a session, each linkable to the shop. */
+  manuals?: ManualRef[]
   desc: string
 }
 
@@ -19,6 +30,8 @@ export interface ProgramData {
   heroImage: string
   heroImageAlt: string
   heroImagePosition?: string
+  /** Optional photo gallery shown on the program page. */
+  gallery?: string[]
   overview: string
   whoCanApply: string[]
   documents: string[]
@@ -68,8 +81,8 @@ export const programs: ProgramData[] = [
       'Practică obligatorie de ucenicizare între sesiuni',
       'Examene și evaluări periodice',
     ],
-    ctaPrimary: { label: 'Aplică la Institutul Biblic', href: '#contact' },
-    ctaSecondary: { label: 'Descarcă recomandarea pastorală', href: '#contact' },
+    ctaPrimary: { label: 'Aplică la Institutul Biblic', href: '/#contact' },
+    ctaSecondary: { label: 'Descarcă recomandarea pastorală', href: '/#contact' },
     downloadLabel: 'Descarcă formularul de recomandare pastorală',
   },
   {
@@ -83,36 +96,44 @@ export const programs: ProgramData[] = [
     heroImageAlt: 'Școala Timotei — tineri în formare',
     overview:
       'Școala TIMOTEI este un program de pregătire spirituală pentru adolescenți și tineri care doresc să-L cunoască pe Dumnezeu mai profund, să studieze Scriptura și să devină lideri ai generației lor.',
+    gallery: [
+      '/programs/timotei-gallery-5.jpg',
+      '/programs/timotei-gallery-1.jpg',
+      '/programs/timotei-gallery-2.jpg',
+      '/programs/timotei-gallery-3.jpg',
+      '/programs/timotei-gallery-4.jpg',
+    ],
     whoCanApply: [
       'Adolescenți și tineri între 14 și 18 ani',
       'Membri sau participanți activi într-o biserică locală',
       'Dorință de creștere spirituală și implicare în slujire',
-      'Recomandare din partea a doi membri maturi ai bisericii',
     ],
     documents: ['Cerere de înscriere', 'Două recomandări din partea membrilor bisericii'],
     curriculum: [
-      { title: 'Sesiunea 1 — Iosif', manual: 'Doamne, învață-mă să studiez Biblia în 28 de zile', desc: 'Descoperă caracterul unui lider credincios și învață metoda inductivă de studiu biblic.' },
-      { title: 'Sesiunea 2 — Estera', manual: 'Cum să folosească creștinul tehnologiile informaționale?', desc: 'Învață cum să trăiești cu curaj pentru Dumnezeu într-o cultură aflată în continuă schimbare.' },
-      { title: 'Sesiunea 3 — Iosua', manual: 'Ce spune Biblia despre sexualitate? / Doamne, am nevoie de răspunsuri', desc: 'Primește răspunsuri biblice la întrebările importante ale adolescenței.' },
-      { title: 'Sesiunea 4 — Avraam', manual: 'Îndreaptă-ți inima spre Dumnezeu', desc: 'Studiază credința, ascultarea și încrederea în promisiunile lui Dumnezeu.' },
-      { title: 'Sesiunea 5 — 1 Petru', manual: 'Cerul, iadul și viața de după mormânt', desc: 'Înțelege speranța creștină și cum să rămâi statornic în încercări.' },
-      { title: 'Sesiunea 6 — 2 Timotei', manual: 'Vrei să fii ucenicul lui Hristos? Plătește prețul', desc: 'Descoperă ce înseamnă să-L urmezi pe Hristos cu seriozitate și perseverență.' },
-      { title: 'Sesiunea 7', manual: 'Într-o zi mă voi căsători / Cum să fii un mentor după voia lui Dumnezeu', desc: 'Pregătire pentru relații sănătoase și influență spirituală asupra altora.' },
+      // Linkurile manualelor (shop.eurasiaprecept.org) sunt definite o singură dată aici și sunt
+      // preluate automat în EN/RU prin localizeProgram. Toate manualele au link, cu excepția
+      // alternativei „Doamne, am nevoie de răspunsuri" de pe bara Sesiunii 3 (vezi mai jos).
+      { title: 'Sesiunea 1', manuals: [{ title: 'Iosif', href: 'https://shop.eurasiaprecept.org/catalog/iosif' }, { title: 'Doamne, învață-mă să studiez Biblia în 28 de zile', href: 'https://shop.eurasiaprecept.org/catalog/doamne-invata-ma-sa-studiez-biblia-in-28-de-zile-2' }], desc: 'Descoperă caracterul unui lider credincios și învață metoda inductivă de studiu biblic.' },
+      { title: 'Sesiunea 2', manuals: [{ title: 'Estera', href: 'https://shop.eurasiaprecept.org/catalog/estera' }, { title: 'Cum să folosească creștinul tehnologiile informaționale?', href: 'https://shop.eurasiaprecept.org/catalog/cum-sa-foloseasca-crestinul-tehnologiile-informationale' }], desc: 'Învață cum să trăiești cu curaj pentru Dumnezeu într-o cultură aflată în continuă schimbare.' },
+      { title: 'Sesiunea 3', manuals: [{ title: 'Iosua', href: 'https://shop.eurasiaprecept.org/catalog/iosua' }, { title: 'Ce spune Biblia despre sexualitate?', href: 'https://shop.eurasiaprecept.org/catalog/ce-spune-biblia-despre-sexualitate', alternatives: [{ title: 'Doamne, am nevoie de răspunsuri', href: 'https://shop.eurasiaprecept.org/catalog/doamne-am-nevoie-de-raspunsuri' }] }], desc: 'Primește răspunsuri biblice la întrebările importante ale adolescenței.' },
+      { title: 'Sesiunea 4', manuals: [{ title: 'Avraam', href: 'https://shop.eurasiaprecept.org/catalog/cum-sa-devii-prieten-cu-dumnezeul-cel-credincios' }, { title: 'Întoarce-ți inima spre Dumnezeu', href: 'https://shop.eurasiaprecept.org/catalog/intoarce-ti-inima-spre-dumnezeu' }], desc: 'Studiază credința, ascultarea și încrederea în promisiunile lui Dumnezeu.' },
+      { title: 'Sesiunea 5', manuals: [{ title: '1 Petru', href: 'https://shop.eurasiaprecept.org/catalog/1-pentru-invata-si-aplica' }, { title: 'Cerul, iadul și viața de după moarte', href: 'https://shop.eurasiaprecept.org/catalog/cerul-iadul-si-viata-de-dupa-moarte' }], desc: 'Înțelege speranța creștină și cum să rămâi statornic în încercări.' },
+      { title: 'Sesiunea 6', manuals: [{ title: '2 Timotei', href: 'https://shop.eurasiaprecept.org/catalog/2-timotei' }, { title: 'Vrei să fii ucenicul lui Hristos? Plătește prețul', href: 'https://shop.eurasiaprecept.org/catalog/vrei-sa-fii-ucenicul-lui-isus-trebuie-sa-platesti-pretul' }], desc: 'Descoperă ce înseamnă să-L urmezi pe Hristos cu seriozitate și perseverență.' },
+      { title: 'Sesiunea 7', manuals: [{ title: 'Într-o zi mă voi căsători', href: 'https://shop.eurasiaprecept.org/catalog/intr-o-zi-ma-voi-casatori' }, { title: 'Cum să fii un mentor după voia lui Dumnezeu', href: 'https://shop.eurasiaprecept.org/catalog/cum-sa-fii-un-mentor-dupa-voia-lui-dumnezeu' }], desc: 'Pregătire pentru relații sănătoase și influență spirituală asupra altora.' },
     ],
     structure: [
       '7 sesiuni intensive',
       'Durata totală: 3–4 ani',
       'Organizate în timpul vacanțelor școlare',
-      'Practică de ucenicizare între sesiuni',
-      'Formare spirituală, caracter și leadership',
+      'Predarea cursurilor studiate între sesiuni',
     ],
     outcomes: [
       { title: 'Cunoașterea Scripturii', desc: 'Tineri care știu să studieze Biblia prin metoda inductivă.' },
       { title: 'Formarea de ucenici', desc: 'Capacitatea de a influența și forma alți tineri pentru Hristos.' },
       { title: 'Leadership generațional', desc: 'Lideri care influențează generația lor cu credință și caracter.' },
     ],
-    ctaPrimary: { label: 'Aplică la Școala TIMOTEI', href: '#contact' },
-    ctaSecondary: { label: 'Descarcă formularul de recomandare', href: '#contact' },
+    ctaPrimary: { label: 'Aplică la Școala TIMOTEI', href: '/#contact' },
+    ctaSecondary: { label: 'Descarcă formularul de recomandare', href: '/forms/timotei-angajament-ro.docx' },
     downloadLabel: 'Descarcă formularul de recomandare',
   },
   {
@@ -149,8 +170,8 @@ export const programs: ProgramData[] = [
       { title: 'Echipare pentru slujire strategică', desc: 'Vei fi pregătit pentru responsabilități sporite în biserică, mentorare și dezvoltarea altor lideri.' },
       { title: 'Impact multiplicator', desc: 'Vei dobândi instrumentele necesare pentru a forma noi lideri și pentru a contribui la extinderea lucrării lui Dumnezeu.' },
     ],
-    ctaPrimary: { label: 'Continuă la Nivelul II', href: '#contact' },
-    ctaSecondary: { label: 'Solicită mai multe informații', href: '#contact' },
+    ctaPrimary: { label: 'Continuă la Nivelul II', href: '/#contact' },
+    ctaSecondary: { label: 'Solicită mai multe informații', href: '/#contact' },
   },
   {
     slug: 'nivelul-3-4',
@@ -183,8 +204,8 @@ export const programs: ProgramData[] = [
       { title: 'Maturitate scripturală', desc: 'Vei fi echipat să studiezi, să predai și să aplici Scriptura cu maturitate.' },
       { title: 'Formare de lideri', desc: 'Vei influența și forma alți oameni pentru slujire în generațiile viitoare.' },
     ],
-    ctaPrimary: { label: 'Descoperă întregul program', href: '#contact' },
-    ctaSecondary: { label: 'Contactează-ne pentru mai multe informații', href: '#contact' },
+    ctaPrimary: { label: 'Descoperă întregul program', href: '/#contact' },
+    ctaSecondary: { label: 'Contactează-ne pentru mai multe informații', href: '/#contact' },
   },
   {
     slug: 'efnl-a1',
@@ -216,8 +237,8 @@ export const programs: ProgramData[] = [
       { title: 'Coordona grupe', desc: 'Vei putea conduce grupe și cluburi de limba engleză.' },
       { title: 'Misiune prin engleză', desc: 'Vei folosi engleza ca instrument practic de evanghelizare.' },
     ],
-    ctaPrimary: { label: 'Aplică pentru EFNL A1', href: '#contact' },
-    ctaSecondary: { label: 'Descarcă materialele PDF', href: '#contact' },
+    ctaPrimary: { label: 'Aplică pentru EFNL A1', href: '/#contact' },
+    ctaSecondary: { label: 'Descarcă materialele PDF', href: '/#contact' },
     ctaTertiary: { label: 'Become an EFNL Teacher', href: 'https://efnl.org' },
   },
   {
@@ -249,8 +270,8 @@ export const programs: ProgramData[] = [
       { title: 'Preda EFNL A2', desc: 'Vei fi calificat să predai la nivel intermediar.' },
       { title: 'Mentoriza profesori', desc: 'Vei putea pregăti și mentoriza noi profesori EFNL.' },
     ],
-    ctaPrimary: { label: 'Aplică pentru EFNL A2', href: '#contact' },
-    ctaSecondary: { label: 'Descarcă materialele PDF', href: '#contact' },
+    ctaPrimary: { label: 'Aplică pentru EFNL A2', href: '/#contact' },
+    ctaSecondary: { label: 'Descarcă materialele PDF', href: '/#contact' },
     ctaTertiary: { label: 'Become an EFNL Teacher', href: 'https://efnl.org' },
   },
   {
@@ -282,8 +303,8 @@ export const programs: ProgramData[] = [
       { title: 'Preda copiilor', desc: 'Vei fi calificat să conduci grupe EFNL Kids.' },
       { title: 'Organiza activități', desc: 'Vei putea organiza cluburi și tabere pentru copii.' },
     ],
-    ctaPrimary: { label: 'Aplică pentru EFNL Kids', href: '#contact' },
-    ctaSecondary: { label: 'Descarcă materialele PDF', href: '#contact' },
+    ctaPrimary: { label: 'Aplică pentru EFNL Kids', href: '/#contact' },
+    ctaSecondary: { label: 'Descarcă materialele PDF', href: '/#contact' },
     ctaTertiary: { label: 'Become an EFNL Teacher', href: 'https://efnl.org' },
   },
   {
@@ -321,8 +342,8 @@ export const programs: ProgramData[] = [
       { title: 'Evanghelizare prin sport', desc: 'Vei fi pregătit să folosești sportul ca instrument de evanghelizare.' },
       { title: 'Ucenicizare practică', desc: 'Vei dezvolta o lucrare cu impact în comunitatea ta.' },
     ],
-    ctaPrimary: { label: 'Descoperă programul complet', href: '#contact' },
-    ctaSecondary: { label: 'Accesează site-ul IMS', href: '#contact' },
+    ctaPrimary: { label: 'Descoperă programul complet', href: '/#contact' },
+    ctaSecondary: { label: 'Accesează site-ul IMS', href: '/#contact' },
   },
   {
     slug: 'lucrare-copii',
@@ -351,8 +372,8 @@ export const programs: ProgramData[] = [
       'Practică supervizată în lucrarea cu copii',
       'Mentorare din partea instructorilor',
     ],
-    ctaPrimary: { label: 'Aplică acum', href: '#contact' },
-    ctaSecondary: { label: 'Contactează-ne', href: '#contact' },
+    ctaPrimary: { label: 'Aplică acum', href: '/#contact' },
+    ctaSecondary: { label: 'Contactează-ne', href: '/#contact' },
   },
 ]
 

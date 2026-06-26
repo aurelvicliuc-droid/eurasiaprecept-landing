@@ -4,12 +4,12 @@ export interface ProgramTranslation {
   overview: string
   whoCanApply: string[]
   documents: string[]
-  curriculum: Array<{ title: string; manual: string; desc: string }>
+  curriculum: Array<{ title: string; manual?: string; manuals?: Array<{ title: string; href?: string; alternatives?: Array<{ title: string; href?: string }> }>; desc: string }>
   structure: string[]
   outcomes?: Array<{ title: string; desc: string }>
-  ctaPrimary: { label: string }
-  ctaSecondary?: { label: string }
-  ctaTertiary?: { label: string }
+  ctaPrimary: { label: string; href?: string }
+  ctaSecondary?: { label: string; href?: string }
+  ctaTertiary?: { label: string; href?: string }
   downloadLabel?: string
 }
 
@@ -58,24 +58,22 @@ export const programsEn: Record<string, ProgramTranslation> = {
       'Teenagers and young people between 14 and 18 years old',
       'Members or active participants in a local church',
       'Desire for spiritual growth and involvement in ministry',
-      'Recommendation from two mature members of the church',
     ],
     documents: ['Application form', 'Two recommendations from church members'],
     curriculum: [
-      { title: 'Session 1 — Joseph', manual: 'Lord, Teach Me to Study the Bible in 28 Days', desc: 'Discover the character of a faithful leader and learn the inductive method of Bible study.' },
-      { title: 'Session 2 — Esther', manual: 'How Should a Christian Use Technology?', desc: 'Learn how to live courageously for God in a constantly changing culture.' },
-      { title: 'Session 3 — Joshua', manual: 'What Does the Bible Say About Sexuality? / Lord, I Need Answers', desc: 'Receive biblical answers to the important questions of adolescence.' },
-      { title: 'Session 4 — Abraham', manual: 'Turn Your Heart to God', desc: 'Study faith, obedience, and trust in God\'s promises.' },
-      { title: 'Session 5 — 1 Peter', manual: 'Heaven, Hell and Life After Death', desc: 'Understand Christian hope and how to remain steadfast in trials.' },
-      { title: 'Session 6 — 2 Timothy', manual: 'Do You Want to Be Christ\'s Disciple? Pay the Price', desc: 'Discover what it means to follow Christ seriously and with perseverance.' },
-      { title: 'Session 7', manual: 'One Day I\'ll Get Married / How to Be a God-honoring Mentor', desc: 'Preparation for healthy relationships and spiritual influence over others.' },
+      { title: 'Session 1', manuals: [{ title: 'Joseph' }, { title: 'Lord, Teach Me to Study the Bible in 28 Days' }], desc: 'Discover the character of a faithful leader and learn the inductive method of Bible study.' },
+      { title: 'Session 2', manuals: [{ title: 'Esther' }, { title: 'How Should a Christian Use Technology?' }], desc: 'Learn how to live courageously for God in a constantly changing culture.' },
+      { title: 'Session 3', manuals: [{ title: 'Joshua' }, { title: 'What Does the Bible Say About Sexuality?', alternatives: [{ title: 'Lord, I Need Answers' }] }], desc: 'Receive biblical answers to the important questions of adolescence.' },
+      { title: 'Session 4', manuals: [{ title: 'Abraham' }, { title: 'Turn Your Heart to God' }], desc: 'Study faith, obedience, and trust in God\'s promises.' },
+      { title: 'Session 5', manuals: [{ title: '1 Peter' }, { title: 'Heaven, Hell and Life After Death' }], desc: 'Understand Christian hope and how to remain steadfast in trials.' },
+      { title: 'Session 6', manuals: [{ title: '2 Timothy' }, { title: 'Do You Want to Be Christ\'s Disciple? Pay the Price' }], desc: 'Discover what it means to follow Christ seriously and with perseverance.' },
+      { title: 'Session 7', manuals: [{ title: 'One Day I\'ll Get Married' }, { title: 'How to Be a God-honoring Mentor' }], desc: 'Preparation for healthy relationships and spiritual influence over others.' },
     ],
     structure: [
       '7 intensive sessions',
       'Total duration: 3–4 years',
       'Organized during school vacations',
-      'Discipleship practice between sessions',
-      'Spiritual formation, character, and leadership',
+      'Teaching the studied courses between sessions',
     ],
     outcomes: [
       { title: 'Knowledge of Scripture', desc: 'Young people who know how to study the Bible using the inductive method.' },
@@ -83,7 +81,7 @@ export const programsEn: Record<string, ProgramTranslation> = {
       { title: 'Generational leadership', desc: 'Leaders who influence their generation with faith and character.' },
     ],
     ctaPrimary: { label: 'Apply to TIMOTHY School' },
-    ctaSecondary: { label: 'Download recommendation form' },
+    ctaSecondary: { label: 'Download recommendation form', href: '/forms/timotei-angajament-en.doc' },
     downloadLabel: 'Download recommendation form',
   },
 

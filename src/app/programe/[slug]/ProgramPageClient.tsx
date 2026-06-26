@@ -3,8 +3,10 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowLeft, CheckCircle, BookOpen, Clock, Download, ChevronRight } from 'lucide-react'
+import { ArrowLeft, CheckCircle, BookOpen, Clock, Download, ChevronRight, ExternalLink, Images } from 'lucide-react'
 import type { ProgramData } from '@/lib/programs-data'
+
+const SHOP_URL = 'https://shop.eurasiaprecept.org'
 import Nav from '@/components/layout/Nav'
 import Footer from '@/components/layout/Footer'
 import AboutModal from '@/components/modals/AboutModal'
@@ -33,6 +35,11 @@ export default function ProgramPageClient({ program }: Props) {
   const hasDocuments = p.documents.length > 0
   const hasStructure = p.structure.length > 0
   const hasOutcomes = p.outcomes && p.outcomes.length > 0
+  const hasGallery = !!(p.gallery && p.gallery.length > 0)
+
+  const ctaPrimaryHref = p.ctaPrimary.href ?? program.ctaPrimary.href
+  const ctaSecondaryHref = p.ctaSecondary?.href ?? program.ctaSecondary?.href
+  const ctaTertiaryHref = p.ctaTertiary?.href ?? program.ctaTertiary?.href
 
   return (
     <div className="min-h-screen bg-[#fafaf8]">
@@ -134,11 +141,34 @@ export default function ProgramPageClient({ program }: Props) {
                           <h3 className="font-['var(--font-display)'] text-[17px] text-green-dark font-medium leading-snug">
                             {course.title}
                           </h3>
-                          {course.manual && (
+                          {course.manuals && course.manuals.length > 0 ? (
+                            <div className="mt-2">
+                              <p className="text-[11px] uppercase tracking-[0.08em] text-text-muted/80 font-semibold mb-1.5">
+                                {pp.manualsLabel}
+                              </p>
+                              <ul className="flex flex-col gap-1.5">
+                                {course.manuals.map((m, mi) => (
+                                  <li
+                                    key={mi}
+                                    className="flex items-start gap-1.5 text-[13.5px] leading-snug flex-wrap"
+                                  >
+                                    <BookOpen size={13} className="mt-[3px] flex-shrink-0 text-teal opacity-70" aria-hidden />
+                                    <ManualLink m={m} />
+                                    {m.alternatives?.map((alt, ai) => (
+                                      <span key={ai} className="inline-flex items-baseline gap-x-1.5">
+                                        <span className="text-text-muted/50" aria-hidden>/</span>
+                                        <ManualLink m={alt} />
+                                      </span>
+                                    ))}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ) : course.manual ? (
                             <p className="text-[12px] text-teal font-medium tracking-[0.04em] mt-0.5">
                               {pp.manualLabel}: {course.manual}
                             </p>
-                          )}
+                          ) : null}
                           {course.desc && (
                             <p className="text-[15px] text-text-muted leading-[1.65] mt-2">
                               {course.desc}
@@ -174,6 +204,36 @@ export default function ProgramPageClient({ program }: Props) {
                       </div>
                       <h4 className="text-[15px] font-semibold text-green-dark mb-1">{outcome.title}</h4>
                       <p className="text-[14.5px] text-text-muted leading-[1.65]">{outcome.desc}</p>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.section>
+            )}
+
+            {/* Photo gallery */}
+            {hasGallery && (
+              <motion.section
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.55, delay: 0.2 }}
+              >
+                <SectionLabel icon={<Images size={15} />}>{pp.gallery}</SectionLabel>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-5">
+                  {p.gallery!.map((src, i) => (
+                    <motion.div
+                      key={src}
+                      className={`relative overflow-hidden rounded-xl bg-beige h-44 sm:h-56 ${i === 0 ? 'col-span-2' : ''}`}
+                      initial={{ opacity: 0, scale: 0.97 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.4, delay: 0.08 + i * 0.06 }}
+                    >
+                      <Image
+                        src={src}
+                        alt={`${p.name} — fotografie ${i + 1}`}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover hover:scale-[1.04] transition-transform duration-500 ease-out"
+                      />
                     </motion.div>
                   ))}
                 </div>
@@ -259,7 +319,7 @@ export default function ProgramPageClient({ program }: Props) {
               transition={{ duration: 0.45, delay: 0.4 }}
             >
               <a
-                href={program.ctaPrimary.href}
+                href={ctaPrimaryHref}
                 className="w-full bg-teal text-white text-center py-4 px-6 rounded-xl text-[15px] font-semibold
                   hover:bg-green-dark transition-colors duration-200 shadow-sm"
               >
@@ -267,7 +327,7 @@ export default function ProgramPageClient({ program }: Props) {
               </a>
               {p.ctaSecondary && (
                 <a
-                  href={program.ctaSecondary?.href}
+                  href={ctaSecondaryHref}
                   className="w-full border-[1.5px] border-teal text-teal text-center py-3.5 px-6 rounded-xl
                     text-[14px] font-medium hover:bg-teal/5 transition-colors duration-200 flex items-center justify-center gap-2"
                 >
@@ -277,7 +337,7 @@ export default function ProgramPageClient({ program }: Props) {
               )}
               {p.ctaTertiary && (
                 <a
-                  href={program.ctaTertiary?.href}
+                  href={ctaTertiaryHref}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full border border-beige-dark text-text-muted text-center py-3 px-6 rounded-xl
@@ -324,7 +384,7 @@ export default function ProgramPageClient({ program }: Props) {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
-              href={program.ctaPrimary.href}
+              href={ctaPrimaryHref}
               className="inline-block bg-green-dark text-white font-semibold px-8 py-4 rounded-xl text-[15px]
                 hover:bg-teal transition-colors duration-200 shadow-sm"
             >
@@ -352,5 +412,25 @@ function SectionLabel({ children, icon }: { children: React.ReactNode; icon: Rea
       <span className="text-teal">{icon}</span>
       <h2 className="text-[13px] font-bold tracking-[0.13em] uppercase text-text-muted">{children}</h2>
     </div>
+  )
+}
+
+function ManualLink({ m }: { m: { title: string; href?: string } }) {
+  return (
+    <a
+      href={m.href ?? SHOP_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group inline-flex items-baseline gap-1 text-teal font-medium hover:text-green-dark transition-colors duration-200"
+    >
+      <span className="underline decoration-teal/30 underline-offset-2 group-hover:decoration-green-dark/60">
+        {m.title}
+      </span>
+      <ExternalLink
+        size={11}
+        className="self-center flex-shrink-0 opacity-0 group-hover:opacity-60 transition-opacity duration-200"
+        aria-hidden
+      />
+    </a>
   )
 }

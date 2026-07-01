@@ -3,7 +3,6 @@ import dynamic from 'next/dynamic'
 import SectionEyebrow from '@/components/ui/SectionEyebrow'
 import AnimatedSection from '@/components/ui/AnimatedSection'
 import { useLanguage } from '@/lib/i18n/context'
-import { locations, locationsCountryCount } from '@/lib/locations'
 
 const MapCanvas = dynamic(() => import('./LocationsMapCanvas'), {
   ssr: false,
@@ -28,9 +27,6 @@ export default function LocationsMap() {
           </h2>
           <p className="text-[16.5px] text-text-muted max-w-[520px] mx-auto leading-[1.7]">
             {m.subtext}
-          </p>
-          <p className="mt-4 text-[14px] font-semibold tracking-[0.05em] uppercase text-teal">
-            {locations.length} {m.cities} · {locationsCountryCount} {m.countries}
           </p>
         </AnimatedSection>
 

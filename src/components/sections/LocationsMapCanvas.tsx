@@ -1,9 +1,14 @@
 'use client'
 import 'leaflet/dist/leaflet.css'
-import { useEffect } from 'react'
-import { MapContainer, TileLayer, CircleMarker, Tooltip, useMap } from 'react-leaflet'
+import { useEffect, useState } from 'react'
+import { MapContainer, TileLayer, CircleMarker, Tooltip, useMap, useMapEvents } from 'react-leaflet'
 import { LatLngBounds } from 'leaflet'
 import { locations } from '@/lib/locations'
+
+// Pin mare când e depărtat, mic când e apropiat (zoom).
+function radiusForZoom(zoom: number) {
+  return Math.max(4, Math.round(14 - zoom))
+}
 
 function FitToLocations() {
   const map = useMap()
@@ -12,6 +17,29 @@ function FitToLocations() {
     map.fitBounds(bounds, { padding: [36, 36] })
   }, [map])
   return null
+}
+
+function Markers() {
+  const map = useMap()
+  const [radius, setRadius] = useState(() => radiusForZoom(map.getZoom()))
+  useMapEvents({ zoomend: () => setRadius(radiusForZoom(map.getZoom())) })
+
+  return (
+    <>
+      {locations.map((l) => (
+        <CircleMarker
+          key={`${l.country}-${l.city}`}
+          center={[l.lat, l.lng]}
+          radius={radius}
+          pathOptions={{ color: '#ffffff', weight: 1.5, fillColor: '#2e7d32', fillOpacity: 1 }}
+        >
+          <Tooltip direction="top" offset={[0, -radius]}>
+            {l.city}, {l.country}
+          </Tooltip>
+        </CircleMarker>
+      ))}
+    </>
+  )
 }
 
 export default function LocationsMapCanvas() {
@@ -24,23 +52,14 @@ export default function LocationsMapCanvas() {
       worldCopyJump
       className="w-full h-[460px] sm:h-[560px] rounded-2xl overflow-hidden relative z-0 isolate border border-beige-dark"
     >
+      {/* Bază curată, fără etichete de orașe (evită numele în limba locală) */}
       <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
+        url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png"
+        subdomains="abcd"
       />
       <FitToLocations />
-      {locations.map((l) => (
-        <CircleMarker
-          key={`${l.country}-${l.city}`}
-          center={[l.lat, l.lng]}
-          radius={6}
-          pathOptions={{ color: '#ffffff', weight: 1.5, fillColor: '#2e7d32', fillOpacity: 1 }}
-        >
-          <Tooltip direction="top" offset={[0, -4]}>
-            {l.city}, {l.country}
-          </Tooltip>
-        </CircleMarker>
-      ))}
+      <Markers />
     </MapContainer>
   )
 }

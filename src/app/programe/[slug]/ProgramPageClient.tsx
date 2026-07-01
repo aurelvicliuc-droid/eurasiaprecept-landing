@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowLeft, CheckCircle, BookOpen, Clock, Download, ChevronRight, ExternalLink, Images } from 'lucide-react'
+import { ArrowLeft, CheckCircle, BookOpen, Clock, Download, ChevronRight, ExternalLink, Images, Quote } from 'lucide-react'
 import type { ProgramData } from '@/lib/programs-data'
 import Nav from '@/components/layout/Nav'
 import Footer from '@/components/layout/Footer'
@@ -34,12 +34,13 @@ export default function ProgramPageClient({ program }: Props) {
   const hasStructure = p.structure.length > 0
   const hasOutcomes = p.outcomes && p.outcomes.length > 0
   const hasGallery = !!(p.gallery && p.gallery.length > 0)
+  const hasTestimonials = !!(p.testimonials && p.testimonials.length > 0)
 
   const ctaPrimaryHref = p.ctaPrimary.href ?? program.ctaPrimary.href
   const ctaSecondaryHref = p.ctaSecondary?.href ?? program.ctaSecondary?.href
   const ctaTertiaryHref = p.ctaTertiary?.href ?? program.ctaTertiary?.href
-  const ctaPrimaryExternal = /^https?:\/\//.test(ctaPrimaryHref ?? '')
-  const ctaPrimaryTarget = ctaPrimaryExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {}
+  const ctaPrimaryTarget = /^https?:\/\//.test(ctaPrimaryHref ?? '') ? { target: '_blank', rel: 'noopener noreferrer' } : {}
+  const ctaSecondaryTarget = /^https?:\/\//.test(ctaSecondaryHref ?? '') ? { target: '_blank', rel: 'noopener noreferrer' } : {}
 
   return (
     <div className="min-h-screen bg-[#fafaf8]">
@@ -223,6 +224,44 @@ export default function ProgramPageClient({ program }: Props) {
               </motion.section>
             )}
 
+            {/* Testimonials */}
+            {hasTestimonials && (
+              <motion.section
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.55, delay: 0.2 }}
+              >
+                <SectionLabel icon={<Quote size={15} />}>{pp.testimonials}</SectionLabel>
+                <div className="flex flex-col gap-4 mt-5">
+                  {p.testimonials!.map((t, i) => (
+                    <motion.figure
+                      key={i}
+                      className="bg-cream border border-beige-dark rounded-2xl p-6"
+                      initial={{ opacity: 0, y: 12 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: 0.1 + i * 0.08 }}
+                    >
+                      <Quote size={22} className="text-teal/25 mb-2" aria-hidden />
+                      <blockquote className="text-[15.5px] text-text-dark leading-[1.75]">
+                        {t.quote}
+                      </blockquote>
+                      <figcaption className="flex items-center gap-3 mt-5">
+                        {t.photo && (
+                          <span className="relative w-11 h-11 rounded-full overflow-hidden flex-shrink-0 bg-beige ring-1 ring-beige-dark">
+                            <Image src={t.photo} alt={t.name} fill sizes="44px" className="object-cover" />
+                          </span>
+                        )}
+                        <span className="flex flex-col">
+                          <span className="text-[14px] font-semibold text-green-dark">{t.name}</span>
+                          <span className="text-[13px] text-text-muted">{t.location}</span>
+                        </span>
+                      </figcaption>
+                    </motion.figure>
+                  ))}
+                </div>
+              </motion.section>
+            )}
+
             {/* Photo gallery */}
             {hasGallery && (
               <motion.section
@@ -342,6 +381,7 @@ export default function ProgramPageClient({ program }: Props) {
               {p.ctaSecondary && (
                 <a
                   href={ctaSecondaryHref}
+                  {...ctaSecondaryTarget}
                   className="w-full border-[1.5px] border-teal text-teal text-center py-3.5 px-6 rounded-xl
                     text-[14px] font-medium hover:bg-teal/5 transition-colors duration-200 flex items-center justify-center gap-2"
                 >

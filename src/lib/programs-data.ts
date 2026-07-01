@@ -22,6 +22,13 @@ export interface Outcome {
   desc: string
 }
 
+export interface Testimonial {
+  name: string
+  location: string
+  quote: string
+  photo?: string
+}
+
 export interface ProgramData {
   slug: string
   name: string
@@ -40,6 +47,8 @@ export interface ProgramData {
   curriculum: CourseItem[]
   structure: string[]
   outcomes?: Outcome[]
+  /** Student testimonials (e.g. IMS). Shown in all languages from the base data. */
+  testimonials?: Testimonial[]
   ctaPrimary: { label: string; href: string }
   ctaSecondary?: { label: string; href: string }
   ctaTertiary?: { label: string; href: string; download?: boolean }
@@ -289,12 +298,7 @@ export const programs: ProgramData[] = [
       'Creștinilor care vor să ajungă la noua generație într-un mod relevant',
     ],
     documents: ['Cerere de înscriere'],
-    curriculum: [
-      { title: 'Misiune prin sport', manual: 'Taekwon-do / Fotbal', desc: 'Învață cum să folosești sportul pentru a construi relații și a crea oportunități de evanghelizare.' },
-      { title: 'Studiu biblic inductiv', manual: 'Diverse manuale', desc: 'Dobândește instrumentele necesare pentru a studia și preda Scriptura clar și aplicabil.' },
-      { title: 'Mentorare și ucenicizare', manual: 'Principii de ucenicie', desc: 'Învață cum să investești în oameni și să formezi ucenici care vor influența la rândul lor pe alții.' },
-      { title: 'Leadership și dezvoltarea lucrării', manual: 'Principii practice', desc: 'Dezvoltă abilități practice pentru coordonarea grupelor, organizarea activităților și formarea noilor lideri.' },
-    ],
+    curriculum: [],
     structure: [
       'Program de 3 ani',
       'Două luni de studiu intensiv în fiecare an',
@@ -306,8 +310,13 @@ export const programs: ProgramData[] = [
       { title: 'Evanghelizare prin sport', desc: 'Vei fi pregătit să folosești sportul ca instrument de evanghelizare.' },
       { title: 'Ucenicizare practică', desc: 'Vei dezvolta o lucrare cu impact în comunitatea ta.' },
     ],
-    ctaPrimary: { label: 'Descoperă programul complet', href: '/#contact' },
-    ctaSecondary: { label: 'Accesează site-ul IMS', href: '/#contact' },
+    testimonials: [
+      { name: 'Sorin Dragnea', location: 'România', photo: '/programs/ims-sorin.png', quote: 'După primul an, am deschis două grupe de Taekwon-do într-un sat din Călărași, cu 50 de copii. Școala m-a echipat cu metode eficiente de predare și mentorare, iar acum văd deja impactul asupra tinerei generații. Am învățat să trăiesc prin credință și să slujesc cu excelență.' },
+      { name: 'Nardeen Ghatas', location: 'Egipt', photo: '/programs/ims-nardeen.png', quote: 'Școala Internațională de Misiune a revoluționat modul în care predau Biblia și sportul. Copiii din grupul meu înțeleg mai bine Scriptura datorită metodelor creative pe care le-am învățat la școală. Taekwon-do-ul a devenit un instrument eficient de ucenicizare, iar elevii mei sunt motivați și receptivi.' },
+      { name: 'Sergey Zhurba', location: 'Rusia', photo: '/programs/ims-sergey.png', quote: 'Școala a fost o experiență care mi-a schimbat viața. Programul mi-a oferit o perspectivă complet nouă asupra misiunii, învățându-mă cum să combin sportul cu evanghelizarea. După absolvire, am început să predau Taekwon-do și să formez grupe de tineri care nu doar se antrenează, ci învață să-L urmeze pe Hristos.' },
+    ],
+    ctaPrimary: { label: 'Descoperă programul complet', href: 'https://ims.eurasiaprecept.org' },
+    ctaSecondary: { label: 'Accesează site-ul IMS', href: 'https://ims.eurasiaprecept.org' },
   },
   {
     slug: 'lucrare-copii',

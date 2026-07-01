@@ -188,12 +188,7 @@ export const programsEn: Record<string, ProgramTranslation> = {
       'Christians who want to reach the new generation in a relevant way',
     ],
     documents: ['Application form'],
-    curriculum: [
-      { title: 'Mission through sport', manual: 'Taekwondo / Football', desc: 'Learn how to use sport to build relationships and create opportunities for evangelism.' },
-      { title: 'Inductive Bible study', manual: 'Various manuals', desc: 'Gain the tools needed to study and teach Scripture clearly and applicably.' },
-      { title: 'Mentoring and discipleship', manual: 'Discipleship principles', desc: 'Learn how to invest in people and make disciples who will in turn influence others.' },
-      { title: 'Leadership & ministry development', manual: 'Practical principles', desc: 'Develop practical skills for coordinating groups, organizing activities, and forming new leaders.' },
-    ],
+    curriculum: [],
     structure: [
       '3-year program',
       'Two months of intensive study per year',

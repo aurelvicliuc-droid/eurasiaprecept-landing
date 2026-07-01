@@ -15,13 +15,10 @@ export default function VisionBanner() {
       >
         <SectionEyebrow className="text-teal mb-6 block">{t.vision.eyebrow}</SectionEyebrow>
         <blockquote>
-          <p className="font-['var(--font-display)'] italic text-green-dark leading-[1.55] max-w-[860px] mx-auto mb-5
-            text-[clamp(20px,2.8vw,30px)]">
+          <p className="font-['var(--font-display)'] italic text-green-dark leading-[1.55] max-w-[900px] mx-auto
+            text-[clamp(19px,2.5vw,28px)]">
             {t.vision.quote}
           </p>
-          <footer className="text-[15px] text-text-muted tracking-[0.04em]">
-            {t.vision.author}
-          </footer>
         </blockquote>
       </motion.div>
     </div>

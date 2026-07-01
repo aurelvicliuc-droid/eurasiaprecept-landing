@@ -47,15 +47,15 @@ export const translations = {
     },
     vision: {
       eyebrow: 'Viziunea institutului',
-      quote: '„A pregăti lideri care au o relație personală transformatoare cu Dumnezeu prin studiul Cuvântului și sunt capabili să influențeze pe alții."',
-      author: '— Vasile Filat, Director Precept Eurasia',
+      quote: 'Liderii de studiu biblic sunt pregătiți să conducă grupuri de studiu inductiv, să predea Scriptura cu credincioșie, să ucenicizeze și să mentoreze alți credincioși, să coordoneze lucrări și să formeze noi lideri, astfel încât Cuvântul lui Dumnezeu să transforme vieți și să se răspândească din generație în generație.',
+      author: '',
     },
     shop: {
       eyebrow: 'Materiale de studiu',
       heading: 'Resurse',
       headingEm: 'biblice',
       subtext: 'Materiale bazate direct pe textul Bibliei — pentru studiu individual, grup sau tabere.',
-      viewAll: 'Vezi tot magazinul',
+      viewAll: 'Descoperă materialele',
       buy: 'Cumpără',
     },
     testimonials: {
@@ -225,15 +225,15 @@ export const translations = {
     },
     vision: {
       eyebrow: 'Our vision',
-      quote: '"To prepare leaders who have a transformative personal relationship with God through the study of His Word and are able to influence others."',
-      author: '— Vasile Filat, Director of Precept Eurasia',
+      quote: 'Bible study leaders are equipped to lead inductive study groups, teach Scripture faithfully, disciple and mentor other believers, coordinate ministries and raise up new leaders — so that the Word of God transforms lives and spreads from generation to generation.',
+      author: '',
     },
     shop: {
       eyebrow: 'Study materials',
       heading: 'Biblical',
       headingEm: 'resources',
       subtext: 'Materials based directly on the biblical text — for individual study, groups, or camps.',
-      viewAll: 'View full shop',
+      viewAll: 'Discover the materials',
       buy: 'Buy',
     },
     testimonials: {
@@ -403,15 +403,15 @@ export const translations = {
     },
     vision: {
       eyebrow: 'Видение института',
-      quote: '«Готовить лидеров, которые имеют личные преобразующие отношения с Богом через изучение Его Слова и способны влиять на других.»',
-      author: '— Василий Филат, директор Precept Eurasia',
+      quote: 'Лидеры изучения Библии готовы вести группы индуктивного изучения, верно преподавать Писание, наставлять и воспитывать других верующих, координировать служения и готовить новых лидеров — чтобы Слово Божье преображало жизни и распространялось из поколения в поколение.',
+      author: '',
     },
     shop: {
       eyebrow: 'Учебные материалы',
       heading: 'Библейские',
       headingEm: 'ресурсы',
       subtext: 'Материалы, основанные непосредственно на тексте Библии — для личного изучения, групп или лагерей.',
-      viewAll: 'Весь магазин',
+      viewAll: 'Откройте материалы',
       buy: 'Купить',
     },
     testimonials: {

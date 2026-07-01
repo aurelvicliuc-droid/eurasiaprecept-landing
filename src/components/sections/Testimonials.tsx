@@ -1,5 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import SectionEyebrow from '@/components/ui/SectionEyebrow'
 import AnimatedSection from '@/components/ui/AnimatedSection'
 import { useLanguage } from '@/lib/i18n/context'
@@ -10,7 +11,7 @@ export default function Testimonials() {
 
   return (
     <section className="bg-beige py-24" aria-labelledby="testimonials-heading">
-      <div className="max-w-[1200px] mx-auto px-6 lg:px-12">
+      <div className="px-6 lg:px-12">
         <AnimatedSection className="mb-12">
           <SectionEyebrow>{t.testimonials.eyebrow}</SectionEyebrow>
           <h2
@@ -26,7 +27,7 @@ export default function Testimonials() {
           </p>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {items.map((item, i) => (
             <motion.div
               key={i}
@@ -47,13 +48,9 @@ export default function Testimonials() {
                   {item.text}
                 </p>
                 <footer className="flex items-center gap-3">
-                  <div
-                    className="w-9 h-9 rounded-full bg-teal/15 flex items-center justify-center flex-shrink-0
-                      font-['var(--font-display)'] italic text-[14px] text-teal font-medium"
-                    aria-hidden="true"
-                  >
-                    {item.initials}
-                  </div>
+                  <span className="relative w-11 h-11 rounded-full overflow-hidden flex-shrink-0 bg-teal/15 ring-1 ring-beige-dark">
+                    <Image src={item.photo} alt={item.name} fill sizes="44px" className="object-cover" />
+                  </span>
                   <div>
                     <p className="text-[14px] font-medium text-text-dark leading-none mb-1">{item.name}</p>
                     <p className="text-[12px] text-text-muted">{item.role}</p>

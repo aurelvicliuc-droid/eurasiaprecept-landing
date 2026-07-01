@@ -1,13 +1,25 @@
 'use client'
 import 'leaflet/dist/leaflet.css'
 import { useEffect, useState } from 'react'
-import { MapContainer, TileLayer, CircleMarker, Tooltip, useMap, useMapEvents } from 'react-leaflet'
-import { LatLngBounds } from 'leaflet'
+import { MapContainer, TileLayer, Marker, Tooltip, useMap, useMapEvents } from 'react-leaflet'
+import { LatLngBounds, divIcon } from 'leaflet'
 import { locations } from '@/lib/locations'
 
-// Pin mare când e depărtat, mic când e apropiat (zoom).
-function radiusForZoom(zoom: number) {
-  return Math.max(4, Math.round(14 - zoom))
+// Iconiță de pin verde (SVG) — mare când e depărtat, mică când e apropiat (zoom).
+function pinIcon(zoom: number) {
+  const w = Math.round(Math.max(18, 40 - zoom * 2.2))
+  const h = Math.round(w * 1.32)
+  const html = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 24 32" style="display:block;filter:drop-shadow(0 2px 2px rgba(0,0,0,.35))">
+    <path d="M12 0C5.9 0 1 4.9 1 11c0 7.7 9.4 19.4 10.2 20.4a1 1 0 0 0 1.6 0C13.6 30.4 23 18.7 23 11 23 4.9 18.1 0 12 0z" fill="#2e7d32" stroke="#ffffff" stroke-width="1.4"/>
+    <circle cx="12" cy="11" r="4" fill="#ffffff"/>
+  </svg>`
+  return divIcon({
+    html,
+    className: 'precept-pin',
+    iconSize: [w, h],
+    iconAnchor: [w / 2, h],
+    tooltipAnchor: [0, -h + 4],
+  })
 }
 
 function FitToLocations() {
@@ -21,22 +33,15 @@ function FitToLocations() {
 
 function Markers() {
   const map = useMap()
-  const [radius, setRadius] = useState(() => radiusForZoom(map.getZoom()))
-  useMapEvents({ zoomend: () => setRadius(radiusForZoom(map.getZoom())) })
+  const [icon, setIcon] = useState(() => pinIcon(map.getZoom()))
+  useMapEvents({ zoomend: () => setIcon(pinIcon(map.getZoom())) })
 
   return (
     <>
       {locations.map((l) => (
-        <CircleMarker
-          key={`${l.country}-${l.city}`}
-          center={[l.lat, l.lng]}
-          radius={radius}
-          pathOptions={{ color: '#ffffff', weight: 1.5, fillColor: '#2e7d32', fillOpacity: 1 }}
-        >
-          <Tooltip direction="top" offset={[0, -radius]}>
-            {l.city}, {l.country}
-          </Tooltip>
-        </CircleMarker>
+        <Marker key={`${l.country}-${l.city}`} position={[l.lat, l.lng]} icon={icon}>
+          <Tooltip direction="top">{l.city}</Tooltip>
+        </Marker>
       ))}
     </>
   )

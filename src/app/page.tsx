@@ -7,6 +7,7 @@ import Stats from '@/components/sections/Stats'
 import Programs from '@/components/sections/Programs'
 import VisionBanner from '@/components/sections/VisionBanner'
 import Testimonials from '@/components/sections/Testimonials'
+import LocationsMap from '@/components/sections/LocationsMap'
 import Shop from '@/components/sections/Shop'
 import Contact from '@/components/sections/Contact'
 import AboutModal from '@/components/modals/AboutModal'
@@ -28,6 +29,7 @@ export default function Home() {
         <VisionBanner />
 
         <Testimonials />
+        <LocationsMap />
         <Shop />
         <Contact />
       </main>

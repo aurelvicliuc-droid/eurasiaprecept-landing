@@ -96,7 +96,7 @@ const jsonLd = {
     itemListElement: [
       { '@type': 'Course', name: 'Institutul Biblic Precept', url: `${BASE_URL}/programe/institutul-biblic` },
       { '@type': 'Course', name: 'Școala TIMOTEI', url: `${BASE_URL}/programe/scoala-timotei` },
-      { '@type': 'Course', name: 'English for a New Life A1', url: `${BASE_URL}/programe/efnl-a1` },
+      { '@type': 'Course', name: 'English for a New Life', url: `${BASE_URL}/programe/efnl` },
       { '@type': 'Course', name: 'Misiune prin Sport', url: `${BASE_URL}/programe/misiune-sport` },
     ],
   },

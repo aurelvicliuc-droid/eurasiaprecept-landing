@@ -54,20 +54,20 @@ const programs: Program[] = [
   {
     id: 'copii',
     slug: 'lucrare-copii',
-    names: { ro: 'Lucrare cu Copii', en: 'Ministry with Children', ru: 'Служение детям' },
+    names: { ro: 'Lucrare cu Copiii', en: 'Ministry with Children', ru: 'Служение детям' },
     descs: {
       ro: 'Slujitori care înțeleg specificul lucrului cu copiii și le predau Cuvântul lui Dumnezeu, formând o fundație biblică solidă.',
       en: 'Servants who understand the specifics of working with children and teach them the Word of God, building a solid biblical foundation.',
       ru: 'Служители, понимающие специфику работы с детьми и обучающие их Слову Божьему, закладывающие твёрдый библейский фундамент.',
     },
-    badges: { ro: 'Lucrare cu copii', en: 'Children\'s ministry', ru: 'Детское служение' },
+    badges: { ro: 'Lucrare cu copiii', en: 'Children\'s ministry', ru: 'Детское служение' },
     category: 'tineri',
     badgeVariant: 'teal',
     icon: <Users size={18} strokeWidth={1.5} />,
   },
   {
     id: 'english',
-    slug: 'efnl-a1',
+    slug: 'efnl',
     names: { ro: 'English for a New Life', en: 'English for a New Life', ru: 'Английский для новой жизни' },
     descs: {
       ro: 'Profesori de limbă engleză implicați în evanghelism și ucenicie, utilizând engleza ca instrument de misiune.',

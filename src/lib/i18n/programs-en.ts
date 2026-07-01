@@ -4,7 +4,7 @@ export interface ProgramTranslation {
   overview: string
   whoCanApply: string[]
   documents: string[]
-  curriculum: Array<{ title: string; manual?: string; manualHref?: string; manuals?: Array<{ title: string; href?: string; alternatives?: Array<{ title: string; href?: string }> }>; desc: string }>
+  curriculum: Array<{ title: string; manual?: string; manualHref?: string; manuals?: Array<{ title: string; href?: string; alternatives?: Array<{ title: string; href?: string }> }>; desc?: string }>
   structure: string[]
   outcomes?: Array<{ title: string; desc: string }>
   ctaPrimary: { label: string; href?: string }
@@ -45,7 +45,7 @@ export const programsEn: Record<string, ProgramTranslation> = {
       'Periodic exams and evaluations',
     ],
     ctaPrimary: { label: 'Apply to the Bible Institute' },
-    ctaSecondary: { label: 'Download pastoral recommendation form' },
+    ctaSecondary: { label: 'Download pastoral recommendation form', href: '/forms/institut-recomandare-en.docx' },
     downloadLabel: 'Download pastoral recommendation form',
   },
 
@@ -82,6 +82,7 @@ export const programsEn: Record<string, ProgramTranslation> = {
     ],
     ctaPrimary: { label: 'Apply to TIMOTHY School' },
     ctaSecondary: { label: 'Download recommendation form', href: '/forms/timotei-angajament-en.doc' },
+    ctaTertiary: { label: 'Download the school brochure' },
     downloadLabel: 'Download recommendation form',
   },
 
@@ -145,88 +146,33 @@ export const programsEn: Record<string, ProgramTranslation> = {
     ctaSecondary: { label: 'Contact us for more information' },
   },
 
-  'efnl-a1': {
-    name: 'EFNL A1',
-    tagline: 'Training to teach English at beginner level',
+  'efnl': {
+    name: 'English for a New Life',
+    tagline: 'Teaching English as a mission tool — levels A1, A2 and for children',
     overview:
-      'This program prepares teachers and leaders who want to use the English language for evangelism and discipleship through study groups, clubs, and missionary projects. The program uses materials specially developed for learning English based on biblical truths.',
+      'English for a New Life (EFNL) prepares teachers and leaders who want to use the English language for evangelism and discipleship through study groups, clubs, and missionary projects. The program has three levels — A1, A2 and EFNL for Kids — using materials specially developed based on biblical truths.',
     whoCanApply: [
       'People who want to use English as a mission tool',
       'Leaders who want to coordinate English groups and clubs',
+      'People who work with children in a church or educational context',
     ],
     documents: ['Application form'],
     curriculum: [
-      { title: 'English for a New Life', manual: 'EFNL A1 Level PDF', desc: 'Complete material for teaching English at beginner level with integrated biblical content.' },
-      { title: 'Biblical Management', manual: 'Biblical Management PDF', desc: 'Management and organizational principles based on Scripture.' },
+      { title: 'EFNL A1', manuals: [{ title: 'English for a New Life – A1' }, { title: 'Biblical Management' }], desc: 'A textbook for teaching English to teenagers, young people and adults at beginner level.' },
+      { title: 'EFNL A2', manuals: [{ title: 'English for a New Life – A2' }, { title: 'Rediscover Inner Peace' }], desc: 'A continuation of level A1, developing communication skills through interactive lessons and applied Bible studies.' },
+      { title: 'EFNL for Kids', manuals: [{ title: 'English for a New Life – Kids' }, { title: 'Honor Your Parents' }], desc: 'A curriculum specially created for children, combining interactive activities, games, songs and Bible lessons to make learning English attractive and effective.' },
     ],
     structure: [
-      'Teaching EFNL A1 courses',
-      'Leading English groups and clubs',
+      '3 EFNL levels',
+      'Teaching courses and leading English groups',
       'Using English as a tool for evangelism and discipleship',
     ],
     outcomes: [
-      { title: 'Teach EFNL A1', desc: 'You will be qualified to teach courses at the beginner level.' },
+      { title: 'Teach at any level', desc: 'You will be qualified to teach EFNL A1, A2 or for children.' },
       { title: 'Coordinate groups', desc: 'You will be able to lead English groups and clubs.' },
-      { title: 'Mission through English', desc: 'You will use English as a practical tool for evangelism.' },
+      { title: 'Mission through English', desc: 'You will use English as a practical tool for evangelism and discipleship.' },
     ],
-    ctaPrimary: { label: 'Apply for EFNL A1' },
-    ctaSecondary: { label: 'Download PDF materials' },
-    ctaTertiary: { label: 'Become an EFNL Teacher' },
-  },
-
-  'efnl-a2': {
-    name: 'EFNL A2',
-    tagline: 'Training to teach English at intermediate level',
-    overview:
-      'This program develops the skills needed to coordinate EFNL groups at the intermediate level and to use biblical materials in educational and missionary contexts.',
-    whoCanApply: [
-      'EFNL A1 graduates',
-      'People who want to coordinate and mentor other EFNL teachers',
-    ],
-    documents: ['EFNL A1 Certificate', 'Application form'],
-    curriculum: [
-      { title: 'English for a New Life', manual: 'EFNL A2 Level PDF', desc: 'Material for teaching English at intermediate level.' },
-      { title: 'Rediscover Inner Peace', manual: 'Rediscover Inner Peace PDF', desc: 'Biblical material for study at intermediate level.' },
-    ],
-    structure: [
-      'Teaching EFNL A2 courses',
-      'Coordinating intermediate level groups',
-      'Preparing and mentoring new EFNL teachers',
-    ],
-    outcomes: [
-      { title: 'Teach EFNL A2', desc: 'You will be qualified to teach at intermediate level.' },
-      { title: 'Mentor teachers', desc: 'You will be able to prepare and mentor new EFNL teachers.' },
-    ],
-    ctaPrimary: { label: 'Apply for EFNL A2' },
-    ctaSecondary: { label: 'Download PDF materials' },
-    ctaTertiary: { label: 'Become an EFNL Teacher' },
-  },
-
-  'efnl-kids': {
-    name: 'EFNL Kids',
-    tagline: 'Training to teach English to children',
-    overview:
-      'The program prepares teachers and workers who want to use the English language in ministry with children through interactive lessons, practical activities, and biblical materials adapted to their age.',
-    whoCanApply: [
-      'People who work with children in a church or educational context',
-      'Leaders who want to organize clubs and camps for children',
-    ],
-    documents: ['Application form'],
-    curriculum: [
-      { title: 'EFNL for Kids', manual: 'EFNL for Kids PDF', desc: 'Interactive material for teaching English to children with biblical content.' },
-      { title: 'Honor Your Parents', manual: 'Honor Your Parents PDF', desc: 'Biblical material adapted for children about respect and family.' },
-    ],
-    structure: [
-      'Leading EFNL Kids groups',
-      'Organizing clubs and camps for children',
-      'Using EFNL materials in children\'s ministry',
-    ],
-    outcomes: [
-      { title: 'Teach children', desc: 'You will be qualified to lead EFNL Kids groups.' },
-      { title: 'Organize activities', desc: 'You will be able to organize clubs and camps for children.' },
-    ],
-    ctaPrimary: { label: 'Apply for EFNL Kids' },
-    ctaSecondary: { label: 'Download PDF materials' },
+    ctaPrimary: { label: 'Apply to English for a New Life' },
     ctaTertiary: { label: 'Become an EFNL Teacher' },
   },
 
@@ -267,24 +213,38 @@ export const programsEn: Record<string, ProgramTranslation> = {
     name: 'Ministry with Children',
     tagline: 'Training servants who invest in the next generation',
     overview:
-      'The Ministry with Children program trains servants who understand the specifics of working with children and teach them the Word of God, building a solid biblical foundation in their lives.',
+      'Training spiritually mature leaders, well grounded in doctrine and methodically equipped to serve children and raise a generation that knows God from Scripture.',
     whoCanApply: [
-      'People involved in children\'s ministry in the local church',
-      'Educators and teachers who want to integrate Bible study',
-      'Active members of a local church',
+      'Sunday school teachers',
+      'School teachers',
+      'Social workers',
+      'Sports club coaches',
+      'Leaders and coordinators of children\'s clubs, after-school programs and camps',
+      'People recommended by their local church who want to get involved in children\'s ministry',
     ],
     documents: ['Application form', 'Pastoral recommendation'],
     curriculum: [
-      { title: 'Specifics of children\'s ministry', manual: 'Precept Kids Materials', desc: 'Understand the stages of child development and how to adapt Bible study for each age group.' },
-      { title: 'Interactive teaching methods', manual: 'Various materials', desc: 'Gain practical and creative tools for teaching Scripture to children in a relevant way.' },
-      { title: 'Character formation', manual: 'Biblical materials for children', desc: 'Learn how to form Christian values and character in children\'s lives through the study of the Word.' },
+      { title: 'Session 1', manuals: [{ title: 'Wrong Way, Jonah!' }, { title: 'Who Created the World?' }] },
+      { title: 'Session 2', manuals: [{ title: 'Journey into the Digital World' }, { title: 'How to Crack the Covenant Code' }] },
+      { title: 'Session 3', manuals: [{ title: 'Oh No, I\'m in Trouble!' }, { title: 'Lord, Teach Me to Pray!' }] },
+      { title: 'Session 4', manuals: [{ title: 'Lord, What Is Your Name?' }, { title: 'Who Is Jesus?' }] },
+      { title: 'Session 5', manuals: [{ title: 'Abraham – the Brave Explorer' }, { title: 'God\'s Amazing Creation' }] },
+      { title: 'Session 6', manuals: [{ title: 'Joseph – an Extraordinary Man of God' }, { title: 'How to Become God\'s Champion' }] },
+      { title: 'Session 7', manuals: [{ title: 'Sexuality from a Biblical Perspective' }, { title: 'When I\'m Afraid' }] },
     ],
     structure: [
       'Intensive training sessions',
       'Supervised practice in children\'s ministry',
       'Mentoring from instructors',
     ],
+    outcomes: [
+      { title: 'Biblical & spiritual formation', desc: 'Develop a Christian character and a mature faith.' },
+      { title: 'Psycho-pedagogical training', desc: 'Gain skills for effectively teaching children.' },
+      { title: 'Teaching Scripture to children', desc: 'Learn to teach Scripture clearly and relevantly.' },
+      { title: 'Mentoring & coordination', desc: 'Equip and coordinate children\'s ministry effectively.' },
+    ],
     ctaPrimary: { label: 'Apply now' },
-    ctaSecondary: { label: 'Contact us' },
+    ctaSecondary: { label: 'Download pastoral recommendation form', href: '/forms/institut-recomandare-en.docx' },
+    downloadLabel: 'Download pastoral recommendation form',
   },
 }

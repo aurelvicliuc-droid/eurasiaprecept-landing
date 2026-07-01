@@ -14,7 +14,7 @@ export interface CourseItem {
   manualHref?: string
   /** Multiple manuals taught in a session, each linkable to the shop. */
   manuals?: ManualRef[]
-  desc: string
+  desc?: string
 }
 
 export interface Outcome {
@@ -42,9 +42,12 @@ export interface ProgramData {
   outcomes?: Outcome[]
   ctaPrimary: { label: string; href: string }
   ctaSecondary?: { label: string; href: string }
-  ctaTertiary?: { label: string; href: string }
+  ctaTertiary?: { label: string; href: string; download?: boolean }
   downloadLabel?: string
 }
+
+// Portalul public de înscriere la sesiuni (folosit de butonul „Aplică" la toate programele, mai puțin IMS)
+export const REGISTER_URL = 'https://web.eurasiaprecept.org/public?filtered=true&page=1'
 
 export const programs: ProgramData[] = [
   {
@@ -56,6 +59,19 @@ export const programs: ProgramData[] = [
     category: 'tineri',
     heroImage: '/programs/institutul-biblic.jpg',
     heroImageAlt: 'Institutul Biblic Precept — studiu și formare',
+    gallery: [
+      '/programs/institut-gallery-1.jpg',
+      '/programs/institut-gallery-2.jpg',
+      '/programs/institut-gallery-3.jpg',
+      '/programs/institut-gallery-4.jpg',
+      '/programs/institut-gallery-5.jpg',
+      '/programs/institut-gallery-6.jpg',
+      '/programs/institut-gallery-7.jpg',
+      '/programs/institut-gallery-8.jpg',
+      '/programs/institut-gallery-9.jpg',
+      '/programs/institut-gallery-10.jpg',
+      '/programs/institut-gallery-11.jpg',
+    ],
     overview:
       'Institutul Biblic Precept este un program de pregătire spirituală și practică destinat credincioșilor care doresc să aprofundeze Cuvântul lui Dumnezeu, să crească în caracter și să fie echipați pentru slujire și formarea de ucenici.',
     whoCanApply: [
@@ -83,8 +99,8 @@ export const programs: ProgramData[] = [
       'Practică obligatorie de ucenicizare între sesiuni',
       'Examene și evaluări periodice',
     ],
-    ctaPrimary: { label: 'Aplică la Institutul Biblic', href: '/#contact' },
-    ctaSecondary: { label: 'Descarcă recomandarea pastorală', href: '/#contact' },
+    ctaPrimary: { label: 'Aplică la Institutul Biblic', href: REGISTER_URL },
+    ctaSecondary: { label: 'Descarcă recomandarea pastorală', href: '/forms/institut-recomandare-ro.doc' },
     downloadLabel: 'Descarcă formularul de recomandare pastorală',
   },
   {
@@ -134,8 +150,9 @@ export const programs: ProgramData[] = [
       { title: 'Formarea de ucenici', desc: 'Capacitatea de a influența și forma alți tineri pentru Hristos.' },
       { title: 'Leadership generațional', desc: 'Lideri care influențează generația lor cu credință și caracter.' },
     ],
-    ctaPrimary: { label: 'Aplică la Școala TIMOTEI', href: '/#contact' },
+    ctaPrimary: { label: 'Aplică la Școala TIMOTEI', href: REGISTER_URL },
     ctaSecondary: { label: 'Descarcă formularul de recomandare', href: '/forms/timotei-angajament-ro.docx' },
+    ctaTertiary: { label: 'Descarcă broșura școlii', href: '/forms/scoala-timotei-brosura.pdf', download: true },
     downloadLabel: 'Descarcă formularul de recomandare',
   },
   {
@@ -172,7 +189,7 @@ export const programs: ProgramData[] = [
       { title: 'Echipare pentru slujire strategică', desc: 'Vei fi pregătit pentru responsabilități sporite în biserică, mentorare și dezvoltarea altor lideri.' },
       { title: 'Impact multiplicator', desc: 'Vei dobândi instrumentele necesare pentru a forma noi lideri și pentru a contribui la extinderea lucrării lui Dumnezeu.' },
     ],
-    ctaPrimary: { label: 'Continuă la Nivelul II', href: '/#contact' },
+    ctaPrimary: { label: 'Continuă la Nivelul II', href: REGISTER_URL },
     ctaSecondary: { label: 'Solicită mai multe informații', href: '/#contact' },
   },
   {
@@ -206,108 +223,53 @@ export const programs: ProgramData[] = [
       { title: 'Maturitate scripturală', desc: 'Vei fi echipat să studiezi, să predai și să aplici Scriptura cu maturitate.' },
       { title: 'Formare de lideri', desc: 'Vei influența și forma alți oameni pentru slujire în generațiile viitoare.' },
     ],
-    ctaPrimary: { label: 'Descoperă întregul program', href: '/#contact' },
+    ctaPrimary: { label: 'Descoperă întregul program', href: REGISTER_URL },
     ctaSecondary: { label: 'Contactează-ne pentru mai multe informații', href: '/#contact' },
   },
   {
-    slug: 'efnl-a1',
-    name: 'EFNL A1',
-    tagline: 'Training pentru predarea limbii engleze la nivel începător',
+    slug: 'efnl',
+    name: 'English for a New Life',
+    tagline: 'Predarea limbii engleze ca instrument de misiune — nivelurile A1, A2 și pentru copii',
     badge: 'English',
     badgeColor: 'purple',
     category: 'specializat',
-    heroImage: '/programs/efnl-a1.jpg',
-    heroImageAlt: 'English for a New Life — predare și evanghelism',
+    heroImage: '/programs/efnl.jpg',
+    heroImageAlt: 'English for a New Life — predare și evanghelism prin limba engleză',
+    gallery: [
+      '/programs/efnl-gallery-1.jpg',
+      '/programs/efnl-gallery-2.jpg',
+      '/programs/efnl-gallery-3.jpg',
+      '/programs/efnl-gallery-4.jpg',
+      '/programs/efnl-gallery-5.jpg',
+      '/programs/efnl-gallery-6.jpg',
+      '/programs/efnl-gallery-7.jpg',
+      '/programs/efnl-gallery-8.jpg',
+    ],
     overview:
-      'Acest program pregătește profesori și lideri care doresc să folosească limba engleză pentru evanghelizare și ucenicie prin grupe de studiu, cluburi și proiecte misionare. Programul folosește materiale dezvoltate special pentru învățarea limbii engleze pe baza adevărurilor biblice.',
+      'English for a New Life (EFNL) pregătește profesori și lideri care doresc să folosească limba engleză pentru evanghelizare și ucenicie, prin grupe de studiu, cluburi și proiecte misionare. Programul are trei niveluri — A1, A2 și EFNL for Kids — cu manuale dezvoltate special pe baza adevărurilor biblice.',
     whoCanApply: [
       'Persoane care doresc să folosească engleza ca instrument misionar',
       'Lideri care vor să coordoneze grupe și cluburi de engleză',
+      'Persoane care lucrează cu copii în context eclezial sau educațional',
     ],
     documents: ['Cerere de înscriere'],
     curriculum: [
-      { title: 'English for a New Life', manual: 'EFNL A1 Level PDF', desc: 'Material complet pentru predarea limbii engleze la nivel începător cu conținut biblic integrat.' },
-      { title: 'Biblical Management', manual: 'Biblical Management PDF', desc: 'Principii de management și organizare bazate pe Scriptură.' },
+      { title: 'EFNL A1', manuals: [{ title: 'English for a New Life – A1', href: 'https://shop.eurasiaprecept.org/catalog/english-for-a-new-life-a1-level' }, { title: 'Biblical Management', href: 'https://shop.eurasiaprecept.org/catalog/managementul-biblic-2' }], desc: 'Manual destinat predării limbii engleze adolescenților, tinerilor și adulților aflați la nivel începător.' },
+      { title: 'EFNL A2', manuals: [{ title: 'English for a New Life – A2', href: 'https://shop.eurasiaprecept.org/catalog/english-for-a-new-life-a2-level' }, { title: 'Rediscover Inner Peace', href: 'https://shop.eurasiaprecept.org/catalog/rediscover-inner-peace' }], desc: 'Continuarea nivelului A1, dezvoltând competențele de comunicare prin lecții interactive și studii biblice aplicate.' },
+      { title: 'EFNL for Kids', manuals: [{ title: 'English for a New Life – Kids', href: 'https://shop.eurasiaprecept.org/catalog/efnl-for-kids-2' }, { title: 'Honor Your Parents', href: 'https://shop.eurasiaprecept.org/catalog/honor-your-parents' }], desc: 'Curriculum special creat pentru copii, care combină activități interactive, jocuri, cântece și lecții biblice pentru a face învățarea limbii engleze atractivă și eficientă.' },
     ],
     structure: [
-      'Predarea cursurilor EFNL A1',
-      'Conducerea grupelor și cluburilor de limbă engleză',
+      '3 niveluri EFNL',
+      'Predarea cursurilor și conducerea grupelor de limba engleză',
       'Folosirea limbii engleze ca instrument pentru evanghelizare și ucenicie',
     ],
     outcomes: [
-      { title: 'Preda EFNL A1', desc: 'Vei fi calificat să predai cursurile la nivel începător.' },
-      { title: 'Coordona grupe', desc: 'Vei putea conduce grupe și cluburi de limba engleză.' },
-      { title: 'Misiune prin engleză', desc: 'Vei folosi engleza ca instrument practic de evanghelizare.' },
+      { title: 'Predă la orice nivel', desc: 'Vei fi calificat să predai EFNL A1, A2 sau pentru copii.' },
+      { title: 'Coordonează grupe', desc: 'Vei putea conduce grupe și cluburi de limba engleză.' },
+      { title: 'Misiune prin engleză', desc: 'Vei folosi engleza ca instrument practic de evanghelizare și ucenicie.' },
     ],
-    ctaPrimary: { label: 'Aplică pentru EFNL A1', href: '/#contact' },
-    ctaSecondary: { label: 'Descarcă materialele PDF', href: '/#contact' },
-    ctaTertiary: { label: 'Become an EFNL Teacher', href: 'https://efnl.org' },
-  },
-  {
-    slug: 'efnl-a2',
-    name: 'EFNL A2',
-    tagline: 'Training pentru predarea limbii engleze la nivel intermediar',
-    badge: 'English',
-    badgeColor: 'purple',
-    category: 'specializat',
-    heroImage: 'https://images.unsplash.com/photo-1546410531-bb4caa6b4d01?auto=format&fit=crop&w=1400&q=80',
-    heroImageAlt: 'Clasă de engleză — nivel intermediar',
-    overview:
-      'Acest program dezvoltă abilitățile necesare pentru coordonarea grupelor EFNL la nivel intermediar și pentru folosirea materialelor biblice în contexte educaționale și misionare.',
-    whoCanApply: [
-      'Absolvenți EFNL A1',
-      'Persoane care doresc să coordoneze și să mentorizeze alți profesori EFNL',
-    ],
-    documents: ['Certificat EFNL A1', 'Cerere de înscriere'],
-    curriculum: [
-      { title: 'English for a New Life', manual: 'EFNL A2 Level PDF', desc: 'Material pentru predarea limbii engleze la nivel intermediar.' },
-      { title: 'Rediscover Inner Peace', manual: 'Rediscover Inner Peace PDF', desc: 'Material biblic pentru studiu la nivel intermediar.' },
-    ],
-    structure: [
-      'Predarea cursurilor EFNL A2',
-      'Coordonarea grupelor de nivel intermediar',
-      'Pregătirea și mentorizarea noilor profesori EFNL',
-    ],
-    outcomes: [
-      { title: 'Preda EFNL A2', desc: 'Vei fi calificat să predai la nivel intermediar.' },
-      { title: 'Mentoriza profesori', desc: 'Vei putea pregăti și mentoriza noi profesori EFNL.' },
-    ],
-    ctaPrimary: { label: 'Aplică pentru EFNL A2', href: '/#contact' },
-    ctaSecondary: { label: 'Descarcă materialele PDF', href: '/#contact' },
-    ctaTertiary: { label: 'Become an EFNL Teacher', href: 'https://efnl.org' },
-  },
-  {
-    slug: 'efnl-kids',
-    name: 'EFNL Kids',
-    tagline: 'Training pentru predarea limbii engleze copiilor',
-    badge: 'English · Copii',
-    badgeColor: 'gold',
-    category: 'specializat',
-    heroImage: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1400&q=80',
-    heroImageAlt: 'Copii la ore de engleză — activități interactive',
-    overview:
-      'Programul pregătește profesori și lucrători care doresc să folosească limba engleză în lucrarea cu copiii prin lecții interactive, activități practice și materiale biblice adaptate vârstei lor.',
-    whoCanApply: [
-      'Persoane care lucrează cu copii în context eclezial sau educațional',
-      'Lideri care doresc să organizeze cluburi și tabere pentru copii',
-    ],
-    documents: ['Cerere de înscriere'],
-    curriculum: [
-      { title: 'EFNL for Kids', manual: 'EFNL for Kids PDF', desc: 'Material interactiv pentru predarea limbii engleze copiilor cu conținut biblic.' },
-      { title: 'Honor Your Parents', manual: 'Honor Your Parents PDF', desc: 'Material biblic adaptat pentru copii despre respect și familie.' },
-    ],
-    structure: [
-      'Conducerea grupelor EFNL Kids',
-      'Organizarea cluburilor și taberelor pentru copii',
-      'Folosirea materialelor EFNL în lucrarea cu copiii',
-    ],
-    outcomes: [
-      { title: 'Preda copiilor', desc: 'Vei fi calificat să conduci grupe EFNL Kids.' },
-      { title: 'Organiza activități', desc: 'Vei putea organiza cluburi și tabere pentru copii.' },
-    ],
-    ctaPrimary: { label: 'Aplică pentru EFNL Kids', href: '/#contact' },
-    ctaSecondary: { label: 'Descarcă materialele PDF', href: '/#contact' },
-    ctaTertiary: { label: 'Become an EFNL Teacher', href: 'https://efnl.org' },
+    ctaPrimary: { label: 'Aplică la English for a New Life', href: 'https://efnl.org/#programe' },
+    ctaTertiary: { label: 'Become an EFNL Teacher', href: 'https://efnl.org/#programe' },
   },
   {
     slug: 'misiune-sport',
@@ -349,33 +311,55 @@ export const programs: ProgramData[] = [
   },
   {
     slug: 'lucrare-copii',
-    name: 'Lucrare cu Copii',
+    name: 'Lucrare cu Copiii',
     tagline: 'Formarea slujitorilor care investesc în generația viitoare',
-    badge: 'Lucrare cu copii',
+    badge: 'Lucrare cu copiii',
     badgeColor: 'teal',
     category: 'tineri',
     heroImage: '/programs/lucrare-copii.jpg',
-    heroImageAlt: 'Lucrare cu Copii — formare și slujire',
+    heroImageAlt: 'Lucrare cu Copiii — formare și slujire',
+    gallery: [
+      '/programs/copii-gallery-1.jpg',
+      '/programs/copii-gallery-2.jpg',
+      '/programs/copii-gallery-3.jpg',
+      '/programs/copii-gallery-4.jpg',
+      '/programs/copii-gallery-5.jpg',
+      '/programs/copii-gallery-6.jpg',
+    ],
     overview:
-      'Programul Lucrare cu Copii formează slujitori care înțeleg specificul lucrului cu copiii și le predau Cuvântul lui Dumnezeu, formând o fundație biblică solidă în viața lor.',
+      'Formarea liderilor maturi spiritual, bine ancorați doctrinar și echipați metodic pentru a sluji copiii și a forma o generație care Îl cunoaște pe Dumnezeu din Scriptură.',
     whoCanApply: [
-      'Persoane implicate în lucrarea cu copii în biserica locală',
-      'Educatori și profesori care doresc să integreze studiul biblic',
-      'Membri activi ai unei biserici locale',
+      'Învățători de școală duminicală',
+      'Învățători în școli',
+      'Lucrători sociali',
+      'Antrenori ai cluburilor sportive',
+      'Lideri și coordonatori de cluburi pentru copii, programe after-school și tabere',
+      'Persoane recomandate de biserica locală care doresc să se implice în lucrarea cu copiii',
     ],
     documents: ['Cerere de înscriere', 'Recomandare pastorală'],
     curriculum: [
-      { title: 'Specificul lucrării cu copii', manual: 'Materiale Precept Kids', desc: 'Înțelege etapele de dezvoltare ale copilului și cum să adaptezi studiul biblic pentru fiecare vârstă.' },
-      { title: 'Metode interactive de predare', manual: 'Diverse materiale', desc: 'Dobândește instrumente practice și creative pentru a preda Scriptura copiilor într-un mod relevant.' },
-      { title: 'Formarea caracterului', manual: 'Materiale biblice pentru copii', desc: 'Învață cum să formezi valorile și caracterul creștin în viața copiilor prin studiul Cuvântului.' },
+      { title: 'Sesiunea 1', manuals: [{ title: 'Sens interzis, Iona!', href: 'https://shop.eurasiaprecept.org/catalog/sens-interzis-iona' }, { title: 'Cine a creat lumea?', href: 'https://shop.eurasiaprecept.org/catalog/cine-a-creat-lumea-print' }] },
+      { title: 'Sesiunea 2', manuals: [{ title: 'Călătoria în lumea digitală', href: 'https://shop.eurasiaprecept.org/catalog/journey-to-the-digital-world' }, { title: 'Cum să descifrezi codul legământului', href: 'https://shop.eurasiaprecept.org/catalog/cum-sa-descifram-codul-legamantului-format-pdf' }] },
+      { title: 'Sesiunea 3', manuals: [{ title: 'Vai, am dat de probleme!', href: 'https://shop.eurasiaprecept.org/catalog/vai-am-dat-de-probleme' }, { title: 'Doamne, învață-mă să mă rog!', href: 'https://shop.eurasiaprecept.org/catalog/doamne-invata-ma-sa-ma-rog' }] },
+      { title: 'Sesiunea 4', manuals: [{ title: 'Doamne, cum Te numești?', href: 'https://shop.eurasiaprecept.org/catalog/doamne-cum-te-numesti' }, { title: 'Cine este Isus?', href: 'https://shop.eurasiaprecept.org/catalog/cine-este-isus' }] },
+      { title: 'Sesiunea 5', manuals: [{ title: 'Avraam – exploratorul curajos', href: 'https://shop.eurasiaprecept.org/catalog/avraam-exploratorul-curajos' }, { title: 'Creația uimitoare a lui Dumnezeu', href: 'https://shop.eurasiaprecept.org/catalog/creatia-uimitoare-a-lui-dumnezeu' }] },
+      { title: 'Sesiunea 6', manuals: [{ title: 'Iosif – un om extraordinar al lui Dumnezeu', href: 'https://shop.eurasiaprecept.org/catalog/iosif-un-om-extraordinar-al-lui-dumnezeu' }, { title: 'Cum să devii campionul lui Dumnezeu?', href: 'https://shop.eurasiaprecept.org/catalog/cum-sa-devii-campionul-lui-dumnezeu' }] },
+      { title: 'Sesiunea 7', manuals: [{ title: 'Sexualitatea din perspectiva Bibliei', href: 'https://shop.eurasiaprecept.org/catalog/sexualitate-din-perspectiva-bibliei' }, { title: 'Când mi-e frică', href: 'https://shop.eurasiaprecept.org/catalog/cand-mi-e-frica' }] },
     ],
     structure: [
       'Sesiuni intensive de formare',
       'Practică supervizată în lucrarea cu copii',
       'Mentorare din partea instructorilor',
     ],
-    ctaPrimary: { label: 'Aplică acum', href: '/#contact' },
-    ctaSecondary: { label: 'Contactează-ne', href: '/#contact' },
+    outcomes: [
+      { title: 'Formare biblică și spirituală', desc: 'Dezvoltă un caracter creștin și o credință matură.' },
+      { title: 'Pregătire psiho-pedagogică', desc: 'Dobândește competențe pentru predarea eficientă a copiilor.' },
+      { title: 'Predarea Scripturii copiilor', desc: 'Învață să predai Scriptura clar și relevant.' },
+      { title: 'Mentorare și coordonare', desc: 'Echipează și coordonează eficient lucrarea cu copiii.' },
+    ],
+    ctaPrimary: { label: 'Aplică acum', href: REGISTER_URL },
+    ctaSecondary: { label: 'Descarcă recomandarea pastorală', href: '/forms/institut-recomandare-ro.doc' },
+    downloadLabel: 'Descarcă formularul de recomandare pastorală',
   },
 ]
 

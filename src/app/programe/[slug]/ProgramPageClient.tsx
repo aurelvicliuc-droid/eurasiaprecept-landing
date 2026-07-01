@@ -5,8 +5,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, CheckCircle, BookOpen, Clock, Download, ChevronRight, ExternalLink, Images } from 'lucide-react'
 import type { ProgramData } from '@/lib/programs-data'
-
-const SHOP_URL = 'https://shop.eurasiaprecept.org'
 import Nav from '@/components/layout/Nav'
 import Footer from '@/components/layout/Footer'
 import AboutModal from '@/components/modals/AboutModal'
@@ -40,6 +38,8 @@ export default function ProgramPageClient({ program }: Props) {
   const ctaPrimaryHref = p.ctaPrimary.href ?? program.ctaPrimary.href
   const ctaSecondaryHref = p.ctaSecondary?.href ?? program.ctaSecondary?.href
   const ctaTertiaryHref = p.ctaTertiary?.href ?? program.ctaTertiary?.href
+  const ctaPrimaryExternal = /^https?:\/\//.test(ctaPrimaryHref ?? '')
+  const ctaPrimaryTarget = ctaPrimaryExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {}
 
   return (
     <div className="min-h-screen bg-[#fafaf8]">
@@ -272,8 +272,8 @@ export default function ProgramPageClient({ program }: Props) {
                 <ul className="flex flex-col gap-3">
                   {p.whoCanApply.map((item, i) => (
                     <li key={i} className="flex items-start gap-2.5">
-                      <CheckCircle size={15} className="text-teal flex-shrink-0 mt-0.5" />
-                      <span className="text-[15px] text-text-dark leading-[1.6]">{item}</span>
+                      <CheckCircle size={15} className="text-teal flex-shrink-0 mt-[3px]" />
+                      <span className="flex-1 min-w-0 text-[15px] text-text-dark leading-[1.6]">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -294,8 +294,8 @@ export default function ProgramPageClient({ program }: Props) {
                 <ul className="flex flex-col gap-3">
                   {p.structure.map((item, i) => (
                     <li key={i} className="flex items-start gap-2.5">
-                      <Clock size={15} className="text-gold flex-shrink-0 mt-0.5" />
-                      <span className="text-[15px] text-text-dark leading-[1.6]">{item}</span>
+                      <Clock size={15} className="text-gold flex-shrink-0 mt-[3px]" />
+                      <span className="flex-1 min-w-0 text-[15px] text-text-dark leading-[1.6]">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -333,6 +333,7 @@ export default function ProgramPageClient({ program }: Props) {
             >
               <a
                 href={ctaPrimaryHref}
+                {...ctaPrimaryTarget}
                 className="w-full bg-teal text-white text-center py-4 px-6 rounded-xl text-[15px] font-semibold
                   hover:bg-green-dark transition-colors duration-200 shadow-sm"
               >
@@ -353,9 +354,11 @@ export default function ProgramPageClient({ program }: Props) {
                   href={ctaTertiaryHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full border border-beige-dark text-text-muted text-center py-3 px-6 rounded-xl
-                    text-[13px] font-medium hover:border-teal hover:text-teal transition-all duration-200"
+                  className="w-full border border-beige-dark text-text-muted py-3 px-6 rounded-xl
+                    text-[13px] font-medium hover:border-teal hover:text-teal transition-all duration-200
+                    flex items-center justify-center gap-2"
                 >
+                  {program.ctaTertiary?.download && <Download size={14} aria-hidden />}
                   {p.ctaTertiary.label}
                 </a>
               )}
@@ -398,6 +401,7 @@ export default function ProgramPageClient({ program }: Props) {
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
               href={ctaPrimaryHref}
+              {...ctaPrimaryTarget}
               className="inline-block bg-green-dark text-white font-semibold px-8 py-4 rounded-xl text-[15px]
                 hover:bg-teal transition-colors duration-200 shadow-sm"
             >
@@ -429,9 +433,13 @@ function SectionLabel({ children, icon }: { children: React.ReactNode; icon: Rea
 }
 
 function ManualLink({ m }: { m: { title: string; href?: string } }) {
+  // No shop link → render the manual title as plain (non-linked) text.
+  if (!m.href) {
+    return <span className="text-teal font-medium">{m.title}</span>
+  }
   return (
     <a
-      href={m.href ?? SHOP_URL}
+      href={m.href}
       target="_blank"
       rel="noopener noreferrer"
       className="group inline-flex items-baseline gap-1 text-teal font-medium hover:text-green-dark transition-colors duration-200"

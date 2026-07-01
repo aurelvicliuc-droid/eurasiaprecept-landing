@@ -38,6 +38,8 @@ const FRAMES: Img[][] = [
   [{ src: ALL[9] }, { src: ALL[10] }, { src: ALL[11] }],
 ]
 
+const FLAT: Img[] = FRAMES.flat()
+
 function Frame({
   srcs,
   i,
@@ -58,7 +60,7 @@ function Frame({
     <div className="sticky top-[15vh] h-[70vh] w-full flex items-center">
       <motion.div
         style={{ scale, transformOrigin: 'top center' }}
-        className="w-full px-4 md:px-8 grid grid-cols-3 gap-4 md:gap-6"
+        className="w-full px-8 grid grid-cols-3 gap-6"
       >
         {srcs.map((img, j) => (
           <div
@@ -70,7 +72,7 @@ function Frame({
               alt=""
               fill
               quality={65}
-              sizes="(max-width: 768px) 34vw, 33vw"
+              sizes="33vw"
               className={`object-cover ${img.pos ?? 'object-top'}`}
               draggable={false}
             />
@@ -97,26 +99,41 @@ export default function StickyGallery() {
   })
 
   return (
-    // 5 frames × 70vh + 15vh top + 25vh bottom ≈ 390vh — manageable scroll
-    <section
-      ref={container}
-      className="relative bg-beige-light pt-[15vh] pb-[25vh]"
-      aria-label="Photo gallery"
-    >
-      {FRAMES.map((srcs, i) => {
-        const n = FRAMES.length
-        const targetScale = 1 - (n - i - 1) * 0.06
-        return (
-          <Frame
-            key={i}
-            i={i}
-            srcs={srcs}
-            progress={scrollYProgress}
-            range={[i / n, 1]}
-            targetScale={targetScale}
-          />
-        )
-      })}
+    <section className="relative bg-beige-light" aria-label="Photo gallery">
+      {/* Mobile: galerie compactă, o poză pe rând, scroll normal */}
+      <div className="md:hidden px-4 py-10 flex flex-col gap-3">
+        {FLAT.map((img, i) => (
+          <div key={i} className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+            <Image
+              src={img.src}
+              alt=""
+              fill
+              quality={65}
+              sizes="100vw"
+              className={`object-cover ${img.pos ?? 'object-top'}`}
+              draggable={false}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Desktop: efect sticky (5 frame-uri × 70vh) */}
+      <div ref={container} className="hidden md:block pt-[15vh] pb-[25vh]">
+        {FRAMES.map((srcs, i) => {
+          const n = FRAMES.length
+          const targetScale = 1 - (n - i - 1) * 0.06
+          return (
+            <Frame
+              key={i}
+              i={i}
+              srcs={srcs}
+              progress={scrollYProgress}
+              range={[i / n, 1]}
+              targetScale={targetScale}
+            />
+          )
+        })}
+      </div>
     </section>
   )
 }

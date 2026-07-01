@@ -10,7 +10,7 @@ function pinIcon(zoom: number) {
   const w = Math.round(Math.max(18, 40 - zoom * 2.2))
   const h = Math.round(w * 1.32)
   const html = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 24 32" style="display:block;filter:drop-shadow(0 2px 2px rgba(0,0,0,.35))">
-    <path d="M12 0C5.9 0 1 4.9 1 11c0 7.7 9.4 19.4 10.2 20.4a1 1 0 0 0 1.6 0C13.6 30.4 23 18.7 23 11 23 4.9 18.1 0 12 0z" fill="#2e7d32" stroke="#ffffff" stroke-width="1.4"/>
+    <path d="M12 0C5.9 0 1 4.9 1 11c0 7.7 9.4 19.4 10.2 20.4a1 1 0 0 0 1.6 0C13.6 30.4 23 18.7 23 11 23 4.9 18.1 0 12 0z" fill="#3d7a72" stroke="#ffffff" stroke-width="1.4"/>
     <circle cx="12" cy="11" r="4" fill="#ffffff"/>
   </svg>`
   return divIcon({
@@ -57,10 +57,10 @@ export default function LocationsMapCanvas() {
       worldCopyJump
       className="w-full h-[460px] sm:h-[560px] rounded-2xl overflow-hidden relative z-0 isolate border border-beige-dark"
     >
-      {/* Bază curată, fără etichete de orașe (evită numele în limba locală) */}
+      {/* Bază cu etichete (nume de orașe/țări vizibile) */}
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
-        url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png"
+        url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png"
         subdomains="abcd"
       />
       <FitToLocations />

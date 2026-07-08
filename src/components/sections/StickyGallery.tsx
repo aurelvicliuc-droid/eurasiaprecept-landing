@@ -1,8 +1,7 @@
 'use client'
-import { useRef, useEffect } from 'react'
+import { useRef } from 'react'
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion'
 import Image from 'next/image'
-import Lenis from 'lenis'
 
 const C = '/carousel'
 const ALL = [
@@ -85,14 +84,6 @@ function Frame({
 
 export default function StickyGallery() {
   const container = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const lenis = new Lenis()
-    let id = 0
-    const raf = (time: number) => { lenis.raf(time); id = requestAnimationFrame(raf) }
-    id = requestAnimationFrame(raf)
-    return () => { cancelAnimationFrame(id); lenis.destroy() }
-  }, [])
 
   const { scrollYProgress } = useScroll({
     target: container,

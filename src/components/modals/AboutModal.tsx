@@ -229,7 +229,11 @@ export default function AboutModal({ open, onClose }: Props) {
                         <button
                           onClick={() => {
                             onClose()
-                            setTimeout(() => document.getElementById('harta')?.scrollIntoView({ behavior: 'smooth' }), 120)
+                            setTimeout(() => {
+                              const el = document.getElementById('harta')
+                              if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                              else window.location.href = '/#harta'
+                            }, 160)
                           }}
                           className="text-[13px] font-medium text-teal hover:text-green-dark transition-colors whitespace-nowrap cursor-pointer"
                         >

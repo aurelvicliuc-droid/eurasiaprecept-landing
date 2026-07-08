@@ -22,7 +22,8 @@ const ALL = [
   '611201911_1700360654558316_5841111323271327889_n.jpg',
 ].map((f) => `${C}/${f}`)
 
-// Featured trio for the top frame: Kay Arthur (left) · group photo (middle) · Vasile Filat (right)
+// Featured trio for the top frame: historic Precept Ministries group photo · Kay Arthur · Vasile Filat
+const FOUNDERS = `${C}/precept-founders.jpg`
 const KAY = `${C}/kayarthur.jpg`
 const VASILE = `${C}/vasilefilat.jpg`
 
@@ -30,7 +31,7 @@ type Img = { src: string; pos?: string }
 
 // 5 frames × 3 images — pos overrides object-top per image if needed
 const FRAMES: Img[][] = [
-  [{ src: KAY, pos: 'object-center' }, { src: ALL[12], pos: 'object-center' }, { src: VASILE, pos: 'object-center' }],
+  [{ src: FOUNDERS, pos: 'object-center' }, { src: KAY, pos: 'object-center' }, { src: VASILE, pos: 'object-center' }],
   [{ src: ALL[0] }, { src: ALL[1], pos: 'object-center' }, { src: ALL[2] }],
   [{ src: ALL[3] }, { src: ALL[4] },  { src: ALL[5] }],
   [{ src: ALL[6] }, { src: ALL[7] },  { src: ALL[8] }],

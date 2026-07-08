@@ -4,38 +4,37 @@ import { motion, useScroll, useTransform, MotionValue } from 'framer-motion'
 import Image from 'next/image'
 
 const C = '/carousel'
-const ALL = [
-  '489114146_1457118022215915_2888482248647560853_n.jpg',
-  '490807858_1466338161293901_1959630751560638820_n.jpg',
-  '491714033_1473748913886159_5515412886118993350_n.jpg',
-  '491839674_1473685407225843_2576459391495508359_n.jpg',
-  '492032397_1473761967218187_161237512797718303_n.jpg',
-  '493981149_1476424373618613_3307745394851809147_n.jpg',
-  '494171405_1480638549863862_5462489402041087813_n.jpg',
-  '494268125_1481448343116216_2381626411841703366_n.jpg',
-  '514282940_1550182159576167_1673999915183179243_n.jpg',
-  '515068658_1549295166331533_8873942781353550651_n.jpg',
-  '521351848_1553622505898799_8295139459140997601_n.jpg',
-  '557459801_1611306076797108_8909020549474646805_n.jpg',
-  '584449220_1659615898632792_2399585120794362465_n.jpg',
-  '611136814_1700361247891590_3210011831627886562_n.jpg',
-  '611201911_1700360654558316_5841111323271327889_n.jpg',
-].map((f) => `${C}/${f}`)
 
-// Featured trio for the top frame: historic Precept Ministries group photo · Kay Arthur · Vasile Filat
-const FOUNDERS = `${C}/precept-founders.jpg`
-const KAY = `${C}/kayarthur.jpg`
-const VASILE = `${C}/vasilefilat.jpg`
+// Poze păstrate / featured
+const FOUNDERS = `${C}/precept-founders.jpg`                                     // grup istoric Precept Ministries (Jack & Kay Arthur)
+const KAY = `${C}/kayarthur.jpg`                                                 // Kay Arthur
+const FESTIVAL = `${C}/584449220_1659615898632792_2399585120794362465_n.jpg`     // Festivalul Precept Moldova 2025
+const VASILE = `${C}/vasilefilat.jpg`                                            // Vasile Filat
+const CLASA = `${C}/491839674_1473685407225843_2576459391495508359_n.jpg`        // sală de studiu, tineri
+const AMVON = `${C}/492032397_1473761967218187_161237512797718303_n.jpg`         // predicator la amvon
+
+// Poze noi
+const N = [
+  'g-graduation.jpg',    // 0 — graduație cu steaguri
+  'g-grup-pakistan.jpg', // 1 — grup mare Pakistan
+  'g-copii.jpg',         // 2 — copii cu cărți
+  'g-clasa-adulti.jpg',  // 3 — clasă adulți
+  'g-masa-rotunda.jpg',  // 4 — masă rotundă
+  'g-clasa-ucraina.jpg', // 5 — clasă Ucraina
+  'g-tineri.jpg',        // 6 — tineri
+  'g-citire-barbat.jpg', // 7 — bărbat citind (portret)
+  'g-citire-femeie.jpg', // 8 — femeie citind (portret)
+].map((f) => `${C}/${f}`)
 
 type Img = { src: string; pos?: string }
 
 // 5 frames × 3 images — pos overrides object-top per image if needed
 const FRAMES: Img[][] = [
-  [{ src: FOUNDERS, pos: 'object-center' }, { src: KAY, pos: 'object-center' }, { src: VASILE, pos: 'object-center' }],
-  [{ src: ALL[0] }, { src: ALL[1], pos: 'object-center' }, { src: ALL[2] }],
-  [{ src: ALL[3] }, { src: ALL[4] },  { src: ALL[5] }],
-  [{ src: ALL[6] }, { src: ALL[7] },  { src: ALL[8] }],
-  [{ src: ALL[9] }, { src: ALL[10] }, { src: ALL[11] }],
+  [{ src: FOUNDERS, pos: 'object-center' }, { src: KAY, pos: 'object-center' }, { src: FESTIVAL, pos: 'object-center' }],
+  [{ src: VASILE, pos: 'object-center' }, { src: N[0], pos: 'object-center' }, { src: N[1], pos: 'object-center' }],
+  [{ src: CLASA, pos: 'object-center' }, { src: AMVON, pos: 'object-center' }, { src: N[2], pos: 'object-center' }],
+  [{ src: N[3], pos: 'object-center' }, { src: N[4], pos: 'object-center' }, { src: N[5], pos: 'object-center' }],
+  [{ src: N[6], pos: 'object-center' }, { src: N[7] }, { src: N[8] }],
 ]
 
 const FLAT: Img[] = FRAMES.flat()

@@ -88,8 +88,9 @@ export default function StickyGallery() {
 
   useEffect(() => {
     const lenis = new Lenis()
-    const raf = (time: number) => { lenis.raf(time); requestAnimationFrame(raf) }
-    const id = requestAnimationFrame(raf)
+    let id = 0
+    const raf = (time: number) => { lenis.raf(time); id = requestAnimationFrame(raf) }
+    id = requestAnimationFrame(raf)
     return () => { cancelAnimationFrame(id); lenis.destroy() }
   }, [])
 

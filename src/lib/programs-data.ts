@@ -242,7 +242,8 @@ export const programs: ProgramData[] = [
     badge: 'English',
     badgeColor: 'purple',
     category: 'specializat',
-    heroImage: '/programs/efnl.jpg',
+    heroImage: '/programs/efnl-cover.jpg',
+    heroImagePosition: 'object-[center_25%]',
     heroImageAlt: 'English for a New Life — predare și evanghelism prin limba engleză',
     gallery: [
       '/programs/efnl-gallery-1.jpg',
@@ -253,6 +254,9 @@ export const programs: ProgramData[] = [
       '/programs/efnl-gallery-6.jpg',
       '/programs/efnl-gallery-7.jpg',
       '/programs/efnl-gallery-8.jpg',
+      '/programs/efnl-gallery-9.jpg',
+      '/programs/efnl-gallery-10.jpg',
+      '/programs/efnl-gallery-11.jpg',
     ],
     overview:
       'English for a New Life (EFNL) pregătește profesori și lideri care doresc să folosească limba engleză pentru evanghelizare și ucenicie, prin grupe de studiu, cluburi și proiecte misionare. Programul are trei niveluri — A1, A2 și EFNL for Kids — cu manuale dezvoltate special pe baza adevărurilor biblice.',

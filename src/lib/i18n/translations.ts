@@ -143,7 +143,7 @@ export const translations = {
           { label: 'Misiunea', text: 'Să atragem oameni într-o relație cu Dumnezeu prin cunoașterea Cuvântului Său, folosind metoda inductivă de studiu biblic.' },
           { label: 'Metoda', text: 'Studiul inductiv al Bibliei — observă, interpretează, aplică. Fiecare student înțelege textul biblic în contextul său original.' },
           { label: 'Impactul', text: 'Peste 6.640 studenți în 36 de țări, cu materiale traduse în 195 de limbi, formând lideri care transmit mai departe.' },
-          { label: 'Valorile', text: 'Fidelitate față de text, ucenicie practică, implicare în comunitate și formare de generații care să cunoască Cuvântul lui Dumnezeu.' },
+          { label: 'Valorile', text: 'Fidelitate față de textul biblic, ucenicie practică, implicare în comunitate și formare de generații care să cunoască Cuvântul lui Dumnezeu.' },
         ],
       },
       team: {
@@ -330,7 +330,7 @@ export const translations = {
           { label: 'Mission', text: 'To draw people into a relationship with God through the knowledge of His Word, using the inductive method of Bible study.' },
           { label: 'Method', text: 'Inductive Bible study — observe, interpret, apply. Each student understands the biblical text in its original context.' },
           { label: 'Impact', text: 'Over 6,640 students in 36 countries, with materials translated into 195 languages, training leaders who pass it on.' },
-          { label: 'Values', text: 'Faithfulness to the text, practical discipleship, community engagement, and forming generations who know the Word of God.' },
+          { label: 'Values', text: 'Faithfulness to the biblical text, practical discipleship, community engagement, and forming generations who know the Word of God.' },
         ],
       },
       team: {
@@ -517,7 +517,7 @@ export const translations = {
           { label: 'Миссия', text: 'Привлекать людей к отношениям с Богом через познание Его Слова, используя индуктивный метод изучения Библии.' },
           { label: 'Метод', text: 'Индуктивное изучение Библии — наблюдай, толкуй, применяй. Каждый студент понимает библейский текст в его первоначальном контексте.' },
           { label: 'Влияние', text: 'Более 6 640 студентов в 36 странах, материалы переведены на 195 языков, формируем лидеров, которые передают это дальше.' },
-          { label: 'Ценности', text: 'Верность тексту, практическое ученичество, участие в общине и формирование поколений, знающих Слово Божье.' },
+          { label: 'Ценности', text: 'Верность библейскому тексту, практическое ученичество, участие в общине и формирование поколений, знающих Слово Божье.' },
         ],
       },
       team: {

@@ -173,6 +173,16 @@ export const programs: ProgramData[] = [
     category: 'specializat',
     heroImage: '/programs/nivelul-2.jpg',
     heroImageAlt: 'Nivelul 2 — aprofundare în studiul biblic inductiv',
+    gallery: [
+      '/programs/nivel2-gallery-1.jpg',
+      '/programs/nivel2-gallery-2.jpg',
+      '/programs/nivel2-gallery-3.jpg',
+      '/programs/nivel2-gallery-4.jpg',
+      '/programs/nivel2-gallery-5.jpg',
+      '/programs/nivel2-gallery-6.jpg',
+      '/programs/nivel2-gallery-7.jpg',
+      '/programs/nivel2-gallery-8.jpg',
+    ],
     overview:
       'Nivelul II este destinat absolvenților Institutului Biblic Precept care doresc să își aprofundeze pregătirea în conducere spirituală, mentorare, consiliere și dezvoltarea lucrării în bisericile locale. Acest program oferă o pregătire aprofundată pentru cei care au demonstrat credincioșie în slujire și doresc să crească în responsabilitate, maturitate spirituală și capacitatea de a forma alți lideri.',
     whoCanApply: [

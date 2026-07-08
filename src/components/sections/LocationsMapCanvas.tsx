@@ -40,7 +40,11 @@ function Markers() {
     <>
       {locations.map((l) => (
         <Marker key={`${l.country}-${l.city}`} position={[l.lat, l.lng]} icon={icon}>
-          <Tooltip direction="top">{l.city}</Tooltip>
+          <Tooltip direction="top" opacity={1} className="precept-tip">
+            <span className="block font-semibold text-[12.5px] text-green-dark leading-tight">{l.city}</span>
+            <span className="block text-[12px] text-text-dark mt-[3px]">{l.coordinator}</span>
+            {l.email ? <span className="block text-[11px] text-teal mt-[1px]">{l.email}</span> : null}
+          </Tooltip>
         </Marker>
       ))}
     </>

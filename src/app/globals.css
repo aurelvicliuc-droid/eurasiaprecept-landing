@@ -89,3 +89,19 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* Map location tooltip (Leaflet) */
+.leaflet-tooltip.precept-tip {
+  background: #fffdf8;
+  border: 1px solid #e0dbd0;
+  border-radius: 10px;
+  box-shadow: 0 8px 22px rgba(26, 58, 42, 0.16);
+  padding: 8px 12px;
+  text-align: center;
+  white-space: nowrap;
+  font-family: var(--font-sans, inherit);
+}
+.leaflet-tooltip.precept-tip.leaflet-tooltip-top::before { border-top-color: #fffdf8; }
+.leaflet-tooltip.precept-tip.leaflet-tooltip-bottom::before { border-bottom-color: #fffdf8; }
+.leaflet-tooltip.precept-tip.leaflet-tooltip-left::before { border-left-color: #fffdf8; }
+.leaflet-tooltip.precept-tip.leaflet-tooltip-right::before { border-right-color: #fffdf8; }

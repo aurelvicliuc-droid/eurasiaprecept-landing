@@ -157,6 +157,7 @@ export const translations = {
       },
       branches: {
         heading: 'Filiale active',
+        viewMap: 'Vezi pe hartă',
         items: [
           { code: 'MD', name: 'Moldova — Chișinău', desc: 'Sediul central Precept Eurasia. Programe online și prezențiale pentru toată Eurasia.' },
           { code: 'UA', name: 'Ucraina', desc: 'Programe active, inclusiv pregătire pentru lucrul cu refugiații și comunități locale.' },
@@ -343,6 +344,7 @@ export const translations = {
       },
       branches: {
         heading: 'Active branches',
+        viewMap: 'View on map',
         items: [
           { code: 'MD', name: 'Moldova — Chișinău', desc: 'Precept Eurasia headquarters. Online and in-person programs for all of Eurasia.' },
           { code: 'UA', name: 'Ukraine', desc: 'Active programs including training for work with refugees and local communities.' },
@@ -529,6 +531,7 @@ export const translations = {
       },
       branches: {
         heading: 'Действующие филиалы',
+        viewMap: 'Смотреть на карте',
         items: [
           { code: 'MD', name: 'Молдова — Кишинёв', desc: 'Штаб-квартира Precept Eurasia. Онлайн и очные программы для всей Евразии.' },
           { code: 'UA', name: 'Украина', desc: 'Активные программы, включая подготовку для работы с беженцами и местными общинами.' },

@@ -14,7 +14,7 @@ export default function LocationsMap() {
   const m = t.map
 
   return (
-    <section className="bg-beige-light py-24" aria-labelledby="map-heading">
+    <section id="harta" className="bg-beige-light py-24 scroll-mt-20" aria-labelledby="map-heading">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-12">
         <AnimatedSection className="mb-8 text-center">
           <SectionEyebrow>{m.eyebrow}</SectionEyebrow>

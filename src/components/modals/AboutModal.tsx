@@ -1,9 +1,11 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 import Image from 'next/image'
 import { useLanguage } from '@/lib/i18n/context'
+import { locations } from '@/lib/locations'
+import { countryName } from '@/lib/countries'
 
 interface Props {
   open: boolean
@@ -53,9 +55,19 @@ const VISION_CARD_SYMBOLS = [
 ]
 
 export default function AboutModal({ open, onClose }: Props) {
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
   const a = t.about
   const [activeTab, setActiveTab] = useState<Tab>('viziunea')
+
+  const branchesByCountry = useMemo(() => {
+    const m = new Map<string, typeof locations>()
+    for (const l of locations) {
+      const arr = m.get(l.country) ?? []
+      arr.push(l)
+      m.set(l.country, arr)
+    }
+    return [...m.entries()].sort((x, y) => countryName(x[0], lang).localeCompare(countryName(y[0], lang)))
+  }, [lang])
 
   useEffect(() => {
     if (!open) return
@@ -210,19 +222,42 @@ export default function AboutModal({ open, onClose }: Props) {
 
                   {activeTab === 'filiale' && (
                     <div>
-                      <p className="text-[12px] font-semibold tracking-[0.14em] uppercase text-text-muted mb-4">
-                        {a.branches.heading}
-                      </p>
+                      <div className="flex items-center justify-between mb-4 gap-3">
+                        <p className="text-[12px] font-semibold tracking-[0.14em] uppercase text-text-muted">
+                          {a.branches.heading}
+                        </p>
+                        <button
+                          onClick={() => {
+                            onClose()
+                            setTimeout(() => document.getElementById('harta')?.scrollIntoView({ behavior: 'smooth' }), 120)
+                          }}
+                          className="text-[13px] font-medium text-teal hover:text-green-dark transition-colors whitespace-nowrap cursor-pointer"
+                        >
+                          {a.branches.viewMap} →
+                        </button>
+                      </div>
                       <div className="flex flex-col gap-3">
-                        {a.branches.items.map((b) => (
-                          <div key={b.code} className="bg-beige-light rounded-[10px] p-5 flex gap-4 items-start">
-                            <div className="w-[46px] h-[46px] rounded-[8px] bg-teal/10 flex items-center justify-center
-                              text-[12px] font-bold text-teal flex-shrink-0">
-                              {b.code}
-                            </div>
-                            <div>
-                              <p className="text-[14px] font-medium text-text-dark mb-1">{b.name}</p>
-                              <p className="text-[13px] text-text-muted leading-[1.5]">{b.desc}</p>
+                        {branchesByCountry.map(([country, items]) => (
+                          <div key={country} className="bg-beige-light rounded-[10px] p-4">
+                            <p className="text-[14px] font-semibold text-green-dark mb-2">
+                              {countryName(country, lang)}
+                              <span className="text-text-muted font-normal"> · {items.length}</span>
+                            </p>
+                            <div className="flex flex-col gap-1.5">
+                              {items.map((l) => (
+                                <div key={l.city} className="text-[13px] leading-snug">
+                                  <span className="font-medium text-text-dark">{l.city}</span>
+                                  {l.coordinator && <span className="text-text-muted"> — {l.coordinator}</span>}
+                                  {l.email && (
+                                    <>
+                                      {' · '}
+                                      <a href={`mailto:${l.email}`} className="text-teal hover:underline break-all">
+                                        {l.email}
+                                      </a>
+                                    </>
+                                  )}
+                                </div>
+                              ))}
                             </div>
                           </div>
                         ))}

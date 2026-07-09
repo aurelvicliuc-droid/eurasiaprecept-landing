@@ -74,6 +74,7 @@ export const programs: ProgramData[] = [
       '/programs/institut-gallery-3.jpg',
       '/programs/institut-gallery-4.jpg',
       '/programs/institut-gallery-5.jpg',
+      '/programs/institut-gallery-12.jpg',
       '/programs/institut-gallery-6.jpg',
       '/programs/institut-gallery-7.jpg',
       '/programs/institut-gallery-8.jpg',

@@ -1,9 +1,9 @@
 'use client'
-import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { useState, useEffect, useCallback } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowLeft, CheckCircle, BookOpen, Clock, Download, ChevronRight, ExternalLink, Images, Quote } from 'lucide-react'
+import { ArrowLeft, CheckCircle, BookOpen, Clock, Download, ChevronLeft, ChevronRight, ExternalLink, Images, Quote, X } from 'lucide-react'
 import type { ProgramData } from '@/lib/programs-data'
 import Nav from '@/components/layout/Nav'
 import Footer from '@/components/layout/Footer'
@@ -35,6 +35,29 @@ export default function ProgramPageClient({ program }: Props) {
   const hasOutcomes = p.outcomes && p.outcomes.length > 0
   const hasGallery = !!(p.gallery && p.gallery.length > 0)
   const hasTestimonials = !!(p.testimonials && p.testimonials.length > 0)
+
+  // Lightbox pentru galeria foto
+  const gallery = p.gallery ?? []
+  const [lightbox, setLightbox] = useState<number | null>(null)
+  const closeLightbox = useCallback(() => setLightbox(null), [])
+  const stepLightbox = useCallback(
+    (d: number) => setLightbox((cur) => (cur === null ? cur : (cur + d + gallery.length) % gallery.length)),
+    [gallery.length],
+  )
+  useEffect(() => {
+    if (lightbox === null) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeLightbox()
+      else if (e.key === 'ArrowRight') stepLightbox(1)
+      else if (e.key === 'ArrowLeft') stepLightbox(-1)
+    }
+    document.addEventListener('keydown', onKey)
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.body.style.overflow = ''
+    }
+  }, [lightbox, closeLightbox, stepLightbox])
 
   const ctaPrimaryHref = p.ctaPrimary.href ?? program.ctaPrimary.href
   const ctaSecondaryHref = p.ctaSecondary?.href ?? program.ctaSecondary?.href
@@ -272,9 +295,14 @@ export default function ProgramPageClient({ program }: Props) {
                 <SectionLabel icon={<Images size={15} />}>{pp.gallery}</SectionLabel>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-5">
                   {p.gallery!.map((src, i) => (
-                    <motion.div
+                    <motion.button
                       key={src}
-                      className={`relative overflow-hidden rounded-xl bg-beige h-44 sm:h-56 ${i === 0 ? 'col-span-2' : ''}`}
+                      type="button"
+                      onClick={() => setLightbox(i)}
+                      aria-label={`${p.name} — deschide fotografia ${i + 1}`}
+                      className={`group relative overflow-hidden rounded-xl bg-beige h-44 sm:h-56 cursor-pointer
+                        focus:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2
+                        ${i === 0 ? 'col-span-2' : ''}`}
                       initial={{ opacity: 0, scale: 0.97 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.4, delay: 0.08 + i * 0.06 }}
@@ -284,9 +312,19 @@ export default function ProgramPageClient({ program }: Props) {
                         alt={`${p.name} — fotografie ${i + 1}`}
                         fill
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="object-cover hover:scale-[1.04] transition-transform duration-500 ease-out"
+                        className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
                       />
-                    </motion.div>
+                      <span
+                        className="absolute inset-0 bg-green-dark/0 group-hover:bg-green-dark/15 transition-colors duration-300
+                          flex items-center justify-center"
+                        aria-hidden
+                      >
+                        <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300
+                          w-10 h-10 rounded-full bg-white/90 text-green-dark flex items-center justify-center shadow-md">
+                          <Images size={18} aria-hidden />
+                        </span>
+                      </span>
+                    </motion.button>
                   ))}
                 </div>
               </motion.section>
@@ -457,6 +495,79 @@ export default function ProgramPageClient({ program }: Props) {
           </div>
         </div>
       </div>
+
+      {/* Lightbox galerie foto */}
+      <AnimatePresence>
+        {lightbox !== null && gallery[lightbox] && (
+          <motion.div
+            className="fixed inset-0 z-[110] flex items-center justify-center p-4 sm:p-10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${p.name} — fotografia ${lightbox + 1} din ${gallery.length}`}
+          >
+            <div className="absolute inset-0 bg-green-dark/85 backdrop-blur-sm" onClick={closeLightbox} aria-hidden />
+
+            <button
+              onClick={closeLightbox}
+              className="absolute top-4 right-4 z-10 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20
+                text-white flex items-center justify-center transition-colors cursor-pointer"
+              aria-label="Închide"
+            >
+              <X size={20} aria-hidden />
+            </button>
+
+            {gallery.length > 1 && (
+              <>
+                <button
+                  onClick={() => stepLightbox(-1)}
+                  className="absolute left-3 sm:left-6 z-10 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20
+                    text-white flex items-center justify-center transition-colors cursor-pointer"
+                  aria-label="Fotografia anterioară"
+                >
+                  <ChevronLeft size={24} aria-hidden />
+                </button>
+                <button
+                  onClick={() => stepLightbox(1)}
+                  className="absolute right-3 sm:right-6 z-10 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20
+                    text-white flex items-center justify-center transition-colors cursor-pointer"
+                  aria-label="Fotografia următoare"
+                >
+                  <ChevronRight size={24} aria-hidden />
+                </button>
+              </>
+            )}
+
+            <motion.div
+              key={lightbox}
+              className="relative w-full max-w-[1100px] aspect-[3/2] max-h-[85vh]"
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.25, ease: [0.22, 0.68, 0, 1.2] }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image
+                src={gallery[lightbox]}
+                alt={`${p.name} — fotografia ${lightbox + 1}`}
+                fill
+                sizes="100vw"
+                className="object-contain"
+                priority
+              />
+            </motion.div>
+
+            {gallery.length > 1 && (
+              <span className="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 text-white/80 text-[13px] tracking-wide">
+                {lightbox + 1} / {gallery.length}
+              </span>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <Footer />
     </div>

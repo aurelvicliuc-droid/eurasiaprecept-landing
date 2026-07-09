@@ -1,7 +1,8 @@
 'use client'
-import { useRef } from 'react'
-import { motion, useScroll, useTransform, MotionValue } from 'framer-motion'
+import { useRef, useState, useEffect, useCallback } from 'react'
+import { motion, AnimatePresence, useScroll, useTransform, MotionValue } from 'framer-motion'
 import Image from 'next/image'
+import { X, ChevronLeft, ChevronRight, Images } from 'lucide-react'
 
 const C = '/carousel'
 
@@ -45,12 +46,16 @@ function Frame({
   progress,
   range,
   targetScale,
+  baseIndex,
+  onOpen,
 }: {
   srcs: Img[]
   i: number
   progress: MotionValue<number>
   range: [number, number]
   targetScale: number
+  baseIndex: number
+  onOpen: (idx: number) => void
 }) {
   const scale = useTransform(progress, range, [1, targetScale])
 
@@ -62,9 +67,13 @@ function Frame({
         className="w-full px-8 grid grid-cols-3 gap-6"
       >
         {srcs.map((img, j) => (
-          <div
+          <button
             key={j}
-            className="relative aspect-[4/3] overflow-hidden rounded-2xl"
+            type="button"
+            onClick={() => onOpen(baseIndex + j)}
+            aria-label={`Deschide fotografia ${baseIndex + j + 1}`}
+            className="group relative aspect-[4/3] overflow-hidden rounded-2xl cursor-pointer
+              focus:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2"
           >
             <Image
               src={img.src}
@@ -72,10 +81,17 @@ function Frame({
               fill
               quality={65}
               sizes="33vw"
-              className={`object-cover ${img.pos ?? 'object-top'}`}
+              className={`object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04] ${img.pos ?? 'object-top'}`}
               draggable={false}
             />
-          </div>
+            <span className="absolute inset-0 bg-green-dark/0 group-hover:bg-green-dark/15 transition-colors duration-300
+              flex items-center justify-center" aria-hidden>
+              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300
+                w-10 h-10 rounded-full bg-white/90 text-green-dark flex items-center justify-center shadow-md">
+                <Images size={18} aria-hidden />
+              </span>
+            </span>
+          </button>
         ))}
       </motion.div>
     </div>
@@ -90,12 +106,41 @@ export default function StickyGallery() {
     offset: ['start start', 'end end'],
   })
 
+  // Lightbox
+  const [lightbox, setLightbox] = useState<number | null>(null)
+  const closeLightbox = useCallback(() => setLightbox(null), [])
+  const stepLightbox = useCallback(
+    (d: number) => setLightbox((cur) => (cur === null ? cur : (cur + d + FLAT.length) % FLAT.length)),
+    [],
+  )
+  useEffect(() => {
+    if (lightbox === null) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeLightbox()
+      else if (e.key === 'ArrowRight') stepLightbox(1)
+      else if (e.key === 'ArrowLeft') stepLightbox(-1)
+    }
+    document.addEventListener('keydown', onKey)
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.body.style.overflow = ''
+    }
+  }, [lightbox, closeLightbox, stepLightbox])
+
   return (
     <section className="relative bg-beige-light" aria-label="Photo gallery">
       {/* Mobile: galerie compactă, o poză pe rând, scroll normal */}
       <div className="md:hidden px-4 py-10 flex flex-col gap-3">
         {FLAT.map((img, i) => (
-          <div key={i} className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+          <button
+            key={i}
+            type="button"
+            onClick={() => setLightbox(i)}
+            aria-label={`Deschide fotografia ${i + 1}`}
+            className="group relative aspect-[4/3] overflow-hidden rounded-2xl cursor-pointer
+              focus:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2"
+          >
             <Image
               src={img.src}
               alt=""
@@ -105,7 +150,13 @@ export default function StickyGallery() {
               className={`object-cover ${img.pos ?? 'object-top'}`}
               draggable={false}
             />
-          </div>
+            <span className="absolute inset-0 bg-green-dark/0 group-active:bg-green-dark/15 transition-colors duration-200
+              flex items-center justify-center" aria-hidden>
+              <span className="w-9 h-9 rounded-full bg-white/85 text-green-dark flex items-center justify-center shadow-md">
+                <Images size={16} aria-hidden />
+              </span>
+            </span>
+          </button>
         ))}
       </div>
 
@@ -122,10 +173,79 @@ export default function StickyGallery() {
               progress={scrollYProgress}
               range={[i / n, 1]}
               targetScale={targetScale}
+              baseIndex={i * 3}
+              onOpen={setLightbox}
             />
           )
         })}
       </div>
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {lightbox !== null && FLAT[lightbox] && (
+          <motion.div
+            className="fixed inset-0 z-[110] flex items-center justify-center p-4 sm:p-10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`Fotografia ${lightbox + 1} din ${FLAT.length}`}
+          >
+            <div className="absolute inset-0 bg-green-dark/85 backdrop-blur-sm" onClick={closeLightbox} aria-hidden />
+
+            <button
+              onClick={closeLightbox}
+              className="absolute top-4 right-4 z-10 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20
+                text-white flex items-center justify-center transition-colors cursor-pointer"
+              aria-label="Închide"
+            >
+              <X size={20} aria-hidden />
+            </button>
+
+            <button
+              onClick={() => stepLightbox(-1)}
+              className="absolute left-3 sm:left-6 z-10 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20
+                text-white flex items-center justify-center transition-colors cursor-pointer"
+              aria-label="Fotografia anterioară"
+            >
+              <ChevronLeft size={24} aria-hidden />
+            </button>
+            <button
+              onClick={() => stepLightbox(1)}
+              className="absolute right-3 sm:right-6 z-10 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20
+                text-white flex items-center justify-center transition-colors cursor-pointer"
+              aria-label="Fotografia următoare"
+            >
+              <ChevronRight size={24} aria-hidden />
+            </button>
+
+            <motion.div
+              key={lightbox}
+              className="relative w-full max-w-[1100px] aspect-[3/2] max-h-[85vh]"
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.25, ease: [0.22, 0.68, 0, 1.2] }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image
+                src={FLAT[lightbox].src}
+                alt={`Fotografia ${lightbox + 1}`}
+                fill
+                sizes="100vw"
+                className="object-contain"
+                priority
+              />
+            </motion.div>
+
+            <span className="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 text-white/80 text-[13px] tracking-wide">
+              {lightbox + 1} / {FLAT.length}
+            </span>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   )
 }

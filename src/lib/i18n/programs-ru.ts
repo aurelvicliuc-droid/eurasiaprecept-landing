@@ -70,7 +70,7 @@ export const programsRu: Record<string, ProgramTranslation> = {
     ],
     ctaPrimary: { label: 'Записаться в школу ТИМОФЕЙ' },
     ctaSecondary: { label: 'Скачать форму рекомендации', href: '/forms/timotei-angajament-ru.docx' },
-    ctaTertiary: { label: 'Скачать буклет школы' },
+    ctaTertiary: { label: 'Скачать буклет школы', href: '/forms/scoala-timotei-brosura-ru.pdf' },
     downloadLabel: 'Скачать форму рекомендации',
   },
 

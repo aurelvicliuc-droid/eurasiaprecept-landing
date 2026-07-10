@@ -83,7 +83,7 @@ export const programsEn: Record<string, ProgramTranslation> = {
     ],
     ctaPrimary: { label: 'Apply to TIMOTHY School' },
     ctaSecondary: { label: 'Download recommendation form', href: '/forms/timotei-angajament-en.doc' },
-    ctaTertiary: { label: 'Download the school brochure' },
+    ctaTertiary: { label: 'Download the school brochure', href: '/forms/scoala-timotei-brosura-en.pdf' },
     downloadLabel: 'Download recommendation form',
   },
 

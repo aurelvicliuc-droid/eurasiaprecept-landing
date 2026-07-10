@@ -111,6 +111,7 @@ export const programs: ProgramData[] = [
     ],
     ctaPrimary: { label: 'Aplică la Institutul Biblic', href: REGISTER_URL },
     ctaSecondary: { label: 'Descarcă recomandarea pastorală', href: '/forms/institut-recomandare-ro.doc' },
+    ctaTertiary: { label: 'Descarcă broșura Institutului', href: '/forms/institut-brosura-ro.pdf', download: true },
     downloadLabel: 'Descarcă formularul de recomandare pastorală',
   },
   {

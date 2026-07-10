@@ -46,6 +46,7 @@ export const programsEn: Record<string, ProgramTranslation> = {
     ],
     ctaPrimary: { label: 'Apply to the Bible Institute' },
     ctaSecondary: { label: 'Download pastoral recommendation form', href: '/forms/institut-recomandare-en.docx' },
+    ctaTertiary: { label: 'Download the Institute brochure', href: '/forms/institut-brosura-en.pdf' },
     downloadLabel: 'Download pastoral recommendation form',
   },
 

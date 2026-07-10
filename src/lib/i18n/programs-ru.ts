@@ -33,6 +33,7 @@ export const programsRu: Record<string, ProgramTranslation> = {
     ],
     ctaPrimary: { label: 'Подать заявку в институт' },
     ctaSecondary: { label: 'Скачать форму пасторской рекомендации', href: '/forms/institut-recomandare-ru.doc' },
+    ctaTertiary: { label: 'Скачать брошюру института', href: '/forms/institut-brosura-ru.pdf' },
     downloadLabel: 'Скачать форму пасторской рекомендации',
   },
 

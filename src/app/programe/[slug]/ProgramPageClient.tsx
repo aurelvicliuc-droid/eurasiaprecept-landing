@@ -432,6 +432,7 @@ export default function ProgramPageClient({ program }: Props) {
                   href={ctaTertiaryHref}
                   target="_blank"
                   rel="noopener noreferrer"
+                  {...(program.ctaTertiary?.download ? { download: true } : {})}
                   className="w-full border border-beige-dark text-text-muted py-3 px-6 rounded-xl
                     text-[13px] font-medium hover:border-teal hover:text-teal transition-all duration-200
                     flex items-center justify-center gap-2"

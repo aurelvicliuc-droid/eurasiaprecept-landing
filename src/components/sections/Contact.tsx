@@ -76,7 +76,7 @@ export default function Contact() {
               className="font-['var(--font-display)'] text-green-dark font-normal leading-tight mb-4
                 text-[clamp(28px,3.5vw,42px)]"
             >
-              <em className="italic text-teal">{t.contact.headingEm}</em> {t.contact.heading}
+              <em className="not-italic text-teal">{t.contact.headingEm}</em> {t.contact.heading}
             </h2>
             <p className="text-[16px] text-teal leading-[1.7] mb-8">
               {t.contact.subtext}

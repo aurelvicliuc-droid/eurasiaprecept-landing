@@ -23,7 +23,7 @@ export default function LocationsMap() {
             className="font-['var(--font-display)'] text-green-dark font-normal leading-tight mb-3
               text-[clamp(28px,3.5vw,42px)]"
           >
-            {m.heading} <em className="italic text-teal">{m.headingEm}</em>
+            {m.heading} <em className="not-italic text-teal">{m.headingEm}</em>
           </h2>
           <p className="text-[16.5px] text-text-muted max-w-[520px] mx-auto leading-[1.7]">
             {m.subtext}

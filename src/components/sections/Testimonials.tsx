@@ -20,7 +20,7 @@ export default function Testimonials() {
               text-[clamp(28px,3.5vw,42px)]"
           >
             {t.testimonials.heading}{' '}
-            <em className="italic text-teal">{t.testimonials.headingEm}</em>
+            <em className="not-italic text-teal">{t.testimonials.headingEm}</em>
           </h2>
           <p className="text-[16.5px] text-text-muted max-w-[480px] leading-[1.7]">
             {t.testimonials.subtext}
@@ -44,7 +44,7 @@ export default function Testimonials() {
                 "
               </span>
               <blockquote>
-                <p className="font-['var(--font-display)'] text-[17px] italic text-text-dark leading-[1.7] mb-6 flex-1">
+                <p className="font-['var(--font-display)'] text-[17px] text-text-dark leading-[1.7] mb-6 flex-1">
                   {item.text}
                 </p>
                 <footer className="flex items-center gap-3">

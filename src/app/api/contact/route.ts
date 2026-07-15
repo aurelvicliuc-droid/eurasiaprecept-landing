@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
               </tr>
               <tr>
                 <td style="padding: 8px 0; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6C6A6A;">Email</td>
-                <td style="padding: 8px 0; font-size: 15px;"><a href="mailto:${email}" style="color: #4d6b6b;">${email}</a></td>
+                <td style="padding: 8px 0; font-size: 15px;"><a href="mailto:${email}" style="color: #2e5a52;">${email}</a></td>
               </tr>
               ${subject ? `
               <tr>

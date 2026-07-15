@@ -13,7 +13,7 @@ function pinIcon(zoom: number) {
   const w = Math.round(Math.max(18, 40 - zoom * 2.2))
   const h = Math.round(w * 1.32)
   const html = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 24 32" style="display:block;filter:drop-shadow(0 2px 2px rgba(0,0,0,.35))">
-    <path d="M12 0C5.9 0 1 4.9 1 11c0 7.7 9.4 19.4 10.2 20.4a1 1 0 0 0 1.6 0C13.6 30.4 23 18.7 23 11 23 4.9 18.1 0 12 0z" fill="#4d6b6b" stroke="#ffffff" stroke-width="1.4"/>
+    <path d="M12 0C5.9 0 1 4.9 1 11c0 7.7 9.4 19.4 10.2 20.4a1 1 0 0 0 1.6 0C13.6 30.4 23 18.7 23 11 23 4.9 18.1 0 12 0z" fill="#2e5a52" stroke="#ffffff" stroke-width="1.4"/>
     <circle cx="12" cy="11" r="4" fill="#ffffff"/>
   </svg>`
   return divIcon({

@@ -79,7 +79,7 @@ export default function Shop() {
               className="font-['var(--font-display)'] text-green-dark font-normal leading-tight mb-2
                 text-[clamp(28px,3.5vw,42px)]"
             >
-              {t.shop.heading} <em className="italic text-teal">{t.shop.headingEm}</em>
+              {t.shop.heading} <em className="not-italic text-teal">{t.shop.headingEm}</em>
             </h2>
             <p className="text-[16.5px] text-text-muted max-w-[400px] leading-[1.7]">
               {t.shop.subtext}

@@ -11,7 +11,6 @@ const foundersGrotesk = localFont({
   src: [
     { path: './fonts/FoundersGrotesk-Light.woff2', weight: '300', style: 'normal' },
     { path: './fonts/FoundersGrotesk-Regular.woff2', weight: '400', style: 'normal' },
-    { path: './fonts/FoundersGrotesk-RegularItalic.woff2', weight: '400', style: 'italic' },
     { path: './fonts/FoundersGrotesk-Medium.woff2', weight: '500', style: 'normal' },
     { path: './fonts/FoundersGrotesk-Semibold.woff2', weight: '600', style: 'normal' },
     { path: './fonts/FoundersGrotesk-Bold.woff2', weight: '700', style: 'normal' },
@@ -36,7 +35,6 @@ const foundersGrotesk = localFont({
 const libreBaskerville = Libre_Baskerville({
   subsets: ['latin'],
   weight: ['400', '700'],
-  style: ['normal', 'italic'],
   variable: '--font-baskerville',
   display: 'swap',
   fallback: ['Georgia', 'serif'],

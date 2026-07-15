@@ -16,9 +16,9 @@ type Tab = 'viziunea' | 'echipa' | 'filiale'
 
 const VISION_CARD_STYLES = [
   { bg: 'bg-[#183831]',   label: 'text-[#9dbdbd]',  text: 'text-white/90' },
-  { bg: 'bg-[#4d6b6b]',   label: 'text-white/60',   text: 'text-white/90' },
+  { bg: 'bg-[#2e5a52]',   label: 'text-white/60',   text: 'text-white/90' },
   { bg: 'bg-[#e5d350]',   label: 'text-[#183831]',  text: 'text-[#183831]' },
-  { bg: 'bg-[#f1f1ee] border border-[#cccbc2]', label: 'text-[#4d6b6b]', text: 'text-[#183831]' },
+  { bg: 'bg-[#f1f1ee] border border-[#cccbc2]', label: 'text-[#2e5a52]', text: 'text-[#183831]' },
 ]
 
 const VISION_CARD_SYMBOLS = [
@@ -47,7 +47,7 @@ const VISION_CARD_SYMBOLS = [
     <path d="M15 54 Q40 48 65 54"/>
   </svg>,
   /* Community circles - Valorile */
-  <svg key="community" viewBox="0 0 80 80" width={72} height={72} fill="currentColor" className="text-[#4d6b6b]">
+  <svg key="community" viewBox="0 0 80 80" width={72} height={72} fill="currentColor" className="text-[#2e5a52]">
     <circle cx="24" cy="32" r="13"/>
     <circle cx="56" cy="32" r="13"/>
     <circle cx="40" cy="54" r="13"/>
@@ -165,7 +165,7 @@ export default function AboutModal({ open, onClose }: Props) {
                 >
                   {activeTab === 'viziunea' && (
                     <div>
-                      <p className="font-['var(--font-display)'] text-[20px] italic text-green-dark leading-[1.6]
+                      <p className="font-['var(--font-display)'] text-[20px] text-green-dark leading-[1.6]
                         border-l-[3px] border-teal pl-5 mb-5">
                         {t.vision.quote}
                       </p>

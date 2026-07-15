@@ -181,7 +181,7 @@ export default function Programs() {
               text-[clamp(28px,3.5vw,42px)]"
           >
             {p.heading.split(' ').slice(0, -2).join(' ')}{' '}
-            <em className="italic text-teal">{p.heading.split(' ').slice(-2).join(' ')}</em>
+            <em className="not-italic text-teal">{p.heading.split(' ').slice(-2).join(' ')}</em>
           </h2>
           <p className="text-[16.5px] text-text-muted max-w-[520px] leading-[1.7]">{p.subtext}</p>
         </AnimatedSection>

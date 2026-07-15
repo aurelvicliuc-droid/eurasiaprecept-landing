@@ -1,12 +1,12 @@
 'use client'
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { BookOpen, Users, Globe, Plus, Trophy, ArrowRight } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { BookOpen, Users, Globe, Plus, Trophy, ArrowRight, ChevronRight } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 import AnimatedSection from '@/components/ui/AnimatedSection'
 import SectionEyebrow from '@/components/ui/SectionEyebrow'
 import { useLanguage } from '@/lib/i18n/context'
+import type { Lang } from '@/lib/i18n/translations'
 
 type Category = 'all' | 'adolescenti' | 'tineri' | 'specializat'
 
@@ -20,6 +20,10 @@ interface Program {
   badgeVariant: 'teal' | 'gold' | 'purple'
   featured?: boolean
   icon: React.ReactNode
+  /** 'core' = treapta din parcursul de formare; 'special' = program paralel. */
+  track: 'core' | 'special'
+  /** Treapta, doar pentru parcurs: I, II, III-IV. */
+  level?: string
   /** Fotografia de fundal a cardului (aceeasi cu hero-ul paginii programului). */
   image: string
 }
@@ -28,6 +32,7 @@ const programs: Program[] = [
   {
     id: 'timotei',
     slug: 'scoala-timotei',
+    track: 'special',
     image: '/programs/scoala-timotei.jpg',
     names: { ro: 'Școala Timotei', en: 'Timothy School', ru: 'Школа Тимофея' },
     descs: {
@@ -43,6 +48,8 @@ const programs: Program[] = [
   {
     id: 'baza',
     slug: 'institutul-biblic',
+    track: 'core',
+    level: 'I',
     image: '/programs/institutul-biblic.jpg',
     names: { ro: 'Institutul Biblic Precept', en: 'Precept Bible Institute', ru: 'Библейский институт Precept' },
     descs: {
@@ -59,6 +66,7 @@ const programs: Program[] = [
   {
     id: 'copii',
     slug: 'lucrare-copii',
+    track: 'special',
     image: '/programs/lucrare-copii.jpg',
     names: { ro: 'Lucrare cu Copiii', en: 'Ministry with Children', ru: 'Служение детям' },
     descs: {
@@ -74,6 +82,7 @@ const programs: Program[] = [
   {
     id: 'english',
     slug: 'efnl',
+    track: 'special',
     image: '/programs/efnl-cover.jpg',
     names: { ro: 'English for a New Life', en: 'English for a New Life', ru: 'Английский для новой жизни' },
     descs: {
@@ -89,6 +98,7 @@ const programs: Program[] = [
   {
     id: 'misiune',
     slug: 'misiune-sport',
+    track: 'special',
     image: '/programs/misiune-sport.jpg',
     names: { ro: 'Școala Internațională de Misiune prin Sport', en: 'International School of Mission through Sport', ru: 'Международная школа миссии через спорт' },
     descs: {
@@ -104,6 +114,8 @@ const programs: Program[] = [
   {
     id: 'nivel2',
     slug: 'nivelul-2',
+    track: 'core',
+    level: 'II',
     image: '/programs/nivelul-2.jpg',
     names: { ro: 'Nivelul 2', en: 'Level 2', ru: 'Уровень 2' },
     descs: {
@@ -119,6 +131,8 @@ const programs: Program[] = [
   {
     id: 'nivel34',
     slug: 'nivelul-3-4',
+    track: 'core',
+    level: 'III-IV',
     image: '/programs/nivelul-3-4.jpg',
     names: { ro: 'Nivelul 3-4', en: 'Levels 3-4', ru: 'Уровни 3-4' },
     descs: {
@@ -143,37 +157,17 @@ const accents = {
 
 export default function Programs() {
   const { lang, t } = useLanguage()
-  const [active, setActive] = useState<Category>('all')
-
   const p = t.programs
 
-  const filters = [
-    { label: p.filters.all, value: 'all' as Category },
-    { label: p.filters.adolescenti, value: 'adolescenti' as Category },
-    { label: p.filters.tineri, value: 'tineri' as Category },
-    { label: p.filters.specializat, value: 'specializat' as Category },
-  ]
-
-  const catLabels: Record<Exclude<Category, 'all'>, string> = {
-    adolescenti: p.groupLabels.adolescenti,
-    tineri: p.groupLabels.tineri,
-    specializat: p.groupLabels.specializat,
-  }
-
-  const filtered = active === 'all' ? programs : programs.filter((prog) => prog.category === active)
-  const groups =
-    active === 'all'
-      ? (['adolescenti', 'tineri', 'specializat'] as const).map((cat) => ({
-          cat,
-          label: catLabels[cat],
-          items: programs.filter((prog) => prog.category === cat),
-        }))
-      : [{ cat: active as Exclude<Category, 'all'>, label: catLabels[active as Exclude<Category, 'all'>], items: filtered }]
+  // Ordinea conteaza: parcursul se citeste I -> II -> III-IV.
+  const core = ['institutul-biblic', 'nivelul-2', 'nivelul-3-4']
+    .map((slug) => programs.find((x) => x.slug === slug)!)
+  const special = programs.filter((x) => x.track === 'special')
 
   return (
     <section className="bg-beige-light py-24" id="programe" aria-labelledby="programs-heading">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-12">
-        <AnimatedSection className="mb-10">
+        <AnimatedSection className="mb-12">
           <SectionEyebrow>{p.eyebrow}</SectionEyebrow>
           <h2
             id="programs-heading"
@@ -186,113 +180,139 @@ export default function Programs() {
           <p className="text-[16.5px] text-text-muted max-w-[520px] leading-[1.7]">{p.subtext}</p>
         </AnimatedSection>
 
-        <AnimatedSection delay={0.1} className="flex flex-wrap gap-2 mb-10">
-          {filters.map((f) => (
-            <motion.button
-              key={f.value}
-              onClick={() => setActive(f.value)}
-              className={`px-5 py-2 rounded-full text-[12px] font-medium tracking-[0.08em] uppercase
-                border-[1.5px] transition-all duration-200 cursor-pointer
-                ${active === f.value
-                  ? 'bg-green-dark border-green-dark text-white'
-                  : 'bg-transparent border-beige-dark text-text-mid hover:border-green-mid hover:text-green-dark'
-                }`}
-              whileTap={{ scale: 0.97 }}
-              aria-pressed={active === f.value}
-            >
-              {f.label}
-            </motion.button>
-          ))}
+        {/* Parcursul: trei trepte, in ordine */}
+        <AnimatedSection delay={0.05}>
+          <GroupHeader label={p.trackLabel} note={p.trackNote} />
+          <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 list-none">
+            {core.map((prog, i) => (
+              <li key={prog.id} className="relative">
+                <ProgramCard prog={prog} lang={lang} cta={p.cta} index={i} />
+                {/* Sageata dintre trepte, doar pe ecran lat */}
+                {i < core.length - 1 && (
+                  <span
+                    className="hidden lg:flex absolute top-1/2 -right-5 w-5 -translate-y-1/2 items-center justify-center
+                      text-beige-dark z-10"
+                    aria-hidden="true"
+                  >
+                    <ChevronRight size={20} />
+                  </span>
+                )}
+              </li>
+            ))}
+          </ol>
         </AnimatedSection>
 
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={active}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
-          >
-            {groups.map((group) => (
-              <div key={group.cat} className="mb-12">
-                <div className="text-[11px] font-semibold tracking-[0.15em] uppercase text-text-muted
-                  mb-4 pb-3 border-b border-beige-dark">
-                  {group.label}
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
-                  {group.items.map((prog, i) => (
-                    <motion.div
-                      key={prog.id}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: i * 0.08, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                    >
-                      <Link
-                        href={`/programe/${prog.slug}`}
-                        className={`group relative block overflow-hidden rounded-xl aspect-[4/3] cursor-pointer
-                          transition-shadow duration-300 hover:shadow-[0_12px_32px_rgba(24,56,49,0.22)]
-                          focus:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2
-                          ${prog.featured ? 'ring-[1.5px] ring-teal' : ''}`}
-                      >
-                        <Image
-                          src={prog.image}
-                          alt=""
-                          fill
-                          sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                          quality={70}
-                          className="object-cover transition-transform duration-[700ms] ease-out group-hover:scale-[1.06]"
-                        />
-                        {/* Lizibilitate: intunecare pe toata jumatatea de jos, unde stau titlul si
-                            descrierea (pb-14 le ridica peste marginea de jos, deci un gradient scurt
-                            nu le-ar acoperi). */}
-                        <div className="absolute inset-0 bg-black/25" aria-hidden="true" />
-                        <div
-                          className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-black/95 via-black/72 to-transparent"
-                          aria-hidden="true"
-                        />
-                        {/* Tenta de brand, doar la hover */}
-                        <div
-                          className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300
-                            ${accents[prog.badgeVariant].tint}`}
-                          aria-hidden="true"
-                        />
+      </div>
 
-                        {/* Conținut: stă jos, unde gradientul e cel mai închis. La hover urcă
-                            odată cu bara, ca să nu fie acoperit. */}
-                        <div className="relative h-full p-5 flex flex-col justify-end
-                          transition-transform duration-300 ease-out group-hover:-translate-y-11
-                          motion-reduce:transition-none motion-reduce:group-hover:translate-y-0">
-                          <span className={`self-start text-[10px] font-semibold tracking-[0.1em] uppercase
-                            px-2.5 py-1 rounded-full mb-3 ${accents[prog.badgeVariant].badge}`}>
-                            {prog.badges[lang]}
-                          </span>
-                          <h3 className="font-['var(--font-display)'] text-[22px] font-medium text-fog leading-[1.25]
-                            [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
-                            {prog.names[lang]}
-                          </h3>
-                          <p className="text-[14px] text-fog/75 leading-[1.6] mt-2 line-clamp-2">
-                            {prog.descs[lang]}
-                          </p>
-                        </div>
-
-                        {/* Bara de brand: urcă din marginea de jos la hover */}
-                        <div
-                          className={`absolute inset-x-0 bottom-0 h-11 px-5 flex items-center gap-1.5
-                            translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out
-                            motion-reduce:transition-none ${accents[prog.badgeVariant].bar}`}
-                        >
-                          <span className="text-[12px] font-semibold tracking-[0.08em] uppercase">{p.cta}</span>
-                          <ArrowRight size={13} className="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
-                        </div>
-                      </Link>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
+      {/* Programele paralele ies din containerul obisnuit de 1200px. Altfel cele 4 carduri
+          ar fi cu ~94px mai inguste decat cele 3 trepte de sus; la 1575px ies egale. */}
+      <div className="max-w-[1575px] mx-auto px-6 lg:px-12 mt-14">
+        <AnimatedSection delay={0.1}>
+          <GroupHeader label={p.specializedLabel} note={p.specializedNote} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
+            {special.map((prog, i) => (
+              <ProgramCard key={prog.id} prog={prog} lang={lang} cta={p.cta} index={i} />
             ))}
-          </motion.div>
-        </AnimatePresence>
+          </div>
+        </AnimatedSection>
       </div>
     </section>
+  )
+}
+
+function GroupHeader({ label, note }: { label: string; note: string }) {
+  return (
+    <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-5 pb-3 border-b border-beige-dark">
+      <span className="text-[11px] font-semibold tracking-[0.15em] uppercase text-green-dark">{label}</span>
+      <span className="text-[13px] text-text-muted">{note}</span>
+    </div>
+  )
+}
+
+function ProgramCard({
+  prog,
+  lang,
+  cta,
+  index,
+}: {
+  prog: Program
+  lang: Lang
+  cta: string
+  index: number
+}) {
+  const a = accents[prog.badgeVariant]
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ delay: index * 0.07, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <Link
+        href={`/programe/${prog.slug}`}
+        className={`group relative block overflow-hidden rounded-xl aspect-[4/3] cursor-pointer
+          transition-shadow duration-300 hover:shadow-[0_12px_32px_rgba(24,56,49,0.22)]
+          focus:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2
+          ${prog.featured ? 'ring-[1.5px] ring-teal' : ''}`}
+      >
+        <Image
+          src={prog.image}
+          alt=""
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
+          quality={70}
+          className="object-cover transition-transform duration-[700ms] ease-out group-hover:scale-[1.06]"
+        />
+        {/* Lizibilitate: intunecare pe jumatatea de jos, unde stau titlul si descrierea */}
+        <div className="absolute inset-0 bg-black/25" aria-hidden="true" />
+        <div
+          className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-black/95 via-black/72 to-transparent"
+          aria-hidden="true"
+        />
+        {/* Tenta de brand, doar la hover */}
+        <div
+          className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${a.tint}`}
+          aria-hidden="true"
+        />
+
+        {/* Treapta, doar pe parcurs */}
+        {prog.level && (
+          <span
+            className="absolute top-4 left-4 z-10 min-w-9 h-9 px-2 rounded-full bg-fog/95 text-green-dark
+              flex items-center justify-center text-[13px] font-bold tracking-wide"
+            aria-hidden="true"
+          >
+            {prog.level}
+          </span>
+        )}
+
+        {/* Continut: sta jos, unde gradientul e cel mai inchis; urca odata cu bara la hover */}
+        <div className="relative h-full p-5 flex flex-col justify-end
+          transition-transform duration-300 ease-out group-hover:-translate-y-11
+          motion-reduce:transition-none motion-reduce:group-hover:translate-y-0">
+          <span className={`self-start text-[10px] font-semibold tracking-[0.1em] uppercase
+            px-2.5 py-1 rounded-full mb-3 ${a.badge}`}>
+            {prog.badges[lang]}
+          </span>
+          <h3 className="font-['var(--font-display)'] text-[22px] font-medium text-fog leading-[1.25]
+            [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
+            {prog.names[lang]}
+          </h3>
+          <p className="text-[14px] text-fog/75 leading-[1.6] mt-2 line-clamp-2">
+            {prog.descs[lang]}
+          </p>
+        </div>
+
+        {/* Bara de brand: urca din marginea de jos la hover */}
+        <div
+          className={`absolute inset-x-0 bottom-0 h-11 px-5 flex items-center gap-1.5
+            translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out
+            motion-reduce:transition-none ${a.bar}`}
+        >
+          <span className="text-[12px] font-semibold tracking-[0.08em] uppercase">{cta}</span>
+          <ArrowRight size={13} className="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
+        </div>
+      </Link>
+    </motion.div>
   )
 }

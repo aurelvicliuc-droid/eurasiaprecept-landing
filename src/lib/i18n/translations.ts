@@ -32,6 +32,10 @@ export const translations = {
       eyebrow: 'Facultăți',
       heading: 'Alege direcția ta',
       subtext: 'Programe pentru toate vârstele, de la adolescenți până la misionari, de la baza biblică la leadership avansat.',
+      trackLabel: 'Parcursul de formare',
+      trackNote: 'Trei trepte, una după alta.',
+      specializedLabel: 'Programe specializate',
+      specializedNote: 'Se pot urma independent de parcurs.',
       filters: {
         all: 'Toate',
         adolescenti: 'Adolescenți',
@@ -44,6 +48,12 @@ export const translations = {
         specializat: 'Specializat',
       },
       cta: 'Detalii complete',
+    },
+    gallery: {
+      eyebrow: 'Galerie',
+      heading: 'Momente din',
+      headingEm: 'lucrarea noastră',
+      subtext: 'Sesiuni, absolviri și oameni din institutele Precept.',
     },
     map: {
       eyebrow: 'Prezență globală',
@@ -219,6 +229,10 @@ export const translations = {
       eyebrow: 'Programs',
       heading: 'Choose your path',
       subtext: 'Programs for all ages, from teenagers to missionaries, from biblical foundations to advanced leadership.',
+      trackLabel: 'The training path',
+      trackNote: 'Three levels, one after another.',
+      specializedLabel: 'Specialized programs',
+      specializedNote: 'Can be taken independently of the path.',
       filters: {
         all: 'All',
         adolescenti: 'Teens',
@@ -231,6 +245,12 @@ export const translations = {
         specializat: 'Specialized',
       },
       cta: 'Full details',
+    },
+    gallery: {
+      eyebrow: 'Gallery',
+      heading: 'Moments from',
+      headingEm: 'our ministry',
+      subtext: 'Sessions, graduations and people from the Precept institutes.',
     },
     map: {
       eyebrow: 'Global presence',
@@ -406,6 +426,10 @@ export const translations = {
       eyebrow: 'Программы',
       heading: 'Выберите свой путь',
       subtext: 'Программы для всех возрастов, от подростков до миссионеров, от библейских основ до продвинутого лидерства.',
+      trackLabel: 'Путь подготовки',
+      trackNote: 'Три ступени, одна за другой.',
+      specializedLabel: 'Специализированные программы',
+      specializedNote: 'Можно проходить независимо от пути.',
       filters: {
         all: 'Все',
         adolescenti: 'Подростки',
@@ -418,6 +442,12 @@ export const translations = {
         specializat: 'Специализированные',
       },
       cta: 'Подробнее',
+    },
+    gallery: {
+      eyebrow: 'Галерея',
+      heading: 'Моменты из',
+      headingEm: 'нашего служения',
+      subtext: 'Сессии, выпуски и люди из институтов Precept.',
     },
     map: {
       eyebrow: 'Глобальное присутствие',

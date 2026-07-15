@@ -3,6 +3,9 @@ import { useRef, useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence, useScroll, useTransform, MotionValue } from 'framer-motion'
 import Image from 'next/image'
 import { X, ChevronLeft, ChevronRight, Images } from 'lucide-react'
+import AnimatedSection from '@/components/ui/AnimatedSection'
+import SectionEyebrow from '@/components/ui/SectionEyebrow'
+import { useLanguage } from '@/lib/i18n/context'
 
 const C = '/carousel'
 
@@ -29,13 +32,13 @@ const N = [
 
 type Img = { src: string; pos?: string }
 
-// 5 frames × 3 images - pos overrides object-top per image if needed
+// 3 cadre x 3 imagini. Efectul sticky costa aproximativ un ecran de scroll per cadru,
+// deci numarul de cadre da lungimea sectiunii: la 5 cadre ajungea la ~3.9 ecrane, de
+// patru ori cat oricare alta sectiune.
 const FRAMES: Img[][] = [
   [{ src: FOUNDERS, pos: 'object-center' }, { src: KAY, pos: 'object-center' }, { src: FESTIVAL, pos: 'object-center' }],
   [{ src: VASILE, pos: 'object-center' }, { src: N[0], pos: 'object-center' }, { src: N[1], pos: 'object-center' }],
   [{ src: CLASA, pos: 'object-center' }, { src: AMVON, pos: 'object-center' }, { src: N[2], pos: 'object-center' }],
-  [{ src: N[3], pos: 'object-center' }, { src: N[4], pos: 'object-center' }, { src: N[5], pos: 'object-center' }],
-  [{ src: N[6], pos: 'object-center' }, { src: N[7] }, { src: N[8] }],
 ]
 
 const FLAT: Img[] = FRAMES.flat()
@@ -60,8 +63,9 @@ function Frame({
   const scale = useTransform(progress, range, [1, targetScale])
 
   return (
-    // Each frame is 70vh tall, sticky at 15vh from viewport top → centered in view
-    <div className="sticky top-[15vh] h-[70vh] w-full flex items-center">
+    // Fiecare cadru: 52vh inaltime, lipit la 24vh de sus, deci sta centrat pe ecran.
+    // Inaltimea cadrului da si scroll-ul per cadru, si golul din jurul pozei.
+    <div className="sticky top-[24vh] h-[52vh] w-full flex items-center">
       <motion.div
         style={{ scale, transformOrigin: 'top center' }}
         className="w-full px-8 grid grid-cols-3 gap-6"
@@ -99,6 +103,8 @@ function Frame({
 }
 
 export default function StickyGallery() {
+  const { t } = useLanguage()
+  const g = t.gallery
   const container = useRef<HTMLDivElement>(null)
 
   const { scrollYProgress } = useScroll({
@@ -129,9 +135,25 @@ export default function StickyGallery() {
   }, [lightbox, closeLightbox, stepLightbox])
 
   return (
-    <section className="relative bg-beige-light" aria-label="Photo gallery">
+    <section className="relative bg-beige-light pt-16" aria-labelledby="gallery-heading">
+      {/* Titlu. Aceleasi margini ca pozele (px-4 pe mobil, px-8 pe desktop), ca sa fie
+          aliniat cu ele in stanga; galeria e full-bleed, nu sta in containerul de 1200px. */}
+      <div className="px-4 md:px-8">
+        <AnimatedSection className="mb-4">
+          <SectionEyebrow>{g.eyebrow}</SectionEyebrow>
+          <h2
+            id="gallery-heading"
+            className="font-['var(--font-display)'] text-green-dark font-normal leading-tight mb-3
+              text-[clamp(28px,3.5vw,42px)]"
+          >
+            {g.heading} <em className="not-italic text-teal">{g.headingEm}</em>
+          </h2>
+          <p className="text-[16.5px] text-text-muted max-w-[520px] leading-[1.7]">{g.subtext}</p>
+        </AnimatedSection>
+      </div>
+
       {/* Mobile: galerie compactă, o poză pe rând, scroll normal */}
-      <div className="md:hidden px-4 py-10 flex flex-col gap-3">
+      <div className="md:hidden px-4 py-8 flex flex-col gap-3">
         {FLAT.map((img, i) => (
           <button
             key={i}
@@ -161,7 +183,7 @@ export default function StickyGallery() {
       </div>
 
       {/* Desktop: efect sticky (5 frame-uri × 70vh) */}
-      <div ref={container} className="hidden md:block pt-[15vh] pb-[25vh]">
+      <div ref={container} className="hidden md:block pb-[6vh]">
         {FRAMES.map((srcs, i) => {
           const n = FRAMES.length
           const targetScale = 1 - (n - i - 1) * 0.06

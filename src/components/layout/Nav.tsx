@@ -47,7 +47,7 @@ export default function Nav({ onAboutOpen }: NavProps) {
           {/* Logo */}
           <Link href="/" className="flex items-center" aria-label="Precept Eurasia — Acasă">
             <Image
-              src="/Precept_LogomarkSmal.png"
+              src="/precept-logomark.png"
               alt="Precept Eurasia"
               width={160}
               height={40}

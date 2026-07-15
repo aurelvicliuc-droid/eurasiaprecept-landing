@@ -126,7 +126,7 @@ const programs: Program[] = [
 const badgeStyles = {
   teal:   'text-teal bg-teal/10',
   gold:   'text-green-dark bg-gold/20',
-  purple: 'text-[#6b4f9e] bg-[rgba(107,79,158,0.1)]',
+  purple: 'text-[#a1502c] bg-[rgba(161,80,44,0.1)]',
 }
 
 export default function Programs() {

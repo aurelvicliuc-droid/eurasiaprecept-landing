@@ -78,7 +78,7 @@ export default function ParallaxGallery() {
   return (
     <section
       ref={container}
-      className="bg-[#0e1f17] overflow-hidden"
+      className="bg-[#0f241f] overflow-hidden"
       aria-label="Photo gallery"
     >
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 px-3 py-3">

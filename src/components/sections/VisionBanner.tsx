@@ -6,7 +6,7 @@ import { useLanguage } from '@/lib/i18n/context'
 export default function VisionBanner() {
   const { t } = useLanguage()
   return (
-    <div className="bg-beige-dark border-t border-[#c8c3b8] border-b py-[70px] px-6 text-center">
+    <div className="bg-beige-dark border-t border-[#bdbbb1] border-b py-[70px] px-6 text-center">
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}

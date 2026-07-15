@@ -13,8 +13,8 @@ import { localizeProgram } from '@/lib/i18n/programs-localized'
 
 const badgeColors: Record<string, string> = {
   teal: 'bg-teal/10 text-teal border-teal/30',
-  gold: 'bg-gold/10 text-[#a07820] border-gold/40',
-  purple: 'bg-purple-100 text-purple-700 border-purple-200',
+  gold: 'bg-gold/10 text-[#7c7012] border-gold/40',
+  purple: 'bg-clay/10 text-clay border-clay/30',
   green: 'bg-green-mid/10 text-green-mid border-green-mid/30',
 }
 
@@ -66,7 +66,7 @@ export default function ProgramPageClient({ program }: Props) {
   const ctaSecondaryTarget = /^https?:\/\//.test(ctaSecondaryHref ?? '') ? { target: '_blank', rel: 'noopener noreferrer' } : {}
 
   return (
-    <div className="min-h-screen bg-[#fafaf8]">
+    <div className="min-h-screen bg-[#f7f6f4]">
       <Nav onAboutOpen={() => setAboutOpen(true)} />
       <AboutModal open={aboutOpen} onClose={() => setAboutOpen(false)} />
 
@@ -371,7 +371,7 @@ export default function ProgramPageClient({ program }: Props) {
                 <ul className="flex flex-col gap-3">
                   {p.structure.map((item, i) => (
                     <li key={i} className="flex items-start gap-2.5">
-                      <Clock size={15} className="text-gold flex-shrink-0 mt-[3px]" />
+                      <Clock size={15} className="text-gold-deep flex-shrink-0 mt-[3px]" />
                       <span className="flex-1 min-w-0 text-[15px] text-text-dark leading-[1.6]">{item}</span>
                     </li>
                   ))}

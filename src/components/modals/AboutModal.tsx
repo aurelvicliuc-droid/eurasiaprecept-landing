@@ -15,10 +15,10 @@ interface Props {
 type Tab = 'viziunea' | 'echipa' | 'filiale'
 
 const VISION_CARD_STYLES = [
-  { bg: 'bg-[#1a3a2a]',   label: 'text-[#7ec8b8]',  text: 'text-white/90' },
-  { bg: 'bg-[#3d7a72]',   label: 'text-white/60',   text: 'text-white/90' },
-  { bg: 'bg-[#c9a84c]',   label: 'text-[#3a2800]',  text: 'text-[#1a1200]' },
-  { bg: 'bg-[#f0ebe0] border border-[#d4c9b0]', label: 'text-[#3d7a72]', text: 'text-[#1a3a2a]' },
+  { bg: 'bg-[#183831]',   label: 'text-[#9dbdbd]',  text: 'text-white/90' },
+  { bg: 'bg-[#4d6b6b]',   label: 'text-white/60',   text: 'text-white/90' },
+  { bg: 'bg-[#e5d350]',   label: 'text-[#183831]',  text: 'text-[#183831]' },
+  { bg: 'bg-[#f1f1ee] border border-[#cccbc2]', label: 'text-[#4d6b6b]', text: 'text-[#183831]' },
 ]
 
 const VISION_CARD_SYMBOLS = [
@@ -39,7 +39,7 @@ const VISION_CARD_SYMBOLS = [
     <line x1="44" y1="44" x2="64" y2="44"/>
   </svg>,
   /* Globe — Impactul */
-  <svg key="globe" viewBox="0 0 80 80" width={72} height={72} fill="none" stroke="currentColor" strokeWidth="2.5" className="text-[#3a2800]">
+  <svg key="globe" viewBox="0 0 80 80" width={72} height={72} fill="none" stroke="currentColor" strokeWidth="2.5" className="text-[#183831]">
     <circle cx="40" cy="40" r="28"/>
     <ellipse cx="40" cy="40" rx="12" ry="28"/>
     <line x1="12" y1="40" x2="68" y2="40"/>
@@ -47,7 +47,7 @@ const VISION_CARD_SYMBOLS = [
     <path d="M15 54 Q40 48 65 54"/>
   </svg>,
   /* Community circles — Valorile */
-  <svg key="community" viewBox="0 0 80 80" width={72} height={72} fill="currentColor" className="text-[#3d7a72]">
+  <svg key="community" viewBox="0 0 80 80" width={72} height={72} fill="currentColor" className="text-[#4d6b6b]">
     <circle cx="24" cy="32" r="13"/>
     <circle cx="56" cy="32" r="13"/>
     <circle cx="40" cy="54" r="13"/>

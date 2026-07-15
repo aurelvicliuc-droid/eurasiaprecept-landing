@@ -19,7 +19,7 @@ const products = [
     },
     badge: { ro: 'Seria', en: 'Series', ru: 'Серия' },
     badgeGold: false,
-    imgBg: '#1e3a6e',
+    imgBg: '#183831',
     img: 'https://admin.shop.eurasiaprecept.org/wp-content/uploads/2023/06/invatsstura-romana.jpeg',
   },
   {
@@ -32,7 +32,7 @@ const products = [
     },
     badge: { ro: 'Seria', en: 'Series', ru: 'Серия' },
     badgeGold: false,
-    imgBg: '#c9a8c8',
+    imgBg: '#d99778',
     img: 'https://admin.shop.eurasiaprecept.org/wp-content/uploads/2023/06/seria-doamne-romana.jpeg',
   },
   {
@@ -45,7 +45,7 @@ const products = [
     },
     badge: { ro: 'Seria', en: 'Series', ru: 'Серия' },
     badgeGold: false,
-    imgBg: '#a8b8d8',
+    imgBg: '#729999',
     img: 'https://admin.shop.eurasiaprecept.org/wp-content/uploads/2023/06/descopera-tu-romana.jpeg',
   },
   {
@@ -58,7 +58,7 @@ const products = [
     },
     badge: { ro: 'Cursuri', en: 'Studies', ru: 'Курсы' },
     badgeGold: true,
-    imgBg: '#dce8f0',
+    imgBg: '#deddd7',
     img: 'https://admin.shop.eurasiaprecept.org/wp-content/uploads/2023/06/40_min_logo_english-1.jpg',
   },
 ]

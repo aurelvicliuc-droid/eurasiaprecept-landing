@@ -1,65 +1,97 @@
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
-
 @import "tailwindcss";
 
-@font-face {
-  font-family: 'Poynter Oldstyle';
-  src: local('Poynter Oldstyle Display'), local('PoynterOldstyle-Display');
-  font-weight: 400;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Founders Grotesk';
-  src: local('Founders Grotesk'), local('FoundersGrotesk-Regular');
-  font-weight: 400;
-  font-display: swap;
-}
+/*
+  ── Precept Eurasia — sistem de brand ──────────────────────────────
+  Paleta oficială (Pantone → HEX):
+    Fog        Cool Gray 1 U      #DEDDD7
+    Charcoal   Neutral Black U    #3D3C3C
+    Flat Black                    #000000
+    Ocean      PANTONE 5493 U     #729999
+    Spruce     PANTONE 3435 U     #183831
+    Golden     PANTONE 604 U      #E5D350
+    Peach      PANTONE 472 U      #D99778
+    Clay       PANTONE 174 U      #A1502C
+
+  Ocean, Golden și Peach sunt prea deschise pentru text pe fundal deschis
+  (Ocean = 3.1:1 pe alb). Ele se folosesc ca umpluturi/accente, iar pentru
+  text avem variante adâncite din aceeași nuanță (vezi --teal / --gold-deep).
+  Fonturile vin din next/font (vezi layout.tsx).
+*/
 
 :root {
-  --green-dark:  #1a3a2a;
-  --green-mid:   #2d5a40;
-  --green-light: #4a7c5f;
-  --gold:        #c9a84c;
-  --gold-light:  #e8c97a;
-  --beige:       #e8e4db;
-  --beige-light: #f0ece4;
-  --beige-dark:  #d4cfc5;
-  --teal:        #3d7a72;
-  --teal-light:  #5a9e96;
-  --cream:       #fafaf8;
-  --text-dark:   #1a2e22;
-  --text-mid:    #3d5a48;
-  --text-muted:  #7a9080;
+  /* Paleta de brand, exact */
+  --fog:        #DEDDD7;
+  --charcoal:   #3D3C3C;
+  --flat-black: #000000;
+  --ocean:      #729999;
+  --spruce:     #183831;
+  --golden:     #E5D350;
+  --peach:      #D99778;
+  --clay:       #A1502C;
+
+  /* Verzi */
+  --green-dark:  #183831;  /* Spruce */
+  --green-mid:   #2E5A52;  /* Spruce → Ocean */
+  --green-light: #4F7F78;
+
+  /* Accent principal — Ocean adâncit, ca să treacă contrastul pe fundal deschis */
+  --teal:        #4D6B6B;
+  --teal-light:  #729999;  /* Ocean pur — accente/hover */
+
+  /* Auriu */
+  --gold:        #E5D350;  /* Golden — umplutură */
+  --gold-light:  #F0E48A;
+  --gold-deep:   #7C7012;  /* text pe fundal auriu deschis */
+
+  /* Suprafețe — tonuri de Fog */
+  --cream:       #F7F6F4;
+  --beige-light: #F1F1EE;
+  --beige:       #DEDDD7;  /* Fog */
+  --beige-dark:  #CCCBC2;
+
+  /* Text — Charcoal */
+  --text-dark:   #3D3C3C;
+  --text-mid:    #5C5B5A;
+  --text-muted:  #6C6A6A;
 }
 
 @theme inline {
   --color-background: var(--beige-light);
   --color-foreground: var(--text-dark);
 
-  --color-green-dark:  #1a3a2a;
-  --color-green-mid:   #2d5a40;
-  --color-green-light: #4a7c5f;
-  --color-gold:        #c9a84c;
-  --color-gold-light:  #e8c97a;
-  --color-beige:       #e8e4db;
-  --color-beige-light: #f0ece4;
-  --color-beige-dark:  #d4cfc5;
-  --color-teal:        #3d7a72;
-  --color-teal-light:  #5a9e96;
-  --color-cream:       #fafaf8;
-  --color-text-dark:   #1a2e22;
-  --color-text-mid:    #3d5a48;
-  --color-text-muted:  #7a9080;
+  /* Brand */
+  --color-fog:        #DEDDD7;
+  --color-charcoal:   #3D3C3C;
+  --color-flat-black: #000000;
+  --color-ocean:      #729999;
+  --color-spruce:     #183831;
+  --color-golden:     #E5D350;
+  --color-peach:      #D99778;
+  --color-clay:       #A1502C;
 
-  --font-display: 'Poynter Oldstyle', 'Libre Baskerville', Georgia, serif;
-  --font-body:    'Founders Grotesk', 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
+  /* Tokenuri folosite în componente */
+  --color-green-dark:  #183831;
+  --color-green-mid:   #2E5A52;
+  --color-green-light: #4F7F78;
+  --color-gold:        #E5D350;
+  --color-gold-light:  #F0E48A;
+  --color-gold-deep:   #7C7012;
+  --color-beige:       #DEDDD7;
+  --color-beige-light: #F1F1EE;
+  --color-beige-dark:  #CCCBC2;
+  --color-teal:        #4D6B6B;
+  --color-teal-light:  #729999;
+  --color-cream:       #F7F6F4;
+  --color-text-dark:   #3D3C3C;
+  --color-text-mid:    #5C5B5A;
+  --color-text-muted:  #6C6A6A;
+
+  --font-display: var(--font-baskerville), Georgia, 'Times New Roman', serif;
+  --font-body:    var(--font-founders), system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
-}
-
-html {
   font-size: 17px;
 }
 
@@ -92,16 +124,16 @@ body {
 
 /* Map location tooltip (Leaflet) */
 .leaflet-tooltip.precept-tip {
-  background: #fffdf8;
-  border: 1px solid #e0dbd0;
+  background: var(--cream);
+  border: 1px solid var(--beige-dark);
   border-radius: 10px;
-  box-shadow: 0 8px 22px rgba(26, 58, 42, 0.16);
+  box-shadow: 0 8px 22px rgba(24, 56, 49, 0.18);
   padding: 8px 12px;
   text-align: center;
   white-space: nowrap;
-  font-family: var(--font-sans, inherit);
+  font-family: var(--font-body);
 }
-.leaflet-tooltip.precept-tip.leaflet-tooltip-top::before { border-top-color: #fffdf8; }
-.leaflet-tooltip.precept-tip.leaflet-tooltip-bottom::before { border-bottom-color: #fffdf8; }
-.leaflet-tooltip.precept-tip.leaflet-tooltip-left::before { border-left-color: #fffdf8; }
-.leaflet-tooltip.precept-tip.leaflet-tooltip-right::before { border-right-color: #fffdf8; }
+.leaflet-tooltip.precept-tip.leaflet-tooltip-top::before { border-top-color: var(--cream); }
+.leaflet-tooltip.precept-tip.leaflet-tooltip-bottom::before { border-bottom-color: var(--cream); }
+.leaflet-tooltip.precept-tip.leaflet-tooltip-left::before { border-left-color: var(--cream); }
+.leaflet-tooltip.precept-tip.leaflet-tooltip-right::before { border-right-color: var(--cream); }

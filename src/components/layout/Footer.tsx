@@ -55,7 +55,7 @@ export default function Footer() {
         <div className="flex items-center justify-between mb-8 lg:hidden">
           <Link href="/" aria-label="Precept Eurasia">
             <Image
-              src="/Precept_LogomarkSmal.png"
+              src="/precept-logomark.png"
               alt="Precept Eurasia"
               width={140}
               height={36}
@@ -88,7 +88,7 @@ export default function Footer() {
           <div className="hidden lg:block">
             <Link href="/" aria-label="Precept Eurasia">
               <Image
-                src="/Precept_LogomarkSmal.png"
+                src="/precept-logomark.png"
                 alt="Precept Eurasia"
                 width={160}
                 height={40}

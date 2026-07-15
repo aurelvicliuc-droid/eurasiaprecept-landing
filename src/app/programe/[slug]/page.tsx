@@ -17,7 +17,7 @@ export async function generateMetadata(
   const program = getProgramBySlug(slug)
   if (!program) return {}
 
-  const title = `${program.name} — Precept Eurasia`
+  const title = `${program.name} | Precept Eurasia`
   const url = `${BASE_URL}/programe/${slug}`
 
   return {

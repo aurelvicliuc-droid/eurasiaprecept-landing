@@ -35,7 +35,7 @@ export const COUNTRY: Record<string, { ro: string; ru: string }> = {
   Colombia: { ro: 'Columbia', ru: 'Колумбия' },
   Cambodia: { ro: 'Cambodgia', ru: 'Камбоджа' },
   Indonesia: { ro: 'Indonezia', ru: 'Индонезия' },
-  'Papua New Guinea': { ro: 'Papua Noua Guinee', ru: 'Папуа — Новая Гвинея' },
+  'Papua New Guinea': { ro: 'Papua Noua Guinee', ru: 'Папуа-Новая Гвинея' },
   Myanmar: { ro: 'Myanmar', ru: 'Мьянма' },
 }
 

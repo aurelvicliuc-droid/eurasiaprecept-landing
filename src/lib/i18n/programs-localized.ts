@@ -9,11 +9,11 @@ export type LocalizedProgram = Omit<ProgramData, 'name' | 'tagline' | 'overview'
 export function localizeProgram(program: ProgramData, lang: Lang): LocalizedProgram {
   const t = lang === 'en' ? programsEn[program.slug] : lang === 'ru' ? programsRu[program.slug] : undefined
   if (t) {
-    // Manual shop links live only in the base (Romanian) data — single source of truth.
+    // Manual shop links live only in the base (Romanian) data - single source of truth.
     // Merge them into the localized curriculum by position so every language uses the same links.
     const curriculum = t.curriculum.map((course, ci) => {
       const baseCourse = program.curriculum[ci]
-      // Single-manual link (e.g. Institutul Biblic) — inherited from the base data by position.
+      // Single-manual link (e.g. Institutul Biblic) - inherited from the base data by position.
       const merged = { ...course, manualHref: course.manualHref ?? baseCourse?.manualHref }
       const baseManuals = baseCourse?.manuals
       if (!course.manuals || !baseManuals) return merged
@@ -31,6 +31,6 @@ export function localizeProgram(program: ProgramData, lang: Lang): LocalizedProg
     })
     return { ...program, ...t, curriculum }
   }
-  // Romanian (default) — cast base data as LocalizedProgram
+  // Romanian (default) - cast base data as LocalizedProgram
   return program as unknown as LocalizedProgram
 }

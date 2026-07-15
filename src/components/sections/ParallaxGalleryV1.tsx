@@ -6,7 +6,7 @@ import Lenis from 'lenis'
 
 const C = '/carousel'
 
-// 20 images, 5 per column — sorted alphabetically
+// 20 images, 5 per column - sorted alphabetically
 const ALL = [
   '489114146_1457118022215915_2888482248647560853_n.jpg',
   '490807858_1466338161293901_1959630751560638820_n.jpg',

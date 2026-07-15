@@ -8,7 +8,7 @@ import { useLanguage } from '@/lib/i18n/context'
 import type { Lang } from '@/lib/i18n/translations'
 import { countryName } from '@/lib/countries'
 
-// Iconiță de pin verde (SVG) — mare când e depărtat, mică când e apropiat (zoom).
+// Iconiță de pin verde (SVG) - mare când e depărtat, mică când e apropiat (zoom).
 function pinIcon(zoom: number) {
   const w = Math.round(Math.max(18, 40 - zoom * 2.2))
   const h = Math.round(w * 1.32)
@@ -44,7 +44,7 @@ function Markers({ lang }: { lang: Lang }) {
       {locations.map((l) => (
         <Marker key={`${l.country}-${l.city}`} position={[l.lat, l.lng]} icon={icon}>
           <Tooltip direction="top" opacity={1} className="precept-tip">
-            <span className="block font-semibold text-[12.5px] text-green-dark leading-tight">{countryName(l.country, lang)} — {l.city}</span>
+            <span className="block font-semibold text-[12.5px] text-green-dark leading-tight">{countryName(l.country, lang)}, {l.city}</span>
             <span className="block text-[12px] text-text-dark mt-[3px]">{l.coordinator}</span>
             {l.email ? <span className="block text-[11px] text-teal mt-[1px]">{l.email}</span> : null}
           </Tooltip>

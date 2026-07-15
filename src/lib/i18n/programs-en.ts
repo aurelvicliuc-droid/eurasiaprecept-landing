@@ -72,7 +72,7 @@ export const programsEn: Record<string, ProgramTranslation> = {
     ],
     structure: [
       '7 intensive sessions',
-      'Total duration: 3–4 years',
+      'Total duration: 3-4 years',
       'Organized during school vacations',
       'Teaching the studied courses between sessions',
     ],
@@ -100,7 +100,7 @@ export const programsEn: Record<string, ProgramTranslation> = {
     curriculum: [
       { title: 'Missiology', manuals: [{ title: 'The Sermon on the Mount' }], desc: 'Understand the Church\'s calling to bring the Gospel to all nations and discover biblical principles of missionary work.' },
       { title: 'Equipping the Church', manuals: [{ title: 'Spiritual Gifts' }], desc: 'Discover how God equips believers for ministry and how spiritual gifts can be developed in the local church.' },
-      { title: 'How to Study a Difficult Text', manuals: [{ title: 'Gospel of John — Part I' }], desc: 'Deepen Bible interpretation methods for complex and challenging passages.' },
+      { title: 'How to Study a Difficult Text', manuals: [{ title: 'Gospel of John (Part I)' }], desc: 'Deepen Bible interpretation methods for complex and challenging passages.' },
       { title: 'Prophecy', manuals: [
         { title: 'Revelation (Part I)' },
         { title: 'Revelation (Part II)' },
@@ -131,10 +131,10 @@ export const programsEn: Record<string, ProgramTranslation> = {
   },
 
   'nivelul-3-4': {
-    name: 'Levels III–IV',
+    name: 'Levels III-IV',
     tagline: 'Continue growing in the knowledge of Scripture and in ministry',
     overview:
-      'Levels III–IV are intended for those who want to deepen their understanding of all Scripture and be equipped for greater responsibilities in the church, mentoring, teaching, and developing other leaders.',
+      'Levels III-IV are intended for those who want to deepen their understanding of all Scripture and be equipped for greater responsibilities in the church, mentoring, teaching, and developing other leaders.',
     whoCanApply: [
       'Graduates of Level II',
       'Actively serving in leadership in the local church',
@@ -163,8 +163,8 @@ export const programsEn: Record<string, ProgramTranslation> = {
       ] },
       { title: 'The Blessings of Obedience and the Consequences of Disobedience', manuals: [{ title: 'Judges' }] },
       { title: 'Spiritual Counseling', manuals: [{ title: 'Spiritual Warfare' }] },
-      { title: 'Church History – I', manuals: [{ title: 'Acts of the Apostles (Part I)' }] },
-      { title: 'Church History – II', manuals: [{ title: 'Acts of the Apostles (Part II)' }] },
+      { title: 'Church History I', manuals: [{ title: 'Acts of the Apostles (Part I)' }] },
+      { title: 'Church History II', manuals: [{ title: 'Acts of the Apostles (Part II)' }] },
       { title: 'How to Know You Have Eternal Life', manuals: [{ title: '1, 2 & 3 John' }] },
       { title: 'Anatomy of an Apostle', manuals: [{ title: '2 Corinthians' }] },
       { title: 'Prophecies Before the Fall of Jerusalem', manuals: [{ title: 'Jeremiah (Part I)' }] },
@@ -200,9 +200,9 @@ export const programsEn: Record<string, ProgramTranslation> = {
 
   'efnl': {
     name: 'English for a New Life',
-    tagline: 'Teaching English as a mission tool — levels A1, A2 and for children',
+    tagline: 'Teaching English as a mission tool: levels A1, A2 and for children',
     overview:
-      'English for a New Life (EFNL) prepares teachers and leaders who want to use the English language for evangelism and discipleship through study groups, clubs, and missionary projects. The program has three levels — A1, A2 and EFNL for Kids — using materials specially developed based on biblical truths.',
+      'English for a New Life (EFNL) prepares teachers and leaders who want to use the English language for evangelism and discipleship through study groups, clubs, and missionary projects. The program has three levels (A1, A2 and EFNL for Kids), using materials specially developed based on biblical truths.',
     whoCanApply: [
       'People who want to use English as a mission tool',
       'Leaders who want to coordinate English groups and clubs',
@@ -210,9 +210,9 @@ export const programsEn: Record<string, ProgramTranslation> = {
     ],
     documents: ['Application form'],
     curriculum: [
-      { title: 'EFNL A1', manuals: [{ title: 'English for a New Life – A1' }, { title: 'Biblical Management' }], desc: 'A textbook for teaching English to teenagers, young people and adults at beginner level.' },
-      { title: 'EFNL A2', manuals: [{ title: 'English for a New Life – A2' }, { title: 'Rediscover Inner Peace' }], desc: 'A continuation of level A1, developing communication skills through interactive lessons and applied Bible studies.' },
-      { title: 'EFNL for Kids', manuals: [{ title: 'English for a New Life – Kids' }, { title: 'Honor Your Parents' }], desc: 'A curriculum specially created for children, combining interactive activities, games, songs and Bible lessons to make learning English attractive and effective.' },
+      { title: 'EFNL A1', manuals: [{ title: 'English for a New Life (A1)' }, { title: 'Biblical Management' }], desc: 'A textbook for teaching English to teenagers, young people and adults at beginner level.' },
+      { title: 'EFNL A2', manuals: [{ title: 'English for a New Life (A2)' }, { title: 'Rediscover Inner Peace' }], desc: 'A continuation of level A1, developing communication skills through interactive lessons and applied Bible studies.' },
+      { title: 'EFNL for Kids', manuals: [{ title: 'English for a New Life (Kids)' }, { title: 'Honor Your Parents' }], desc: 'A curriculum specially created for children, combining interactive activities, games, songs and Bible lessons to make learning English attractive and effective.' },
     ],
     structure: [
       '3 EFNL levels',
@@ -275,8 +275,8 @@ export const programsEn: Record<string, ProgramTranslation> = {
       { title: 'Session 2', manuals: [{ title: 'Journey into the Digital World' }, { title: 'How to Crack the Covenant Code' }] },
       { title: 'Session 3', manuals: [{ title: 'Oh No, I\'m in Trouble!' }, { title: 'Lord, Teach Me to Pray!' }] },
       { title: 'Session 4', manuals: [{ title: 'Lord, What Is Your Name?' }, { title: 'Who Is Jesus?' }] },
-      { title: 'Session 5', manuals: [{ title: 'Abraham – the Brave Explorer' }, { title: 'God\'s Amazing Creation' }] },
-      { title: 'Session 6', manuals: [{ title: 'Joseph – an Extraordinary Man of God' }, { title: 'How to Become God\'s Champion' }] },
+      { title: 'Session 5', manuals: [{ title: 'Abraham, the Brave Explorer' }, { title: 'God\'s Amazing Creation' }] },
+      { title: 'Session 6', manuals: [{ title: 'Joseph, an Extraordinary Man of God' }, { title: 'How to Become God\'s Champion' }] },
       { title: 'Session 7', manuals: [{ title: 'Sexuality from a Biblical Perspective' }, { title: 'When I\'m Afraid' }] },
     ],
     structure: [

@@ -16,20 +16,20 @@ const AMVON = `${C}/492032397_1473761967218187_161237512797718303_n.jpg`        
 
 // Poze noi
 const N = [
-  'g-graduation.jpg',    // 0 — graduație cu steaguri
-  'g-grup-pakistan.jpg', // 1 — grup mare Pakistan
-  'g-copii.jpg',         // 2 — copii cu cărți
-  'g-clasa-adulti.jpg',  // 3 — clasă adulți
-  'g-masa-rotunda.jpg',  // 4 — masă rotundă
-  'g-clasa-ucraina.jpg', // 5 — clasă Ucraina
-  'g-tineri.jpg',        // 6 — tineri
-  'g-citire-barbat.jpg', // 7 — bărbat citind (portret)
-  'g-citire-femeie.jpg', // 8 — femeie citind (portret)
+  'g-graduation.jpg',    // 0 - graduație cu steaguri
+  'g-grup-pakistan.jpg', // 1 - grup mare Pakistan
+  'g-copii.jpg',         // 2 - copii cu cărți
+  'g-clasa-adulti.jpg',  // 3 - clasă adulți
+  'g-masa-rotunda.jpg',  // 4 - masă rotundă
+  'g-clasa-ucraina.jpg', // 5 - clasă Ucraina
+  'g-tineri.jpg',        // 6 - tineri
+  'g-citire-barbat.jpg', // 7 - bărbat citind (portret)
+  'g-citire-femeie.jpg', // 8 - femeie citind (portret)
 ].map((f) => `${C}/${f}`)
 
 type Img = { src: string; pos?: string }
 
-// 5 frames × 3 images — pos overrides object-top per image if needed
+// 5 frames × 3 images - pos overrides object-top per image if needed
 const FRAMES: Img[][] = [
   [{ src: FOUNDERS, pos: 'object-center' }, { src: KAY, pos: 'object-center' }, { src: FESTIVAL, pos: 'object-center' }],
   [{ src: VASILE, pos: 'object-center' }, { src: N[0], pos: 'object-center' }, { src: N[1], pos: 'object-center' }],

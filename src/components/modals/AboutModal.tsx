@@ -22,12 +22,12 @@ const VISION_CARD_STYLES = [
 ]
 
 const VISION_CARD_SYMBOLS = [
-  /* Cross — Misiunea */
+  /* Cross - Misiunea */
   <svg key="cross" viewBox="0 0 80 80" width={72} height={72} fill="currentColor" className="text-white">
     <rect x="36" y="8" width="8" height="64" rx="2"/>
     <rect x="12" y="28" width="56" height="8" rx="2"/>
   </svg>,
-  /* Open book — Metoda */
+  /* Open book - Metoda */
   <svg key="book" viewBox="0 0 80 80" width={72} height={72} fill="none" stroke="currentColor" strokeWidth="3" className="text-white">
     <path d="M40 18 C30 14 14 14 8 18 L8 62 C14 58 30 58 40 62 C50 58 66 58 72 62 L72 18 C66 14 50 14 40 18Z"/>
     <line x1="40" y1="18" x2="40" y2="62"/>
@@ -38,7 +38,7 @@ const VISION_CARD_SYMBOLS = [
     <line x1="44" y1="36" x2="64" y2="36"/>
     <line x1="44" y1="44" x2="64" y2="44"/>
   </svg>,
-  /* Globe — Impactul */
+  /* Globe - Impactul */
   <svg key="globe" viewBox="0 0 80 80" width={72} height={72} fill="none" stroke="currentColor" strokeWidth="2.5" className="text-[#183831]">
     <circle cx="40" cy="40" r="28"/>
     <ellipse cx="40" cy="40" rx="12" ry="28"/>
@@ -46,7 +46,7 @@ const VISION_CARD_SYMBOLS = [
     <path d="M15 26 Q40 32 65 26"/>
     <path d="M15 54 Q40 48 65 54"/>
   </svg>,
-  /* Community circles — Valorile */
+  /* Community circles - Valorile */
   <svg key="community" viewBox="0 0 80 80" width={72} height={72} fill="currentColor" className="text-[#4d6b6b]">
     <circle cx="24" cy="32" r="13"/>
     <circle cx="56" cy="32" r="13"/>
@@ -251,7 +251,7 @@ export default function AboutModal({ open, onClose }: Props) {
                               {items.map((l) => (
                                 <div key={l.city} className="text-[13px] leading-snug">
                                   <span className="font-medium text-text-dark">{l.city}</span>
-                                  {l.coordinator && <span className="text-text-muted"> — {l.coordinator}</span>}
+                                  {l.coordinator && <span className="text-text-muted">, {l.coordinator}</span>}
                                   {l.email && (
                                     <>
                                       {' · '}

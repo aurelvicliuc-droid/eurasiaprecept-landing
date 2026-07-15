@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /*
-  ── Precept Eurasia — sistem de brand ──────────────────────────────
+  ── Precept Eurasia: sistem de brand ──────────────────────────────
   Paleta oficială (Pantone → HEX):
     Fog        Cool Gray 1 U      #DEDDD7
     Charcoal   Neutral Black U    #3D3C3C
@@ -34,22 +34,22 @@
   --green-mid:   #2E5A52;  /* Spruce → Ocean */
   --green-light: #4F7F78;
 
-  /* Accent principal — Ocean adâncit, ca să treacă contrastul pe fundal deschis */
+  /* Accent principal: Ocean adâncit, ca să treacă contrastul pe fundal deschis */
   --teal:        #4D6B6B;
-  --teal-light:  #729999;  /* Ocean pur — accente/hover */
+  --teal-light:  #729999;  /* Ocean pur: accente/hover */
 
   /* Auriu */
-  --gold:        #E5D350;  /* Golden — umplutură */
+  --gold:        #E5D350;  /* Golden: umplutură */
   --gold-light:  #F0E48A;
   --gold-deep:   #7C7012;  /* text pe fundal auriu deschis */
 
-  /* Suprafețe — tonuri de Fog */
+  /* Suprafețe: tonuri de Fog */
   --cream:       #F7F6F4;
   --beige-light: #F1F1EE;
   --beige:       #DEDDD7;  /* Fog */
   --beige-dark:  #CCCBC2;
 
-  /* Text — Charcoal */
+  /* Text: Charcoal */
   --text-dark:   #3D3C3C;
   --text-mid:    #5C5B5A;
   --text-muted:  #6C6A6A;

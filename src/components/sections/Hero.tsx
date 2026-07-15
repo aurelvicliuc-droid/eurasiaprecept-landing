@@ -31,7 +31,7 @@ export default function Hero() {
 
             <motion.h1
               id="hero-title"
-              className="font-['var(--font-body)'] font-bold text-[#111] leading-[1.05] tracking-[-0.02em]
+              className="font-['var(--font-body)'] font-bold text-green-dark leading-[1.05] tracking-[-0.02em]
                 text-[clamp(42px,6vw,76px)]"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
@@ -46,7 +46,7 @@ export default function Hero() {
 
           <div className="mt-10 lg:mt-0 lg:pl-12">
             <motion.div
-              className="w-full h-px bg-gradient-to-r from-[#ccc] to-transparent mb-8 hidden lg:block"
+              className="w-full h-px bg-gradient-to-r from-beige-dark to-transparent mb-8 hidden lg:block"
               initial={{ scaleX: 0, originX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
@@ -54,7 +54,7 @@ export default function Hero() {
             />
 
             <motion.p
-              className="text-[17px] text-[#555] leading-[1.75] mb-8 max-w-[440px]"
+              className="text-[17px] text-text-mid leading-[1.75] mb-8 max-w-[440px]"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4 }}
@@ -78,7 +78,7 @@ export default function Hero() {
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 border border-[#ccc] text-[#444] px-7 py-3.5 rounded-[6px]
+                className="inline-flex items-center gap-2 border border-beige-dark text-text-dark px-7 py-3.5 rounded-[6px]
                   text-[14px] font-normal hover:border-teal hover:text-teal transition-all duration-200"
               >
                 {h.ctaSecondary}

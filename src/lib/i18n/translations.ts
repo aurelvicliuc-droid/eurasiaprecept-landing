@@ -20,7 +20,7 @@ export const translations = {
       ctaSecondary: 'Cum mă înscriu?',
     },
     stats: {
-      label: 'Precept – o familie mare',
+      label: 'Precept, o familie mare',
       items: [
         { label: 'Țări prezente' },
         { label: 'Limbi traduse' },
@@ -31,7 +31,7 @@ export const translations = {
     programs: {
       eyebrow: 'Facultăți',
       heading: 'Alege direcția ta',
-      subtext: 'Programe pentru toate vârstele — de la adolescenți până la misionari, de la baza biblică la leadership avansat.',
+      subtext: 'Programe pentru toate vârstele, de la adolescenți până la misionari, de la baza biblică la leadership avansat.',
       filters: {
         all: 'Toate',
         adolescenti: 'Adolescenți',
@@ -62,7 +62,7 @@ export const translations = {
       eyebrow: 'Materiale de studiu',
       heading: 'Resurse',
       headingEm: 'biblice',
-      subtext: 'Materiale bazate direct pe textul Bibliei — pentru studiu individual, grup sau tabere.',
+      subtext: 'Materiale bazate direct pe textul Bibliei, pentru studiu individual, grup sau tabere.',
       viewAll: 'Descoperă materialele',
       buy: 'Cumpără',
     },
@@ -75,7 +75,7 @@ export const translations = {
         {
           text: 'Institutul m-a format personal și mi-a pus în inimă dorința să plantez o nouă biserică. De asemenea, a fost instrumentul prin care am pregătit biserica să slujească cu darurile duhovnicești și să transmită Cuvântul lui Dumnezeu altor oameni.',
           name: 'Anton Timonishin',
-          role: 'Pastor, Biserica Cuvântul Vieții — Lutsk, Ucraina',
+          role: 'Pastor, Biserica Cuvântul Vieții, Lutsk, Ucraina',
           initials: 'AT',
           photo: '/testimonials/anton.jpg',
         },
@@ -141,7 +141,7 @@ export const translations = {
       vision: {
         blocks: [
           { label: 'Misiunea', text: 'Să atragem oameni într-o relație cu Dumnezeu prin cunoașterea Cuvântului Său, folosind metoda inductivă de studiu biblic.' },
-          { label: 'Metoda', text: 'Studiul inductiv al Bibliei — observă, interpretează, aplică. Fiecare student înțelege textul biblic în contextul său original.' },
+          { label: 'Metoda', text: 'Studiul inductiv al Bibliei: observă, interpretează, aplică. Fiecare student înțelege textul biblic în contextul său original.' },
           { label: 'Impactul', text: 'Peste 6.640 studenți în 36 de țări, cu materiale traduse în 195 de limbi, formând lideri care transmit mai departe.' },
           { label: 'Valorile', text: 'Fidelitate față de textul biblic, ucenicie practică, implicare în comunitate și formare de generații care să cunoască Cuvântul lui Dumnezeu.' },
         ],
@@ -159,7 +159,7 @@ export const translations = {
         heading: 'Filiale active',
         viewMap: 'Vezi pe hartă',
         items: [
-          { code: 'MD', name: 'Moldova — Chișinău', desc: 'Sediul central Precept Eurasia. Programe online și prezențiale pentru toată Eurasia.' },
+          { code: 'MD', name: 'Moldova, Chișinău', desc: 'Sediul central Precept Eurasia. Programe online și prezențiale pentru toată Eurasia.' },
           { code: 'UA', name: 'Ucraina', desc: 'Programe active, inclusiv pregătire pentru lucrul cu refugiații și comunități locale.' },
           { code: 'RO', name: 'România', desc: 'Parteneriat activ cu biserici și organizații pentru studiu biblic inductiv.' },
           { code: 'RU', name: 'Rusia', desc: 'Comunități de studiu biblic cu materiale în limba rusă.' },
@@ -207,7 +207,7 @@ export const translations = {
       ctaSecondary: 'How to enroll?',
     },
     stats: {
-      label: 'Precept – a global family',
+      label: 'Precept, a global family',
       items: [
         { label: 'Countries' },
         { label: 'Languages' },
@@ -218,7 +218,7 @@ export const translations = {
     programs: {
       eyebrow: 'Programs',
       heading: 'Choose your path',
-      subtext: 'Programs for all ages — from teenagers to missionaries, from biblical foundations to advanced leadership.',
+      subtext: 'Programs for all ages, from teenagers to missionaries, from biblical foundations to advanced leadership.',
       filters: {
         all: 'All',
         adolescenti: 'Teens',
@@ -242,14 +242,14 @@ export const translations = {
     },
     vision: {
       eyebrow: 'Our vision',
-      quote: 'Bible study leaders are equipped to lead inductive study groups, teach Scripture faithfully, disciple and mentor other believers, coordinate ministries and raise up new leaders — so that the Word of God transforms lives and spreads from generation to generation.',
+      quote: 'Bible study leaders are equipped to lead inductive study groups, teach Scripture faithfully, disciple and mentor other believers, coordinate ministries and raise up new leaders, so that the Word of God transforms lives and spreads from generation to generation.',
       author: '',
     },
     shop: {
       eyebrow: 'Study materials',
       heading: 'Biblical',
       headingEm: 'resources',
-      subtext: 'Materials based directly on the biblical text — for individual study, groups, or camps.',
+      subtext: 'Materials based directly on the biblical text, for individual study, groups, or camps.',
       viewAll: 'Discover the materials',
       buy: 'Buy',
     },
@@ -262,7 +262,7 @@ export const translations = {
         {
           text: 'The Institute shaped me personally and put in my heart the desire to plant a new church. It was also the instrument through which I prepared the church to serve with spiritual gifts and to pass on the Word of God to others.',
           name: 'Anton Timonishin',
-          role: 'Pastor, Word of Life Church — Lutsk, Ukraine',
+          role: 'Pastor, Word of Life Church, Lutsk, Ukraine',
           initials: 'AT',
           photo: '/testimonials/anton.jpg',
         },
@@ -328,7 +328,7 @@ export const translations = {
       vision: {
         blocks: [
           { label: 'Mission', text: 'To draw people into a relationship with God through the knowledge of His Word, using the inductive method of Bible study.' },
-          { label: 'Method', text: 'Inductive Bible study — observe, interpret, apply. Each student understands the biblical text in its original context.' },
+          { label: 'Method', text: 'Inductive Bible study: observe, interpret, apply. Each student understands the biblical text in its original context.' },
           { label: 'Impact', text: 'Over 6,640 students in 36 countries, with materials translated into 195 languages, training leaders who pass it on.' },
           { label: 'Values', text: 'Faithfulness to the biblical text, practical discipleship, community engagement, and forming generations who know the Word of God.' },
         ],
@@ -346,7 +346,7 @@ export const translations = {
         heading: 'Active branches',
         viewMap: 'View on map',
         items: [
-          { code: 'MD', name: 'Moldova — Chișinău', desc: 'Precept Eurasia headquarters. Online and in-person programs for all of Eurasia.' },
+          { code: 'MD', name: 'Moldova, Chișinău', desc: 'Precept Eurasia headquarters. Online and in-person programs for all of Eurasia.' },
           { code: 'UA', name: 'Ukraine', desc: 'Active programs including training for work with refugees and local communities.' },
           { code: 'RO', name: 'Romania', desc: 'Active partnership with churches and organizations for inductive Bible study.' },
           { code: 'RU', name: 'Russia', desc: 'Bible study communities with materials in the Russian language.' },
@@ -389,12 +389,12 @@ export const translations = {
       title2: 'Институт',
       title3: 'Precept',
       titleAccent: 'Eurasia',
-      desc: 'Наша миссия — привлекать людей к отношениям с Богом через познание Его Слова.',
+      desc: 'Мы стремимся привлекать людей к отношениям с Богом через познание Его Слова.',
       ctaPrimary: 'Смотреть программы',
       ctaSecondary: 'Как записаться?',
     },
     stats: {
-      label: 'Precept — большая семья',
+      label: 'Большая семья Precept',
       items: [
         { label: 'Стран' },
         { label: 'Языков' },
@@ -405,7 +405,7 @@ export const translations = {
     programs: {
       eyebrow: 'Программы',
       heading: 'Выберите свой путь',
-      subtext: 'Программы для всех возрастов — от подростков до миссионеров, от библейских основ до продвинутого лидерства.',
+      subtext: 'Программы для всех возрастов, от подростков до миссионеров, от библейских основ до продвинутого лидерства.',
       filters: {
         all: 'Все',
         adolescenti: 'Подростки',
@@ -429,14 +429,14 @@ export const translations = {
     },
     vision: {
       eyebrow: 'Видение института',
-      quote: 'Лидеры изучения Библии готовы вести группы индуктивного изучения, верно преподавать Писание, наставлять и воспитывать других верующих, координировать служения и готовить новых лидеров — чтобы Слово Божье преображало жизни и распространялось из поколения в поколение.',
+      quote: 'Лидеры изучения Библии готовы вести группы индуктивного изучения, верно преподавать Писание, наставлять и воспитывать других верующих, координировать служения и готовить новых лидеров, чтобы Слово Божье преображало жизни и распространялось из поколения в поколение.',
       author: '',
     },
     shop: {
       eyebrow: 'Учебные материалы',
       heading: 'Библейские',
       headingEm: 'ресурсы',
-      subtext: 'Материалы, основанные непосредственно на тексте Библии — для личного изучения, групп или лагерей.',
+      subtext: 'Материалы, основанные непосредственно на тексте Библии: для личного изучения, групп или лагерей.',
       viewAll: 'Откройте материалы',
       buy: 'Купить',
     },
@@ -449,12 +449,12 @@ export const translations = {
         {
           text: 'Институт сформировал меня лично и вложил в моё сердце желание основать новую церковь. Он также стал инструментом, через который я подготовил церковь служить духовными дарами и передавать Слово Божье другим людям.',
           name: 'Антон Тимонишин',
-          role: 'Пастор, церковь «Слово жизни» — Луцк, Украина',
+          role: 'Пастор, церковь «Слово жизни», Луцк, Украина',
           initials: 'АТ',
           photo: '/testimonials/anton.jpg',
         },
         {
-          text: 'Окончание Института — не вершина этой привычки. Изучение Писания и участие в сессиях уже стало дисциплиной моей духовной жизни. Я приняла решение: ежегодно участвовать в сессиях Института и постоянно вкладываться в свою подготовку как учителя Библии.',
+          text: 'Окончание Института не является вершиной этой привычки. Изучение Писания и участие в сессиях уже стало дисциплиной моей духовной жизни. Я приняла решение: ежегодно участвовать в сессиях Института и постоянно вкладываться в свою подготовку как учителя Библии.',
           name: 'Ирина Панаинте',
           role: 'Выпускница, учитель Библии',
           initials: 'ИП',
@@ -515,7 +515,7 @@ export const translations = {
       vision: {
         blocks: [
           { label: 'Миссия', text: 'Привлекать людей к отношениям с Богом через познание Его Слова, используя индуктивный метод изучения Библии.' },
-          { label: 'Метод', text: 'Индуктивное изучение Библии — наблюдай, толкуй, применяй. Каждый студент понимает библейский текст в его первоначальном контексте.' },
+          { label: 'Метод', text: 'Индуктивное изучение Библии: наблюдай, толкуй, применяй. Каждый студент понимает библейский текст в его первоначальном контексте.' },
           { label: 'Влияние', text: 'Более 6 640 студентов в 36 странах, материалы переведены на 195 языков, формируем лидеров, которые передают это дальше.' },
           { label: 'Ценности', text: 'Верность библейскому тексту, практическое ученичество, участие в общине и формирование поколений, знающих Слово Божье.' },
         ],
@@ -533,7 +533,7 @@ export const translations = {
         heading: 'Действующие филиалы',
         viewMap: 'Смотреть на карте',
         items: [
-          { code: 'MD', name: 'Молдова — Кишинёв', desc: 'Штаб-квартира Precept Eurasia. Онлайн и очные программы для всей Евразии.' },
+          { code: 'MD', name: 'Молдова, Кишинёв', desc: 'Штаб-квартира Precept Eurasia. Онлайн и очные программы для всей Евразии.' },
           { code: 'UA', name: 'Украина', desc: 'Активные программы, включая подготовку для работы с беженцами и местными общинами.' },
           { code: 'RO', name: 'Румыния', desc: 'Активное партнёрство с церквями и организациями для индуктивного изучения Библии.' },
           { code: 'RU', name: 'Россия', desc: 'Общины библейского изучения с материалами на русском языке.' },

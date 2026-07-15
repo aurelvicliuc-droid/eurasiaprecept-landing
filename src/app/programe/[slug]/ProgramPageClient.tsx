@@ -299,7 +299,7 @@ export default function ProgramPageClient({ program }: Props) {
                       key={src}
                       type="button"
                       onClick={() => setLightbox(i)}
-                      aria-label={`${p.name} — deschide fotografia ${i + 1}`}
+                      aria-label={`${p.name}: deschide fotografia ${i + 1}`}
                       className={`group relative overflow-hidden rounded-xl bg-beige h-44 sm:h-56 cursor-pointer
                         focus:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2
                         ${i === 0 ? 'col-span-2' : ''}`}
@@ -309,7 +309,7 @@ export default function ProgramPageClient({ program }: Props) {
                     >
                       <Image
                         src={src}
-                        alt={`${p.name} — fotografie ${i + 1}`}
+                        alt={`${p.name}, fotografie ${i + 1}`}
                         fill
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
@@ -508,7 +508,7 @@ export default function ProgramPageClient({ program }: Props) {
             transition={{ duration: 0.2 }}
             role="dialog"
             aria-modal="true"
-            aria-label={`${p.name} — fotografia ${lightbox + 1} din ${gallery.length}`}
+            aria-label={`${p.name}: fotografia ${lightbox + 1} din ${gallery.length}`}
           >
             <div className="absolute inset-0 bg-green-dark/85 backdrop-blur-sm" onClick={closeLightbox} aria-hidden />
 
@@ -553,7 +553,7 @@ export default function ProgramPageClient({ program }: Props) {
             >
               <Image
                 src={gallery[lightbox]}
-                alt={`${p.name} — fotografia ${lightbox + 1}`}
+                alt={`${p.name}, fotografia ${lightbox + 1}`}
                 fill
                 sizes="100vw"
                 className="object-contain"

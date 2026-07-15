@@ -9,7 +9,7 @@ const programLinks = [
   { slug: 'institutul-biblic', names: { ro: 'Institutul Biblic Precept', en: 'Precept Bible Institute', ru: 'Библейский институт' } },
   { slug: 'scoala-timotei', names: { ro: 'Școala TIMOTEI', en: 'TIMOTHY School', ru: 'Школа ТИМОФЕЙ' } },
   { slug: 'nivelul-2', names: { ro: 'Nivelul II', en: 'Level II', ru: 'Уровень II' } },
-  { slug: 'nivelul-3-4', names: { ro: 'Nivelurile III–IV', en: 'Levels III–IV', ru: 'Уровни III–IV' } },
+  { slug: 'nivelul-3-4', names: { ro: 'Nivelurile III-IV', en: 'Levels III-IV', ru: 'Уровни III-IV' } },
   { slug: 'efnl', names: { ro: 'English for a New Life', en: 'English for a New Life', ru: 'Английский для новой жизни' } },
   { slug: 'misiune-sport', names: { ro: 'Școala de Misiune prin Sport', en: 'Mission through Sport School', ru: 'Школа миссии через спорт' } },
   { slug: 'lucrare-copii', names: { ro: 'Lucrare cu Copiii', en: 'Ministry with Children', ru: 'Служение детям' } },
@@ -84,7 +84,7 @@ export default function Footer() {
         {/* ── Main grid ── */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8 lg:gap-8">
 
-          {/* Brand — hidden on mobile (logo shown above), visible on desktop */}
+          {/* Brand: hidden on mobile (logo shown above), visible on desktop */}
           <div className="hidden lg:block">
             <Link href="/" aria-label="Precept Eurasia">
               <Image
@@ -180,7 +180,7 @@ export default function Footer() {
             </a>
           </div>
 
-          {/* Programs — spans full width on mobile (2 cols), single col on desktop */}
+          {/* Programs: spans full width on mobile (2 cols), single col on desktop */}
           <div className="col-span-2 lg:col-span-1 lg:order-3">
             <h3 className="text-[10px] font-bold tracking-[0.16em] uppercase text-white/35 mb-4">
               {f.colPrograms}

@@ -13,9 +13,9 @@ const products = [
     id: 1,
     names: { ro: 'Învățătură peste Învățătură', en: 'Precept Upon Precept', ru: 'Устав за уставом' },
     descs: {
-      ro: 'Studiu biblic inductiv aprofundat — metoda Precept Upon Precept.',
-      en: 'In-depth inductive Bible study — the Precept Upon Precept method.',
-      ru: 'Углублённое индуктивное изучение Библии — метод Precept Upon Precept.',
+      ro: 'Studiu biblic inductiv aprofundat, metoda Precept Upon Precept.',
+      en: 'In-depth inductive Bible study, the Precept Upon Precept method.',
+      ru: 'Углублённое индуктивное изучение Библии, метод Precept Upon Precept.',
     },
     badge: { ro: 'Seria', en: 'Series', ru: 'Серия' },
     badgeGold: false,
@@ -117,7 +117,7 @@ export default function Shop() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: i * 0.09 }}
-              aria-label={`${p.names[lang]} — ${t.shop.buy}`}
+              aria-label={`${p.names[lang]}: ${t.shop.buy}`}
             >
               <div
                 className="relative w-full overflow-hidden"

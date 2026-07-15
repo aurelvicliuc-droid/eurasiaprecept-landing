@@ -67,7 +67,7 @@ export const programs: ProgramData[] = [
     badgeColor: 'teal',
     category: 'tineri',
     heroImage: '/programs/institutul-biblic.jpg',
-    heroImageAlt: 'Institutul Biblic Precept — studiu și formare',
+    heroImageAlt: 'Institutul Biblic Precept, studiu și formare',
     gallery: [
       '/programs/institut-gallery-1.jpg',
       '/programs/institut-gallery-2.jpg',
@@ -122,7 +122,7 @@ export const programs: ProgramData[] = [
     badgeColor: 'gold',
     category: 'adolescenti',
     heroImage: '/programs/scoala-timotei.jpg',
-    heroImageAlt: 'Școala Timotei — tineri în formare',
+    heroImageAlt: 'Școala Timotei, tineri în formare',
     overview:
       'Școala TIMOTEI este un program de pregătire spirituală pentru adolescenți și tineri care doresc să-L cunoască pe Dumnezeu mai profund, să studieze Scriptura și să devină lideri ai generației lor.',
     gallery: [
@@ -152,7 +152,7 @@ export const programs: ProgramData[] = [
     ],
     structure: [
       '7 sesiuni intensive',
-      'Durata totală: 3–4 ani',
+      'Durata totală: 3-4 ani',
       'Organizate în timpul vacanțelor școlare',
       'Predarea cursurilor studiate între sesiuni',
     ],
@@ -174,7 +174,7 @@ export const programs: ProgramData[] = [
     badgeColor: 'teal',
     category: 'specializat',
     heroImage: '/programs/nivelul-2.jpg',
-    heroImageAlt: 'Nivelul 2 — aprofundare în studiul biblic inductiv',
+    heroImageAlt: 'Nivelul 2, aprofundare în studiul biblic inductiv',
     gallery: [
       '/programs/nivel2-gallery-1.jpg',
       '/programs/nivel2-gallery-2.jpg',
@@ -195,7 +195,7 @@ export const programs: ProgramData[] = [
     curriculum: [
       { title: 'Misiologie', manuals: [{ title: 'Predica de pe Munte', href: 'https://shop.eurasiaprecept.org/catalog/predica-de-pe-munte' }], desc: 'Înțelege chemarea Bisericii de a duce Evanghelia tuturor națiunilor și descoperă principiile biblice ale lucrării misionare.' },
       { title: 'Echiparea Bisericii', manuals: [{ title: 'Darurile Spirituale', href: 'https://shop.eurasiaprecept.org/catalog/darurile-spirituale' }], desc: 'Descoperă modul în care Dumnezeu echipează credincioșii pentru slujire și cum pot fi dezvoltate darurile spirituale în biserica locală.' },
-      { title: 'Cum se studiază un text dificil', manuals: [{ title: 'Evanghelia după Ioan – Partea I', href: 'https://shop.eurasiaprecept.org/catalog/evanghelia-dupa-ioan-partea-1' }], desc: 'Aprofundează metodele de interpretare biblică pentru pasaje complexe și provocatoare.' },
+      { title: 'Cum se studiază un text dificil', manuals: [{ title: 'Evanghelia după Ioan (Partea I)', href: 'https://shop.eurasiaprecept.org/catalog/evanghelia-dupa-ioan-partea-1' }], desc: 'Aprofundează metodele de interpretare biblică pentru pasaje complexe și provocatoare.' },
       { title: 'Profeții', manuals: [
         { title: 'Apocalipsa (Partea I)', href: 'https://shop.eurasiaprecept.org/catalog/apocalipsa-partea-i' },
         { title: 'Apocalipsa (Partea II)', href: 'https://shop.eurasiaprecept.org/catalog/apocalipsa-partea-ii' },
@@ -226,13 +226,13 @@ export const programs: ProgramData[] = [
   },
   {
     slug: 'nivelul-3-4',
-    name: 'Nivelurile III–IV',
+    name: 'Nivelurile III-IV',
     tagline: 'Continuă să crești în cunoașterea Scripturii și în slujire',
     badge: 'Nivel avansat',
     badgeColor: 'teal',
     category: 'specializat',
     heroImage: '/programs/nivelul-3-4.jpg',
-    heroImageAlt: 'Nivelul 3–4 — lideri maturi și predicatori',
+    heroImageAlt: 'Nivelul 3-4, lideri maturi și predicatori',
     heroImagePosition: 'object-bottom',
     gallery: [
       '/programs/nivel34-gallery-1.jpg',
@@ -246,7 +246,7 @@ export const programs: ProgramData[] = [
       '/programs/nivel34-gallery-9.jpg',
     ],
     overview:
-      'Nivelurile III–IV sunt destinate celor care doresc să aprofundeze înțelegerea întregii Scripturi și să fie echipați pentru responsabilități mai mari în biserică, mentorare, predare și dezvoltarea altor lideri.',
+      'Nivelurile III-IV sunt destinate celor care doresc să aprofundeze înțelegerea întregii Scripturi și să fie echipați pentru responsabilități mai mari în biserică, mentorare, predare și dezvoltarea altor lideri.',
     whoCanApply: [
       'Absolvenți ai Nivelului II',
       'Persoane active în slujire și conducere în biserica locală',
@@ -278,8 +278,8 @@ export const programs: ProgramData[] = [
       ] },
       { title: 'Binecuvântările ascultării și consecințele neascultării', manuals: [{ title: 'Judecătorii', href: 'https://shop.eurasiaprecept.org/catalog/judecatori' }] },
       { title: 'Consiliere spirituală', manuals: [{ title: 'Lupta spirituală', href: 'https://shop.eurasiaprecept.org/catalog/doamne-invata-ma-sa-fiu-biruitor-in-lupta-spirituala' }] },
-      { title: 'Istoria Bisericii – I', manuals: [{ title: 'Faptele Apostolilor (partea I)', href: 'https://shop.eurasiaprecept.org/catalog/faptele-apostolilor-partea-1' }] },
-      { title: 'Istoria Bisericii – II', manuals: [{ title: 'Faptele Apostolilor (partea II)', href: 'https://shop.eurasiaprecept.org/catalog/faptele-apostolilor-partea-ii-a' }] },
+      { title: 'Istoria Bisericii I', manuals: [{ title: 'Faptele Apostolilor (partea I)', href: 'https://shop.eurasiaprecept.org/catalog/faptele-apostolilor-partea-1' }] },
+      { title: 'Istoria Bisericii II', manuals: [{ title: 'Faptele Apostolilor (partea II)', href: 'https://shop.eurasiaprecept.org/catalog/faptele-apostolilor-partea-ii-a' }] },
       { title: 'Cum știi că ai viață veșnică', manuals: [{ title: '1, 2 și 3 Ioan', href: 'https://shop.eurasiaprecept.org/catalog/12-si-3-ioan' }] },
       { title: 'Anatomia unui apostol', manuals: [{ title: '2 Corinteni', href: 'https://shop.eurasiaprecept.org/catalog/2-corinteni' }] },
       { title: 'Profeții înainte de căderea Ierusalimului', manuals: [{ title: 'Ieremia (partea I)', href: 'https://shop.eurasiaprecept.org/catalog/ieremia-partea-1' }] },
@@ -315,13 +315,13 @@ export const programs: ProgramData[] = [
   {
     slug: 'efnl',
     name: 'English for a New Life',
-    tagline: 'Predarea limbii engleze ca instrument de misiune — nivelurile A1, A2 și pentru copii',
+    tagline: 'Predarea limbii engleze ca instrument de misiune: nivelurile A1, A2 și pentru copii',
     badge: 'English',
     badgeColor: 'purple',
     category: 'specializat',
     heroImage: '/programs/efnl-cover.jpg',
     heroImagePosition: 'object-[center_25%]',
-    heroImageAlt: 'English for a New Life — predare și evanghelism prin limba engleză',
+    heroImageAlt: 'English for a New Life, predare și evanghelism prin limba engleză',
     gallery: [
       '/programs/efnl-gallery-10.jpg',
       '/programs/efnl-gallery-11.jpg',
@@ -335,7 +335,7 @@ export const programs: ProgramData[] = [
       '/programs/efnl-gallery-5.jpg',
     ],
     overview:
-      'English for a New Life (EFNL) pregătește profesori și lideri care doresc să folosească limba engleză pentru evanghelizare și ucenicie, prin grupe de studiu, cluburi și proiecte misionare. Programul are trei niveluri — A1, A2 și EFNL for Kids — cu manuale dezvoltate special pe baza adevărurilor biblice.',
+      'English for a New Life (EFNL) pregătește profesori și lideri care doresc să folosească limba engleză pentru evanghelizare și ucenicie, prin grupe de studiu, cluburi și proiecte misionare. Programul are trei niveluri (A1, A2 și EFNL for Kids), cu manuale dezvoltate special pe baza adevărurilor biblice.',
     whoCanApply: [
       'Persoane care doresc să folosească engleza ca instrument misionar',
       'Lideri care vor să coordoneze grupe și cluburi de engleză',
@@ -343,9 +343,9 @@ export const programs: ProgramData[] = [
     ],
     documents: ['Cerere de înscriere'],
     curriculum: [
-      { title: 'EFNL A1', manuals: [{ title: 'English for a New Life – A1', href: 'https://shop.eurasiaprecept.org/catalog/english-for-a-new-life-a1-level' }, { title: 'Biblical Management', href: 'https://shop.eurasiaprecept.org/catalog/managementul-biblic-2' }], desc: 'Manual destinat predării limbii engleze adolescenților, tinerilor și adulților aflați la nivel începător.' },
-      { title: 'EFNL A2', manuals: [{ title: 'English for a New Life – A2', href: 'https://shop.eurasiaprecept.org/catalog/english-for-a-new-life-a2-level' }, { title: 'Rediscover Inner Peace', href: 'https://shop.eurasiaprecept.org/catalog/rediscover-inner-peace' }], desc: 'Continuarea nivelului A1, dezvoltând competențele de comunicare prin lecții interactive și studii biblice aplicate.' },
-      { title: 'EFNL for Kids', manuals: [{ title: 'English for a New Life – Kids', href: 'https://shop.eurasiaprecept.org/catalog/efnl-for-kids-2' }, { title: 'Honor Your Parents', href: 'https://shop.eurasiaprecept.org/catalog/honor-your-parents' }], desc: 'Curriculum special creat pentru copii, care combină activități interactive, jocuri, cântece și lecții biblice pentru a face învățarea limbii engleze atractivă și eficientă.' },
+      { title: 'EFNL A1', manuals: [{ title: 'English for a New Life (A1)', href: 'https://shop.eurasiaprecept.org/catalog/english-for-a-new-life-a1-level' }, { title: 'Biblical Management', href: 'https://shop.eurasiaprecept.org/catalog/managementul-biblic-2' }], desc: 'Manual destinat predării limbii engleze adolescenților, tinerilor și adulților aflați la nivel începător.' },
+      { title: 'EFNL A2', manuals: [{ title: 'English for a New Life (A2)', href: 'https://shop.eurasiaprecept.org/catalog/english-for-a-new-life-a2-level' }, { title: 'Rediscover Inner Peace', href: 'https://shop.eurasiaprecept.org/catalog/rediscover-inner-peace' }], desc: 'Continuarea nivelului A1, dezvoltând competențele de comunicare prin lecții interactive și studii biblice aplicate.' },
+      { title: 'EFNL for Kids', manuals: [{ title: 'English for a New Life (Kids)', href: 'https://shop.eurasiaprecept.org/catalog/efnl-for-kids-2' }, { title: 'Honor Your Parents', href: 'https://shop.eurasiaprecept.org/catalog/honor-your-parents' }], desc: 'Curriculum special creat pentru copii, care combină activități interactive, jocuri, cântece și lecții biblice pentru a face învățarea limbii engleze atractivă și eficientă.' },
     ],
     structure: [
       '3 niveluri EFNL',
@@ -406,7 +406,7 @@ export const programs: ProgramData[] = [
     badgeColor: 'teal',
     category: 'tineri',
     heroImage: '/programs/lucrare-copii.jpg',
-    heroImageAlt: 'Lucrare cu Copiii — formare și slujire',
+    heroImageAlt: 'Lucrare cu Copiii, formare și slujire',
     gallery: [
       '/programs/copii-gallery-1.jpg',
       '/programs/copii-gallery-2.jpg',
@@ -431,8 +431,8 @@ export const programs: ProgramData[] = [
       { title: 'Sesiunea 2', manuals: [{ title: 'Călătoria în lumea digitală', href: 'https://shop.eurasiaprecept.org/catalog/journey-to-the-digital-world' }, { title: 'Cum să descifrezi codul legământului', href: 'https://shop.eurasiaprecept.org/catalog/cum-sa-descifram-codul-legamantului-format-pdf' }] },
       { title: 'Sesiunea 3', manuals: [{ title: 'Vai, am dat de probleme!', href: 'https://shop.eurasiaprecept.org/catalog/vai-am-dat-de-probleme' }, { title: 'Doamne, învață-mă să mă rog!', href: 'https://shop.eurasiaprecept.org/catalog/doamne-invata-ma-sa-ma-rog' }] },
       { title: 'Sesiunea 4', manuals: [{ title: 'Doamne, cum Te numești?', href: 'https://shop.eurasiaprecept.org/catalog/doamne-cum-te-numesti' }, { title: 'Cine este Isus?', href: 'https://shop.eurasiaprecept.org/catalog/cine-este-isus' }] },
-      { title: 'Sesiunea 5', manuals: [{ title: 'Avraam – exploratorul curajos', href: 'https://shop.eurasiaprecept.org/catalog/avraam-exploratorul-curajos' }, { title: 'Creația uimitoare a lui Dumnezeu', href: 'https://shop.eurasiaprecept.org/catalog/creatia-uimitoare-a-lui-dumnezeu' }] },
-      { title: 'Sesiunea 6', manuals: [{ title: 'Iosif – un om extraordinar al lui Dumnezeu', href: 'https://shop.eurasiaprecept.org/catalog/iosif-un-om-extraordinar-al-lui-dumnezeu' }, { title: 'Cum să devii campionul lui Dumnezeu?', href: 'https://shop.eurasiaprecept.org/catalog/cum-sa-devii-campionul-lui-dumnezeu' }] },
+      { title: 'Sesiunea 5', manuals: [{ title: 'Avraam, exploratorul curajos', href: 'https://shop.eurasiaprecept.org/catalog/avraam-exploratorul-curajos' }, { title: 'Creația uimitoare a lui Dumnezeu', href: 'https://shop.eurasiaprecept.org/catalog/creatia-uimitoare-a-lui-dumnezeu' }] },
+      { title: 'Sesiunea 6', manuals: [{ title: 'Iosif, un om extraordinar al lui Dumnezeu', href: 'https://shop.eurasiaprecept.org/catalog/iosif-un-om-extraordinar-al-lui-dumnezeu' }, { title: 'Cum să devii campionul lui Dumnezeu?', href: 'https://shop.eurasiaprecept.org/catalog/cum-sa-devii-campionul-lui-dumnezeu' }] },
       { title: 'Sesiunea 7', manuals: [{ title: 'Sexualitatea din perspectiva Bibliei', href: 'https://shop.eurasiaprecept.org/catalog/sexualitate-din-perspectiva-bibliei' }, { title: 'Când mi-e frică', href: 'https://shop.eurasiaprecept.org/catalog/cand-mi-e-frica' }] },
     ],
     structure: [

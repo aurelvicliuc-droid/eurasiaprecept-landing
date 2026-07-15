@@ -45,7 +45,7 @@ export default function Nav({ onAboutOpen }: NavProps) {
       >
         <div className="max-w-[1200px] mx-auto px-6 lg:px-12 h-[68px] flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center" aria-label="Precept Eurasia — Acasă">
+          <Link href="/" className="flex items-center" aria-label="Precept Eurasia, Acasă">
             <Image
               src="/precept-logomark.png"
               alt="Precept Eurasia"
@@ -65,7 +65,7 @@ export default function Nav({ onAboutOpen }: NavProps) {
                   target={link.external ? '_blank' : undefined}
                   rel={link.external ? 'noopener noreferrer' : undefined}
                   onClick={link.isAbout ? (e) => { e.preventDefault(); onAboutOpen() } : undefined}
-                  className="text-[14px] font-normal text-[#333] hover:text-teal transition-colors duration-200 cursor-pointer"
+                  className="text-[14px] font-normal text-text-dark hover:text-teal transition-colors duration-200 cursor-pointer"
                 >
                   {link.label}
                 </a>
@@ -81,7 +81,7 @@ export default function Nav({ onAboutOpen }: NavProps) {
                   key={l}
                   onClick={() => setLang(l)}
                   className={`text-[13px] transition-colors duration-200 cursor-pointer uppercase
-                    ${lang === l ? 'text-[#111] font-medium' : 'text-[#888] hover:text-[#333]'}`}
+                    ${lang === l ? 'text-green-dark font-medium' : 'text-text-muted hover:text-text-dark'}`}
                   aria-pressed={lang === l}
                 >
                   {l}
@@ -146,7 +146,7 @@ export default function Nav({ onAboutOpen }: NavProps) {
                   <button
                     key={l}
                     onClick={() => setLang(l)}
-                    className={`text-[14px] cursor-pointer uppercase ${lang === l ? 'text-[#111] font-medium' : 'text-[#888]'}`}
+                    className={`text-[14px] cursor-pointer uppercase ${lang === l ? 'text-green-dark font-medium' : 'text-text-muted'}`}
                   >
                     {l}
                   </button>

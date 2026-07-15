@@ -5,7 +5,7 @@ import { Libre_Baskerville } from 'next/font/google'
 import Providers from './Providers'
 import './globals.css'
 
-// Fontul de brand — Founders Grotesk, găzduit local.
+// Fontul de brand - Founders Grotesk, găzduit local.
 // Fișierele .woff2 au fost completate cu glifele ț/Ț (lipseau din familia originală).
 const foundersGrotesk = localFont({
   src: [
@@ -18,11 +18,21 @@ const foundersGrotesk = localFont({
   ],
   variable: '--font-founders',
   display: 'swap',
-  // Founders Grotesk nu conține chirilice — textul rusesc cade pe fontul de sistem.
+  // Founders Grotesk nu conține chirilice; textul rusesc cade pe fontul de sistem.
   fallback: ['system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Arial', 'sans-serif'],
+  declarations: [
+    // x-height-ul e 43.7% din em (față de ~48.6% la fontul folosit anterior), deci la
+    // aceeași mărime în px textul apărea vizibil mai mic. Îl scalăm ca să se potrivească.
+    { prop: 'size-adjust', value: '111%' },
+    // Metricile originale (ascent 63% / descent 37%) sunt asimetrice: centrul cutiei de
+    // text cade mult sub centrul optic al literelor, iar textul urcă în butoane.
+    { prop: 'ascent-override', value: '78%' },
+    { prop: 'descent-override', value: '22%' },
+    { prop: 'line-gap-override', value: '0%' },
+  ],
 })
 
-// Serif pentru titluri — se potrivește cu wordmark-ul serif din logo.
+// Serif pentru titluri - se potrivește cu wordmark-ul serif din logo.
 const libreBaskerville = Libre_Baskerville({
   subsets: ['latin'],
   weight: ['400', '700'],
@@ -33,15 +43,15 @@ const libreBaskerville = Libre_Baskerville({
 })
 
 const BASE_URL = 'https://eurasiaprecept.org'
-const TITLE = 'Precept Eurasia — Institut de Studiu Biblic'
+const TITLE = 'Precept Eurasia | Institut de Studiu Biblic'
 const DESCRIPTION =
-  'Atragem oameni într-o relație cu Dumnezeu prin cunoașterea profundă a Cuvântului Său. Programe biblice pentru toate vârstele — în 195 de țări, 111 limbi, 40+ ani de activitate.'
+  'Atragem oameni într-o relație cu Dumnezeu prin cunoașterea profundă a Cuvântului Său. Programe biblice pentru toate vârstele, în 195 de țări, 111 limbi, 40+ ani de activitate.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
     default: TITLE,
-    template: '%s — Precept Eurasia',
+    template: '%s | Precept Eurasia',
   },
   description: DESCRIPTION,
   keywords: [
@@ -84,7 +94,7 @@ export const metadata: Metadata = {
         url: `${BASE_URL}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: 'Precept Eurasia — Institut de Studiu Biblic',
+        alt: 'Precept Eurasia, Institut de Studiu Biblic',
       },
     ],
   },

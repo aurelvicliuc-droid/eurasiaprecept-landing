@@ -110,7 +110,7 @@ const programs: Program[] = [
   {
     id: 'nivel34',
     slug: 'nivelul-3-4',
-    names: { ro: 'Nivelul 3–4', en: 'Levels 3–4', ru: 'Уровни 3–4' },
+    names: { ro: 'Nivelul 3-4', en: 'Levels 3-4', ru: 'Уровни 3-4' },
     descs: {
       ro: 'Lideri maturi care au convingeri biblice solide și predică eficient Cuvântul lui Dumnezeu, formând ucenici.',
       en: 'Mature leaders with solid biblical convictions who preach the Word of God effectively, making disciples.',

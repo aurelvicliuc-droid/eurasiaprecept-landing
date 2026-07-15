@@ -67,7 +67,7 @@ export default function PhotoSlider() {
           exit="exit"
           className="absolute inset-0 flex items-center justify-center"
         >
-          {/* Placeholder — replace with <Image> when photos available */}
+          {/* Placeholder: replace with <Image> when photos available */}
           <div className="w-full h-full flex flex-col items-center justify-center gap-3
             text-text-muted bg-beige-light">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"

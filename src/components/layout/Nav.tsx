@@ -6,14 +6,17 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useLanguage } from '@/lib/i18n/context'
 import type { Lang } from '@/lib/i18n/translations'
+import SweepButton from '@/components/ui/SweepButton'
 
 const langs: Lang[] = ['ro', 'en', 'ru']
 
 interface NavProps {
   onAboutOpen: () => void
+  /** Bara stă peste un hero închis (doar pe home): transparentă sus, albă la scroll. */
+  overlay?: boolean
 }
 
-export default function Nav({ onAboutOpen }: NavProps) {
+export default function Nav({ onAboutOpen, overlay = false }: NavProps) {
   const { lang, setLang, t } = useLanguage()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -23,6 +26,9 @@ export default function Nav({ onAboutOpen }: NavProps) {
     window.addEventListener('scroll', handler, { passive: true })
     return () => window.removeEventListener('scroll', handler)
   }, [])
+
+  // Peste hero-ul închis, până la scroll, bara e transparentă cu text deschis.
+  const onDark = overlay && !scrolled
 
   const links = [
     { label: t.nav.programs, href: '/#programe' },
@@ -37,7 +43,9 @@ export default function Nav({ onAboutOpen }: NavProps) {
         className={`fixed top-0 inset-x-0 z-50 transition-all duration-300
           ${scrolled
             ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-beige-dark/60'
-            : 'bg-white border-b border-beige-dark'
+            : overlay
+              ? 'bg-transparent border-b border-fog/15'
+              : 'bg-white border-b border-beige-dark'
           }`}
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -51,7 +59,8 @@ export default function Nav({ onAboutOpen }: NavProps) {
               alt="Precept Eurasia"
               width={160}
               height={40}
-              className="h-[32px] w-auto object-contain"
+              className={`h-[32px] w-auto object-contain transition-[filter] duration-300
+                ${onDark ? 'brightness-0 invert' : ''}`}
               priority
             />
           </Link>
@@ -65,7 +74,8 @@ export default function Nav({ onAboutOpen }: NavProps) {
                   target={link.external ? '_blank' : undefined}
                   rel={link.external ? 'noopener noreferrer' : undefined}
                   onClick={link.isAbout ? (e) => { e.preventDefault(); onAboutOpen() } : undefined}
-                  className="text-[14px] font-normal text-text-dark hover:text-teal transition-colors duration-200 cursor-pointer"
+                  className={`text-[14px] font-normal transition-colors duration-200 cursor-pointer
+                    ${onDark ? 'text-fog/85 hover:text-fog' : 'text-text-dark hover:text-teal'}`}
                 >
                   {link.label}
                 </a>
@@ -81,30 +91,35 @@ export default function Nav({ onAboutOpen }: NavProps) {
                   key={l}
                   onClick={() => setLang(l)}
                   className={`text-[13px] transition-colors duration-200 cursor-pointer uppercase
-                    ${lang === l ? 'text-green-dark font-medium' : 'text-text-muted hover:text-text-dark'}`}
+                    ${lang === l
+                      ? (onDark ? 'text-fog font-medium' : 'text-green-dark font-medium')
+                      : (onDark ? 'text-fog/55 hover:text-fog' : 'text-text-muted hover:text-text-dark')}`}
                   aria-pressed={lang === l}
                 >
                   {l}
                 </button>
               ))}
             </div>
-            <a
+            <SweepButton
               href="https://web.eurasiaprecept.org/public/sign-in"
-              className="bg-teal text-white px-[22px] py-[9px] rounded-[6px] text-[14px] font-medium
-                hover:bg-green-dark transition-colors duration-200"
+              variant={onDark ? 'outline-light' : 'solid-primary'}
+              className="!px-[22px] !py-[9px]"
             >
               {t.nav.signIn}
-            </a>
+            </SweepButton>
           </div>
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden p-2 rounded-lg hover:bg-beige transition-colors cursor-pointer"
+            className={`md:hidden p-2 rounded-lg transition-colors cursor-pointer
+              ${onDark ? 'hover:bg-fog/15' : 'hover:bg-beige'}`}
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileOpen}
           >
-            {mobileOpen ? <X size={22} className="text-text-dark" /> : <Menu size={22} className="text-text-dark" />}
+            {mobileOpen
+              ? <X size={22} className={onDark ? 'text-fog' : 'text-text-dark'} />
+              : <Menu size={22} className={onDark ? 'text-fog' : 'text-text-dark'} />}
           </button>
         </div>
       </motion.nav>
@@ -135,12 +150,13 @@ export default function Nav({ onAboutOpen }: NavProps) {
                   {link.label}
                 </motion.a>
               ))}
-              <a
+              <SweepButton
                 href="https://web.eurasiaprecept.org/public/sign-in"
-                className="mt-4 bg-teal text-white text-center py-4 rounded-lg text-[16px] font-medium"
+                variant="solid-primary"
+                className="mt-4 w-full !py-4 !rounded-lg !text-[16px]"
               >
                 {t.nav.signIn}
-              </a>
+              </SweepButton>
               <div className="flex gap-4 mt-2">
                 {langs.map((l) => (
                   <button

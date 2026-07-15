@@ -37,6 +37,7 @@
   /* Accent principal: Ocean adâncit, ca să treacă contrastul pe fundal deschis */
   --teal:        #4D6B6B;
   --teal-light:  #729999;  /* Ocean pur: accente/hover */
+  --ocean-light: #9DBDBD;  /* Ocean deschis: accent pe fundal inchis (Ocean pur da doar 4:1 acolo) */
 
   /* Auriu */
   --gold:        #E5D350;  /* Golden: umplutură */
@@ -81,6 +82,7 @@
   --color-beige-dark:  #CCCBC2;
   --color-teal:        #4D6B6B;
   --color-teal-light:  #729999;
+  --color-ocean-light: #9DBDBD;
   --color-cream:       #F7F6F4;
   --color-text-dark:   #3D3C3C;
   --color-text-mid:    #5C5B5A;

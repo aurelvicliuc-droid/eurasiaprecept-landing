@@ -5,6 +5,7 @@ import { ExternalLink, ArrowRight } from 'lucide-react'
 import SectionEyebrow from '@/components/ui/SectionEyebrow'
 import AnimatedSection from '@/components/ui/AnimatedSection'
 import { useLanguage } from '@/lib/i18n/context'
+import SweepButton from '@/components/ui/SweepButton'
 
 const SHOP_URL = 'https://shop.eurasiaprecept.org/ro/'
 
@@ -85,17 +86,15 @@ export default function Shop() {
             </p>
           </AnimatedSection>
           <AnimatedSection direction="right" delay={0.1}>
-            <a
+            <SweepButton
               href={SHOP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 flex-shrink-0 border-[1.5px] border-text-dark text-text-dark
-                px-6 py-3 rounded-[6px] text-[13px] font-medium tracking-[0.06em] uppercase
-                hover:bg-text-dark hover:text-cream transition-all duration-200 whitespace-nowrap"
+              external
+              variant="outline-dark"
+              icon={<ExternalLink size={14} aria-hidden="true" />}
+              className="flex-shrink-0 !px-6 !py-3 !text-[13px] tracking-[0.06em] uppercase whitespace-nowrap"
             >
               {t.shop.viewAll}
-              <ExternalLink size={14} aria-hidden="true" />
-            </a>
+            </SweepButton>
           </AnimatedSection>
         </div>
 

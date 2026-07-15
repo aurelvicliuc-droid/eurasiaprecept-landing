@@ -18,7 +18,7 @@ export default function Home() {
 
   return (
     <>
-      <Nav onAboutOpen={() => setAboutOpen(true)} />
+      <Nav onAboutOpen={() => setAboutOpen(true)} overlay />
 
       <main>
         <Hero />

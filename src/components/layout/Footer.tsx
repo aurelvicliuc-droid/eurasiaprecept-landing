@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Mail, Globe, ShoppingBag, ArrowUpRight } from 'lucide-react'
 import { useLanguage } from '@/lib/i18n/context'
+import SweepButton from '@/components/ui/SweepButton'
 
 const programLinks = [
   { slug: 'institutul-biblic', names: { ro: 'Institutul Biblic Precept', en: 'Precept Bible Institute', ru: 'Библейский институт' } },
@@ -170,14 +171,13 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
-            <a
+            <SweepButton
               href="/#contact"
-              className="hidden lg:inline-block mt-6 bg-gold/15 hover:bg-gold text-gold hover:text-green-dark
-                border border-gold/30 hover:border-gold px-5 py-2.5 rounded-lg text-[12.5px] font-semibold
-                transition-all duration-200"
+              variant="outline-light"
+              className="hidden lg:inline-flex mt-6 !px-5 !py-2.5 text-[12.5px] font-semibold"
             >
               {f.sendMessage}
-            </a>
+            </SweepButton>
           </div>
 
           {/* Programs: spans full width on mobile (2 cols), single col on desktop */}
@@ -203,14 +203,13 @@ export default function Footer() {
 
         {/* Mobile: send message button */}
         <div className="mt-6 lg:hidden">
-          <a
+          <SweepButton
             href="/#contact"
-            className="inline-block bg-gold/15 hover:bg-gold text-gold hover:text-green-dark
-              border border-gold/30 hover:border-gold px-5 py-2.5 rounded-lg text-[13px] font-semibold
-              transition-all duration-200"
+            variant="outline-light"
+            className="!px-5 !py-2.5 text-[13px] font-semibold"
           >
             {f.sendMessage}
-          </a>
+          </SweepButton>
         </div>
 
       </div>

@@ -10,6 +10,7 @@ import Footer from '@/components/layout/Footer'
 import AboutModal from '@/components/modals/AboutModal'
 import { useLanguage } from '@/lib/i18n/context'
 import { localizeProgram } from '@/lib/i18n/programs-localized'
+import SweepButton from '@/components/ui/SweepButton'
 
 const badgeColors: Record<string, string> = {
   teal: 'bg-teal/10 text-teal border-teal/30',
@@ -408,38 +409,36 @@ export default function ProgramPageClient({ program }: Props) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: 0.4 }}
             >
-              <a
+              <SweepButton
                 href={ctaPrimaryHref}
-                {...ctaPrimaryTarget}
-                className="w-full bg-teal text-white text-center py-4 px-6 rounded-xl text-[15px] font-semibold
-                  hover:bg-green-dark transition-colors duration-200 shadow-sm"
+                external={!!ctaPrimaryTarget.target}
+                variant="solid-primary"
+                className="w-full !rounded-xl !py-4 !text-[15px] !font-semibold shadow-sm"
               >
                 {p.ctaPrimary.label}
-              </a>
+              </SweepButton>
               {p.ctaSecondary && (
-                <a
+                <SweepButton
                   href={ctaSecondaryHref}
-                  {...ctaSecondaryTarget}
-                  className="w-full border-[1.5px] border-teal text-teal text-center py-3.5 px-6 rounded-xl
-                    text-[14px] font-medium hover:bg-teal/5 transition-colors duration-200 flex items-center justify-center gap-2"
+                  external={!!ctaSecondaryTarget.target}
+                  variant="outline-dark"
+                  icon={p.downloadLabel ? <Download size={14} aria-hidden /> : undefined}
+                  className="w-full !rounded-xl"
                 >
-                  {p.downloadLabel && <Download size={14} aria-hidden />}
                   {p.ctaSecondary.label}
-                </a>
+                </SweepButton>
               )}
               {p.ctaTertiary && (
-                <a
+                <SweepButton
                   href={ctaTertiaryHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  {...(program.ctaTertiary?.download ? { download: true } : {})}
-                  className="w-full border border-beige-dark text-text-muted py-3 px-6 rounded-xl
-                    text-[13px] font-medium hover:border-teal hover:text-teal transition-all duration-200
-                    flex items-center justify-center gap-2"
+                  external
+                  download={!!program.ctaTertiary?.download}
+                  variant="outline-muted"
+                  icon={program.ctaTertiary?.download ? <Download size={14} aria-hidden /> : undefined}
+                  className="w-full !rounded-xl !py-3 !text-[13px]"
                 >
-                  {program.ctaTertiary?.download && <Download size={14} aria-hidden />}
                   {p.ctaTertiary.label}
-                </a>
+                </SweepButton>
               )}
             </motion.div>
 
@@ -478,21 +477,21 @@ export default function ProgramPageClient({ program }: Props) {
             {pp.ctaBannerDesc(p.name)}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a
+            <SweepButton
               href={ctaPrimaryHref}
-              {...ctaPrimaryTarget}
-              className="inline-block bg-green-dark text-white font-semibold px-8 py-4 rounded-xl text-[15px]
-                hover:bg-teal transition-colors duration-200 shadow-sm"
+              external={!!ctaPrimaryTarget.target}
+              variant="solid-spruce"
+              className="!px-8 !py-4 !rounded-xl !text-[15px] !font-semibold shadow-sm"
             >
               {p.ctaPrimary.label}
-            </a>
-            <a
+            </SweepButton>
+            <SweepButton
               href="/#contact"
-              className="inline-block border-[1.5px] border-green-dark/30 text-green-dark font-medium
-                px-8 py-4 rounded-xl text-[15px] hover:border-teal hover:text-teal transition-all duration-200"
+              variant="outline-dark"
+              className="!px-8 !py-4 !rounded-xl !text-[15px]"
             >
               {pp.contactUs}
-            </a>
+            </SweepButton>
           </div>
         </div>
       </div>

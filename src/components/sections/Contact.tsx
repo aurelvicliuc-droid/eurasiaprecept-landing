@@ -5,6 +5,7 @@ import { Mail, Globe, ShoppingBag } from 'lucide-react'
 import SectionEyebrow from '@/components/ui/SectionEyebrow'
 import AnimatedSection from '@/components/ui/AnimatedSection'
 import { useLanguage } from '@/lib/i18n/context'
+import SweepButton from '@/components/ui/SweepButton'
 
 export default function Contact() {
   const { t } = useLanguage()
@@ -198,16 +199,14 @@ export default function Contact() {
               </div>
 
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-1">
-                <button
+                <SweepButton
                   type="submit"
                   disabled={loading}
-                  className="bg-green-dark text-white border-none px-7 py-3.5 rounded-[6px] text-[13px]
-                    font-semibold tracking-[0.08em] uppercase cursor-pointer
-                    hover:bg-green-mid transition-colors duration-200
-                    disabled:opacity-60 disabled:cursor-not-allowed"
+                  variant="solid-spruce"
+                  className="text-[13px] font-semibold tracking-[0.08em] uppercase"
                 >
                   {loading ? '...' : f.submit}
-                </button>
+                </SweepButton>
 
                 {sent && (
                   <motion.p

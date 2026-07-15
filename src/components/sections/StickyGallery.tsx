@@ -32,13 +32,16 @@ const N = [
 
 type Img = { src: string; pos?: string }
 
-// 3 cadre x 3 imagini. Efectul sticky costa aproximativ un ecran de scroll per cadru,
-// deci numarul de cadre da lungimea sectiunii: la 5 cadre ajungea la ~3.9 ecrane, de
-// patru ori cat oricare alta sectiune.
+// 5 cadre x 3 imagini = toate cele 15 poze, la marime plina.
+// Efectul sticky costa aproximativ un ecran de scroll per cadru, deci numarul de cadre
+// da lungimea sectiunii. Cadrele sunt de 52vh (nu 70vh, cum erau initial), ca sectiunea
+// sa ramana mai scurta desi are toate pozele.
 const FRAMES: Img[][] = [
   [{ src: FOUNDERS, pos: 'object-center' }, { src: KAY, pos: 'object-center' }, { src: FESTIVAL, pos: 'object-center' }],
   [{ src: VASILE, pos: 'object-center' }, { src: N[0], pos: 'object-center' }, { src: N[1], pos: 'object-center' }],
   [{ src: CLASA, pos: 'object-center' }, { src: AMVON, pos: 'object-center' }, { src: N[2], pos: 'object-center' }],
+  [{ src: N[3], pos: 'object-center' }, { src: N[4], pos: 'object-center' }, { src: N[5], pos: 'object-center' }],
+  [{ src: N[6], pos: 'object-center' }, { src: N[7] }, { src: N[8] }],
 ]
 
 const FLAT: Img[] = FRAMES.flat()

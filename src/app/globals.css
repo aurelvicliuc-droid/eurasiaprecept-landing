@@ -20,7 +20,7 @@
 
 :root {
   /* Paleta de brand, exact */
-  --fog:        #DEDDD7;
+  --fog:        #DEDCD6;
   --charcoal:   #3D3C3C;
   --flat-black: #000000;
   --ocean:      #729999;
@@ -46,10 +46,10 @@
   --gold-deep:   #7C7012;  /* text pe fundal auriu deschis */
 
   /* Suprafețe: tonuri de Fog */
-  --cream:       #F7F6F4;
-  --beige-light: #F1F1EE;
-  --beige:       #DEDDD7;  /* Fog */
-  --beige-dark:  #CCCBC2;
+  --cream:       #F5F4F2;  /* precept.org */
+  --beige-light: #EEEDE9;  /* precept.org: suprafata principala */
+  --beige:       #DEDCD6;  /* precept.org */
+  --beige-dark:  #CDCBC3;
 
   /* Text: Charcoal */
   --text-dark:   #3D3C3C;
@@ -62,7 +62,7 @@
   --color-foreground: var(--text-dark);
 
   /* Brand */
-  --color-fog:        #DEDDD7;
+  --color-fog:        #DEDCD6;
   --color-charcoal:   #3D3C3C;
   --color-flat-black: #000000;
   --color-ocean:      #729999;
@@ -78,18 +78,19 @@
   --color-gold:        #E5D350;
   --color-gold-light:  #F0E48A;
   --color-gold-deep:   #7C7012;
-  --color-beige:       #DEDDD7;
-  --color-beige-light: #F1F1EE;
-  --color-beige-dark:  #CCCBC2;
+  --color-beige:       #DEDCD6;
+  --color-beige-light: #EEEDE9;
+  --color-beige-dark:  #CDCBC3;
   --color-teal:        #2E5A52;
   --color-teal-light:  #729999;
   --color-ocean-light: #9DBDBD;
-  --color-cream:       #F7F6F4;
+  --color-cream:       #F5F4F2;
   --color-text-dark:   #3D3C3C;
   --color-text-mid:    #5C5B5A;
   --color-text-muted:  #6C6A6A;
 
-  --font-display: var(--font-baskerville), Georgia, 'Times New Roman', serif;
+  /* Ca la precept.org: titlurile sunt tot Founders Grotesk (Medium), nu serif. */
+  --font-display: var(--font-founders), system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
   --font-body:    var(--font-founders), system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
 }
 

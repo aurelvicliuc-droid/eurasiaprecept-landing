@@ -73,7 +73,7 @@ export default function Contact() {
             <SectionEyebrow>{t.contact.eyebrow}</SectionEyebrow>
             <h2
               id="contact-heading"
-              className="font-['var(--font-display)'] text-green-dark font-normal leading-tight mb-4
+              className="font-display text-green-dark font-medium leading-tight mb-4
                 text-[clamp(28px,3.5vw,42px)]"
             >
               <em className="not-italic text-teal">{t.contact.headingEm}</em> {t.contact.heading}

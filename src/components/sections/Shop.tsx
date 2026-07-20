@@ -76,7 +76,7 @@ export default function Shop() {
             <SectionEyebrow>{t.shop.eyebrow}</SectionEyebrow>
             <h2
               id="shop-heading"
-              className="font-['var(--font-display)'] text-green-dark font-normal leading-tight mb-2
+              className="font-display text-green-dark font-medium leading-tight mb-2
                 text-[clamp(28px,3.5vw,42px)]"
             >
               {t.shop.heading} <em className="not-italic text-teal">{t.shop.headingEm}</em>
@@ -137,7 +137,7 @@ export default function Shop() {
               </div>
 
               <div className="flex flex-col flex-1 px-5 py-4 gap-1.5">
-                <h3 className="font-['var(--font-display)'] text-[17px] font-medium text-green-dark leading-[1.3]">
+                <h3 className="font-display text-[17px] font-medium text-green-dark leading-[1.3]">
                   {p.names[lang]}
                 </h3>
                 <p className="text-[14.5px] text-text-muted leading-[1.65] flex-1">{p.descs[lang]}</p>

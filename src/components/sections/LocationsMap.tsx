@@ -20,7 +20,7 @@ export default function LocationsMap() {
           <SectionEyebrow>{m.eyebrow}</SectionEyebrow>
           <h2
             id="map-heading"
-            className="font-['var(--font-display)'] text-green-dark font-normal leading-tight mb-3
+            className="font-display text-green-dark font-medium leading-tight mb-3
               text-[clamp(28px,3.5vw,42px)]"
           >
             {m.heading} <em className="not-italic text-teal">{m.headingEm}</em>

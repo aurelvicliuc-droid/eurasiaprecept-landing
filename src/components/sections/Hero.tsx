@@ -112,7 +112,7 @@ export default function Hero() {
 
           <motion.h1
             id="hero-title"
-            className="font-['var(--font-display)'] font-normal text-fog leading-[1.04] tracking-[-0.01em]
+            className="font-display font-medium text-fog leading-[1.04] tracking-[-0.01em]
               text-[clamp(40px,6.4vw,82px)] [text-wrap:balance]
               [text-shadow:0_2px_28px_rgba(0,0,0,0.55)]"
             initial={{ opacity: 0, y: 28 }}

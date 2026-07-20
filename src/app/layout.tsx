@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import Script from 'next/script'
 import localFont from 'next/font/local'
-import { Libre_Baskerville } from 'next/font/google'
 import Providers from './Providers'
 import './globals.css'
 
@@ -29,15 +28,6 @@ const foundersGrotesk = localFont({
     { prop: 'descent-override', value: '22%' },
     { prop: 'line-gap-override', value: '0%' },
   ],
-})
-
-// Serif pentru titluri - se potrivește cu wordmark-ul serif din logo.
-const libreBaskerville = Libre_Baskerville({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  variable: '--font-baskerville',
-  display: 'swap',
-  fallback: ['Georgia', 'serif'],
 })
 
 const BASE_URL = 'https://eurasiaprecept.org'
@@ -141,7 +131,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ro" className={`h-full ${foundersGrotesk.variable} ${libreBaskerville.variable}`}>
+    <html lang="ro" className={`h-full ${foundersGrotesk.variable}`}>
       <head>
         <Script
           id="json-ld-org"

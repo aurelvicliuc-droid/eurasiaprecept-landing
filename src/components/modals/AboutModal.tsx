@@ -165,7 +165,7 @@ export default function AboutModal({ open, onClose }: Props) {
                 >
                   {activeTab === 'viziunea' && (
                     <div>
-                      <p className="font-['var(--font-display)'] text-[20px] text-green-dark leading-[1.6]
+                      <p className="font-display text-[20px] text-green-dark leading-[1.6]
                         border-l-[3px] border-teal pl-5 mb-5">
                         {t.vision.quote}
                       </p>

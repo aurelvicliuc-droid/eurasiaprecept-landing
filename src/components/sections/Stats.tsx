@@ -73,7 +73,7 @@ export default function Stats() {
               transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: i * 0.1 }}
             >
               <span
-                className="font-['var(--font-display)'] font-bold text-green-dark leading-none tracking-[-0.01em]
+                className="font-display font-bold text-green-dark leading-none tracking-[-0.01em]
                   text-[clamp(42px,4.5vw,64px)]"
                 aria-label={`${stat.value}${stat.suffix} ${t.stats.items[i].label}`}
               >

@@ -171,7 +171,7 @@ export default function Programs() {
           <SectionEyebrow>{p.eyebrow}</SectionEyebrow>
           <h2
             id="programs-heading"
-            className="font-['var(--font-display)'] text-green-dark font-normal leading-tight mb-3
+            className="font-display text-green-dark font-medium leading-tight mb-3
               text-[clamp(28px,3.5vw,42px)]"
           >
             {p.heading.split(' ').slice(0, -2).join(' ')}{' '}
@@ -294,7 +294,7 @@ function ProgramCard({
             px-2.5 py-1 rounded-full mb-3 ${a.badge}`}>
             {prog.badges[lang]}
           </span>
-          <h3 className="font-['var(--font-display)'] text-[22px] font-medium text-fog leading-[1.25]
+          <h3 className="font-display text-[22px] font-medium text-fog leading-[1.25]
             [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
             {prog.names[lang]}
           </h3>

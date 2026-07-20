@@ -109,7 +109,7 @@ export default function ProgramPageClient({ program }: Props) {
                 rounded-full border backdrop-blur-sm mb-4 ${badgeColors[program.badgeColor]}`}>
                 {program.badge}
               </span>
-              <h1 className="font-['var(--font-display)'] text-white font-normal leading-tight mb-3
+              <h1 className="font-display text-white font-medium leading-tight mb-3
                 text-[clamp(28px,4vw,52px)]">
                 {p.name}
               </h1>
@@ -163,7 +163,7 @@ export default function ProgramPageClient({ program }: Props) {
                           {i + 1}
                         </span>
                         <div className="flex-1 min-w-0">
-                          <h3 className="font-['var(--font-display)'] text-[17px] text-green-dark font-medium leading-snug">
+                          <h3 className="font-display text-[17px] text-green-dark font-medium leading-snug">
                             {course.title}
                           </h3>
                           {course.manuals && course.manuals.length > 0 ? (
@@ -470,7 +470,7 @@ export default function ProgramPageClient({ program }: Props) {
           <span className="inline-block text-[11px] font-bold tracking-[0.18em] uppercase text-teal mb-4">
             {pp.applyBadge}
           </span>
-          <h2 className="font-['var(--font-display)'] text-green-dark text-[clamp(24px,3vw,40px)] font-normal mb-4 leading-tight">
+          <h2 className="font-display text-green-dark text-[clamp(24px,3vw,40px)] font-medium mb-4 leading-tight">
             {pp.ctaBannerTitle}
           </h2>
           <p className="text-text-muted text-[16.5px] mb-10 max-w-[460px] mx-auto leading-[1.7]">

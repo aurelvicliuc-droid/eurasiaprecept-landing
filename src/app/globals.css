@@ -103,7 +103,9 @@ body {
   font-family: var(--font-body);
   background: var(--beige-light);
   color: var(--text-dark);
-  font-weight: 400;
+  /* Mai gros ca la precept.org. Ei folosesc cutul Text (mai gros la corp de text)
+     la greutate Regular; eu am doar cutul display, deci compensez cu Medium. */
+  font-weight: 500;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

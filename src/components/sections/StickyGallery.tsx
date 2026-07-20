@@ -147,7 +147,7 @@ export default function StickyGallery() {
           <h2
             id="gallery-heading"
             className="font-display text-green-dark font-medium leading-tight mb-3
-              text-[clamp(28px,3.5vw,42px)]"
+              text-[clamp(32px,4.2vw,50px)]"
           >
             {g.heading} <em className="not-italic text-teal">{g.headingEm}</em>
           </h2>

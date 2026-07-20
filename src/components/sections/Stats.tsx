@@ -74,7 +74,7 @@ export default function Stats() {
             >
               <span
                 className="font-display font-bold text-green-dark leading-none tracking-[-0.01em]
-                  text-[clamp(42px,4.5vw,64px)]"
+                  text-[clamp(48px,5vw,74px)]"
                 aria-label={`${stat.value}${stat.suffix} ${t.stats.items[i].label}`}
               >
                 <CountUp target={stat.value} suffix={stat.suffix} active={inView} />

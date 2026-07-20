@@ -77,7 +77,7 @@ export default function Shop() {
             <h2
               id="shop-heading"
               className="font-display text-green-dark font-medium leading-tight mb-2
-                text-[clamp(28px,3.5vw,42px)]"
+                text-[clamp(32px,4.2vw,50px)]"
             >
               {t.shop.heading} <em className="not-italic text-teal">{t.shop.headingEm}</em>
             </h2>

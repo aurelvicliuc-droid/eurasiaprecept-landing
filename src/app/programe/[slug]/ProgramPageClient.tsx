@@ -110,7 +110,7 @@ export default function ProgramPageClient({ program }: Props) {
                 {program.badge}
               </span>
               <h1 className="font-display text-white font-medium leading-tight mb-3
-                text-[clamp(28px,4vw,52px)]">
+                text-[clamp(32px,4.6vw,60px)]">
                 {p.name}
               </h1>
               <p className="text-white/80 text-[clamp(15px,1.6vw,18px)] max-w-[560px] leading-[1.55]">
@@ -470,7 +470,7 @@ export default function ProgramPageClient({ program }: Props) {
           <span className="inline-block text-[11px] font-bold tracking-[0.18em] uppercase text-teal mb-4">
             {pp.applyBadge}
           </span>
-          <h2 className="font-display text-green-dark text-[clamp(24px,3vw,40px)] font-medium mb-4 leading-tight">
+          <h2 className="font-display text-green-dark text-[clamp(28px,3.6vw,46px)] font-medium mb-4 leading-tight">
             {pp.ctaBannerTitle}
           </h2>
           <p className="text-text-muted text-[16.5px] mb-10 max-w-[460px] mx-auto leading-[1.7]">

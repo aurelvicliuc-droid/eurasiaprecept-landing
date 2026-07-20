@@ -172,7 +172,7 @@ export default function Programs() {
           <h2
             id="programs-heading"
             className="font-display text-green-dark font-medium leading-tight mb-3
-              text-[clamp(28px,3.5vw,42px)]"
+              text-[clamp(32px,4.2vw,50px)]"
           >
             {p.heading.split(' ').slice(0, -2).join(' ')}{' '}
             <em className="not-italic text-teal">{p.heading.split(' ').slice(-2).join(' ')}</em>

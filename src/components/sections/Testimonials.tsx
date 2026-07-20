@@ -17,7 +17,7 @@ export default function Testimonials() {
           <h2
             id="testimonials-heading"
             className="font-display text-green-dark font-medium leading-tight mb-3
-              text-[clamp(28px,3.5vw,42px)]"
+              text-[clamp(32px,4.2vw,50px)]"
           >
             {t.testimonials.heading}{' '}
             <em className="not-italic text-teal">{t.testimonials.headingEm}</em>

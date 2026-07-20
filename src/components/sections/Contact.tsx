@@ -74,7 +74,7 @@ export default function Contact() {
             <h2
               id="contact-heading"
               className="font-display text-green-dark font-medium leading-tight mb-4
-                text-[clamp(28px,3.5vw,42px)]"
+                text-[clamp(32px,4.2vw,50px)]"
             >
               <em className="not-italic text-teal">{t.contact.headingEm}</em> {t.contact.heading}
             </h2>

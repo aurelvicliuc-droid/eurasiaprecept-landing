@@ -21,7 +21,7 @@ export default function LocationsMap() {
           <h2
             id="map-heading"
             className="font-display text-green-dark font-medium leading-tight mb-3
-              text-[clamp(28px,3.5vw,42px)]"
+              text-[clamp(32px,4.2vw,50px)]"
           >
             {m.heading} <em className="not-italic text-teal">{m.headingEm}</em>
           </h2>

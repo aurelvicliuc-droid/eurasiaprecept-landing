@@ -125,7 +125,7 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p
-            className="text-[clamp(16px,1.5vw,19px)] text-fog/80 leading-[1.7] mt-6 max-w-[540px]"
+            className="text-[clamp(18px,1.7vw,22px)] text-fog/80 leading-[1.7] mt-6 max-w-[540px]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.3 }}

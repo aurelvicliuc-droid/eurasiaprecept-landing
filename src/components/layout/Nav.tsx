@@ -153,7 +153,7 @@ export default function Nav({ onAboutOpen, overlay = false }: NavProps) {
               <SweepButton
                 href="https://web.eurasiaprecept.org/public/sign-in"
                 variant="solid-primary"
-                className="mt-4 w-full !py-4 !rounded-lg !text-[16px]"
+                className="mt-4 w-full !py-4 !rounded-lg !text-[18px]"
               >
                 {t.nav.signIn}
               </SweepButton>

@@ -184,7 +184,7 @@ export default function AboutModal({ open, onClose }: Props) {
                             <span className={`text-[10px] font-bold tracking-[0.15em] uppercase mb-2 block relative z-10 ${VISION_CARD_STYLES[i].label}`}>
                               {b.label}
                             </span>
-                            <p className={`leading-[1.65] relative z-10 ${VISION_CARD_STYLES[i].text} ${i === 0 || i === 3 ? 'text-[14.5px]' : 'text-[13px]'}`}>
+                            <p className={`leading-[1.65] relative z-10 ${VISION_CARD_STYLES[i].text} ${i === 0 || i === 3 ? 'text-[15.5px]' : 'text-[13px]'}`}>
                               {b.text}
                             </p>
                           </div>

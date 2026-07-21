@@ -22,7 +22,7 @@ export default function Testimonials() {
             {t.testimonials.heading}{' '}
             <em className="not-italic text-teal">{t.testimonials.headingEm}</em>
           </h2>
-          <p className="text-[16.5px] text-text-muted max-w-[480px] leading-[1.7]">
+          <p className="text-[19px] text-text-muted max-w-[480px] leading-[1.7]">
             {t.testimonials.subtext}
           </p>
         </AnimatedSection>
@@ -44,7 +44,7 @@ export default function Testimonials() {
                 "
               </span>
               <blockquote>
-                <p className="font-display text-[17px] text-text-dark leading-[1.7] mb-6 flex-1">
+                <p className="font-display text-[19px] text-text-dark leading-[1.7] mb-6 flex-1">
                   {item.text}
                 </p>
                 <footer className="flex items-center gap-3">

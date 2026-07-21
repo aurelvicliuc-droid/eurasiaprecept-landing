@@ -113,7 +113,7 @@ export default function ProgramPageClient({ program }: Props) {
                 text-[clamp(32px,4.6vw,60px)]">
                 {p.name}
               </h1>
-              <p className="text-white/80 text-[clamp(15px,1.6vw,18px)] max-w-[560px] leading-[1.55]">
+              <p className="text-white/80 text-[clamp(16px,1.6vw,19px)] max-w-[560px] leading-[1.55]">
                 {p.tagline}
               </p>
             </motion.div>
@@ -135,7 +135,7 @@ export default function ProgramPageClient({ program }: Props) {
               transition={{ duration: 0.55, delay: 0.1 }}
             >
               <SectionLabel icon={<BookOpen size={15} />}>{pp.aboutSection}</SectionLabel>
-              <p className="text-[17px] text-text-dark leading-[1.8] mt-4">
+              <p className="text-[19px] text-text-dark leading-[1.8] mt-4">
                 {p.overview}
               </p>
             </motion.section>
@@ -163,7 +163,7 @@ export default function ProgramPageClient({ program }: Props) {
                           {i + 1}
                         </span>
                         <div className="flex-1 min-w-0">
-                          <h3 className="font-display text-[17px] text-green-dark font-medium leading-snug">
+                          <h3 className="font-display text-[19px] text-green-dark font-medium leading-snug">
                             {course.title}
                           </h3>
                           {course.manuals && course.manuals.length > 0 ? (
@@ -241,7 +241,7 @@ export default function ProgramPageClient({ program }: Props) {
                         <ChevronRight size={16} className="text-teal" />
                       </div>
                       <h4 className="text-[15px] font-semibold text-green-dark mb-1">{outcome.title}</h4>
-                      <p className="text-[14.5px] text-text-muted leading-[1.65]">{outcome.desc}</p>
+                      <p className="text-[15.5px] text-text-muted leading-[1.65]">{outcome.desc}</p>
                     </motion.div>
                   ))}
                 </div>
@@ -266,7 +266,7 @@ export default function ProgramPageClient({ program }: Props) {
                       transition={{ duration: 0.4, delay: 0.1 + i * 0.08 }}
                     >
                       <Quote size={22} className="text-teal/25 mb-2" aria-hidden />
-                      <blockquote className="text-[15.5px] text-text-dark leading-[1.75]">
+                      <blockquote className="text-[17px] text-text-dark leading-[1.75]">
                         {t.quote}
                       </blockquote>
                       <figcaption className="flex items-center gap-3 mt-5">
@@ -473,7 +473,7 @@ export default function ProgramPageClient({ program }: Props) {
           <h2 className="font-display text-green-dark text-[clamp(28px,3.6vw,46px)] font-medium mb-4 leading-tight">
             {pp.ctaBannerTitle}
           </h2>
-          <p className="text-text-muted text-[16.5px] mb-10 max-w-[460px] mx-auto leading-[1.7]">
+          <p className="text-text-muted text-[19px] mb-10 max-w-[460px] mx-auto leading-[1.7]">
             {pp.ctaBannerDesc(p.name)}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">

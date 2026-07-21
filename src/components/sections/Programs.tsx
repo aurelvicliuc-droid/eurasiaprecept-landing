@@ -177,7 +177,7 @@ export default function Programs() {
             {p.heading.split(' ').slice(0, -2).join(' ')}{' '}
             <em className="not-italic text-teal">{p.heading.split(' ').slice(-2).join(' ')}</em>
           </h2>
-          <p className="text-[16.5px] text-text-muted max-w-[520px] leading-[1.7]">{p.subtext}</p>
+          <p className="text-[19px] text-text-muted max-w-[520px] leading-[1.7]">{p.subtext}</p>
         </AnimatedSection>
 
         {/* Parcursul: trei trepte, in ordine */}

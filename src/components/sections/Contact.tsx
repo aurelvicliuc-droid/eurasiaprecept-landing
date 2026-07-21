@@ -78,7 +78,7 @@ export default function Contact() {
             >
               <em className="not-italic text-teal">{t.contact.headingEm}</em> {t.contact.heading}
             </h2>
-            <p className="text-[16px] text-teal leading-[1.7] mb-8">
+            <p className="text-[18px] text-teal leading-[1.7] mb-8">
               {t.contact.subtext}
             </p>
 

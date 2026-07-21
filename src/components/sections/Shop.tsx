@@ -81,7 +81,7 @@ export default function Shop() {
             >
               {t.shop.heading} <em className="not-italic text-teal">{t.shop.headingEm}</em>
             </h2>
-            <p className="text-[16.5px] text-text-muted max-w-[400px] leading-[1.7]">
+            <p className="text-[19px] text-text-muted max-w-[400px] leading-[1.7]">
               {t.shop.subtext}
             </p>
           </AnimatedSection>
@@ -137,10 +137,10 @@ export default function Shop() {
               </div>
 
               <div className="flex flex-col flex-1 px-5 py-4 gap-1.5">
-                <h3 className="font-display text-[17px] font-medium text-green-dark leading-[1.3]">
+                <h3 className="font-display text-[19px] font-medium text-green-dark leading-[1.3]">
                   {p.names[lang]}
                 </h3>
-                <p className="text-[14.5px] text-text-muted leading-[1.65] flex-1">{p.descs[lang]}</p>
+                <p className="text-[15.5px] text-text-muted leading-[1.65] flex-1">{p.descs[lang]}</p>
                 <span className="inline-flex items-center gap-1 mt-2 text-[11px] font-semibold
                   tracking-[0.08em] uppercase text-teal group-hover:text-green-dark transition-colors duration-200">
                   {t.shop.buy}

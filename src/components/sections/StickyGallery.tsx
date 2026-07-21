@@ -151,7 +151,7 @@ export default function StickyGallery() {
           >
             {g.heading} <em className="not-italic text-teal">{g.headingEm}</em>
           </h2>
-          <p className="text-[16.5px] text-text-muted max-w-[520px] leading-[1.7]">{g.subtext}</p>
+          <p className="text-[19px] text-text-muted max-w-[520px] leading-[1.7]">{g.subtext}</p>
         </AnimatedSection>
       </div>
 

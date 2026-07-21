@@ -120,7 +120,7 @@ export default function Footer() {
 
           {/* Navigation */}
           <div>
-            <h3 className="text-[10px] font-bold tracking-[0.16em] uppercase text-white/35 mb-4">
+            <h3 className="text-[12px] font-bold tracking-[0.14em] uppercase text-white/45 mb-4">
               {f.colNav}
             </h3>
             <ul className="flex flex-col gap-2.5" role="list">
@@ -145,7 +145,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-[10px] font-bold tracking-[0.16em] uppercase text-white/35 mb-4">
+            <h3 className="text-[12px] font-bold tracking-[0.14em] uppercase text-white/45 mb-4">
               {f.colContact}
             </h3>
             <ul className="flex flex-col gap-3" role="list">
@@ -182,7 +182,7 @@ export default function Footer() {
 
           {/* Programs: spans full width on mobile (2 cols), single col on desktop */}
           <div className="col-span-2 lg:col-span-1 lg:order-3">
-            <h3 className="text-[10px] font-bold tracking-[0.16em] uppercase text-white/35 mb-4">
+            <h3 className="text-[12px] font-bold tracking-[0.14em] uppercase text-white/45 mb-4">
               {f.colPrograms}
             </h3>
             <ul className="grid grid-cols-2 lg:flex lg:flex-col gap-x-4 gap-y-2 lg:gap-3" role="list">

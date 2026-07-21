@@ -344,7 +344,7 @@ export default function ProgramPageClient({ program }: Props) {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                <h3 className="text-[13px] font-bold tracking-[0.12em] uppercase text-teal mb-4">
+                <h3 className="font-display text-[18px] font-semibold text-green-dark mb-4">
                   {pp.whoCanApply}
                 </h3>
                 <ul className="flex flex-col gap-3">
@@ -366,7 +366,7 @@ export default function ProgramPageClient({ program }: Props) {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.28 }}
               >
-                <h3 className="text-[13px] font-bold tracking-[0.12em] uppercase text-teal mb-4">
+                <h3 className="font-display text-[18px] font-semibold text-green-dark mb-4">
                   {pp.structure}
                 </h3>
                 <ul className="flex flex-col gap-3">
@@ -388,7 +388,7 @@ export default function ProgramPageClient({ program }: Props) {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.34 }}
               >
-                <h3 className="text-[13px] font-bold tracking-[0.12em] uppercase text-teal mb-4">
+                <h3 className="font-display text-[18px] font-semibold text-green-dark mb-4">
                   {pp.documents}
                 </h3>
                 <ul className="flex flex-col gap-2.5">
@@ -578,7 +578,7 @@ function SectionLabel({ children, icon }: { children: React.ReactNode; icon: Rea
   return (
     <div className="flex items-center gap-2.5 pb-3 border-b border-beige-dark">
       <span className="text-teal">{icon}</span>
-      <h2 className="text-[13px] font-bold tracking-[0.13em] uppercase text-text-muted">{children}</h2>
+      <h2 className="font-display text-[clamp(20px,2.1vw,25px)] font-medium text-green-dark leading-tight">{children}</h2>
     </div>
   )
 }

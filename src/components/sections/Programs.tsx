@@ -222,9 +222,9 @@ export default function Programs() {
 
 function GroupHeader({ label, note }: { label: string; note: string }) {
   return (
-    <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-5 pb-3 border-b border-beige-dark">
-      <span className="text-[11px] font-semibold tracking-[0.15em] uppercase text-green-dark">{label}</span>
-      <span className="text-[13px] text-text-muted">{note}</span>
+    <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-6 pb-3 border-b border-beige-dark">
+      <h3 className="font-display text-[clamp(21px,2.3vw,27px)] font-medium text-green-dark leading-tight">{label}</h3>
+      <span className="text-[16px] text-text-muted">{note}</span>
     </div>
   )
 }

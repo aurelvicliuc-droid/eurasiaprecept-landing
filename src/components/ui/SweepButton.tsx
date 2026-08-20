@@ -88,7 +88,7 @@ export default function SweepButton({
   const v = VARIANTS[variant]
 
   const shell = `group relative isolate overflow-hidden inline-flex items-center justify-center gap-2
-    border rounded-[6px] px-7 py-3.5 text-[14px] font-medium cursor-pointer
+    border rounded-[6px] px-7 py-3.5 text-copy font-medium cursor-pointer
     transition-colors duration-300 disabled:opacity-60 disabled:cursor-not-allowed
     ${v.shell} ${className}`
 

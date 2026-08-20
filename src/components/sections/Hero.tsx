@@ -101,7 +101,7 @@ export default function Hero() {
       <div className="relative w-full max-w-[1200px] mx-auto px-6 lg:px-12 pt-[124px] pb-28">
         <div className="max-w-[760px]">
           <motion.span
-            className="inline-block text-[11px] font-semibold tracking-[0.16em] uppercase
+            className="inline-block text-label font-semibold tracking-[0.12em] uppercase
               text-golden border border-golden/35 bg-golden/[0.07] px-3 py-1.5 rounded-full mb-7"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}

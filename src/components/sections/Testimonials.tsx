@@ -22,7 +22,7 @@ export default function Testimonials() {
             {t.testimonials.heading}{' '}
             <em className="not-italic text-teal">{t.testimonials.headingEm}</em>
           </h2>
-          <p className="text-[19px] text-text-muted max-w-[480px] leading-[1.7]">
+          <p className="text-lead text-text-muted max-w-[580px]">
             {t.testimonials.subtext}
           </p>
         </AnimatedSection>
@@ -38,22 +38,22 @@ export default function Testimonials() {
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: i * 0.1 }}
             >
               <span
-                className="font-display text-[48px] text-beige-dark leading-none mb-2 font-semibold block select-none"
+                className="font-display text-[56px] text-beige-dark leading-none mb-1 font-semibold block select-none"
                 aria-hidden="true"
               >
-                "
+                “
               </span>
-              <blockquote>
-                <p className="font-display text-[19px] text-text-dark leading-[1.7] mb-6 flex-1">
+              <blockquote className="flex flex-col flex-1">
+                <p className="font-display text-lead text-text-dark mb-7">
                   {item.text}
                 </p>
-                <footer className="flex items-center gap-3">
-                  <span className="relative w-11 h-11 rounded-full overflow-hidden flex-shrink-0 bg-teal/15 ring-1 ring-beige-dark">
-                    <Image src={item.photo} alt={item.name} fill sizes="44px" className="object-cover" />
+                <footer className="flex items-center gap-3 mt-auto pt-2">
+                  <span className="relative w-13 h-13 rounded-full overflow-hidden flex-shrink-0 bg-teal/15 ring-1 ring-beige-dark">
+                    <Image src={item.photo} alt={item.name} fill sizes="52px" className="object-cover" />
                   </span>
                   <div>
-                    <p className="text-[14px] font-medium text-text-dark leading-none mb-1">{item.name}</p>
-                    <p className="text-[12px] text-text-muted">{item.role}</p>
+                    <p className="text-body font-semibold text-text-dark leading-[1.3] mb-0.5">{item.name}</p>
+                    <p className="text-meta text-text-muted">{item.role}</p>
                   </div>
                 </footer>
               </blockquote>

@@ -81,7 +81,7 @@ export default function Shop() {
             >
               {t.shop.heading} <em className="not-italic text-teal">{t.shop.headingEm}</em>
             </h2>
-            <p className="text-[19px] text-text-muted max-w-[400px] leading-[1.7]">
+            <p className="text-lead text-text-muted max-w-[460px]">
               {t.shop.subtext}
             </p>
           </AnimatedSection>
@@ -90,8 +90,8 @@ export default function Shop() {
               href={SHOP_URL}
               external
               variant="outline-dark"
-              icon={<ExternalLink size={14} aria-hidden="true" />}
-              className="flex-shrink-0 !px-6 !py-3 !text-[13px] tracking-[0.06em] uppercase whitespace-nowrap"
+              icon={<ExternalLink size={16} aria-hidden="true" />}
+              className="flex-shrink-0 !px-7 !py-3.5 !text-label tracking-[0.06em] uppercase whitespace-nowrap"
             >
               {t.shop.viewAll}
             </SweepButton>
@@ -129,22 +129,22 @@ export default function Shop() {
                   sizes="(max-width: 640px) 90vw, (max-width: 1280px) 45vw, 22vw"
                   className="object-contain p-6 transition-transform duration-350 group-hover:scale-[1.06]"
                 />
-                <span className={`absolute top-3 left-3 text-[10px] font-bold tracking-[0.12em] uppercase
-                  px-2.5 py-1 rounded-[5px] backdrop-blur-sm
+                <span className={`absolute top-3 left-3 text-tag font-bold tracking-[0.09em] uppercase
+                  px-3 py-1.5 rounded-[5px] backdrop-blur-sm
                   ${p.badgeGold ? 'bg-gold text-green-dark' : 'bg-black/20 text-white'}`}>
                   {p.badge[lang]}
                 </span>
               </div>
 
               <div className="flex flex-col flex-1 px-5 py-4 gap-1.5">
-                <h3 className="font-display text-[19px] font-medium text-green-dark leading-[1.3]">
+                <h3 className="font-display text-[22px] font-medium text-green-dark leading-[1.3]">
                   {p.names[lang]}
                 </h3>
-                <p className="text-[15.5px] text-text-muted leading-[1.65] flex-1">{p.descs[lang]}</p>
-                <span className="inline-flex items-center gap-1 mt-2 text-[11px] font-semibold
-                  tracking-[0.08em] uppercase text-teal group-hover:text-green-dark transition-colors duration-200">
+                <p className="text-copy text-text-muted flex-1">{p.descs[lang]}</p>
+                <span className="inline-flex items-center gap-1.5 mt-2.5 text-label font-semibold
+                  tracking-[0.07em] uppercase text-teal group-hover:text-green-dark transition-colors duration-200">
                   {t.shop.buy}
-                  <ArrowRight size={11} className="transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
+                  <ArrowRight size={15} className="transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
                 </span>
               </div>
             </motion.a>

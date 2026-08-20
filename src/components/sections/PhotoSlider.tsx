@@ -76,7 +76,7 @@ export default function PhotoSlider() {
               <circle cx="8.5" cy="8.5" r="1.5"/>
               <polyline points="21 15 16 10 5 21"/>
             </svg>
-            <span className="text-[12px] tracking-[0.12em] uppercase">
+            <span className="text-label tracking-[0.1em] uppercase">
               {slides[current].label}
             </span>
           </div>

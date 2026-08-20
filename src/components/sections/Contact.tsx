@@ -78,7 +78,7 @@ export default function Contact() {
             >
               <em className="not-italic text-teal">{t.contact.headingEm}</em> {t.contact.heading}
             </h2>
-            <p className="text-[18px] text-teal leading-[1.7] mb-8">
+            <p className="text-lead text-teal mb-8 max-w-[520px]">
               {t.contact.subtext}
             </p>
 
@@ -89,14 +89,14 @@ export default function Contact() {
                     {item.icon}
                   </div>
                   <div>
-                    <span className="block text-[10px] font-semibold tracking-[0.12em] uppercase text-text-muted mb-0.5">
+                    <span className="block text-label font-semibold tracking-[0.1em] uppercase text-text-muted mb-0.5">
                       {item.label}
                     </span>
                     <a
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[15px] text-text-dark hover:text-teal transition-colors duration-200"
+                      className="text-copy text-text-dark hover:text-teal transition-colors duration-200"
                     >
                       {item.value}
                     </a>
@@ -138,7 +138,7 @@ export default function Contact() {
             <form onSubmit={handleSubmit} className="flex flex-col gap-3.5" noValidate>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div className="flex flex-col gap-1.5">
-                  <label htmlFor="contact-name" className="text-[10px] font-semibold tracking-[0.12em] uppercase text-text-mid">
+                  <label htmlFor="contact-name" className="text-label font-semibold tracking-[0.1em] uppercase text-text-mid">
                     {f.name}
                   </label>
                   <input
@@ -147,13 +147,13 @@ export default function Contact() {
                     type="text"
                     placeholder={f.namePlaceholder}
                     required
-                    className="bg-cream border border-beige-dark rounded-[6px] px-3.5 py-[11px] text-[15px]
+                    className="bg-cream border border-beige-dark rounded-[6px] px-4 py-[13px] text-copy
                       text-text-dark placeholder:text-text-muted outline-none
                       focus:border-teal transition-colors duration-200"
                   />
                 </div>
                 <div className="flex flex-col gap-1.5">
-                  <label htmlFor="contact-email" className="text-[10px] font-semibold tracking-[0.12em] uppercase text-text-mid">
+                  <label htmlFor="contact-email" className="text-label font-semibold tracking-[0.1em] uppercase text-text-mid">
                     {f.email}
                   </label>
                   <input
@@ -162,14 +162,14 @@ export default function Contact() {
                     type="email"
                     placeholder={f.emailPlaceholder}
                     required
-                    className="bg-cream border border-beige-dark rounded-[6px] px-3.5 py-[11px] text-[15px]
+                    className="bg-cream border border-beige-dark rounded-[6px] px-4 py-[13px] text-copy
                       text-text-dark placeholder:text-text-muted outline-none
                       focus:border-teal transition-colors duration-200"
                   />
                 </div>
               </div>
               <div className="flex flex-col gap-1.5">
-                <label htmlFor="contact-subject" className="text-[10px] font-semibold tracking-[0.12em] uppercase text-text-mid">
+                <label htmlFor="contact-subject" className="text-label font-semibold tracking-[0.1em] uppercase text-text-mid">
                   {f.subject}
                 </label>
                 <input
@@ -177,13 +177,13 @@ export default function Contact() {
                   name="contact-subject"
                   type="text"
                   placeholder={f.subjectPlaceholder}
-                  className="bg-cream border border-beige-dark rounded-[6px] px-3.5 py-[11px] text-[15px]
+                  className="bg-cream border border-beige-dark rounded-[6px] px-4 py-[13px] text-copy
                     text-text-dark placeholder:text-text-muted outline-none
                     focus:border-teal transition-colors duration-200"
                 />
               </div>
               <div className="flex flex-col gap-1.5">
-                <label htmlFor="contact-message" className="text-[10px] font-semibold tracking-[0.12em] uppercase text-text-mid">
+                <label htmlFor="contact-message" className="text-label font-semibold tracking-[0.1em] uppercase text-text-mid">
                   {f.message}
                 </label>
                 <textarea
@@ -192,7 +192,7 @@ export default function Contact() {
                   placeholder={f.messagePlaceholder}
                   required
                   rows={5}
-                  className="bg-cream border border-beige-dark rounded-[6px] px-3.5 py-[11px] text-[15px]
+                  className="bg-cream border border-beige-dark rounded-[6px] px-4 py-[13px] text-copy
                     text-text-dark placeholder:text-text-muted outline-none resize-y min-h-[110px]
                     focus:border-teal transition-colors duration-200"
                 />
@@ -203,14 +203,14 @@ export default function Contact() {
                   type="submit"
                   disabled={loading}
                   variant="solid-spruce"
-                  className="text-[13px] font-semibold tracking-[0.08em] uppercase"
+                  className="text-label font-semibold tracking-[0.07em] uppercase"
                 >
                   {loading ? '...' : f.submit}
                 </SweepButton>
 
                 {sent && (
                   <motion.p
-                    className="text-[13px] text-teal"
+                    className="text-copy text-teal"
                     initial={{ opacity: 0, x: 10 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0 }}
@@ -222,7 +222,7 @@ export default function Contact() {
                 )}
                 {error && (
                   <motion.p
-                    className="text-[13px] text-red-500"
+                    className="text-copy text-clay"
                     initial={{ opacity: 0, x: 10 }}
                     animate={{ opacity: 1, x: 0 }}
                     role="alert"

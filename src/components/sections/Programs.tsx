@@ -177,7 +177,7 @@ export default function Programs() {
             {p.heading.split(' ').slice(0, -2).join(' ')}{' '}
             <em className="not-italic text-teal">{p.heading.split(' ').slice(-2).join(' ')}</em>
           </h2>
-          <p className="text-[19px] text-text-muted max-w-[520px] leading-[1.7]">{p.subtext}</p>
+          <p className="text-lead text-text-muted max-w-[600px]">{p.subtext}</p>
         </AnimatedSection>
 
         {/* Parcursul: trei trepte, in ordine */}
@@ -223,8 +223,8 @@ export default function Programs() {
 function GroupHeader({ label, note }: { label: string; note: string }) {
   return (
     <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-6 pb-3 border-b border-beige-dark">
-      <h3 className="font-display text-[clamp(21px,2.3vw,27px)] font-medium text-green-dark leading-tight">{label}</h3>
-      <span className="text-[16px] text-text-muted">{note}</span>
+      <h3 className="font-display text-[clamp(24px,2.6vw,32px)] font-medium text-green-dark leading-tight">{label}</h3>
+      <span className="text-body text-text-muted">{note}</span>
     </div>
   )
 }
@@ -279,7 +279,7 @@ function ProgramCard({
         {prog.level && (
           <span
             className="absolute top-4 left-4 z-10 min-w-9 h-9 px-2 rounded-full bg-fog/95 text-green-dark
-              flex items-center justify-center text-[13px] font-bold tracking-wide"
+              flex items-center justify-center text-label font-bold tracking-wide"
             aria-hidden="true"
           >
             {prog.level}
@@ -288,29 +288,29 @@ function ProgramCard({
 
         {/* Continut: sta jos, unde gradientul e cel mai inchis; urca odata cu bara la hover */}
         <div className="relative h-full p-5 flex flex-col justify-end
-          transition-transform duration-300 ease-out group-hover:-translate-y-11
+          transition-transform duration-300 ease-out group-hover:-translate-y-12
           motion-reduce:transition-none motion-reduce:group-hover:translate-y-0">
-          <span className={`self-start text-[10px] font-semibold tracking-[0.1em] uppercase
-            px-2.5 py-1 rounded-full mb-3 ${a.badge}`}>
+          <span className={`self-start text-tag font-semibold tracking-[0.08em] uppercase
+            px-3 py-1.5 rounded-full mb-3 ${a.badge}`}>
             {prog.badges[lang]}
           </span>
-          <h3 className="font-display text-[22px] font-medium text-fog leading-[1.25]
+          <h3 className="font-display text-title font-medium text-fog
             [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]">
             {prog.names[lang]}
           </h3>
-          <p className="text-[14px] text-fog/75 leading-[1.6] mt-2 line-clamp-2">
+          <p className="text-copy text-fog/80 mt-2 line-clamp-2">
             {prog.descs[lang]}
           </p>
         </div>
 
         {/* Bara de brand: urca din marginea de jos la hover */}
         <div
-          className={`absolute inset-x-0 bottom-0 h-11 px-5 flex items-center gap-1.5
+          className={`absolute inset-x-0 bottom-0 h-12 px-5 flex items-center gap-2
             translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out
             motion-reduce:transition-none ${a.bar}`}
         >
-          <span className="text-[12px] font-semibold tracking-[0.08em] uppercase">{cta}</span>
-          <ArrowRight size={13} className="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
+          <span className="text-label font-semibold tracking-[0.07em] uppercase">{cta}</span>
+          <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
         </div>
       </Link>
     </motion.div>

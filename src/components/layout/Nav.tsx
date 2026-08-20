@@ -74,7 +74,7 @@ export default function Nav({ onAboutOpen, overlay = false }: NavProps) {
                   target={link.external ? '_blank' : undefined}
                   rel={link.external ? 'noopener noreferrer' : undefined}
                   onClick={link.isAbout ? (e) => { e.preventDefault(); onAboutOpen() } : undefined}
-                  className={`text-[14px] font-normal transition-colors duration-200 cursor-pointer
+                  className={`text-copy font-normal transition-colors duration-200 cursor-pointer
                     ${onDark ? 'text-fog/85 hover:text-fog' : 'text-text-dark hover:text-teal'}`}
                 >
                   {link.label}
@@ -90,7 +90,7 @@ export default function Nav({ onAboutOpen, overlay = false }: NavProps) {
                 <button
                   key={l}
                   onClick={() => setLang(l)}
-                  className={`text-[13px] transition-colors duration-200 cursor-pointer uppercase
+                  className={`text-label transition-colors duration-200 cursor-pointer uppercase
                     ${lang === l
                       ? (onDark ? 'text-fog font-medium' : 'text-green-dark font-medium')
                       : (onDark ? 'text-fog/55 hover:text-fog' : 'text-text-muted hover:text-text-dark')}`}
@@ -142,7 +142,7 @@ export default function Nav({ onAboutOpen, overlay = false }: NavProps) {
                   target={link.external ? '_blank' : undefined}
                   rel={link.external ? 'noopener noreferrer' : undefined}
                   onClick={link.isAbout ? (e) => { e.preventDefault(); onAboutOpen(); setMobileOpen(false) } : () => setMobileOpen(false)}
-                  className="text-[22px] font-normal text-text-dark hover:text-teal transition-colors cursor-pointer border-b border-beige-dark pb-4"
+                  className="text-[24px] font-normal text-text-dark hover:text-teal transition-colors cursor-pointer border-b border-beige-dark pb-4"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05 + 0.1 }}
@@ -162,7 +162,7 @@ export default function Nav({ onAboutOpen, overlay = false }: NavProps) {
                   <button
                     key={l}
                     onClick={() => setLang(l)}
-                    className={`text-[14px] cursor-pointer uppercase ${lang === l ? 'text-green-dark font-medium' : 'text-text-muted'}`}
+                    className={`text-copy cursor-pointer uppercase ${lang === l ? 'text-green-dark font-medium' : 'text-text-muted'}`}
                   >
                     {l}
                   </button>

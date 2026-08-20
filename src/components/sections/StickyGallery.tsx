@@ -151,7 +151,7 @@ export default function StickyGallery() {
           >
             {g.heading} <em className="not-italic text-teal">{g.headingEm}</em>
           </h2>
-          <p className="text-[19px] text-text-muted max-w-[520px] leading-[1.7]">{g.subtext}</p>
+          <p className="text-lead text-text-muted max-w-[600px]">{g.subtext}</p>
         </AnimatedSection>
       </div>
 
@@ -265,7 +265,7 @@ export default function StickyGallery() {
               />
             </motion.div>
 
-            <span className="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 text-white/80 text-[13px] tracking-wide">
+            <span className="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 text-white/85 text-label tracking-wide">
               {lightbox + 1} / {FLAT.length}
             </span>
           </motion.div>

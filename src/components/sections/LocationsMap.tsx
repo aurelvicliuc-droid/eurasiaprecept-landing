@@ -25,7 +25,7 @@ export default function LocationsMap() {
           >
             {m.heading} <em className="not-italic text-teal">{m.headingEm}</em>
           </h2>
-          <p className="text-[19px] text-text-muted max-w-[520px] mx-auto leading-[1.7]">
+          <p className="text-lead text-text-muted max-w-[600px] mx-auto">
             {m.subtext}
           </p>
         </AnimatedSection>

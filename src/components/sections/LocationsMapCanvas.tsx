@@ -45,8 +45,8 @@ function Markers({ lang }: { lang: Lang }) {
         <Marker key={`${l.country}-${l.city}`} position={[l.lat, l.lng]} icon={icon}>
           <Tooltip direction="top" opacity={1} className="precept-tip">
             <span className="block font-semibold text-[12.5px] text-green-dark leading-tight">{countryName(l.country, lang)}, {l.city}</span>
-            <span className="block text-[12px] text-text-dark mt-[3px]">{l.coordinator}</span>
-            {l.email ? <span className="block text-[11px] text-teal mt-[1px]">{l.email}</span> : null}
+            <span className="block text-meta text-text-dark mt-[3px]">{l.coordinator}</span>
+            {l.email ? <span className="block text-meta text-teal mt-[2px]">{l.email}</span> : null}
           </Tooltip>
         </Marker>
       ))}

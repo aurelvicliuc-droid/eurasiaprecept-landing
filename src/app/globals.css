@@ -89,6 +89,25 @@
   --color-text-mid:    #5C5B5A;
   --color-text-muted:  #6C6A6A;
 
+  /* ── Scara tipografica ─────────────────────────────────────────
+     Roluri, nu valori. Founders Grotesk are x-height mica, deci ce
+     parea "normal" la 13-14px se citea pitic. Paragrafele au crescut
+     cu 2-4px, iar nimic din pagina nu mai coboara sub 12px. */
+  --text-tag:                 12px;  /* pastila uppercase peste fotografie */
+  --text-tag--line-height:    1;
+  --text-label:               15px;  /* eticheta uppercase de sectiune sau coloana */
+  --text-label--line-height:  1.25;
+  --text-meta:                16px;  /* rol, semnatura, text legal */
+  --text-meta--line-height:   1.5;
+  --text-copy:                17px;  /* descriere de card, link de lista */
+  --text-copy--line-height:   1.6;
+  --text-body:                18px;  /* corp de text, nume, note langa titlu */
+  --text-body--line-height:   1.65;
+  --text-lead:                22px;  /* paragraf de intro si citat */
+  --text-lead--line-height:   1.7;
+  --text-title:               24px;  /* titlu de card */
+  --text-title--line-height:  1.25;
+
   /* Ca la precept.org: titlurile sunt tot Founders Grotesk (Medium), nu serif. */
   --font-display: var(--font-founders), system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
   --font-body:    var(--font-founders), system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;

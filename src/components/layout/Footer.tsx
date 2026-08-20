@@ -72,7 +72,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 aria-label={s.label}
                 className="w-8 h-8 rounded-lg bg-white/8 hover:bg-gold/20 hover:text-gold
-                  flex items-center justify-center text-white/50 transition-all duration-200"
+                  flex items-center justify-center text-white/65 transition-all duration-200"
                 whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.96 }}
               >
@@ -83,7 +83,7 @@ export default function Footer() {
         </div>
 
         {/* ── Main grid ── */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8 lg:gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-[1fr_0.75fr_1.15fr_1.1fr] gap-x-6 gap-y-8 lg:gap-8">
 
           {/* Brand: hidden on mobile (logo shown above), visible on desktop */}
           <div className="hidden lg:block">
@@ -96,7 +96,7 @@ export default function Footer() {
                 className="h-[28px] w-auto object-contain brightness-0 invert opacity-90 mb-5"
               />
             </Link>
-            <p className="text-[13.5px] text-white/55 leading-[1.7] mb-6 max-w-[260px]">
+            <p className="text-copy text-white/70 leading-[1.7] mb-7 max-w-[300px]">
               {f.desc}
             </p>
             <div className="flex gap-3">
@@ -108,7 +108,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   aria-label={s.label}
                   className="w-9 h-9 rounded-lg bg-white/8 hover:bg-gold/20 hover:text-gold
-                    flex items-center justify-center text-white/50 transition-all duration-200"
+                    flex items-center justify-center text-white/65 transition-all duration-200"
                   whileHover={{ scale: 1.08 }}
                   whileTap={{ scale: 0.96 }}
                 >
@@ -119,23 +119,23 @@ export default function Footer() {
           </div>
 
           {/* Navigation */}
-          <div>
-            <h3 className="text-[12px] font-bold tracking-[0.14em] uppercase text-white/45 mb-4">
+          <div className="col-span-2 lg:col-span-1">
+            <h3 className="text-label font-bold tracking-[0.1em] uppercase text-white/60 mb-5">
               {f.colNav}
             </h3>
-            <ul className="flex flex-col gap-2.5" role="list">
+            <ul className="grid grid-cols-2 lg:flex lg:flex-col gap-x-4 gap-y-2.5" role="list">
               {navLinks.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
                     target={link.external ? '_blank' : undefined}
                     rel={link.external ? 'noopener noreferrer' : undefined}
-                    className="text-[13px] text-white/55 hover:text-gold transition-colors duration-200
+                    className="text-copy text-white/70 hover:text-gold transition-colors duration-200
                       inline-flex items-center gap-1 group"
                   >
                     {link.label}
                     {link.external && (
-                      <ArrowUpRight size={11} className="opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden />
+                      <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden />
                     )}
                   </a>
                 </li>
@@ -144,45 +144,47 @@ export default function Footer() {
           </div>
 
           {/* Contact */}
-          <div>
-            <h3 className="text-[12px] font-bold tracking-[0.14em] uppercase text-white/45 mb-4">
+          <div className="col-span-2 lg:col-span-1">
+            <h3 className="text-label font-bold tracking-[0.1em] uppercase text-white/60 mb-5">
               {f.colContact}
             </h3>
-            <ul className="flex flex-col gap-3" role="list">
+            <ul className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-x-6 gap-y-3" role="list">
               <li>
                 <a href="mailto:contact@eurasiaprecept.org"
-                  className="flex items-start gap-2 text-white/55 hover:text-gold transition-colors duration-200 group">
-                  <Mail size={13} className="mt-0.5 flex-shrink-0 text-teal-light group-hover:text-gold transition-colors" aria-hidden />
-                  <span className="text-[12.5px] leading-[1.45] break-all">contact@eurasiaprecept.org</span>
+                  className="flex items-start gap-2 text-white/70 hover:text-gold transition-colors duration-200 group">
+                  <Mail size={17} className="mt-[3px] flex-shrink-0 text-ocean-light group-hover:text-gold transition-colors" aria-hidden />
+                  <span className="text-copy leading-[1.45] min-w-0 break-words">contact@eurasiaprecept.org</span>
                 </a>
               </li>
               <li>
                 <a href="https://shop.eurasiaprecept.org" target="_blank" rel="noopener noreferrer"
-                  className="flex items-start gap-2 text-white/55 hover:text-gold transition-colors duration-200 group">
-                  <ShoppingBag size={13} className="mt-0.5 flex-shrink-0 text-teal-light group-hover:text-gold transition-colors" aria-hidden />
-                  <span className="text-[12.5px] leading-[1.45]">shop.eurasiaprecept.org</span>
+                  className="flex items-start gap-2 text-white/70 hover:text-gold transition-colors duration-200 group">
+                  <ShoppingBag size={17} className="mt-[3px] flex-shrink-0 text-ocean-light group-hover:text-gold transition-colors" aria-hidden />
+                  <span className="text-copy leading-[1.45] min-w-0 break-words">shop.eurasiaprecept.org</span>
                 </a>
               </li>
               <li>
                 <a href="https://eurasiaprecept.org" target="_blank" rel="noopener noreferrer"
-                  className="flex items-start gap-2 text-white/55 hover:text-gold transition-colors duration-200 group">
-                  <Globe size={13} className="mt-0.5 flex-shrink-0 text-teal-light group-hover:text-gold transition-colors" aria-hidden />
-                  <span className="text-[12.5px] leading-[1.45]">eurasiaprecept.org</span>
+                  className="flex items-start gap-2 text-white/70 hover:text-gold transition-colors duration-200 group">
+                  <Globe size={17} className="mt-[3px] flex-shrink-0 text-ocean-light group-hover:text-gold transition-colors" aria-hidden />
+                  <span className="text-copy leading-[1.45] min-w-0 break-words">eurasiaprecept.org</span>
                 </a>
               </li>
             </ul>
-            <SweepButton
-              href="/#contact"
-              variant="outline-light"
-              className="hidden lg:inline-flex mt-6 !px-5 !py-2.5 text-[12.5px] font-semibold"
-            >
-              {f.sendMessage}
-            </SweepButton>
+            <div className="hidden lg:block mt-7">
+              <SweepButton
+                href="/#contact"
+                variant="outline-light"
+                className="!px-6 !py-3 text-label font-semibold"
+              >
+                {f.sendMessage}
+              </SweepButton>
+            </div>
           </div>
 
           {/* Programs: spans full width on mobile (2 cols), single col on desktop */}
           <div className="col-span-2 lg:col-span-1 lg:order-3">
-            <h3 className="text-[12px] font-bold tracking-[0.14em] uppercase text-white/45 mb-4">
+            <h3 className="text-label font-bold tracking-[0.1em] uppercase text-white/60 mb-5">
               {f.colPrograms}
             </h3>
             <ul className="grid grid-cols-2 lg:flex lg:flex-col gap-x-4 gap-y-2 lg:gap-3" role="list">
@@ -190,7 +192,7 @@ export default function Footer() {
                 <li key={p.slug}>
                   <Link
                     href={`/programe/${p.slug}`}
-                    className="text-[12.5px] lg:text-[13px] text-white/55 hover:text-gold transition-colors duration-200 leading-[1.4] block"
+                    className="text-copy text-white/70 hover:text-gold transition-colors duration-200 leading-[1.45] block"
                   >
                     {p.names[lang]}
                   </Link>
@@ -206,7 +208,7 @@ export default function Footer() {
           <SweepButton
             href="/#contact"
             variant="outline-light"
-            className="!px-5 !py-2.5 text-[13px] font-semibold"
+            className="!px-6 !py-3 text-label font-semibold"
           >
             {f.sendMessage}
           </SweepButton>
@@ -218,17 +220,17 @@ export default function Footer() {
 
       <div className="max-w-[1200px] mx-auto px-6 lg:px-12 py-4 lg:py-5 flex flex-col sm:flex-row
         items-center justify-between gap-2">
-        <p className="text-[11px] text-white/30 text-center sm:text-left">
+        <p className="text-meta text-white/55 text-center sm:text-left">
           © {new Date().getFullYear()} Precept Eurasia. {f.copyright}
         </p>
         <div className="flex items-center gap-4">
           <a href="https://precept.org" target="_blank" rel="noopener noreferrer"
-            className="text-[11px] text-white/30 hover:text-white/60 transition-colors duration-200">
+            className="text-meta text-white/55 hover:text-gold transition-colors duration-200">
             Precept International
           </a>
-          <span className="text-white/15">·</span>
+          <span className="text-white/30">·</span>
           <a href="https://web.eurasiaprecept.org/public/sign-in"
-            className="text-[11px] text-white/30 hover:text-white/60 transition-colors duration-200">
+            className="text-meta text-white/55 hover:text-gold transition-colors duration-200">
             {f.platform}
           </a>
         </div>

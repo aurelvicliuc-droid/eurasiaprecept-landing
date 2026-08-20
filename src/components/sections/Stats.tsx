@@ -31,7 +31,7 @@ function CountUp({ target, suffix, active }: { target: number; suffix: string; a
     <span>
       {count}
       {suffix && (
-        <sup className="text-[0.45em] align-super font-bold text-teal" aria-hidden="true">{suffix}</sup>
+        <sup className="text-[0.42em] align-super font-bold text-teal" aria-hidden="true">{suffix}</sup>
       )}
     </span>
   )
@@ -46,18 +46,22 @@ export default function Stats() {
     <section ref={ref} className="bg-beige-light border-t border-beige-dark border-b" aria-labelledby="stats-heading">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-12">
         <motion.div
-          className="text-center pt-14"
+          className="text-center pt-16"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <p id="stats-heading" className="text-[11px] font-semibold tracking-[0.18em] uppercase text-text-muted">
+          <h2
+            id="stats-heading"
+            className="font-display font-medium text-green-dark leading-tight
+              text-[clamp(28px,3.4vw,42px)]"
+          >
             {t.stats.label}
-          </p>
+          </h2>
         </motion.div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 mt-10 border-t border-beige-dark">
+        <div className="grid grid-cols-2 lg:grid-cols-4 mt-12 border-t border-beige-dark">
           {statValues.map((stat, i) => (
             <motion.div
               key={i}
@@ -74,12 +78,12 @@ export default function Stats() {
             >
               <span
                 className="font-display font-bold text-green-dark leading-none tracking-[-0.01em]
-                  text-[clamp(48px,5vw,74px)]"
+                  text-[clamp(52px,5.4vw,80px)]"
                 aria-label={`${stat.value}${stat.suffix} ${t.stats.items[i].label}`}
               >
                 <CountUp target={stat.value} suffix={stat.suffix} active={inView} />
               </span>
-              <span className="text-[11px] font-medium tracking-[0.14em] uppercase text-text-muted text-center">
+              <span className="text-label font-semibold tracking-[0.09em] uppercase text-text-muted text-center">
                 {t.stats.items[i].label}
               </span>
             </motion.div>

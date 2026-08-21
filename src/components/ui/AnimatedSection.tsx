@@ -1,5 +1,5 @@
 'use client'
-import { motion, useInView } from 'framer-motion'
+import { m as motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 
 interface Props {

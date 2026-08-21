@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect, useCallback } from 'react'
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
+import { m as motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import Image from 'next/image'
 import { Pause, Play } from 'lucide-react'
 import { useLanguage } from '@/lib/i18n/context'

@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { m as motion } from 'framer-motion'
 import { ExternalLink, ArrowRight } from 'lucide-react'
 import SectionEyebrow from '@/components/ui/SectionEyebrow'
 import AnimatedSection from '@/components/ui/AnimatedSection'

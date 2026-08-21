@@ -1,5 +1,5 @@
 'use client'
-import { motion } from 'framer-motion'
+import { m as motion } from 'framer-motion'
 import { BookOpen, Users, Globe, Plus, Trophy, ArrowRight, ChevronRight } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'

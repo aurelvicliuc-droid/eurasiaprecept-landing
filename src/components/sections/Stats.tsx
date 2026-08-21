@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { m as motion, useInView, useReducedMotion } from 'framer-motion'
 import { useLanguage } from '@/lib/i18n/context'
 
 const statValues = [
@@ -11,25 +11,30 @@ const statValues = [
 ]
 
 function CountUp({ target, suffix, active }: { target: number; suffix: string; active: boolean }) {
+  const reduced = useReducedMotion()
   const [count, setCount] = useState(0)
 
+  // Miscare redusa: aratam direct valoarea, fara numaratoare de 1,8 secunde.
   useEffect(() => {
-    if (!active) return
+    if (!active || reduced) return
     const duration = 1800
     const startTime = performance.now()
+    let raf = 0
     const tick = (now: number) => {
       const elapsed = now - startTime
       const progress = Math.min(elapsed / duration, 1)
       const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress)
       setCount(Math.floor(eased * target))
-      if (progress < 1) requestAnimationFrame(tick)
+      if (progress < 1) raf = requestAnimationFrame(tick)
     }
-    requestAnimationFrame(tick)
-  }, [active, target])
+    raf = requestAnimationFrame(tick)
+    // Fara asta, bucla continua dupa demontare si scrie in state pe nimic.
+    return () => cancelAnimationFrame(raf)
+  }, [active, target, reduced])
 
   return (
     <span>
-      {count}
+      {reduced ? target : count}
       {suffix && (
         <sup className="text-[0.42em] align-super font-bold text-teal" aria-hidden="true">{suffix}</sup>
       )}
@@ -79,10 +84,11 @@ export default function Stats() {
               <span
                 className="font-display font-bold text-green-dark leading-none tracking-[-0.01em]
                   text-[clamp(52px,5.4vw,80px)]"
-                aria-label={`${stat.value}${stat.suffix} ${t.stats.items[i].label}`}
+                aria-hidden="true"
               >
                 <CountUp target={stat.value} suffix={stat.suffix} active={inView} />
               </span>
+              <span className="sr-only">{`${stat.value}${stat.suffix} ${t.stats.items[i].label}`}</span>
               <span className="text-label font-semibold tracking-[0.09em] uppercase text-text-muted text-center">
                 {t.stats.items[i].label}
               </span>

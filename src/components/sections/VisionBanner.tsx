@@ -1,5 +1,5 @@
 'use client'
-import { motion } from 'framer-motion'
+import { m as motion } from 'framer-motion'
 import SectionEyebrow from '@/components/ui/SectionEyebrow'
 import { useLanguage } from '@/lib/i18n/context'
 

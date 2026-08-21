@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { m as motion } from 'framer-motion'
 import { Mail, Globe, ShoppingBag, ArrowUpRight } from 'lucide-react'
 import { useLanguage } from '@/lib/i18n/context'
 import SweepButton from '@/components/ui/SweepButton'

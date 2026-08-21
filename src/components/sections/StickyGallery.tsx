@@ -1,6 +1,6 @@
 'use client'
 import { useRef, useState, useEffect, useCallback } from 'react'
-import { motion, AnimatePresence, useScroll, useTransform, MotionValue } from 'framer-motion'
+import { m as motion, AnimatePresence, useScroll, useTransform, useReducedMotion, MotionValue } from 'framer-motion'
 import Image from 'next/image'
 import { X, ChevronLeft, ChevronRight, Images } from 'lucide-react'
 import AnimatedSection from '@/components/ui/AnimatedSection'
@@ -61,7 +61,11 @@ function Frame({
   baseIndex: number
   onOpen: (idx: number) => void
 }) {
-  const scale = useTransform(progress, range, [1, targetScale])
+  // MotionConfig reducedMotion nu ajunge la useTransform: valoarea vine direct
+  // din pozitia de scroll. Cine a cerut miscare redusa primeste cadre fixe.
+  const reduced = useReducedMotion()
+  const scaleFromScroll = useTransform(progress, range, [1, targetScale])
+  const scale = reduced ? 1 : scaleFromScroll
 
   return (
     // Fiecare cadru: 52vh inaltime, lipit la 24vh de sus, deci sta centrat pe ecran.

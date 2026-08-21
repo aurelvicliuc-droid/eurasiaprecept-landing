@@ -1,14 +1,13 @@
 import { MetadataRoute } from 'next'
 import { getAllSlugs } from '@/lib/programs-data'
+import { BASE_URL } from '@/lib/site'
 
-const BASE_URL = 'https://eurasiaprecept.org'
-
+// Fara lastModified: se calcula cu new Date() la build, deci toate adresele
+// primeau ora deploy-ului si spuneau ca s-a schimbat tot, de fiecare data.
+// Niciun semnal bate un semnal fals.
 export default function sitemap(): MetadataRoute.Sitemap {
-  const programSlugs = getAllSlugs()
-
-  const programPages = programSlugs.map((slug) => ({
+  const programPages = getAllSlugs().map((slug) => ({
     url: `${BASE_URL}/programe/${slug}`,
-    lastModified: new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.8,
   }))
@@ -16,8 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: BASE_URL,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: 'weekly' as const,
       priority: 1,
     },
     ...programPages,

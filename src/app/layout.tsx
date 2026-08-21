@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from 'next'
-import Script from 'next/script'
 import localFont from 'next/font/local'
 import Providers from './Providers'
+import { BASE_URL } from '@/lib/site'
+import { programs } from '@/lib/programs-data'
 import './globals.css'
 
 // Fontul de brand - Founders Grotesk, găzduit local.
@@ -29,7 +30,6 @@ const foundersGrotesk = localFont({
   ],
 })
 
-const BASE_URL = 'https://eurasiaprecept.org'
 const TITLE = 'Precept Eurasia | Institut de Studiu Biblic'
 const DESCRIPTION =
   'Atragem oameni într-o relație cu Dumnezeu prin cunoașterea profundă a Cuvântului Său. Programe biblice pentru toate vârstele, în 195 de țări, 111 limbi, 40+ ani de activitate.'
@@ -41,22 +41,6 @@ export const metadata: Metadata = {
     template: '%s | Precept Eurasia',
   },
   description: DESCRIPTION,
-  keywords: [
-    'Precept Eurasia',
-    'studiu biblic',
-    'institut biblic',
-    'formare spirituală',
-    'ucenicie',
-    'studiu biblic inductiv',
-    'Precept Upon Precept',
-    'cursuri biblice Moldova',
-    'English for a New Life',
-    'misiune prin sport',
-    'Școala Timotei',
-    'tineri creștini',
-    'leadership creștin',
-    'precept.org',
-  ],
   authors: [{ name: 'Precept Eurasia', url: BASE_URL }],
   creator: 'Precept Eurasia',
   publisher: 'Precept Eurasia',
@@ -67,7 +51,6 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: BASE_URL,
-    languages: { ro: BASE_URL },
   },
   openGraph: {
     type: 'website',
@@ -119,28 +102,29 @@ const jsonLd = {
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'Programe de formare biblică',
-    itemListElement: [
-      { '@type': 'Course', name: 'Institutul Biblic Precept', url: `${BASE_URL}/programe/institutul-biblic` },
-      { '@type': 'Course', name: 'Școala TIMOTEI', url: `${BASE_URL}/programe/scoala-timotei` },
-      { '@type': 'Course', name: 'English for a New Life', url: `${BASE_URL}/programe/efnl` },
-      { '@type': 'Course', name: 'Misiune prin Sport', url: `${BASE_URL}/programe/misiune-sport` },
-    ],
+    // Toate programele, luate din sursa unica de adevar. Inainte erau patru,
+    // scrise de mana, din sapte.
+    itemListElement: programs.map((program) => ({
+      '@type': 'Course',
+      name: program.name,
+      url: `${BASE_URL}/programe/${program.slug}`,
+    })),
   },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ro" className={`h-full ${foundersGrotesk.variable}`}>
-      <head>
-        <Script
-          id="json-ld-org"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      </head>
       <body className="min-h-full flex flex-col antialiased">
-          <Providers>{children}</Providers>
-        </body>
+        {/* Script simplu, nu next/script: acela e o componenta de client si isi
+            injecteaza tagul dupa hidratare, deci schema nu ajungea niciodata in
+            HTML-ul servit. Escaparea lui '<' e ceruta de documentatia Next. */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
+        />
+        <Providers>{children}</Providers>
+      </body>
     </html>
   )
 }

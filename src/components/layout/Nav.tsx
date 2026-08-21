@@ -23,6 +23,10 @@ export default function Nav({ onAboutOpen, overlay = false }: NavProps) {
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 12)
+    // Citim pozitia si la montare, nu doar la scroll. Cand intri direct pe /#contact
+    // sau reincarci pagina cu scroll-ul restaurat, bara ramanea in starea
+    // transparenta: text fog peste fundal beige, adica exact aceeasi culoare.
+    handler()
     window.addEventListener('scroll', handler, { passive: true })
     return () => window.removeEventListener('scroll', handler)
   }, [])

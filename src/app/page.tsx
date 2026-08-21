@@ -34,7 +34,7 @@ export default function Home() {
         <Contact />
       </main>
 
-      <Footer />
+      <Footer onAboutOpen={() => setAboutOpen(true)} />
 
       <AboutModal open={aboutOpen} onClose={() => setAboutOpen(false)} />
     </>

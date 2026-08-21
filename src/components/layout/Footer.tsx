@@ -37,13 +37,16 @@ const socials = [
   },
 ]
 
-export default function Footer() {
+/** Pe home, footerul primeste functia care deschide modalul Despre noi.
+ *  Pe paginile de program nu o primeste, deci intrarea nu se randeaza deloc,
+ *  in loc sa ramana un link care nu face nimic. */
+export default function Footer({ onAboutOpen }: { onAboutOpen?: () => void } = {}) {
   const { lang, t } = useLanguage()
   const f = t.footer
 
   const navLinks = [
     { label: t.nav.programs, href: '/#programe' },
-    { label: t.nav.about, href: '/#' },
+    ...(onAboutOpen ? [{ label: t.nav.about, href: '#', isAbout: true }] : []),
     { label: t.nav.shop, href: 'https://shop.eurasiaprecept.org', external: true },
     { label: t.nav.contact, href: '/#contact' },
   ]
@@ -130,6 +133,7 @@ export default function Footer() {
                     href={link.href}
                     target={link.external ? '_blank' : undefined}
                     rel={link.external ? 'noopener noreferrer' : undefined}
+                    onClick={link.isAbout ? (e) => { e.preventDefault(); onAboutOpen?.() } : undefined}
                     className="text-copy text-white/70 hover:text-gold transition-colors duration-200
                       inline-flex items-center gap-1 group"
                   >

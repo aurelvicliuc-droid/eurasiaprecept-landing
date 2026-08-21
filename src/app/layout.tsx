@@ -8,7 +8,6 @@ import './globals.css'
 // Fișierele .woff2 au fost completate cu glifele ț/Ț (lipseau din familia originală).
 const foundersGrotesk = localFont({
   src: [
-    { path: './fonts/FoundersGrotesk-Light.woff2', weight: '300', style: 'normal' },
     { path: './fonts/FoundersGrotesk-Regular.woff2', weight: '400', style: 'normal' },
     { path: './fonts/FoundersGrotesk-Medium.woff2', weight: '500', style: 'normal' },
     { path: './fonts/FoundersGrotesk-Semibold.woff2', weight: '600', style: 'normal' },

@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -65,18 +65,20 @@ export default function ProgramPageClient({ program }: Props) {
 
   // Lightbox pentru galeria foto
   const gallery = p.gallery ?? []
+  const galleryCount = gallery.length
   const [lightbox, setLightbox] = useState<number | null>(null)
-  const closeLightbox = useCallback(() => setLightbox(null), [])
-  const stepLightbox = useCallback(
-    (d: number) => setLightbox((cur) => (cur === null ? cur : (cur + d + gallery.length) % gallery.length)),
-    [gallery.length],
-  )
+  const closeLightbox = () => setLightbox(null)
+  const stepLightbox = (d: number) =>
+    setLightbox((cur) => (cur === null ? cur : (cur + d + galleryCount) % galleryCount))
+
+  // Tastatura si blocarea scroll-ului cat timp lightbox-ul e deschis. Efectul depinde
+  // doar de valori simple, ca sa nu se re-lege la fiecare randare.
   useEffect(() => {
     if (lightbox === null) return
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') closeLightbox()
-      else if (e.key === 'ArrowRight') stepLightbox(1)
-      else if (e.key === 'ArrowLeft') stepLightbox(-1)
+      if (e.key === 'Escape') setLightbox(null)
+      else if (e.key === 'ArrowRight') setLightbox((cur) => (cur === null ? cur : (cur + 1) % galleryCount))
+      else if (e.key === 'ArrowLeft') setLightbox((cur) => (cur === null ? cur : (cur - 1 + galleryCount) % galleryCount))
     }
     document.addEventListener('keydown', onKey)
     document.body.style.overflow = 'hidden'
@@ -84,7 +86,7 @@ export default function ProgramPageClient({ program }: Props) {
       document.removeEventListener('keydown', onKey)
       document.body.style.overflow = ''
     }
-  }, [lightbox, closeLightbox, stepLightbox])
+  }, [lightbox, galleryCount])
 
   const ctaPrimaryHref = p.ctaPrimary.href ?? program.ctaPrimary.href
   const ctaSecondaryHref = p.ctaSecondary?.href ?? program.ctaSecondary?.href
@@ -434,9 +436,9 @@ export default function ProgramPageClient({ program }: Props) {
               style={enter({ duration: 400, delay: 500 })}
             >
               {pp.questions}{' '}
-              <a href="/#contact" className="text-teal underline underline-offset-2 hover:no-underline">
+              <Link href="/#contact" className="text-teal underline underline-offset-2 hover:no-underline">
                 {pp.contactUs}
-              </a>
+              </Link>
               {' '}{pp.contactNudge}
             </p>
 

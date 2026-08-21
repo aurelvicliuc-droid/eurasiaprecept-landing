@@ -48,7 +48,6 @@ const FLAT: Img[] = FRAMES.flat()
 
 function Frame({
   srcs,
-  i,
   progress,
   range,
   targetScale,
@@ -56,7 +55,6 @@ function Frame({
   onOpen,
 }: {
   srcs: Img[]
-  i: number
   progress: MotionValue<number>
   range: [number, number]
   targetScale: number
@@ -193,7 +191,6 @@ export default function StickyGallery() {
           return (
             <Frame
               key={i}
-              i={i}
               srcs={srcs}
               progress={scrollYProgress}
               range={[i / n, 1]}

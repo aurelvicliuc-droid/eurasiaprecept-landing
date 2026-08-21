@@ -129,19 +129,29 @@ export default function Footer({ onAboutOpen }: { onAboutOpen?: () => void } = {
             <ul className="grid grid-cols-2 lg:flex lg:flex-col gap-x-4 gap-y-2.5" role="list">
               {navLinks.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
-                    target={link.external ? '_blank' : undefined}
-                    rel={link.external ? 'noopener noreferrer' : undefined}
-                    onClick={link.isAbout ? (e) => { e.preventDefault(); onAboutOpen?.() } : undefined}
-                    className="text-copy text-white/70 hover:text-gold transition-colors duration-200
-                      inline-flex items-center gap-1 group"
-                  >
-                    {link.label}
-                    {link.external && (
-                      <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden />
-                    )}
-                  </a>
+                  {link.external || link.isAbout ? (
+                    <a
+                      href={link.href}
+                      target={link.external ? '_blank' : undefined}
+                      rel={link.external ? 'noopener noreferrer' : undefined}
+                      onClick={link.isAbout ? (e) => { e.preventDefault(); onAboutOpen?.() } : undefined}
+                      className="text-copy text-white/70 hover:text-gold transition-colors duration-200
+                        inline-flex items-center gap-1 group"
+                    >
+                      {link.label}
+                      {link.external && (
+                        <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden />
+                      )}
+                    </a>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className="text-copy text-white/70 hover:text-gold transition-colors duration-200
+                        inline-flex items-center gap-1 group"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

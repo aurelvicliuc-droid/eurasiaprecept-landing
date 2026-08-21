@@ -1,4 +1,5 @@
 'use client'
+import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 
 type Variant =
@@ -115,6 +116,24 @@ export default function SweepButton({
   if (href) {
     const ext = external ? { target: '_blank', rel: 'noopener noreferrer' } : {}
     const dl = download ? { download: true } : {}
+
+    // Rutele interne trec prin Link, ca tranzitia sa fie client-side.
+    // Cu <a> simplu, un buton 'Contact' de pe o pagina de program reincarca tot
+    // documentul, iar limba aleasa se pierde: LanguageProvider tine limba doar
+    // in state React, deci un vizitator EN sau RU se trezea inapoi pe romana.
+    // Fisierele (PDF, doc) raman pe <a>: au si download sau external oricum,
+    // dar verificam si extensia, ca sa nu ajunga vreodata prin router.
+    const isFile = /\.[a-z0-9]{2,5}($|[?#])/i.test(href)
+    const internal = href.startsWith('/') && !external && !download && !isFile
+
+    if (internal) {
+      return (
+        <Link href={href} className={shell}>
+          {inner}
+        </Link>
+      )
+    }
+
     return (
       <a href={href} {...ext} {...dl} className={shell}>
         {inner}

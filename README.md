@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Precept Eurasia
 
-## Getting Started
+Site-ul de prezentare al Institutului de Studiu Biblic Precept Eurasia:
+programele de formare, harta filialelor, magazinul si formularul de contact.
 
-First, run the development server:
+## Stiva
+
+- **Next.js 16.2.9**, App Router, build cu Turbopack
+- **React 19.2**
+- **Tailwind CSS v4**, tokenurile de brand in `src/app/globals.css`
+- **Founders Grotesk**, gazduit local in `src/app/fonts/` prin `next/font/local`.
+  Fisierele `.woff2` au fost completate manual cu glifele ț/Ț, care lipseau din
+  familia originala, deci nu se pot re-descarca de la turnatorie
+- **framer-motion** prin `LazyMotion` + componenta `m` (vezi `src/app/Providers.tsx`)
+- **leaflet** + **react-leaflet** pentru harta filialelor
+- **Resend** pentru formularul de contact
+
+## Limbi
+
+Romana, engleza si rusa, dintr-un context React (`src/lib/i18n/`), nu prin rutare
+pe adresa. Toate cele trei limbi sunt in aceeasi pagina si comutarea e instanta.
+Consecinta: engleza si rusa nu au adrese proprii, deci nu sunt indexabile separat
+si nu au sens `hreflang` sau `lang` in HTML-ul servit (`<html lang>` se
+actualizeaza pe client cand se schimba limba).
+
+## Adresa canonica
+
+`https://www.eurasiaprecept.org`, definita intr-un singur loc, `src/lib/site.ts`.
+Apex-ul raspunde cu 308 catre www, deci canonical, sitemap si robots trebuie sa
+foloseasca www. Daca cineva inverseaza redirectul in Vercel, se schimba doar
+fisierul acela.
+
+## Comenzi
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev        # server de dezvoltare
+npm run build      # build de productie
+npm run start      # ruleaza build-ul
+npm run lint       # eslint, trebuie sa iasa curat
+npm run typecheck  # tsc --noEmit
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Variabile de mediu
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Nume | Pentru ce |
+|---|---|
+| `RESEND_API_KEY` | trimiterea mesajelor din formularul de contact, prin `/api/contact` |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Structura
 
-## Learn More
+```
+src/app/            rute, layout, metadata, sitemap, robots, ruta de contact
+src/components/     sections/ (blocurile paginii), layout/, ui/, modals/
+src/lib/            programs-data.ts (sursa unica pentru programe), i18n/, locations.ts
+public/             fotografii, brosuri si formulare
+```
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Deploy pe Vercel, din `main`.

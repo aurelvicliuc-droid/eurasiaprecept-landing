@@ -1,6 +1,6 @@
 'use client'
 import { m as motion } from 'framer-motion'
-import { BookOpen, Users, Globe, Plus, Trophy, ArrowRight, ChevronRight } from 'lucide-react'
+import { ArrowRight, ChevronRight } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 import AnimatedSection from '@/components/ui/AnimatedSection'
@@ -8,18 +8,14 @@ import SectionEyebrow from '@/components/ui/SectionEyebrow'
 import { useLanguage } from '@/lib/i18n/context'
 import type { Lang } from '@/lib/i18n/translations'
 
-type Category = 'all' | 'adolescenti' | 'tineri' | 'specializat'
-
 interface Program {
   id: string
   slug: string
   names: { ro: string; en: string; ru: string }
   descs: { ro: string; en: string; ru: string }
   badges: { ro: string; en: string; ru: string }
-  category: Exclude<Category, 'all'>
   badgeVariant: 'teal' | 'gold' | 'purple'
   featured?: boolean
-  icon: React.ReactNode
   /** 'core' = treapta din parcursul de formare; 'special' = program paralel. */
   track: 'core' | 'special'
   /** Treapta, doar pentru parcurs: I, II, III-IV. */
@@ -41,9 +37,7 @@ const programs: Program[] = [
       ru: 'Молодые люди, имеющие личные отношения с Богом, являющиеся примером для сверстников и передающие Слово другим.',
     },
     badges: { ro: 'Adolescenți', en: 'Teens', ru: 'Подростки' },
-    category: 'adolescenti',
     badgeVariant: 'gold',
-    icon: <BookOpen size={18} strokeWidth={1.5} />,
   },
   {
     id: 'baza',
@@ -58,10 +52,8 @@ const programs: Program[] = [
       ru: 'Подготовка лидеров, знающих Библию и достоверно передающих Слово Божье в повседневной жизни церкви.',
     },
     badges: { ro: 'Nivel de bază', en: 'Foundational level', ru: 'Базовый уровень' },
-    category: 'tineri',
     badgeVariant: 'teal',
     featured: true,
-    icon: <BookOpen size={18} strokeWidth={1.5} />,
   },
   {
     id: 'copii',
@@ -75,9 +67,7 @@ const programs: Program[] = [
       ru: 'Служители, понимающие специфику работы с детьми и обучающие их Слову Божьему, закладывающие твёрдый библейский фундамент.',
     },
     badges: { ro: 'Lucrare cu copiii', en: 'Children\'s ministry', ru: 'Детское служение' },
-    category: 'tineri',
     badgeVariant: 'teal',
-    icon: <Users size={18} strokeWidth={1.5} />,
   },
   {
     id: 'english',
@@ -91,9 +81,7 @@ const programs: Program[] = [
       ru: 'Преподаватели английского языка, участвующие в евангелизации и ученичестве, используя английский как инструмент миссии.',
     },
     badges: { ro: 'Specializat', en: 'Specialized', ru: 'Специализированный' },
-    category: 'specializat',
     badgeVariant: 'purple',
-    icon: <Globe size={18} strokeWidth={1.5} />,
   },
   {
     id: 'misiune',
@@ -107,9 +95,7 @@ const programs: Program[] = [
       ru: 'Миссионеры, исполняющие великое поручение Христа через спорт, достигая разные поколения с Евангелием.',
     },
     badges: { ro: 'Misionar', en: 'Missionary', ru: 'Миссионерский' },
-    category: 'specializat',
     badgeVariant: 'purple',
-    icon: <Globe size={18} strokeWidth={1.5} />,
   },
   {
     id: 'nivel2',
@@ -124,9 +110,7 @@ const programs: Program[] = [
       ru: 'Для выпускников базового уровня, желающих углублённой подготовки в индуктивном изучении Библии.',
     },
     badges: { ro: 'Nivel avansat', en: 'Advanced level', ru: 'Продвинутый уровень' },
-    category: 'specializat',
     badgeVariant: 'teal',
-    icon: <Plus size={18} strokeWidth={1.5} />,
   },
   {
     id: 'nivel34',
@@ -141,9 +125,7 @@ const programs: Program[] = [
       ru: 'Зрелые лидеры с твёрдыми библейскими убеждениями, эффективно проповедующие Слово Божье и воспитывающие учеников.',
     },
     badges: { ro: 'Nivel avansat', en: 'Advanced level', ru: 'Продвинутый уровень' },
-    category: 'specializat',
     badgeVariant: 'teal',
-    icon: <Trophy size={18} strokeWidth={1.5} />,
   },
 ]
 

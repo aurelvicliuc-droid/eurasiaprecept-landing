@@ -47,17 +47,6 @@ export const translations = {
       trackNote: 'Trei trepte, una după alta.',
       specializedLabel: 'Programe specializate',
       specializedNote: 'Se pot urma independent de parcurs.',
-      filters: {
-        all: 'Toate',
-        adolescenti: 'Adolescenți',
-        tineri: 'Tineri și adulți',
-        specializat: 'Specializat',
-      },
-      groupLabels: {
-        adolescenti: 'Adolescenți',
-        tineri: 'Tineri și adulți',
-        specializat: 'Specializat',
-      },
       cta: 'Detalii complete',
     },
     gallery: {
@@ -71,13 +60,10 @@ export const translations = {
       heading: 'Precept',
       headingEm: 'în toată lumea',
       subtext: 'Institute și puncte de lucru Precept în orașe din întreaga lume.',
-      cities: 'orașe',
-      countries: 'țări',
     },
     vision: {
       eyebrow: 'Viziunea institutului',
       quote: 'Liderii de studiu biblic sunt pregătiți să conducă grupuri de studiu inductiv, să predea Scriptura cu credincioșie, să ucenicizeze și să mentoreze alți credincioși, să coordoneze lucrări și să formeze noi lideri, astfel încât Cuvântul lui Dumnezeu să transforme vieți și să se răspândească din generație în generație.',
-      author: '',
     },
     shop: {
       eyebrow: 'Materiale de studiu',
@@ -255,17 +241,6 @@ export const translations = {
       trackNote: 'Three levels, one after another.',
       specializedLabel: 'Specialized programs',
       specializedNote: 'Can be taken independently of the path.',
-      filters: {
-        all: 'All',
-        adolescenti: 'Teens',
-        tineri: 'Youth & adults',
-        specializat: 'Specialized',
-      },
-      groupLabels: {
-        adolescenti: 'Teens',
-        tineri: 'Youth & adults',
-        specializat: 'Specialized',
-      },
       cta: 'Full details',
     },
     gallery: {
@@ -279,13 +254,10 @@ export const translations = {
       heading: 'Precept',
       headingEm: 'around the world',
       subtext: 'Precept institutes and ministry points in cities across the world.',
-      cities: 'cities',
-      countries: 'countries',
     },
     vision: {
       eyebrow: 'Our vision',
       quote: 'Bible study leaders are equipped to lead inductive study groups, teach Scripture faithfully, disciple and mentor other believers, coordinate ministries and raise up new leaders, so that the Word of God transforms lives and spreads from generation to generation.',
-      author: '',
     },
     shop: {
       eyebrow: 'Study materials',
@@ -463,17 +435,6 @@ export const translations = {
       trackNote: 'Три ступени, одна за другой.',
       specializedLabel: 'Специализированные программы',
       specializedNote: 'Можно проходить независимо от пути.',
-      filters: {
-        all: 'Все',
-        adolescenti: 'Подростки',
-        tineri: 'Молодёжь и взрослые',
-        specializat: 'Специализированные',
-      },
-      groupLabels: {
-        adolescenti: 'Подростки',
-        tineri: 'Молодёжь и взрослые',
-        specializat: 'Специализированные',
-      },
       cta: 'Подробнее',
     },
     gallery: {
@@ -487,13 +448,10 @@ export const translations = {
       heading: 'Precept',
       headingEm: 'по всему миру',
       subtext: 'Институты и точки служения Precept в городах по всему миру.',
-      cities: 'города',
-      countries: 'страны',
     },
     vision: {
       eyebrow: 'Видение института',
       quote: 'Лидеры изучения Библии готовы вести группы индуктивного изучения, верно преподавать Писание, наставлять и воспитывать других верующих, координировать служения и готовить новых лидеров, чтобы Слово Божье преображало жизни и распространялось из поколения в поколение.',
-      author: '',
     },
     shop: {
       eyebrow: 'Учебные материалы',

@@ -4,10 +4,11 @@ import { m as motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, CheckCircle, BookOpen, Clock, Download, ChevronLeft, ChevronRight, ExternalLink, Images, Quote, X } from 'lucide-react'
+import dynamic from 'next/dynamic'
 import type { ProgramData } from '@/lib/programs-data'
+import type { ProgramTranslation } from '@/lib/i18n/programs-en'
 import Nav from '@/components/layout/Nav'
 import Footer from '@/components/layout/Footer'
-import AboutModal from '@/components/modals/AboutModal'
 import { useLanguage } from '@/lib/i18n/context'
 import { localizeProgram } from '@/lib/i18n/programs-localized'
 import SweepButton from '@/components/ui/SweepButton'
@@ -45,16 +46,27 @@ function enter(v: {
   } as React.CSSProperties
 }
 
+// Vezi comentariul din src/app/page.tsx: montat la prima deschidere, lasat montat.
+const AboutModal = dynamic(() => import('@/components/modals/AboutModal'))
+
 interface Props {
   program: ProgramData
+  en: ProgramTranslation | null
+  ru: ProgramTranslation | null
 }
 
-export default function ProgramPageClient({ program }: Props) {
+export default function ProgramPageClient({ program, en, ru }: Props) {
   const [aboutOpen, setAboutOpen] = useState(false)
+  const [aboutMounted, setAboutMounted] = useState(false)
   const { lang, t } = useLanguage()
   const pp = t.programPage
 
-  const p = localizeProgram(program, lang)
+  const openAbout = () => {
+    setAboutMounted(true)
+    setAboutOpen(true)
+  }
+
+  const p = localizeProgram(program, lang, en, ru)
 
   const hasCurriculum = p.curriculum.length > 0
   const hasDocuments = p.documents.length > 0
@@ -96,8 +108,8 @@ export default function ProgramPageClient({ program }: Props) {
 
   return (
     <div className="min-h-screen bg-[#f7f6f4]">
-      <Nav onAboutOpen={() => setAboutOpen(true)} />
-      <AboutModal open={aboutOpen} onClose={() => setAboutOpen(false)} />
+      <Nav onAboutOpen={openAbout} />
+      {aboutMounted && <AboutModal open={aboutOpen} onClose={() => setAboutOpen(false)} />}
 
       {/* Breadcrumb below nav */}
       <div className="pt-[68px] bg-white border-b border-beige-dark/60">

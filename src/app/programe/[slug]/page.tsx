@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation'
 import { getProgramBySlug, getAllSlugs } from '@/lib/programs-data'
 import type { Metadata } from 'next'
 import { BASE_URL } from '@/lib/site'
+import { programsEn } from '@/lib/i18n/programs-en'
+import { programsRu } from '@/lib/i18n/programs-ru'
 import ProgramPageClient from './ProgramPageClient'
 
 export function generateStaticParams() {
@@ -91,7 +93,12 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd).replace(/</g, '\\u003c') }}
       />
-      <ProgramPageClient program={program} />
+      {/* Doar traducerile programului curent, nu dictionarele intregi. */}
+      <ProgramPageClient
+        program={program}
+        en={programsEn[slug] ?? null}
+        ru={programsRu[slug] ?? null}
+      />
     </>
   )
 }

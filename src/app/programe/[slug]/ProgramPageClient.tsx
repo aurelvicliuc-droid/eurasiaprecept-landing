@@ -19,6 +19,32 @@ const badgeColors: Record<string, string> = {
   green: 'bg-green-mid/10 text-green-mid border-green-mid/30',
 }
 
+/**
+ * Intrarea sectiunilor, in CSS (vezi .precept-enter din globals.css).
+ * Inainte, fiecare sectiune era un <motion.*> cu initial={{opacity:0}}, deci
+ * HTML-ul servit al paginii de program era complet invizibil pana se hidrata
+ * bundle-ul. Acum sunt aceleasi valori, dar animate de browser din primul cadru.
+ * 'easeOut' e curba implicita a lui framer-motion pentru tween-uri.
+ */
+const EASE_OUT = 'cubic-bezier(0, 0, 0.58, 1)'
+
+function enter(v: {
+  x?: number
+  y?: number
+  scale?: number
+  duration: number
+  delay?: number
+}): React.CSSProperties {
+  return {
+    ...(v.x !== undefined && { '--enter-x': `${v.x}px` }),
+    ...(v.y !== undefined && { '--enter-y': `${v.y}px` }),
+    ...(v.scale !== undefined && { '--enter-scale': `${v.scale}` }),
+    '--enter-duration': `${v.duration}ms`,
+    '--enter-ease': EASE_OUT,
+    ...(v.delay && { '--enter-delay': `${v.delay}ms` }),
+  } as React.CSSProperties
+}
+
 interface Props {
   program: ProgramData
 }
@@ -100,10 +126,9 @@ export default function ProgramPageClient({ program }: Props) {
 
           {/* Hero content */}
           <div className="absolute inset-0 flex flex-col justify-end pb-10 px-6 lg:px-16 max-w-[1200px] mx-auto left-0 right-0">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            <div
+              className="precept-enter"
+              style={{ '--enter-y': '24px', '--enter-duration': '600ms' } as React.CSSProperties}
             >
               <span className={`inline-block text-[11px] font-bold tracking-[0.14em] uppercase px-3 py-1.5
                 rounded-full border backdrop-blur-sm mb-4 ${badgeColors[program.badgeColor]}`}>
@@ -116,7 +141,7 @@ export default function ProgramPageClient({ program }: Props) {
               <p className="text-white/80 text-[clamp(16px,1.6vw,19px)] max-w-[560px] leading-[1.55]">
                 {p.tagline}
               </p>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>
@@ -129,33 +154,23 @@ export default function ProgramPageClient({ program }: Props) {
           <div className="flex flex-col gap-14">
 
             {/* Overview */}
-            <motion.section
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 0.1 }}
-            >
+            <section className="precept-enter" style={enter({ y: 20, duration: 550, delay: 100 })}>
               <SectionLabel icon={<BookOpen size={15} />}>{pp.aboutSection}</SectionLabel>
               <p className="text-[19px] text-text-dark leading-[1.8] mt-4">
                 {p.overview}
               </p>
-            </motion.section>
+            </section>
 
             {/* Curriculum */}
             {hasCurriculum && (
-              <motion.section
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.55, delay: 0.15 }}
-              >
+              <section className="precept-enter" style={enter({ y: 20, duration: 550, delay: 150 })}>
                 <SectionLabel icon={<BookOpen size={15} />}>{pp.curriculum}</SectionLabel>
                 <div className="flex flex-col gap-4 mt-5">
                   {p.curriculum.map((course, i) => (
-                    <motion.div
+                    <div
                       key={i}
-                      className="border border-beige-dark rounded-xl p-5 bg-cream hover:border-teal/40 hover:shadow-sm transition-all duration-200"
-                      initial={{ opacity: 0, y: 12 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.1 + i * 0.05 }}
+                      className="precept-enter border border-beige-dark rounded-xl p-5 bg-cream hover:border-teal/40 hover:shadow-sm transition-all duration-200"
+                      style={enter({ y: 12, duration: 400, delay: 100 + i * 50 })}
                     >
                       <div className="flex items-start gap-3">
                         <span className="flex-shrink-0 mt-0.5 w-7 h-7 rounded-full bg-teal/10 text-teal
@@ -214,56 +229,44 @@ export default function ProgramPageClient({ program }: Props) {
                           )}
                         </div>
                       </div>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
-              </motion.section>
+              </section>
             )}
 
             {/* Outcomes */}
             {hasOutcomes && (
-              <motion.section
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.55, delay: 0.2 }}
-              >
+              <section className="precept-enter" style={enter({ y: 20, duration: 550, delay: 200 })}>
                 <SectionLabel icon={<CheckCircle size={15} />}>{pp.outcomes}</SectionLabel>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
                   {p.outcomes!.map((outcome, i) => (
-                    <motion.div
+                    <div
                       key={i}
-                      className="bg-cream border border-beige-dark rounded-xl p-5"
-                      initial={{ opacity: 0, scale: 0.97 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.35, delay: 0.1 + i * 0.06 }}
+                      className="precept-enter bg-cream border border-beige-dark rounded-xl p-5"
+                      style={enter({ scale: 0.97, duration: 350, delay: 100 + i * 60 })}
                     >
                       <div className="w-8 h-8 rounded-lg bg-teal/10 flex items-center justify-center mb-3">
                         <ChevronRight size={16} className="text-teal" />
                       </div>
                       <h4 className="text-[15px] font-semibold text-green-dark mb-1">{outcome.title}</h4>
                       <p className="text-[15.5px] text-text-muted leading-[1.65]">{outcome.desc}</p>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
-              </motion.section>
+              </section>
             )}
 
             {/* Testimonials */}
             {hasTestimonials && (
-              <motion.section
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.55, delay: 0.2 }}
-              >
+              <section className="precept-enter" style={enter({ y: 20, duration: 550, delay: 200 })}>
                 <SectionLabel icon={<Quote size={15} />}>{pp.testimonials}</SectionLabel>
                 <div className="flex flex-col gap-4 mt-5">
                   {p.testimonials!.map((t, i) => (
-                    <motion.figure
+                    <figure
                       key={i}
-                      className="bg-cream border border-beige-dark rounded-2xl p-6"
-                      initial={{ opacity: 0, y: 12 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: 0.1 + i * 0.08 }}
+                      className="precept-enter bg-cream border border-beige-dark rounded-2xl p-6"
+                      style={enter({ y: 12, duration: 400, delay: 100 + i * 80 })}
                     >
                       <Quote size={22} className="text-teal/25 mb-2" aria-hidden />
                       <blockquote className="text-[17px] text-text-dark leading-[1.75]">
@@ -280,33 +283,27 @@ export default function ProgramPageClient({ program }: Props) {
                           <span className="text-[13px] text-text-muted">{t.location}</span>
                         </span>
                       </figcaption>
-                    </motion.figure>
+                    </figure>
                   ))}
                 </div>
-              </motion.section>
+              </section>
             )}
 
             {/* Photo gallery */}
             {hasGallery && (
-              <motion.section
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.55, delay: 0.2 }}
-              >
+              <section className="precept-enter" style={enter({ y: 20, duration: 550, delay: 200 })}>
                 <SectionLabel icon={<Images size={15} />}>{pp.gallery}</SectionLabel>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-5">
                   {p.gallery!.map((src, i) => (
-                    <motion.button
+                    <button
                       key={src}
                       type="button"
                       onClick={() => setLightbox(i)}
                       aria-label={`${p.name}: deschide fotografia ${i + 1}`}
-                      className={`group relative overflow-hidden rounded-xl bg-beige h-44 sm:h-56 cursor-pointer
+                      className={`precept-enter group relative overflow-hidden rounded-xl bg-beige h-44 sm:h-56 cursor-pointer
                         focus:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2
                         ${i === 0 ? 'col-span-2' : ''}`}
-                      initial={{ opacity: 0, scale: 0.97 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.4, delay: 0.08 + i * 0.06 }}
+                      style={enter({ scale: 0.97, duration: 400, delay: 80 + i * 60 })}
                     >
                       <Image
                         src={src}
@@ -325,10 +322,10 @@ export default function ProgramPageClient({ program }: Props) {
                           <Images size={18} aria-hidden />
                         </span>
                       </span>
-                    </motion.button>
+                    </button>
                   ))}
                 </div>
-              </motion.section>
+              </section>
             )}
 
           </div>
@@ -338,11 +335,9 @@ export default function ProgramPageClient({ program }: Props) {
 
             {/* Who can apply */}
             {p.whoCanApply.length > 0 && (
-              <motion.div
-                className="bg-white border border-beige-dark rounded-2xl p-6 shadow-sm"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
+              <div
+                className="precept-enter bg-white border border-beige-dark rounded-2xl p-6 shadow-sm"
+                style={enter({ x: 20, duration: 500, delay: 200 })}
               >
                 <h3 className="font-display text-[18px] font-semibold text-green-dark mb-4">
                   {pp.whoCanApply}
@@ -355,16 +350,14 @@ export default function ProgramPageClient({ program }: Props) {
                     </li>
                   ))}
                 </ul>
-              </motion.div>
+              </div>
             )}
 
             {/* Structure */}
             {hasStructure && (
-              <motion.div
-                className="bg-white border border-beige-dark rounded-2xl p-6 shadow-sm"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.28 }}
+              <div
+                className="precept-enter bg-white border border-beige-dark rounded-2xl p-6 shadow-sm"
+                style={enter({ x: 20, duration: 500, delay: 280 })}
               >
                 <h3 className="font-display text-[18px] font-semibold text-green-dark mb-4">
                   {pp.structure}
@@ -377,16 +370,14 @@ export default function ProgramPageClient({ program }: Props) {
                     </li>
                   ))}
                 </ul>
-              </motion.div>
+              </div>
             )}
 
             {/* Documents */}
             {hasDocuments && (
-              <motion.div
-                className="bg-white border border-beige-dark rounded-2xl p-6 shadow-sm"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.34 }}
+              <div
+                className="precept-enter bg-white border border-beige-dark rounded-2xl p-6 shadow-sm"
+                style={enter({ x: 20, duration: 500, delay: 340 })}
               >
                 <h3 className="font-display text-[18px] font-semibold text-green-dark mb-4">
                   {pp.documents}
@@ -399,16 +390,11 @@ export default function ProgramPageClient({ program }: Props) {
                     </li>
                   ))}
                 </ul>
-              </motion.div>
+              </div>
             )}
 
             {/* CTAs */}
-            <motion.div
-              className="flex flex-col gap-3"
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, delay: 0.4 }}
-            >
+            <div className="precept-enter flex flex-col gap-3" style={enter({ y: 12, duration: 450, delay: 400 })}>
               <SweepButton
                 href={ctaPrimaryHref}
                 external={!!ctaPrimaryTarget.target}
@@ -440,21 +426,19 @@ export default function ProgramPageClient({ program }: Props) {
                   {p.ctaTertiary.label}
                 </SweepButton>
               )}
-            </motion.div>
+            </div>
 
             {/* Contact nudge */}
-            <motion.p
-              className="text-[14px] text-text-muted text-center leading-[1.65]"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.4, delay: 0.5 }}
+            <p
+              className="precept-enter text-[14px] text-text-muted text-center leading-[1.65]"
+              style={enter({ duration: 400, delay: 500 })}
             >
               {pp.questions}{' '}
               <a href="/#contact" className="text-teal underline underline-offset-2 hover:no-underline">
                 {pp.contactUs}
               </a>
               {' '}{pp.contactNudge}
-            </motion.p>
+            </p>
 
           </div>
         </div>

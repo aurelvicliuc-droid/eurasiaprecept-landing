@@ -137,6 +137,30 @@ body {
   border-radius: 4px;
 }
 
+/* ── Intrare la incarcarea paginii, fara JavaScript ────────────────
+   Titlul, textul si butoanele din hero se animau cu framer-motion, deci
+   HTML-ul servit continea opacity:0 pe elementul de LCP: pana nu se
+   descarca si nu se hidrata bundle-ul, ecranul era gol si LCP-ul astepta.
+   Aceleasi valori de animatie, dar in CSS: se vad de la primul cadru.
+   Distanta, durata, curba si intarzierea se dau prin variabile, ca sa
+   ramana identice cu ce facea framer-motion. */
+@keyframes precept-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(var(--enter-x, 0), var(--enter-y, 0), 0) scale(var(--enter-scale, 1));
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.precept-enter {
+  animation: precept-enter var(--enter-duration, 600ms)
+    var(--enter-ease, cubic-bezier(0.22, 1, 0.36, 1))
+    var(--enter-delay, 0ms) both;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

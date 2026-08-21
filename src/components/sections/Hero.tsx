@@ -19,6 +19,18 @@ const SLIDES = [
 ]
 const INTERVAL = 6500
 
+// Intrarea continutului din hero, in CSS (vezi .precept-enter din globals.css).
+// Aceleasi valori pe care le avea framer-motion; 'easeOut' din framer inseamna
+// cubic-bezier(0, 0, 0.58, 1). Diferenta e ca acum textul e vizibil din HTML,
+// nu dupa ce se hidrateaza pagina.
+const EASE_OUT = 'cubic-bezier(0, 0, 0.58, 1)'
+const ENTER = {
+  badge: { '--enter-y': '8px',  '--enter-duration': '400ms', '--enter-ease': EASE_OUT },
+  title: { '--enter-y': '28px', '--enter-duration': '700ms', '--enter-delay': '100ms' },
+  desc:  { '--enter-y': '20px', '--enter-duration': '600ms', '--enter-ease': EASE_OUT, '--enter-delay': '300ms' },
+  cta:   { '--enter-y': '20px', '--enter-duration': '600ms', '--enter-ease': EASE_OUT, '--enter-delay': '420ms' },
+} as Record<string, React.CSSProperties>
+
 export default function Hero() {
   const { t } = useLanguage()
   const h = t.hero
@@ -100,52 +112,41 @@ export default function Hero() {
       {/* Conținut */}
       <div className="relative w-full max-w-[1200px] mx-auto px-6 lg:px-12 pt-[124px] pb-28">
         <div className="max-w-[760px]">
-          <motion.span
-            className="inline-block text-label font-semibold tracking-[0.12em] uppercase
+          <span
+            className="precept-enter inline-block text-label font-semibold tracking-[0.12em] uppercase
               text-golden border border-golden/35 bg-golden/[0.07] px-3 py-1.5 rounded-full mb-7"
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, ease: 'easeOut' }}
+            style={ENTER.badge}
           >
             {h.badge}
-          </motion.span>
+          </span>
 
-          <motion.h1
+          <h1
             id="hero-title"
-            className="font-display font-medium text-fog leading-[1.04] tracking-[-0.01em]
+            className="precept-enter font-display font-medium text-fog leading-[1.04] tracking-[-0.01em]
               text-[clamp(46px,7.4vw,98px)] [text-wrap:balance]
               [text-shadow:0_2px_28px_rgba(0,0,0,0.55)]"
-            initial={{ opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+            style={ENTER.title}
           >
             {h.title1} {h.title2}
             <br />
             {h.title3} <em className="not-italic text-ocean">{h.titleAccent}</em>
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            className="text-[clamp(18px,1.7vw,22px)] text-fog/80 leading-[1.7] mt-6 max-w-[540px]"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.3 }}
+          <p
+            className="precept-enter text-[clamp(18px,1.7vw,22px)] text-fog/80 leading-[1.7] mt-6 max-w-[540px]"
+            style={ENTER.desc}
           >
             {h.desc}
-          </motion.p>
+          </p>
 
-          <motion.div
-            className="flex flex-wrap gap-3 mt-9"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.42 }}
-          >
+          <div className="precept-enter flex flex-wrap gap-3 mt-9" style={ENTER.cta}>
             <SweepButton href="#programe" variant="solid-gold" arrow>
               {h.ctaPrimary}
             </SweepButton>
             <SweepButton href="#contact" variant="outline-light">
               {h.ctaSecondary}
             </SweepButton>
-          </motion.div>
+          </div>
         </div>
       </div>
 

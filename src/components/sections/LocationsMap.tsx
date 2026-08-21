@@ -1,13 +1,46 @@
 'use client'
 import dynamic from 'next/dynamic'
+import { useEffect, useRef, useState } from 'react'
 import SectionEyebrow from '@/components/ui/SectionEyebrow'
 import AnimatedSection from '@/components/ui/AnimatedSection'
 import { useLanguage } from '@/lib/i18n/context'
 
+function MapSkeleton() {
+  return <div className="w-full h-[460px] sm:h-[560px] rounded-2xl bg-beige-dark/30 animate-pulse" />
+}
+
 const MapCanvas = dynamic(() => import('./LocationsMapCanvas'), {
   ssr: false,
-  loading: () => <div className="w-full h-[460px] sm:h-[560px] rounded-2xl bg-beige-dark/30 animate-pulse" />,
+  loading: () => <MapSkeleton />,
 })
+
+/**
+ * Harta aduce leaflet + react-leaflet, adica ~150 KB de JavaScript, si sta jos
+ * de tot in pagina. Importul dinamic singur nu ajuta: componenta se monta la
+ * randarea paginii, deci chunk-ul pleca la descarcare oricum, imediat.
+ * Il montam abia cand sectiunea se apropie de ecran, cu 400px inainte, ca harta
+ * sa fie deja gata cand ajunge vizitatorul la ea.
+ */
+function LazyMap() {
+  const ref = useRef<HTMLDivElement>(null)
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    if (visible) return
+    const el = ref.current
+    if (!el) return
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) setVisible(true)
+      },
+      { rootMargin: '400px' },
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [visible])
+
+  return <div ref={ref}>{visible ? <MapCanvas /> : <MapSkeleton />}</div>
+}
 
 export default function LocationsMap() {
   const { t } = useLanguage()
@@ -31,7 +64,7 @@ export default function LocationsMap() {
         </AnimatedSection>
 
         <AnimatedSection delay={0.1}>
-          <MapCanvas />
+          <LazyMap />
         </AnimatedSection>
       </div>
     </section>

@@ -8,6 +8,7 @@ import dynamic from 'next/dynamic'
 import type { ProgramData } from '@/lib/programs-data'
 import type { ProgramTranslation } from '@/lib/i18n/programs-en'
 import Nav from '@/components/layout/Nav'
+import SkipLink from '@/components/ui/SkipLink'
 import Footer from '@/components/layout/Footer'
 import { useLanguage } from '@/lib/i18n/context'
 import { localizeProgram } from '@/lib/i18n/programs-localized'
@@ -108,6 +109,7 @@ export default function ProgramPageClient({ program, en, ru }: Props) {
 
   return (
     <div className="min-h-screen bg-[#f7f6f4]">
+      <SkipLink />
       <Nav onAboutOpen={openAbout} />
       {aboutMounted && <AboutModal open={aboutOpen} onClose={() => setAboutOpen(false)} />}
 
@@ -161,7 +163,7 @@ export default function ProgramPageClient({ program, en, ru }: Props) {
       </div>
 
       {/* Main content */}
-      <div className="max-w-[1200px] mx-auto px-6 lg:px-12 py-16 lg:py-20">
+      <main id="continut" className="max-w-[1200px] mx-auto px-6 lg:px-12 py-16 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-12 lg:gap-16 items-start">
 
           {/* Left: main content */}
@@ -197,7 +199,7 @@ export default function ProgramPageClient({ program, en, ru }: Props) {
                           </h3>
                           {course.manuals && course.manuals.length > 0 ? (
                             <div className="mt-2">
-                              <p className="text-[11px] uppercase tracking-[0.08em] text-text-muted/80 font-semibold mb-1.5">
+                              <p className="text-tag uppercase tracking-[0.08em] text-text-muted font-semibold mb-1.5">
                                 {pp.manualsLabel}
                               </p>
                               <ul className="flex flex-col gap-1.5">
@@ -263,7 +265,7 @@ export default function ProgramPageClient({ program, en, ru }: Props) {
                       <div className="w-8 h-8 rounded-lg bg-teal/10 flex items-center justify-center mb-3">
                         <ChevronRight size={16} className="text-teal" />
                       </div>
-                      <h4 className="text-[15px] font-semibold text-green-dark mb-1">{outcome.title}</h4>
+                      <h3 className="text-[15px] font-semibold text-green-dark mb-1">{outcome.title}</h3>
                       <p className="text-[15.5px] text-text-muted leading-[1.65]">{outcome.desc}</p>
                     </div>
                   ))}
@@ -456,7 +458,7 @@ export default function ProgramPageClient({ program, en, ru }: Props) {
 
           </div>
         </div>
-      </div>
+      </main>
 
       {/* Bottom CTA banner */}
       <div className="relative bg-beige py-20 overflow-hidden border-t border-beige-dark">
@@ -471,7 +473,7 @@ export default function ProgramPageClient({ program, en, ru }: Props) {
           <h2 className="font-display text-green-dark text-[clamp(28px,3.6vw,46px)] font-medium mb-4 leading-tight">
             {pp.ctaBannerTitle}
           </h2>
-          <p className="text-text-muted text-[19px] mb-10 max-w-[460px] mx-auto leading-[1.7]">
+          <p className="text-text-mid text-[19px] mb-10 max-w-[460px] mx-auto leading-[1.7]">
             {pp.ctaBannerDesc(p.name)}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">

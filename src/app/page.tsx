@@ -12,6 +12,7 @@ import LocationsMap from '@/components/sections/LocationsMap'
 import Shop from '@/components/sections/Shop'
 import Contact from '@/components/sections/Contact'
 import StickyGallery from '@/components/sections/StickyGallery'
+import SkipLink from '@/components/ui/SkipLink'
 
 // Modalul Despre noi aduce cu el locations.ts si countries.ts, dar se deschide
 // doar la click. Il montam la prima deschidere si il lasam montat dupa aceea:
@@ -30,9 +31,10 @@ export default function Home() {
 
   return (
     <>
+      <SkipLink />
       <Nav onAboutOpen={openAbout} overlay />
 
-      <main>
+      <main id="continut">
         <Hero />
         <Stats />
         <Programs />

@@ -131,7 +131,7 @@ export default function Shop() {
                 />
                 <span className={`absolute top-3 left-3 text-tag font-bold tracking-[0.09em] uppercase
                   px-3 py-1.5 rounded-[5px] backdrop-blur-sm
-                  ${p.badgeGold ? 'bg-gold text-green-dark' : 'bg-black/20 text-white'}`}>
+                  ${p.badgeGold ? 'bg-gold text-green-dark' : 'bg-green-dark/85 text-white'}`}>
                   {p.badge[lang]}
                 </span>
               </div>

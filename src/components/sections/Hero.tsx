@@ -166,20 +166,30 @@ export default function Hero() {
       {/* Control slideshow: puncte + pauză (WCAG 2.2.2, conținut care se schimbă singur) */}
       {!reduced && (
         <div className="absolute bottom-7 right-6 lg:right-12 z-10 flex items-center gap-3">
-          <div className="flex items-center gap-1.5" role="tablist" aria-label="Fotografii fundal">
+          {/* role="tablist" fara niciun tabpanel e o relatie ARIA inventata: singurul
+              continut candidat e slideshow-ul, care e aria-hidden. Un grup de butoane
+              cu aria-current spune adevarul.
+              Tintele erau de 12x3 px, adica 36 px². px-1.5 pe buton si gap-0 pe
+              container le duc la exact 24x24, cerinta 2.5.8, fara sa mute bara
+              vizuala cu un pixel: ea sta intr-un span interior. */}
+          <div className="flex items-center" role="group" aria-label="Fotografii fundal">
             {SLIDES.map((_, i) => (
               <button
                 key={i}
                 type="button"
-                role="tab"
-                aria-selected={i === index}
+                aria-current={i === index}
                 aria-label={`Fotografia ${i + 1}`}
                 onClick={() => setIndex(i)}
-                className={`h-[3px] rounded-full cursor-pointer transition-all duration-300
+                className="h-6 px-1.5 flex items-center cursor-pointer
                   focus:outline-none focus-visible:ring-2 focus-visible:ring-fog focus-visible:ring-offset-2
-                  focus-visible:ring-offset-black
-                  ${i === index ? 'w-7 bg-fog' : 'w-3 bg-fog/40 hover:bg-fog/70'}`}
-              />
+                  focus-visible:ring-offset-black rounded-sm"
+              >
+                <span
+                  aria-hidden="true"
+                  className={`block h-[3px] rounded-full transition-all duration-300
+                    ${i === index ? 'w-7 bg-fog' : 'w-3 bg-fog/40 group-hover:bg-fog/70'}`}
+                />
+              </button>
             ))}
           </div>
           <button

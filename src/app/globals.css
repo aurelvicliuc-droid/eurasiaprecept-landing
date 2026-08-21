@@ -130,11 +130,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Focus ring for keyboard nav */
+/* Inelul de focus.
+   Teal singur nu se vede peste teal: pe butonul solid-primary dadea 1:1, iar pe
+   spruce 1.64:1. Il dublam cu un inel deschis, deci exista contrast pe orice
+   fundal, si inchis (9.3:1 pe spruce) si deschis.
+   Fara border-radius aici: patratiza butonul rotund de pauza din hero si
+   thumbnail-urile rotunjite din galerie exact cand primeau focus. */
 :focus-visible {
   outline: 3px solid var(--teal);
   outline-offset: 3px;
-  border-radius: 4px;
+  box-shadow: 0 0 0 3px var(--fog);
 }
 
 /* ── Intrare la incarcarea paginii, fara JavaScript ────────────────

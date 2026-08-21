@@ -99,7 +99,7 @@ export default function Nav({ onAboutOpen, overlay = false }: NavProps) {
                   className={`text-label transition-colors duration-200 cursor-pointer uppercase
                     ${lang === l
                       ? (onDark ? 'text-fog font-medium' : 'text-green-dark font-medium')
-                      : (onDark ? 'text-fog/55 hover:text-fog' : 'text-text-muted hover:text-text-dark')}`}
+                      : (onDark ? 'text-fog/80 hover:text-fog' : 'text-text-muted hover:text-text-dark')}`}
                   aria-pressed={lang === l}
                 >
                   {l}

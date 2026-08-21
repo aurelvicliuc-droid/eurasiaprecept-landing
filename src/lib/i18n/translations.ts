@@ -8,6 +8,7 @@ export const translations = {
       contact: 'Contacte',
       shop: 'Magazin',
       signIn: 'Intră',
+      skipToContent: 'Sari la conținut',
     },
     hero: {
       badge: 'Institut de Studiu Biblic',
@@ -205,6 +206,7 @@ export const translations = {
       contact: 'Contact',
       shop: 'Shop',
       signIn: 'Sign in',
+      skipToContent: 'Skip to content',
     },
     hero: {
       badge: 'Biblical Study Institute',
@@ -402,6 +404,7 @@ export const translations = {
       contact: 'Контакты',
       shop: 'Магазин',
       signIn: 'Войти',
+      skipToContent: 'Перейти к содержанию',
     },
     hero: {
       badge: 'Институт библейского изучения',

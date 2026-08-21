@@ -89,7 +89,7 @@ export default function Contact() {
                     {item.icon}
                   </div>
                   <div>
-                    <span className="block text-label font-semibold tracking-[0.1em] uppercase text-text-muted mb-0.5">
+                    <span className="block text-label font-semibold tracking-[0.1em] uppercase text-text-mid mb-0.5">
                       {item.label}
                     </span>
                     <a
@@ -105,7 +105,7 @@ export default function Contact() {
               ))}
             </ul>
 
-            <div className="flex gap-2.5" role="list" aria-label={t.contact.social}>
+            <div className="flex gap-2.5">
               <a
                 href="https://facebook.com/eurasiaprecept"
                 target="_blank"
@@ -135,7 +135,7 @@ export default function Contact() {
           </AnimatedSection>
 
           <AnimatedSection direction="right" delay={0.15}>
-            <form onSubmit={handleSubmit} className="flex flex-col gap-3.5">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-3.5" aria-busy={loading}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div className="flex flex-col gap-1.5">
                   <label htmlFor="contact-name" className="text-label font-semibold tracking-[0.1em] uppercase text-text-mid">
@@ -147,7 +147,7 @@ export default function Contact() {
                     type="text"
                     placeholder={f.namePlaceholder}
                     required
-                    className="bg-cream border border-beige-dark rounded-[6px] px-4 py-[13px] text-copy
+                    className="bg-cream border border-text-mid/70 rounded-[6px] px-4 py-[13px] text-copy
                       text-text-dark placeholder:text-text-muted outline-none
                       focus:border-teal transition-colors duration-200"
                   />
@@ -162,7 +162,7 @@ export default function Contact() {
                     type="email"
                     placeholder={f.emailPlaceholder}
                     required
-                    className="bg-cream border border-beige-dark rounded-[6px] px-4 py-[13px] text-copy
+                    className="bg-cream border border-text-mid/70 rounded-[6px] px-4 py-[13px] text-copy
                       text-text-dark placeholder:text-text-muted outline-none
                       focus:border-teal transition-colors duration-200"
                   />
@@ -177,7 +177,7 @@ export default function Contact() {
                   name="contact-subject"
                   type="text"
                   placeholder={f.subjectPlaceholder}
-                  className="bg-cream border border-beige-dark rounded-[6px] px-4 py-[13px] text-copy
+                  className="bg-cream border border-text-mid/70 rounded-[6px] px-4 py-[13px] text-copy
                     text-text-dark placeholder:text-text-muted outline-none
                     focus:border-teal transition-colors duration-200"
                 />
@@ -192,7 +192,7 @@ export default function Contact() {
                   placeholder={f.messagePlaceholder}
                   required
                   rows={5}
-                  className="bg-cream border border-beige-dark rounded-[6px] px-4 py-[13px] text-copy
+                  className="bg-cream border border-text-mid/70 rounded-[6px] px-4 py-[13px] text-copy
                     text-text-dark placeholder:text-text-muted outline-none resize-y min-h-[110px]
                     focus:border-teal transition-colors duration-200"
                 />
@@ -205,7 +205,7 @@ export default function Contact() {
                   variant="solid-spruce"
                   className="text-label font-semibold tracking-[0.07em] uppercase"
                 >
-                  {loading ? '...' : f.submit}
+                  {f.submit}
                 </SweepButton>
 
                 {sent && (
@@ -222,11 +222,10 @@ export default function Contact() {
                 )}
                 {error && (
                   <motion.p
-                    className="text-copy text-clay"
+                    className="text-copy text-[#8C4123]"
                     initial={{ opacity: 0, x: 10 }}
                     animate={{ opacity: 1, x: 0 }}
                     role="alert"
-                    aria-live="polite"
                   >
                     {f.error}
                   </motion.p>

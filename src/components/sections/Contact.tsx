@@ -135,7 +135,7 @@ export default function Contact() {
           </AnimatedSection>
 
           <AnimatedSection direction="right" delay={0.15}>
-            <form onSubmit={handleSubmit} className="flex flex-col gap-3.5" noValidate>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-3.5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div className="flex flex-col gap-1.5">
                   <label htmlFor="contact-name" className="text-label font-semibold tracking-[0.1em] uppercase text-text-mid">

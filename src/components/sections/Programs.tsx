@@ -260,7 +260,7 @@ function ProgramCard({
           alt=""
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
-          quality={70}
+          quality={65}
           className="object-cover transition-transform duration-[700ms] ease-out group-hover:scale-[1.06]"
         />
         {/* Lizibilitate: intunecare pe jumatatea de jos, unde stau titlul si descrierea */}

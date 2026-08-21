@@ -80,7 +80,7 @@ export default function Hero() {
                 fill
                 priority={index === 0}
                 sizes="100vw"
-                quality={72}
+                quality={75}
                 className={`object-cover ${SLIDES[index].pos}`}
                 draggable={false}
               />
@@ -89,10 +89,22 @@ export default function Hero() {
         </AnimatePresence>
       </div>
 
-      {/* Preîncarcă următoarea, ca tranziția să nu clipească */}
+      {/* Preincarca urmatorul cadru, ca tranzitia sa nu clipeasca. Trebuie cerut exact
+          la aceeasi adresa pe care o va cere cand intra in scena: acelasi fill, acelasi
+          sizes, aceeasi calitate. Inainte era un <Image width={16} height={9}>, adica o
+          varianta de 16px latime, alt URL, deci nu preincarca nimic si mai si cerea in
+          plus un fisier care nu se folosea niciodata. */}
       {animate && (
-        <div className="absolute h-px w-px opacity-0 pointer-events-none -z-30" aria-hidden="true">
-          <Image src={SLIDES[next].src} alt="" width={16} height={9} quality={72} />
+        <div className="absolute inset-0 opacity-0 pointer-events-none -z-30" aria-hidden="true">
+          <Image
+            src={SLIDES[next].src}
+            alt=""
+            fill
+            sizes="100vw"
+            quality={75}
+            className="object-cover"
+            draggable={false}
+          />
         </div>
       )}
 

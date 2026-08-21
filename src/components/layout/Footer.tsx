@@ -61,8 +61,8 @@ export default function Footer({ onAboutOpen }: { onAboutOpen?: () => void } = {
             <Image
               src="/precept-logomark.png"
               alt="Precept Eurasia"
-              width={140}
-              height={36}
+              width={130}
+              height={24}
               className="h-[24px] w-auto object-contain brightness-0 invert opacity-90"
             />
           </Link>
@@ -94,8 +94,8 @@ export default function Footer({ onAboutOpen }: { onAboutOpen?: () => void } = {
               <Image
                 src="/precept-logomark.png"
                 alt="Precept Eurasia"
-                width={160}
-                height={40}
+                width={152}
+                height={28}
                 className="h-[28px] w-auto object-contain brightness-0 invert opacity-90 mb-5"
               />
             </Link>

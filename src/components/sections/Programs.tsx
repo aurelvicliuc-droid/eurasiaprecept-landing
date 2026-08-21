@@ -259,7 +259,9 @@ function ProgramCard({
           src={prog.image}
           alt=""
           fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
+          // Peste 1280 grila e xl:grid-cols-4 intr-un container de 1575px, deci
+          // celula reala e ~23vw, nu 33vw, si se plafoneaza la 355px.
+          sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, (max-width: 1575px) 23vw, 355px"
           quality={65}
           className="object-cover transition-transform duration-[700ms] ease-out group-hover:scale-[1.06]"
         />

@@ -61,11 +61,13 @@ export default function Nav({ onAboutOpen, overlay = false }: NavProps) {
             <Image
               src="/precept-logomark.png"
               alt="Precept Eurasia"
-              width={160}
-              height={40}
+              width={174}
+              height={32}
               className={`h-[32px] w-auto object-contain transition-[filter] duration-300
                 ${onDark ? 'brightness-0 invert' : ''}`}
-              priority
+              // Se incarca imediat, dar nu ca preload: n-are voie sa concureze cu
+              // fotografia din hero, care e elementul de LCP.
+              loading="eager"
             />
           </Link>
 

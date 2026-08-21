@@ -130,7 +130,7 @@ export default function ProgramPageClient({ program, en, ru }: Props) {
             src={program.heroImage}
             alt={program.heroImageAlt}
             fill
-            priority
+            preload
             sizes="100vw"
             className={`object-cover ${program.heroImagePosition ?? 'object-center'}`}
           />
@@ -552,9 +552,8 @@ export default function ProgramPageClient({ program, en, ru }: Props) {
                 src={gallery[lightbox]}
                 alt={`${p.name}, fotografia ${lightbox + 1}`}
                 fill
-                sizes="100vw"
+                sizes="(max-width: 1180px) 100vw, 1100px"
                 className="object-contain"
-                priority
               />
             </motion.div>
 

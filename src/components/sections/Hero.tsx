@@ -6,7 +6,7 @@ import { Pause, Play } from 'lucide-react'
 import { useLanguage } from '@/lib/i18n/context'
 import SweepButton from '@/components/ui/SweepButton'
 
-/** Cadre largi, cu oameni. Prima e LCP-ul paginii, deci singura cu priority. */
+/** Cadre largi, cu oameni. Prima e LCP-ul paginii, deci singura preincarcata. */
 const SLIDES = [
   { src: '/programs/institutul-biblic.jpg', pos: 'object-[center_35%]' },
   { src: '/carousel/g-grup-pakistan.jpg', pos: 'object-center' },
@@ -38,6 +38,7 @@ export default function Hero() {
 
   const [index, setIndex] = useState(0)
   const [playing, setPlaying] = useState(true)
+  const [loaded, setLoaded] = useState(false)
 
   const advance = useCallback(() => setIndex((i) => (i + 1) % SLIDES.length), [])
 
@@ -78,30 +79,30 @@ export default function Hero() {
                 src={SLIDES[index].src}
                 alt=""
                 fill
-                priority={index === 0}
+                preload={index === 0}
                 sizes="100vw"
-                quality={75}
+                quality={65}
                 className={`object-cover ${SLIDES[index].pos}`}
                 draggable={false}
+                onLoad={index === 0 ? () => setLoaded(true) : undefined}
               />
             </motion.div>
           </motion.div>
         </AnimatePresence>
       </div>
 
-      {/* Preincarca urmatorul cadru, ca tranzitia sa nu clipeasca. Trebuie cerut exact
-          la aceeasi adresa pe care o va cere cand intra in scena: acelasi fill, acelasi
-          sizes, aceeasi calitate. Inainte era un <Image width={16} height={9}>, adica o
-          varianta de 16px latime, alt URL, deci nu preincarca nimic si mai si cerea in
-          plus un fisier care nu se folosea niciodata. */}
-      {animate && (
+      {/* Urmatorul cadru, cerut exact la adresa pe care o va cere cand intra in scena:
+          acelasi fill, acelasi sizes, aceeasi calitate. Doar dupa ce primul cadru s-a
+          incarcat, altfel ar concura cu LCP-ul chiar in momentul care conteaza.
+          Prima tranzitie e la 6,5 secunde, deci timp e destul. */}
+      {animate && loaded && (
         <div className="absolute inset-0 opacity-0 pointer-events-none -z-30" aria-hidden="true">
           <Image
             src={SLIDES[next].src}
             alt=""
             fill
             sizes="100vw"
-            quality={75}
+            quality={65}
             className="object-cover"
             draggable={false}
           />

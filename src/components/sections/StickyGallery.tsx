@@ -260,9 +260,8 @@ export default function StickyGallery() {
                 src={FLAT[lightbox].src}
                 alt={`Fotografia ${lightbox + 1}`}
                 fill
-                sizes="100vw"
+                sizes="(max-width: 1180px) 100vw, 1100px"
                 className="object-contain"
-                priority
               />
             </motion.div>
 

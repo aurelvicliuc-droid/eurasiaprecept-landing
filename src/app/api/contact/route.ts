@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 const TO = 'contact@eurasiaprecept.org'
 const FROM = 'Precept Eurasia <noreply@eurasiaprecept.org>'
 
@@ -36,6 +34,15 @@ function field(value: unknown, max: number): string {
 
 export async function POST(req: NextRequest) {
   try {
+    const apiKey = process.env.RESEND_API_KEY
+    if (!apiKey) {
+      // Instantiat aici, nu la nivel de modul: acolo, o cheie lipsa arunca la
+      // import, in afara blocului try, si iesea un 500 fara explicatie.
+      console.error('[contact] RESEND_API_KEY lipseste din mediu')
+      return NextResponse.json({ error: 'Email service not configured' }, { status: 500 })
+    }
+    const resend = new Resend(apiKey)
+
     const body = await req.json()
 
     const name = field(body?.name, MAX.name)
@@ -70,7 +77,7 @@ export async function POST(req: NextRequest) {
               </tr>
               <tr>
                 <td style="padding: 8px 0; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6C6A6A;">Email</td>
-                <td style="padding: 8px 0; font-size: 15px;"><a href="mailto:${encodeURIComponent(email)}" style="color: #2e5a52;">${esc(email)}</a></td>
+                <td style="padding: 8px 0; font-size: 15px;">${esc(email)}</td>
               </tr>
               ${subject ? `
               <tr>

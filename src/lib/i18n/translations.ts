@@ -14,6 +14,12 @@ export const translations = {
       closeMenu: 'Închide meniul',
       language: 'Alege limba',
     },
+    notFound: {
+      title: 'Pagina nu există',
+      desc: 'Adresa pe care ai deschis-o nu duce nicăieri. Poate a fost mutată sau linkul e scris greșit.',
+      cta: 'Înapoi la pagina principală',
+      programs: 'Vezi programele',
+    },
     hero: {
       badge: 'Institut de Studiu Biblic',
       title1: 'Institutul',
@@ -216,6 +222,12 @@ export const translations = {
       closeMenu: 'Close menu',
       language: 'Select language',
     },
+    notFound: {
+      title: 'Page not found',
+      desc: 'The address you opened does not lead anywhere. It may have moved, or the link is mistyped.',
+      cta: 'Back to the home page',
+      programs: 'See the programs',
+    },
     hero: {
       badge: 'Biblical Study Institute',
       title1: 'Biblical',
@@ -417,6 +429,12 @@ export const translations = {
       openMenu: 'Открыть меню',
       closeMenu: 'Закрыть меню',
       language: 'Выбрать язык',
+    },
+    notFound: {
+      title: 'Страница не найдена',
+      desc: 'Адрес, который вы открыли, никуда не ведёт. Возможно, страница переехала или ссылка написана с ошибкой.',
+      cta: 'На главную страницу',
+      programs: 'Посмотреть программы',
     },
     hero: {
       badge: 'Институт библейского изучения',

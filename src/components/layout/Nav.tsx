@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { useLanguage } from '@/lib/i18n/context'
 import type { Lang } from '@/lib/i18n/translations'
 import SweepButton from '@/components/ui/SweepButton'
+import { useFocusTrap } from '@/lib/useFocusTrap'
 
 const langs: Lang[] = ['ro', 'en', 'ru']
 
@@ -20,6 +21,9 @@ export default function Nav({ onAboutOpen, overlay = false }: NavProps) {
   const { lang, setLang, t } = useLanguage()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  // Meniul mobil acopera toata pagina, deci e un dialog: Escape il inchide,
+  // Tab ramane inauntru si focusul revine pe hamburger la inchidere.
+  const menuRef = useFocusTrap(mobileOpen, () => setMobileOpen(false))
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 12)
@@ -91,7 +95,7 @@ export default function Nav({ onAboutOpen, overlay = false }: NavProps) {
 
           {/* Right side */}
           <div className="hidden md:flex items-center gap-4">
-            <div className="flex gap-2" role="group" aria-label="Select language">
+            <div className="flex gap-2" role="group" aria-label={t.nav.language}>
               {langs.map((l) => (
                 <button
                   key={l}
@@ -120,8 +124,9 @@ export default function Nav({ onAboutOpen, overlay = false }: NavProps) {
             className={`md:hidden p-2 rounded-lg transition-colors cursor-pointer
               ${onDark ? 'hover:bg-fog/15' : 'hover:bg-beige'}`}
             onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            aria-label={mobileOpen ? t.nav.closeMenu : t.nav.openMenu}
             aria-expanded={mobileOpen}
+            aria-controls="mobile-menu"
           >
             {mobileOpen
               ? <X size={22} className={onDark ? 'text-fog' : 'text-text-dark'} />
@@ -134,6 +139,11 @@ export default function Nav({ onAboutOpen, overlay = false }: NavProps) {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
+            ref={menuRef}
+            id="mobile-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-label={t.nav.menu}
             className="fixed inset-0 z-40 bg-white pt-[68px]"
             initial={{ opacity: 0, y: -16 }}
             animate={{ opacity: 1, y: 0 }}

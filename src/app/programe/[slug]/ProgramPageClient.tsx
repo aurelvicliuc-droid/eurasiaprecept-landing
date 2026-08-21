@@ -11,6 +11,7 @@ import Nav from '@/components/layout/Nav'
 import SkipLink from '@/components/ui/SkipLink'
 import Footer from '@/components/layout/Footer'
 import { useLanguage } from '@/lib/i18n/context'
+import { useFocusTrap } from '@/lib/useFocusTrap'
 import { localizeProgram } from '@/lib/i18n/programs-localized'
 import SweepButton from '@/components/ui/SweepButton'
 
@@ -84,21 +85,17 @@ export default function ProgramPageClient({ program, en, ru }: Props) {
   const stepLightbox = (d: number) =>
     setLightbox((cur) => (cur === null ? cur : (cur + d + galleryCount) % galleryCount))
 
-  // Tastatura si blocarea scroll-ului cat timp lightbox-ul e deschis. Efectul depinde
-  // doar de valori simple, ca sa nu se re-lege la fiecare randare.
+  // Escape, blocarea scroll-ului, focusul si trapa vin din hook. Aici raman doar
+  // sagetile, care sunt specifice galeriei.
+  const trapRef = useFocusTrap(lightbox !== null, closeLightbox)
   useEffect(() => {
     if (lightbox === null) return
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setLightbox(null)
-      else if (e.key === 'ArrowRight') setLightbox((cur) => (cur === null ? cur : (cur + 1) % galleryCount))
+      if (e.key === 'ArrowRight') setLightbox((cur) => (cur === null ? cur : (cur + 1) % galleryCount))
       else if (e.key === 'ArrowLeft') setLightbox((cur) => (cur === null ? cur : (cur - 1 + galleryCount) % galleryCount))
     }
     document.addEventListener('keydown', onKey)
-    document.body.style.overflow = 'hidden'
-    return () => {
-      document.removeEventListener('keydown', onKey)
-      document.body.style.overflow = ''
-    }
+    return () => document.removeEventListener('keydown', onKey)
   }, [lightbox, galleryCount])
 
   const ctaPrimaryHref = p.ctaPrimary.href ?? program.ctaPrimary.href
@@ -500,6 +497,7 @@ export default function ProgramPageClient({ program, en, ru }: Props) {
       <AnimatePresence>
         {lightbox !== null && gallery[lightbox] && (
           <motion.div
+            ref={trapRef}
             className="fixed inset-0 z-[110] flex items-center justify-center p-4 sm:p-10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

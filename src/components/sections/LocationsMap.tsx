@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from 'react'
 import SectionEyebrow from '@/components/ui/SectionEyebrow'
 import AnimatedSection from '@/components/ui/AnimatedSection'
 import { useLanguage } from '@/lib/i18n/context'
+import { locations } from '@/lib/locations'
+import { countryName } from '@/lib/countries'
 
 function MapSkeleton() {
   return <div className="w-full h-[460px] sm:h-[560px] rounded-2xl bg-beige-dark/30 animate-pulse" />
@@ -43,7 +45,7 @@ function LazyMap() {
 }
 
 export default function LocationsMap() {
-  const { t } = useLanguage()
+  const { lang, t } = useLanguage()
   const m = t.map
 
   return (
@@ -66,6 +68,18 @@ export default function LocationsMap() {
         <AnimatedSection delay={0.1}>
           <LazyMap />
         </AnimatedSection>
+
+        {/* Panza hartii nu spune nimic unui cititor de ecran, iar datele exista
+            oricum in locations.ts. Aceeasi informatie, in text. */}
+        <ul className="sr-only">
+          {locations.map((l) => (
+            <li key={`${l.country}-${l.city}`}>
+              {countryName(l.country, lang)}, {l.city}
+              {l.coordinator ? `, ${l.coordinator}` : ''}
+              {l.email ? `, ${l.email}` : ''}
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   )

@@ -9,6 +9,10 @@ export const translations = {
       shop: 'Magazin',
       signIn: 'Intră',
       skipToContent: 'Sari la conținut',
+      menu: 'Meniu',
+      openMenu: 'Deschide meniul',
+      closeMenu: 'Închide meniul',
+      language: 'Alege limba',
     },
     hero: {
       badge: 'Institut de Studiu Biblic',
@@ -207,6 +211,10 @@ export const translations = {
       shop: 'Shop',
       signIn: 'Sign in',
       skipToContent: 'Skip to content',
+      menu: 'Menu',
+      openMenu: 'Open menu',
+      closeMenu: 'Close menu',
+      language: 'Select language',
     },
     hero: {
       badge: 'Biblical Study Institute',
@@ -405,6 +413,10 @@ export const translations = {
       shop: 'Магазин',
       signIn: 'Войти',
       skipToContent: 'Перейти к содержанию',
+      menu: 'Меню',
+      openMenu: 'Открыть меню',
+      closeMenu: 'Закрыть меню',
+      language: 'Выбрать язык',
     },
     hero: {
       badge: 'Институт библейского изучения',

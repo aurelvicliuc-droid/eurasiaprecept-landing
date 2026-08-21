@@ -42,7 +42,16 @@ function Markers({ lang }: { lang: Lang }) {
   return (
     <>
       {locations.map((l) => (
-        <Marker key={`${l.country}-${l.city}`} position={[l.lat, l.lng]} icon={icon}>
+        <Marker
+          key={`${l.country}-${l.city}`}
+          position={[l.lat, l.lng]}
+          icon={icon}
+          // Leaflet face fiecare marker focusabil, cu role="button". Fara nume,
+          // erau 70 de butoane anonime. 'title' e singura optiune care merge aici:
+          // 'alt' se aplica doar cand iconita e un <img>, iar a noastra e un divIcon
+          // (leaflet-src.js: `if (icon.tagName === 'IMG')`).
+          title={`${countryName(l.country, lang)}, ${l.city}`}
+        >
           <Tooltip direction="top" opacity={1} className="precept-tip">
             <span className="block font-semibold text-[12.5px] text-green-dark leading-tight">{countryName(l.country, lang)}, {l.city}</span>
             <span className="block text-meta text-text-dark mt-[3px]">{l.coordinator}</span>

@@ -6,6 +6,7 @@ import { X, ChevronLeft, ChevronRight, Images } from 'lucide-react'
 import AnimatedSection from '@/components/ui/AnimatedSection'
 import SectionEyebrow from '@/components/ui/SectionEyebrow'
 import { useLanguage } from '@/lib/i18n/context'
+import { useFocusTrap } from '@/lib/useFocusTrap'
 
 const C = '/carousel'
 
@@ -124,20 +125,18 @@ export default function StickyGallery() {
     (d: number) => setLightbox((cur) => (cur === null ? cur : (cur + d + FLAT.length) % FLAT.length)),
     [],
   )
+  // Escape, blocarea scroll-ului, focusul si trapa vin din hook. Aici raman doar
+  // sagetile, care sunt specifice galeriei.
+  const trapRef = useFocusTrap(lightbox !== null, closeLightbox)
   useEffect(() => {
     if (lightbox === null) return
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') closeLightbox()
-      else if (e.key === 'ArrowRight') stepLightbox(1)
+      if (e.key === 'ArrowRight') stepLightbox(1)
       else if (e.key === 'ArrowLeft') stepLightbox(-1)
     }
     document.addEventListener('keydown', onKey)
-    document.body.style.overflow = 'hidden'
-    return () => {
-      document.removeEventListener('keydown', onKey)
-      document.body.style.overflow = ''
-    }
-  }, [lightbox, closeLightbox, stepLightbox])
+    return () => document.removeEventListener('keydown', onKey)
+  }, [lightbox, stepLightbox])
 
   return (
     <section className="relative bg-beige-light pt-16" aria-labelledby="gallery-heading">
@@ -210,6 +209,7 @@ export default function StickyGallery() {
       <AnimatePresence>
         {lightbox !== null && FLAT[lightbox] && (
           <motion.div
+            ref={trapRef}
             className="fixed inset-0 z-[110] flex items-center justify-center p-4 sm:p-10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

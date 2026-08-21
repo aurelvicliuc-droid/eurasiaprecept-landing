@@ -1,9 +1,10 @@
 'use client'
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import { m as motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 import Image from 'next/image'
 import { useLanguage } from '@/lib/i18n/context'
+import { useFocusTrap } from '@/lib/useFocusTrap'
 import { locations } from '@/lib/locations'
 import { countryName } from '@/lib/countries'
 
@@ -69,16 +70,9 @@ export default function AboutModal({ open, onClose }: Props) {
     return [...m.entries()].sort((x, y) => countryName(x[0], lang).localeCompare(countryName(y[0], lang)))
   }, [lang])
 
-  useEffect(() => {
-    if (!open) return
-    const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
-    document.addEventListener('keydown', handler)
-    document.body.style.overflow = 'hidden'
-    return () => {
-      document.removeEventListener('keydown', handler)
-      document.body.style.overflow = ''
-    }
-  }, [open, onClose])
+  // Escape, blocarea scroll-ului, focusul initial, trapa si intoarcerea
+  // focusului pe elementul care a deschis modalul: toate in acelasi hook.
+  const trapRef = useFocusTrap(open, onClose)
 
   const tabs: { id: Tab; label: string }[] = [
     { id: 'viziunea', label: a.tabs.viziunea },
@@ -106,6 +100,7 @@ export default function AboutModal({ open, onClose }: Props) {
           />
 
           <motion.div
+            ref={trapRef}
             className="relative bg-cream rounded-2xl w-full max-w-[820px] max-h-[85vh] flex flex-col
               shadow-[0_24px_60px_rgba(0,0,0,0.18)] overflow-hidden"
             initial={{ opacity: 0, y: 24, scale: 0.98 }}
